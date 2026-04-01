@@ -1,0 +1,2 @@
+# AI-Career-Research-Assistant-Resume-Analysis-Job-Recommendation-Research-Paper-Intelligence-Platform
+AI Career &amp; Research Assistant integrates resume analysis, job recommendation, and research intelligence using NLP, ML, and RAG. It provides ATS scoring, skill insights, job matching, learning paths, and research paper generation &amp; Q&amp;A, helping users enhance careers and simplify academic workflows.
