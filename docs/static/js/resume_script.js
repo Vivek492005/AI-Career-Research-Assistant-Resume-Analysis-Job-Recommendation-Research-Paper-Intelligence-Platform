@@ -260,11 +260,8 @@ function initUpload() {
                 loadingOverlay.classList.remove('show');
                 analyzeBtn.disabled = false;
                 
-                if (window.location.hostname.includes('github.io')) {
-                    showError('This is a static demo on GitHub Pages. To use the real AI analysis, please run the project locally.');
-                } else {
-                    showError('Network error. Please check your connection and try again.');
-                }
+                // Show the actual error message to the user
+                showError(err.message || 'An unexpected error occurred. Please try again.');
             }
         });
     }
@@ -457,21 +454,32 @@ function closeApiModal() {
 }
 
 async function extractTextFromPDF(file) {
+    console.log('Starting PDF extraction...');
     const arrayBuffer = await file.arrayBuffer();
-    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    
+    // Use window.pdfjsLib which is standard for the CDN version
+    const pdfjsLib = window['pdfjsLib'] || window['pdfjs-dist/build/pdf'];
+    if (!pdfjsLib) throw new Error('PDF library not loaded correctly.');
+    
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
     
-    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-    let fullText = '';
-    
-    for (let i = 1; i <= pdf.numPages; i++) {
-        const page = await pdf.getPage(i);
-        const textContent = await page.getTextContent();
-        const pageText = textContent.items.map(item => item.str).join(' ');
-        fullText += pageText + '\n';
+    try {
+        const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+        let fullText = '';
+        
+        for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const textContent = await page.getTextContent();
+            const pageText = textContent.items.map(item => item.str).join(' ');
+            fullText += pageText + '\n';
+        }
+        
+        console.log('PDF extraction complete. Text length:', fullText.length);
+        return fullText;
+    } catch (err) {
+        console.error('PDF JS Error:', err);
+        throw new Error('Error parsing PDF file: ' + err.message);
     }
-    
-    return fullText;
 }
 
 async function extractTextFromDOCX(file) {
