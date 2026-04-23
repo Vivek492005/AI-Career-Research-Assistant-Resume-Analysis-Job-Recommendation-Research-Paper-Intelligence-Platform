@@ -191,6 +191,22 @@ function initUpload() {
             formData.append('resume', fileInput.files[0]);
 
             try {
+                // --- GitHub Pages Demo Mode ---
+                if (window.location.hostname.includes('github.io')) {
+                    console.log('Running in Demo Mode (GitHub Pages)');
+                    
+                    // Simulate processing time
+                    await new Promise(resolve => setTimeout(resolve, 4000));
+                    
+                    // Redirect to static dashboard
+                    completeAllSteps();
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 600);
+                    return;
+                }
+
+                // --- Real Backend Mode ---
                 const response = await fetch('/analyze', {
                     method: 'POST',
                     body: formData
@@ -213,7 +229,12 @@ function initUpload() {
                 console.error('Upload error:', err);
                 loadingOverlay.classList.remove('show');
                 analyzeBtn.disabled = false;
-                showError('Network error. Please check your connection and try again.');
+                
+                if (window.location.hostname.includes('github.io')) {
+                    showError('This is a static demo on GitHub Pages. To use the real AI analysis, please run the project locally.');
+                } else {
+                    showError('Network error. Please check your connection and try again.');
+                }
             }
         });
     }
