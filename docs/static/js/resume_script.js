@@ -440,6 +440,22 @@ function updateLoadingStep(stepNum, text) {
     if (loadingText) loadingText.textContent = text;
 }
 
+function saveApiKey() {
+    const key = document.getElementById('apiKeyInput').value.trim();
+    if (key) {
+        localStorage.setItem('GEMINI_API_KEY', key);
+        document.getElementById('apiModal').style.display = 'none';
+        if (window.onApiKeySave) window.onApiKeySave(key);
+    } else {
+        alert('Please enter a valid API key.');
+    }
+}
+
+function closeApiModal() {
+    document.getElementById('apiModal').style.display = 'none';
+    if (window.onApiKeyCancel) window.onApiKeyCancel();
+}
+
 async function extractTextFromPDF(file) {
     const arrayBuffer = await file.arrayBuffer();
     const pdfjsLib = window['pdfjs-dist/build/pdf'];
@@ -468,11 +484,25 @@ async function runGeminiAnalysis(resumeText) {
     let apiKey = localStorage.getItem('GEMINI_API_KEY');
     
     if (!apiKey) {
-        apiKey = prompt('Please enter your Gemini API Key to run the analysis on GitHub Pages:\n(Your key is saved locally in your browser)');
-        if (apiKey) localStorage.setItem('GEMINI_API_KEY', apiKey);
+        // Hide general loading and show API modal
+        document.getElementById('loadingOverlay').classList.remove('show');
+        document.getElementById('apiModal').style.display = 'flex';
+        
+        // Wait for user to save the key
+        apiKey = await new Promise((resolve) => {
+            window.onApiKeySave = (key) => resolve(key);
+            window.onApiKeyCancel = () => resolve(null);
+        });
+
+        // Re-show loading if we got a key
+        if (apiKey) {
+            document.getElementById('loadingOverlay').classList.add('show');
+        }
     }
     
     if (!apiKey) throw new Error('API Key is required for analysis on GitHub Pages.');
+
+    // ... (rest of the prompt logic remains the same)
 
     const promptText = `
     Analyze this resume text and provide a professional career analysis in JSON format.
