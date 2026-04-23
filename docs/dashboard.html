@@ -209,5 +209,107 @@
     </footer>
 
     <script src="static/js/resume_script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const data = JSON.parse(sessionStorage.getItem('last_analysis'));
+            if (!data) return; // Fallback to hardcoded demo if no data
+
+            // 1. Update Header
+            document.querySelector('.summary-text').textContent = data.summary;
+
+            // 2. Update ATS Score
+            const scoreEl = document.querySelector('.score-number');
+            scoreEl.dataset.target = data.ats.percentage;
+            scoreEl.textContent = '0';
+            
+            const gradeEl = document.querySelector('.score-grade');
+            gradeEl.className = `score-grade grade-${data.ats.grade}`;
+            gradeEl.textContent = `${data.ats.grade} — ${data.ats.grade_label}`;
+
+            const ring = document.querySelector('.progress-circle');
+            ring.dataset.percentage = data.ats.percentage;
+            
+            // 3. Update Breakdown
+            const breakdownContainer = document.querySelector('.ats-breakdown');
+            breakdownContainer.innerHTML = '<h3>📋 Score Breakdown</h3>';
+            Object.values(data.ats.breakdown).forEach(item => {
+                const pct = (item.score / item.max * 100).toFixed(1);
+                breakdownContainer.innerHTML += `
+                    <div class="breakdown-item">
+                        <div class="breakdown-header">
+                            <span class="breakdown-label">${item.label}</span>
+                            <span class="breakdown-score">${item.score}/${item.max}</span>
+                        </div>
+                        <div class="breakdown-bar">
+                            <div class="breakdown-fill" data-width="${pct}"></div>
+                        </div>
+                        <div class="breakdown-details">${item.details}</div>
+                    </div>
+                `;
+            });
+
+            // 4. Update Skills
+            const skillsGrid = document.querySelector('.skills-grid');
+            skillsGrid.innerHTML = '';
+            Object.entries(data.skills_by_category).forEach(([cat, list]) => {
+                if (list.length === 0) return;
+                skillsGrid.innerHTML += `<div class="skill-category-label">${cat}</div>`;
+                list.forEach(skill => {
+                    skillsGrid.innerHTML += `<span class="skill-tag">${skill}</span>`;
+                });
+            });
+
+            // 5. Update Feedback
+            const feedbackContainer = document.querySelector('.dash-card.stagger-2');
+            feedbackContainer.innerHTML = `<h3><span class="card-icon">✨</span> Improvement Suggestions</h3>`;
+            data.feedback.forEach(item => {
+                feedbackContainer.innerHTML += `
+                    <div class="feedback-item priority-${item.priority}">
+                        <div class="feedback-header">
+                            <span class="feedback-icon">${item.icon}</span>
+                            <span class="feedback-title">${item.title}</span>
+                            <span class="feedback-impact ${item.priority}">${item.impact}</span>
+                        </div>
+                        <div class="feedback-text">${item.suggestion}</div>
+                    </div>
+                `;
+            });
+
+            // 6. Update Jobs
+            const jobsGrid = document.querySelector('.full-section.stagger-3 .dashboard-grid');
+            jobsGrid.innerHTML = '';
+            data.recommendations.forEach(job => {
+                jobsGrid.innerHTML += `
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">${job.title}</div>
+                                <div class="job-company" style="font-size: 0.9rem; color: #00d4aa; font-weight: 600; margin-bottom: 0.2rem;">🏛️ ${job.company}</div>
+                            </div>
+                            <span class="job-match-badge" style="background: ${job.fit_color}22; color: ${job.fit_color}; border: 1px solid ${job.fit_color}44;">
+                                ${job.match_score}% Match
+                            </span>
+                        </div>
+                        <div class="job-meta">
+                            <span>📍 ${job.location}</span>
+                            <span>💼 ${job.experience_level}</span>
+                            <span>💰 ${job.salary_range}</span>
+                            <span>📅 ${job.posted_date}</span>
+                        </div>
+                        <div class="match-bar">
+                            <div class="match-fill" style="background: ${job.fit_color};" data-width="${job.match_score}"></div>
+                        </div>
+                        <div class="job-skills">
+                            ${job.matched_skills.map(s => `<span class="job-skill-tag matched">✓ ${s}</span>`).join('')}
+                            ${job.missing_skills.map(s => `<span class="job-skill-tag missing">✗ ${s}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Re-run animations for new elements
+            initDashboardAnimations();
+        });
+    </script>
 </body>
 </html>

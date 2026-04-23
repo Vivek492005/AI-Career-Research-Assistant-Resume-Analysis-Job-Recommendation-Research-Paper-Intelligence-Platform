@@ -191,26 +191,56 @@ function initUpload() {
             formData.append('resume', fileInput.files[0]);
 
             try {
-                // --- GitHub Pages Demo Mode ---
+                // --- GitHub Pages Full Client-Side Mode ---
                 if (window.location.hostname.includes('github.io')) {
-                    console.log('Running in Demo Mode (GitHub Pages)');
+                    console.log('Running in Full Client-Side Mode (GitHub Pages)');
                     
-                    // Simulate processing time
-                    await new Promise(resolve => setTimeout(resolve, 4000));
+                    // 1. Extract Text from File
+                    const file = fileInput.files[0];
+                    let text = '';
                     
-                    // Redirect to static dashboard
+                    try {
+                        updateLoadingStep(1, 'Extracting text from ' + file.name + '...');
+                        if (file.type === 'application/pdf') {
+                            text = await extractTextFromPDF(file);
+                        } else if (file.name.endsWith('.docx')) {
+                            text = await extractTextFromDOCX(file);
+                        } else {
+                            throw new Error('Unsupported file type');
+                        }
+                    } catch (err) {
+                        throw new Error('Failed to extract text: ' + err.message);
+                    }
+
+                    if (!text || text.trim().length < 50) {
+                        throw new Error('Could not extract enough text from the document.');
+                    }
+
+                    // 2. Run AI Analysis via Gemini
+                    updateLoadingStep(2, 'Identifying skills & experience...');
+                    updateLoadingStep(3, 'Running AI semantic analysis...');
+                    
+                    const analysisResult = await runGeminiAnalysis(text);
+                    
+                    // 3. Save result to session storage and redirect
+                    updateLoadingStep(4, 'Calculating ATS score...');
+                    updateLoadingStep(5, 'Generating recommendations...');
+                    
+                    sessionStorage.setItem('last_analysis', JSON.stringify(analysisResult));
+                    
                     completeAllSteps();
                     setTimeout(() => {
                         window.location.href = 'dashboard.html';
-                    }, 600);
+                    }, 800);
                     return;
                 }
 
-                // --- Real Backend Mode ---
+                // --- Real Backend Mode (Localhost) ---
                 const response = await fetch('/analyze', {
                     method: 'POST',
                     body: formData
                 });
+                // ... (rest of the original backend logic)
 
                 const data = await response.json();
 
@@ -396,15 +426,109 @@ function initScrollReveal() {
 // ================================================
 // SMOOTH SCROLL
 // ================================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+// ================================================
+// CLIENT-SIDE PARSING & AI (GITHUB PAGES)
+// ================================================
+
+function updateLoadingStep(stepNum, text) {
+    const step = document.querySelector(`.loading-step[data-step="${stepNum}"]`);
+    if (step) {
+        step.classList.add('active');
+        step.querySelector('span:last-child').textContent = text;
+    }
+    const loadingText = document.querySelector('.loading-text');
+    if (loadingText) loadingText.textContent = text;
+}
+
+async function extractTextFromPDF(file) {
+    const arrayBuffer = await file.arrayBuffer();
+    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+    
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    let fullText = '';
+    
+    for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const textContent = await page.getTextContent();
+        const pageText = textContent.items.map(item => item.str).join(' ');
+        fullText += pageText + '\n';
+    }
+    
+    return fullText;
+}
+
+async function extractTextFromDOCX(file) {
+    const arrayBuffer = await file.arrayBuffer();
+    const result = await mammoth.extractRawText({ arrayBuffer: arrayBuffer });
+    return result.value;
+}
+
+async function runGeminiAnalysis(resumeText) {
+    let apiKey = localStorage.getItem('GEMINI_API_KEY');
+    
+    if (!apiKey) {
+        apiKey = prompt('Please enter your Gemini API Key to run the analysis on GitHub Pages:\n(Your key is saved locally in your browser)');
+        if (apiKey) localStorage.setItem('GEMINI_API_KEY', apiKey);
+    }
+    
+    if (!apiKey) throw new Error('API Key is required for analysis on GitHub Pages.');
+
+    const promptText = `
+    Analyze this resume text and provide a professional career analysis in JSON format.
+    
+    RESUME TEXT:
+    ${resumeText.substring(0, 10000)}
+    
+    REQUIRED JSON STRUCTURE:
+    {
+        "summary": "Short professional summary",
+        "ats": {
+            "percentage": number (0-100),
+            "grade": "A/B/C/D",
+            "grade_label": "Excellent/Good/Average/Poor",
+            "breakdown": {
+                "skills": {"label": "Skill Matching", "score": number, "max": 30, "details": "..."},
+                "experience": {"label": "Experience Relevance", "score": number, "max": 25, "details": "..."}
+            }
+        },
+        "skills": ["skill1", "skill2", ...],
+        "skills_by_category": {"Languages": [...], "Frameworks": [...], ...},
+        "feedback": [{"title": "...", "suggestion": "...", "priority": "High/Medium/Low", "icon": "📈", "impact": "..."}],
+        "recommendations": [{"title": "Job Title", "company": "Company", "match_score": number, "fit_level": "...", "fit_color": "#...", "location": "...", "experience_level": "...", "salary_range": "...", "posted_date": "...", "skill_match_percent": number, "matched_skills": [...], "missing_skills": [...]}],
+        "skill_gaps": {"summary": "...", "critical": [{"skill": "...", "demanded_by": number}], "important": [], "nice_to_have": []},
+        "career_paths": [{"path": "...", "icon": "🚀", "industry_demand": "High", "match_percentage": number, "progression": ["Level 1", "Level 2", ...], "current_level": "...", "next_level": "..."}],
+        "roadmap": [{"order": 1, "skill": "...", "why": "...", "estimated_time": "...", "resources": ["..."]}],
+        "total_learning_time": "...",
+        "interview_questions": {"role": "...", "technical": [...], "behavioral": [...], "system_design": [...]}
+    }
+    
+    Return ONLY raw JSON. No markdown formatting.
+    `;
+
+    try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: promptText }] }]
+            })
+        });
+
+        const data = await response.json();
+        if (data.error) throw new Error(data.error.message);
+        
+        let jsonText = data.candidates[0].content.parts[0].text;
+        // Clean markdown
+        jsonText = jsonText.replace(/```json/g, '').replace(/```/g, '').trim();
+        
+        return JSON.parse(jsonText);
+    } catch (err) {
+        if (err.message.includes('API_KEY_INVALID')) {
+            localStorage.removeItem('GEMINI_API_KEY');
+            throw new Error('Invalid API Key. Please try again.');
         }
-    });
-});
+        throw err;
+    }
+}
+
