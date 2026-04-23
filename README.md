@@ -4,6 +4,14 @@ An advanced, full-stack AI-powered platform that integrates **Career Intelligenc
 
 ---
 
+## 🚀 Live Platform
+**Experience the unified platform live here:**  
+👉 **[https://ai-career-research-assistant-resume.onrender.com](https://ai-career-research-assistant-resume.onrender.com)**
+
+*(Note: The platform is hosted on a free tier; please allow 50+ seconds for the initial load if the server is sleeping.)*
+
+---
+
 ## 📌 Table of Contents
 
 - [Overview](#-overview)
