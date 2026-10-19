@@ -16,7 +16,7 @@ flask-limiter
 flask-sqlalchemy
 flask-login
 psycopg2-binary
-Authlib==1.8.0
+Authlib==1.9.1
 flask-migrate
 defusedxml
 pypdfium2
