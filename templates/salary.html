@@ -14,13 +14,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bento.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/resume_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kinetic.css') }}">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2310b981'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>₹</text></svg>">
     <style>
         .sal-wrap { max-width: 1100px; margin: 0 auto; padding: 6.5rem 1.2rem 4rem; }
         .sal-head h1 { font-size: 1.9rem; }
         .sal-head h1 .gradient-text { background: var(--gradient-primary); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .sal-head p { color: var(--text-muted, #94a3b8); margin-top: 0.3rem; max-width: 640px; }
-        .sal-filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; margin: 1.6rem 0 1.2rem; background: var(--bg-card); border: 1px solid rgba(16,185,129,0.22); border-radius: 16px; padding: 1.1rem; }
+        .sal-filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; margin: 1.6rem 0 1.2rem; background: var(--bg-card); border: 1px solid rgba(46,230,168,0.22); border-radius: 16px; padding: 1.1rem; }
         .sal-filters label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text-muted, #94a3b8); }
         .sal-filters select, .sal-compare input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; color: var(--text-main, #f8fafc); padding: 0.6rem 0.7rem; font-size: 0.9rem; }
         .sal-filters select:focus, .sal-compare input:focus { outline: none; border-color: var(--accent-primary); }
@@ -51,7 +52,7 @@
         @media (prefers-reduced-motion: reduce) { .sal-btn:hover { filter: none; } }
     </style>
 </head>
-<body>
+<body class="sb-app">
     <div class="b-scroll-progress" data-scroll-progress aria-hidden="true"></div>
     <div class="b-ambient" aria-hidden="true">
         <div class="b-blob b-b1"></div>

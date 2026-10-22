@@ -14,10 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bento.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/resume_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kinetic.css') }}">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
     <style>
         .st-wrap { max-width: 860px; margin: 0 auto; padding: 6.5rem 1.2rem 4rem; }
-        .st-card { background: var(--bg-card); border: 1px solid rgba(16,185,129,0.25); border-radius: 20px; padding: 1.6rem; backdrop-filter: blur(12px); margin-bottom: 1rem; }
+        .st-card { background: var(--bg-card); border: 1px solid rgba(46,230,168,0.25); border-radius: 20px; padding: 1.6rem; backdrop-filter: blur(12px); margin-bottom: 1rem; }
         .st-card h3 { margin-bottom: 0.4rem; }
         .st-meta { font-size: 0.82rem; color: var(--text-muted, #94a3b8); margin-bottom: 0.7rem; }
         .st-preview { font-size: 0.9rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 0.8rem; }
@@ -29,7 +30,7 @@
         @media (max-width: 700px) { .st-wrap { padding-top: 5.5rem; } .st-card { padding: 1.2rem; } }
     </style>
 </head>
-<body>
+<body class="sb-app">
     <div class="b-scroll-progress" data-scroll-progress aria-hidden="true"></div>
     <div class="b-ambient" aria-hidden="true">
         <div class="b-blob b-b1"></div>

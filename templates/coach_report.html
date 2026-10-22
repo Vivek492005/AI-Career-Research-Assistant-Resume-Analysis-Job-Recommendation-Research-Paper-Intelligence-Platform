@@ -24,10 +24,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bento.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/resume_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kinetic.css') }}">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2310b981'/><path d='M30 52l12 12 28-30' stroke='white' stroke-width='10' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
     <style>
         .cr-wrap { max-width: 860px; margin: 0 auto; padding: 6.5rem 1.2rem 4rem; }
-        .cr-card { background: var(--bg-card); border: 1px solid rgba(16,185,129,0.25); border-radius: 20px; padding: 2rem; backdrop-filter: blur(12px); margin-bottom: 1.2rem; }
+        .cr-card { background: var(--bg-card); border: 1px solid rgba(46,230,168,0.25); border-radius: 20px; padding: 2rem; backdrop-filter: blur(12px); margin-bottom: 1.2rem; }
         .cr-meta { color: var(--text-muted, #94a3b8); font-size: 0.85rem; margin-bottom: 1rem; }
         .cr-score-ring { width: 130px; height: 130px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 800; margin: 0 auto 1rem; }
         .cr-bar-row { display: grid; grid-template-columns: 150px 1fr 48px; gap: 0.7rem; align-items: center; margin-bottom: 0.55rem; font-size: 0.85rem; }
@@ -44,7 +45,7 @@
         .cr-orig mark.sev-1 { background: rgba(59,130,246,0.35); }
         .cr-sugg { margin: 0.6rem 0 0 1.2rem; color: #cbd5e1; font-size: 0.9rem; }
         .cr-sugg li { margin-bottom: 0.4rem; }
-        .cr-clean { background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.25); border-radius: 12px; padding: 1.2rem; font-size: 0.93rem; line-height: 1.7; color: #e2e8f0; white-space: pre-wrap; }
+        .cr-clean { background: rgba(46,230,168,0.06); border: 1px solid rgba(46,230,168,0.25); border-radius: 12px; padding: 1.2rem; font-size: 0.93rem; line-height: 1.7; color: #e2e8f0; white-space: pre-wrap; }
         .cr-drill { background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.2); border-radius: 12px; padding: 1rem 1.2rem; margin-bottom: 0.8rem; }
         .cr-drill .before { font-size: 0.9rem; color: #cbd5e1; font-style: italic; }
         .cr-drill .issues { font-size: 0.78rem; color: #f59e0b; margin-top: 0.4rem; }
@@ -57,7 +58,7 @@
         @media (prefers-reduced-motion: reduce) { .cr-bar > div { transition: none; } }
     </style>
 </head>
-<body>
+<body class="sb-app">
     <div class="b-scroll-progress" data-scroll-progress aria-hidden="true"></div>
     <div class="b-ambient" aria-hidden="true">
         <div class="b-blob b-b1"></div>
@@ -75,7 +76,7 @@
             <div class="cr-meta">{{ created_at.strftime('%d %b %Y, %I:%M %p') }}{% if report.ai_powered %} &middot; AI-polished rewrite{% endif %}</div>
 
             {% set score = report.clarity_score or 0 %}
-            <div class="cr-score-ring" style="border: 6px solid {% if score >= 75 %}#10b981{% elif score >= 50 %}#f59e0b{% else %}#ef4444{% endif %};">{{ '%.0f' % score }}</div>
+            <div class="cr-score-ring" style="border: 6px solid {% if score >= 75 %}#2ee6a8{% elif score >= 50 %}#f59e0b{% else %}#ef4444{% endif %};">{{ '%.0f' % score }}</div>
             <p style="text-align:center;color:var(--text-muted,#94a3b8);font-size:0.9rem;">Clarity score / 100</p>
 
             <h3 class="cr-h3">Score breakdown</h3>

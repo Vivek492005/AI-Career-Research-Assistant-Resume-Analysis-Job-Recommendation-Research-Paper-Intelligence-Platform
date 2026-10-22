@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bento.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/resume_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kinetic.css') }}">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2314b8a6'/><path d='M28 72V44l22-14 22 14v28' stroke='white' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
     <style>
         .pb-wrap { max-width: 1280px; margin: 0 auto; padding: 6.5rem 1.2rem 4rem; }
@@ -22,7 +23,7 @@
         .pb-head p { color: var(--text-muted, #94a3b8); margin-top: 0.3rem; max-width: 640px; }
         .pb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 1.5rem; align-items: start; }
         @media (max-width: 960px) { .pb-grid { grid-template-columns: 1fr; } }
-        .pb-card { background: var(--bg-card); border: 1px solid rgba(16,185,129,0.22); border-radius: 16px; padding: 1.4rem; }
+        .pb-card { background: var(--bg-card); border: 1px solid rgba(46,230,168,0.22); border-radius: 16px; padding: 1.4rem; }
         .pb-card h2 { font-size: 1.1rem; margin-bottom: 1rem; }
         .pb-card label { display: block; font-size: 0.82rem; font-weight: 700; margin: 0.9rem 0 0.35rem; color: var(--text-muted, #94a3b8); }
         .pb-card input[type=text], .pb-card input[type=url], .pb-card textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; color: var(--text-main, #f8fafc); padding: 0.6rem 0.7rem; font-size: 0.9rem; font-family: inherit; }
@@ -43,7 +44,7 @@
         .pb-msg { margin-top: 0.9rem; font-size: 0.88rem; min-height: 1.4em; }
         .pb-msg.ok { color: var(--accent-primary); }
         .pb-msg.err { color: var(--accent-danger); }
-        .pb-preview { position: sticky; top: 5.5rem; background: #f8fafc; color: #0f172a; border-radius: 16px; overflow: hidden; border: 1px solid rgba(16,185,129,0.3); max-height: calc(100vh - 7rem); overflow-y: auto; }
+        .pb-preview { position: sticky; top: 5.5rem; background: #f8fafc; color: #0f172a; border-radius: 16px; overflow: hidden; border: 1px solid rgba(46,230,168,0.3); max-height: calc(100vh - 7rem); overflow-y: auto; }
         .pb-preview .pv-hero { background: linear-gradient(135deg, #0f766e, #0e7490 60%, #1d4ed8); color: #fff; padding: 2rem 1.5rem; text-align: center; }
         .pv-hero h1 { font-size: 1.6rem; }
         .pv-hero .pv-hl { opacity: 0.9; font-size: 0.95rem; margin-top: 0.3rem; }
@@ -65,7 +66,7 @@
         @media (prefers-reduced-motion: reduce) { .pb-btn:hover { filter: none; } }
     </style>
 </head>
-<body>
+<body class="sb-app">
     <div class="b-scroll-progress" data-scroll-progress aria-hidden="true"></div>
     <div class="b-ambient" aria-hidden="true">
         <div class="b-blob b-b1"></div>

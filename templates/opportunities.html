@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bento.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/resume_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kinetic.css') }}">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2314b8a6'/><circle cx='50' cy='50' r='18' fill='none' stroke='white' stroke-width='8'/><path d='M50 32v-12M50 80v-12M32 50H20M80 50H68' stroke='white' stroke-width='8' stroke-linecap='round'/></svg>">
     <style>
         .opp-wrap { max-width: 1100px; margin: 0 auto; padding: 6.5rem 1.2rem 4rem; }
@@ -21,7 +22,7 @@
         .opp-head h1 .gradient-text { background: var(--gradient-primary); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .opp-head p { color: var(--text-muted, #94a3b8); margin-top: 0.3rem; max-width: 640px; }
         .opp-notice { margin: 1.2rem 0; background: rgba(56,189,248,0.07); border: 1px solid rgba(56,189,248,0.3); border-radius: 14px; padding: 0.9rem 1.2rem; font-size: 0.85rem; color: #bae6fd; }
-        .opp-filters { display: flex; gap: 0.7rem; align-items: end; flex-wrap: wrap; margin-bottom: 1.4rem; background: var(--bg-card); border: 1px solid rgba(16,185,129,0.22); border-radius: 16px; padding: 1rem 1.1rem; }
+        .opp-filters { display: flex; gap: 0.7rem; align-items: end; flex-wrap: wrap; margin-bottom: 1.4rem; background: var(--bg-card); border: 1px solid rgba(46,230,168,0.22); border-radius: 16px; padding: 1rem 1.1rem; }
         .opp-filters label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text-muted, #94a3b8); }
         .opp-filters select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; color: var(--text-main, #f8fafc); padding: 0.6rem 0.7rem; font-size: 0.9rem; min-width: 180px; }
         .opp-filters select option { color: #0f172a; }
@@ -33,12 +34,12 @@
         .opp-card.soon { border-color: rgba(245,158,11,0.55); box-shadow: 0 0 0 1px rgba(245,158,11,0.25); }
         .opp-top { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
         .opp-badge { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; border-radius: 999px; padding: 0.2rem 0.65rem; }
-        .opp-badge.internship { background: rgba(16,185,129,0.16); color: var(--accent-primary); }
+        .opp-badge.internship { background: rgba(46,230,168,0.16); color: var(--accent-primary); }
         .opp-badge.scholarship { background: rgba(56,189,248,0.14); color: var(--accent-info); }
         .opp-badge.exam { background: rgba(245,158,11,0.14); color: var(--accent-warning); }
         .opp-badge.hackathon { background: rgba(168,85,247,0.16); color: #c4b5fd; }
         .opp-badge.competition { background: rgba(236,72,153,0.14); color: #f9a8d4; }
-        .opp-fresh { display: inline-flex; align-items: center; gap: 0.45rem; margin: 0 0 1.2rem; font-size: 0.8rem; font-weight: 600; color: #a7f3d0; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.3); border-radius: 999px; padding: 0.4rem 0.9rem; }
+        .opp-fresh { display: inline-flex; align-items: center; gap: 0.45rem; margin: 0 0 1.2rem; font-size: 0.8rem; font-weight: 600; color: #a7f3d0; background: rgba(46,230,168,0.08); border: 1px solid rgba(46,230,168,0.3); border-radius: 999px; padding: 0.4rem 0.9rem; }
         .opp-fresh .b-pulse { width: 7px; height: 7px; }
         .opp-soon { font-size: 0.72rem; font-weight: 800; border-radius: 999px; padding: 0.2rem 0.65rem; background: rgba(245,158,11,0.18); color: var(--accent-warning); }
         .opp-card h3 { font-size: 1.05rem; line-height: 1.35; }
@@ -48,8 +49,8 @@
         .opp-deadline .left.urgent { color: var(--accent-warning); }
         .opp-elig { font-size: 0.85rem; color: #cbd5e1; }
         .opp-actions { display: flex; gap: 0.6rem; margin-top: auto; padding-top: 0.5rem; flex-wrap: wrap; }
-        .opp-link { display: inline-block; font-size: 0.85rem; font-weight: 700; color: var(--accent-primary); text-decoration: none; border: 1px solid rgba(16,185,129,0.4); border-radius: 10px; padding: 0.45rem 0.9rem; }
-        .opp-link:hover { background: rgba(16,185,129,0.12); }
+        .opp-link { display: inline-block; font-size: 0.85rem; font-weight: 700; color: var(--accent-primary); text-decoration: none; border: 1px solid rgba(46,230,168,0.4); border-radius: 10px; padding: 0.45rem 0.9rem; }
+        .opp-link:hover { background: rgba(46,230,168,0.12); }
         .opp-bm { font-size: 0.85rem; font-weight: 600; background: transparent; border: 1px solid rgba(255,255,255,0.18); color: var(--text-main, #f8fafc); border-radius: 10px; padding: 0.45rem 0.9rem; cursor: pointer; }
         .opp-bm.saved { border-color: var(--accent-tertiary); color: var(--accent-tertiary); }
         .opp-bm:disabled { opacity: 0.6; cursor: wait; }
@@ -62,7 +63,7 @@
         @media (prefers-reduced-motion: reduce) { .opp-btn:hover, .opp-link:hover { filter: none; } }
     </style>
 </head>
-<body>
+<body class="sb-app">
     <div class="b-scroll-progress" data-scroll-progress aria-hidden="true"></div>
     <div class="b-ambient" aria-hidden="true">
         <div class="b-blob b-b1"></div>

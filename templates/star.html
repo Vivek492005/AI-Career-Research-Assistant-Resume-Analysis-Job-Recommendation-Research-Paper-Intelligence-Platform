@@ -14,13 +14,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bento.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/resume_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kinetic.css') }}">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
     <style>
         .st-wrap { max-width: 880px; margin: 0 auto; padding: 6.5rem 1.2rem 4rem; }
         .st-head h1 { font-size: 1.9rem; margin-bottom: 0.4rem; }
         .st-head h1 .gradient-text { background: var(--gradient-primary); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .st-head p { color: var(--text-muted, #94a3b8); margin-bottom: 1.4rem; }
-        .st-card { background: var(--bg-card); border: 1px solid rgba(16,185,129,0.25); border-radius: 20px; padding: 2rem; backdrop-filter: blur(12px); margin-bottom: 1.2rem; }
+        .st-card { background: var(--bg-card); border: 1px solid rgba(46,230,168,0.25); border-radius: 20px; padding: 2rem; backdrop-filter: blur(12px); margin-bottom: 1.2rem; }
         .st-field { margin-bottom: 1rem; }
         .st-field label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; }
         .st-field select { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; color: var(--text-main, #f8fafc); padding: 0.8rem 1rem; font-size: 0.95rem; }
@@ -28,16 +29,16 @@
         .st-sec { border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.4rem; margin-bottom: 1rem; }
         .st-sec-head { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
         .st-sec-head h3 { font-size: 1.05rem; }
-        .st-sec-head h3 .letter { display: inline-flex; width: 30px; height: 30px; border-radius: 50%; background: rgba(16,185,129,0.16); color: var(--accent-primary); align-items: center; justify-content: center; font-weight: 800; margin-right: 0.5rem; }
+        .st-sec-head h3 .letter { display: inline-flex; width: 30px; height: 30px; border-radius: 50%; background: rgba(46,230,168,0.16); color: var(--accent-primary); align-items: center; justify-content: center; font-weight: 800; margin-right: 0.5rem; }
         .st-tip { font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 0.7rem; line-height: 1.55; }
         .st-tip-toggle { font-size: 0.8rem; color: var(--accent-secondary); cursor: pointer; background: none; border: none; padding: 0; margin-bottom: 0.7rem; font-weight: 600; }
         .st-example-box { display: none; font-size: 0.85rem; margin-bottom: 0.8rem; }
         .st-example-box.open { display: block; }
         .st-good, .st-bad { border-radius: 10px; padding: 0.7rem 0.9rem; margin-bottom: 0.5rem; line-height: 1.55; }
-        .st-good { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.3); }
+        .st-good { background: rgba(46,230,168,0.08); border: 1px solid rgba(46,230,168,0.3); }
         .st-bad { background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.3); }
         .st-good strong, .st-bad strong { display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.3rem; }
-        .st-good strong { color: #10b981; } .st-bad strong { color: var(--accent-danger); }
+        .st-good strong { color: #2ee6a8; } .st-bad strong { color: var(--accent-danger); }
         .st-why { font-size: 0.8rem; color: var(--text-muted, #94a3b8); margin-top: 0.4rem; font-style: italic; }
         .st-area { width: 100%; min-height: 130px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; color: var(--text-main, #f8fafc); padding: 1rem; font-size: 0.95rem; font-family: inherit; resize: vertical; line-height: 1.6; }
         .st-score { display: flex; align-items: center; gap: 0.7rem; margin-top: 0.7rem; font-size: 0.85rem; }
@@ -67,7 +68,7 @@
         @media (prefers-reduced-motion: reduce) { .st-bar > div { transition: none; } }
     </style>
 </head>
-<body>
+<body class="sb-app">
     <div class="b-scroll-progress" data-scroll-progress aria-hidden="true"></div>
     <div class="b-ambient" aria-hidden="true">
         <div class="b-blob b-b1"></div>

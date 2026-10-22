@@ -469,3 +469,154 @@ body:has(.sb-dash) { background: #0a0a0a !important; }
 .sb-iv .iv-score-ring { width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; margin: 0 auto 1rem; }
 .sb-iv .iv-bar-row { display: grid; grid-template-columns: 130px 1fr 44px; gap: 0.7rem; align-items: center; margin-bottom: 0.55rem; font-size: 0.85rem; }
 @media (max-width: 700px) { .sb-dsa .dsa-prob { flex-direction: column; align-items: flex-start; } .sb-iv .iv-card { padding: 1.4rem; } .sb-iv .iv-bar-row { grid-template-columns: 100px 1fr 40px; } }
+
+/* ---------- Mode D: app workspace (sweep for the standalone tool pages) ----------
+   aptitude / assessment / coach / tracker / salary / star / practice /
+   opportunities / portfolio / reports / dsa_problem — pages that pair
+   bento.css + resume_style.css with inline styles. The resume_style
+   variables are re-mapped to the kinetic palette at body scope; display
+   headings, buttons and form atoms follow the same rules as Modes A–C. */
+body.sb-app {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1c1c1c;
+  --bg-card: #111111;
+  --bg-card-hover: #161616;
+  --bg-glass: rgba(255, 255, 255, 0.04);
+  --bg-glass-hover: rgba(255, 255, 255, 0.07);
+  --accent-primary: #6e86ff;
+  --accent-secondary: #c8ff2e;
+  --accent-tertiary: #f59e0b;
+  --accent-warning: #f59e0b;
+  --accent-danger: #ff6b6b;
+  --accent-info: #6e86ff;
+  --gradient-primary: linear-gradient(135deg, #2447ff 0%, #2447ff 100%);
+  --gradient-secondary: linear-gradient(135deg, #1c1c1c 0%, #1c1c1c 100%);
+  --gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
+  --gradient-card: linear-gradient(145deg, rgba(36, 71, 255, 0.08), rgba(255, 255, 255, 0.02));
+  --gradient-hero: radial-gradient(ellipse at 50% 0%, rgba(36, 71, 255, 0.12) 0%, transparent 60%);
+  --text-primary: #ffffff;
+  --text-secondary: #d4d4cf;
+  --text-muted: #a3a3a0;
+  --text-main: #ffffff;
+  --text-accent: #6e86ff;
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-accent: rgba(36, 71, 255, 0.45);
+  --border-glow: rgba(36, 71, 255, 0.55);
+  background: #0a0a0a !important;
+  background-image: none !important;
+  color: #fff;
+  font-family: var(--sb-body);
+}
+body.sb-app .b-ambient { display: none !important; }
+body.sb-app .gradient-text {
+  background: none !important; -webkit-background-clip: initial !important;
+  background-clip: initial !important; color: var(--sb-lime) !important;
+}
+body.sb-app h1 {
+  font-family: var(--sb-display); font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.005em; line-height: 0.95; color: #fff;
+}
+body.sb-app h2, body.sb-app h3 { color: #fff; }
+body.sb-app h2 { font-family: var(--sb-display); text-transform: uppercase; letter-spacing: 0.01em; }
+body.sb-app .b-footer { background: #0a0a0a; border-top: 1px solid #2a2a2a; color: #a3a3a0; }
+body.sb-app input, body.sb-app select, body.sb-app textarea {
+  background: #111 !important; border: 1px solid #333 !important; color: #fff !important; border-radius: 0 !important;
+}
+body.sb-app select option { background: #111; color: #fff; }
+body.sb-app input::placeholder, body.sb-app textarea::placeholder { color: #777; }
+body.sb-app table thead th { color: #a3a3a0; border-bottom-color: #2a2a2a; }
+body.sb-app table tbody td { border-bottom-color: #222; }
+body.sb-app a { color: #fff; }
+/* sb-app primary buttons: several tool pages paired a near-black text
+   color with the old emerald gradient; on the kinetic blue they must be
+   white on flat blue, square corners (Modes A–C language). */
+body.sb-app .ap-btn, body.sb-app .ch-btn, body.sb-app .cr-btn,
+body.sb-app .dp-btn, body.sb-app .st-btn, body.sb-app .opp-btn,
+body.sb-app .pb-btn, body.sb-app .sal-btn, body.sb-app .si-btn,
+body.sb-app .tk-btn {
+  background: var(--sb-blue) !important; color: #fff !important;
+  border-radius: 0 !important; box-shadow: none !important; border-color: var(--sb-blue) !important;
+}
+body.sb-app .ap-btn:hover, body.sb-app .ch-btn:hover, body.sb-app .cr-btn:hover,
+body.sb-app .dp-btn:hover, body.sb-app .st-btn:hover, body.sb-app .opp-btn:hover,
+body.sb-app .pb-btn:hover, body.sb-app .sal-btn:hover, body.sb-app .si-btn:hover,
+body.sb-app .tk-btn:hover { background: var(--sb-blue-dark) !important; }
+/* [hidden] must always win: several tool pages style their modal
+   backdrops with display:flex, which (author origin) overrides the UA
+   [hidden] rule and leaves dialogs visible on load (tracker bug found
+   during the sweep; the JS toggles .hidden correctly). */
+[hidden] { display: none !important; }
+
+/* ---------- Mode E: base pages (the 43 templates extending base.html) ----------
+   base.html now puts .sb-base on <body>. The bento variables are
+   re-mapped to the kinetic palette at body scope (they inherit to every
+   descendant, so all var-driven bento components shift at once) and the
+   shared components get the Modes A–C treatment: flat #111 cards,
+   square corners, blue primaries, Barlow display headings, no ambient
+   glows, no gradient text. Page-scoped V2 rules (sb-editorial,
+   sb-workspace, sb-dash, sb-results) keep their higher specificity. */
+body.sb-base {
+  --b-bg: #0a0a0a;
+  --b-surface: #0a0a0a;
+  --b-card: #111111;
+  --b-card-solid: #111111;
+  --b-border: #2a2a2a;
+  --b-text: #ffffff;
+  --b-muted: #a3a3a0;
+  --b-radius: 0px;
+  --b-radius-sm: 0px;
+  --b-a1: #2447ff;
+  --b-a2: #c8ff2e;
+  --b-a3: #2ee6a8;
+  --b-glow-1: transparent;
+  --b-glow-2: transparent;
+  --b-glow-3: transparent;
+  --b-grad: linear-gradient(92deg, #c8ff2e, #c8ff2e);
+  --b-btn-grad: linear-gradient(135deg, #2447ff, #2447ff);
+  --b-accent-soft: rgba(36, 71, 255, 0.12);
+  --b-accent-border: rgba(36, 71, 255, 0.45);
+  --b-danger: #ff6b6b;
+  --b-danger-border: rgba(255, 107, 107, 0.45);
+  --b-ok: #2ee6a8;
+  --b-warn: #f59e0b;
+  background: #0a0a0a;
+  color: #fff;
+  font-family: var(--sb-body);
+}
+body.sb-base .b-ambient { display: none !important; }
+body.sb-base .b-card {
+  background: #111 !important; border: 1px solid #2a2a2a !important;
+  border-radius: 0 !important; box-shadow: none !important; color: #fff !important;
+}
+body.sb-base .b-card:hover { transform: none !important; box-shadow: none !important; }
+body.sb-base .b-card p, body.sb-base .b-lede { color: #a3a3a0 !important; }
+body.sb-base h1 {
+  font-family: var(--sb-display); font-weight: 800; text-transform: uppercase;
+  line-height: 0.95; letter-spacing: 0.005em; color: #fff;
+}
+body.sb-base h2 { font-family: var(--sb-display); text-transform: uppercase; letter-spacing: 0.01em; color: #fff; }
+body.sb-base .b-sec-head h2 { font-size: 2rem; line-height: 0.95; }
+body.sb-base .b-sec-head p { color: #a3a3a0; }
+body.sb-base .b-btn--primary {
+  background: var(--sb-blue) !important; border-radius: 0 !important; box-shadow: none !important; color: #fff !important;
+}
+body.sb-base .b-btn--ghost { border-radius: 0 !important; color: #fff !important; border-color: #555 !important; background: transparent !important; }
+body.sb-base .b-input, body.sb-base input, body.sb-base select, body.sb-base textarea {
+  background: #111 !important; border: 1px solid #333 !important; color: #fff !important; border-radius: 0 !important;
+}
+body.sb-base select option { background: #111; color: #fff; }
+body.sb-base .b-tag {
+  background: #1c1c1c !important; border: 1px solid #333 !important; color: #fff !important; border-radius: 0 !important;
+}
+body.sb-base .b-stat-num {
+  font-family: var(--sb-display); background: none !important;
+  -webkit-background-clip: initial !important; background-clip: initial !important; color: #fff !important;
+}
+body.sb-base .b-stat-label { color: #a3a3a0; }
+body.sb-base .b-bar { background: #222 !important; border-radius: 0 !important; }
+body.sb-base .b-bar i { background: var(--sb-blue) !important; border-radius: 0 !important; }
+body.sb-base .b-footer { background: #0a0a0a; border-top: 1px solid #2a2a2a; color: #a3a3a0; }
+body.sb-base table thead th { color: #a3a3a0; border-bottom-color: #2a2a2a; }
+body.sb-base table tbody td { border-bottom-color: #222; }
+body.sb-base .b-pill, body.sb-app .b-pill { border-radius: 0 !important; }
