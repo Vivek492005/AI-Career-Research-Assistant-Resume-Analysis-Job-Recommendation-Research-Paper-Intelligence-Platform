@@ -55,13 +55,30 @@ Built as a Flask monolith, it pairs **Google Gemini** (with automatic fallback t
 
 ## ⚡ Quick Start
 
+**macOS / Linux:**
+
 ```bash
 git clone https://github.com/Vivek492005/STUDY-BUDDY.git
 cd STUDY-BUDDY
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 python unified_app.py        # → http://localhost:5000
 ```
+
+**Windows (PowerShell):**
+
+```powershell
+git clone https://github.com/Vivek492005/STUDY-BUDDY.git
+cd STUDY-BUDDY
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python unified_app.py        # → http://localhost:5000
+```
+
+> If PowerShell refuses to run the activation script, allow local
+> scripts once with `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`,
+> then re-run `.venv\Scripts\Activate.ps1`.
 
 Core features work with no API keys. Full configuration (env vars, production, deployment) is in [Installation & Setup](#-installation--setup).
 
@@ -234,7 +251,7 @@ cd STUDY-BUDDY
 
 # 2. Create and activate a virtual environment
 python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
+source .venv/bin/activate
 
 # 3. Install dependencies
 pip install -r requirements.txt
@@ -242,6 +259,24 @@ pip install -r requirements.txt
 # 4. Configure environment variables
 cp .env.example .env   # then edit .env
 ```
+
+On Windows, use PowerShell equivalents for steps 2 and 4:
+
+```powershell
+# 2. Create and activate a virtual environment
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+
+# 3. Install dependencies (same as above)
+pip install -r requirements.txt
+
+# 4. Configure environment variables
+Copy-Item .env.example .env   # then edit .env in Notepad or your editor
+```
+
+To set an environment variable for the current PowerShell session
+(instead of editing `.env`), use `$env:` syntax, e.g.
+`$env:GEMINI_API_KEY = "your-key"` before running the app.
 
 ### Environment variables
 
@@ -260,6 +295,10 @@ python unified_app.py
 # Production (as deployed)
 gunicorn unified_app:app
 ```
+
+> Gunicorn is Unix-only. On Windows, run the development server with
+> `python unified_app.py` (or serve the app with waitress:
+> `pip install waitress`, then `waitress-serve --port=5000 unified_app:app`).
 
 Open **http://localhost:5000** and create an account to get started.
 

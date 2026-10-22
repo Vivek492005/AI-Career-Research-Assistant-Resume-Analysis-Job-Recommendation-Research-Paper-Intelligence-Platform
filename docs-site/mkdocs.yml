@@ -19,6 +19,7 @@ theme:
 
 nav:
   - Home: index.md
+  - Architecture: architecture.md
   - User Guide:
     - Getting Started: guide/quickstart.md
     - Resume Readiness: guide/resume.md
@@ -27,6 +28,7 @@ nav:
     - Docker: selfhost/docker.md
     - Configuration: selfhost/configuration.md
     - No-LLM / BYOK / Local: selfhost/privacy-modes.md
+    - Render Troubleshooting: selfhost/render-troubleshooting.md
   - Reference:
     - Benchmarks: reference/benchmarks.md
     - Privacy: reference/privacy.md
@@ -38,3 +40,8 @@ markdown_extensions:
   - codehilite
   - toc:
       permalink: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
