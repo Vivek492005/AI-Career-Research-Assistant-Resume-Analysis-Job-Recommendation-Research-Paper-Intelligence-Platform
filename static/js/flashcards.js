@@ -60,11 +60,28 @@
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
     });
     $('fc-flip').addEventListener('click', flip);
-    $('fc-prev').addEventListener('click', function () {
-        if (idx > 0) { idx--; renderCard(); }
-    });
-    $('fc-next').addEventListener('click', function () {
-        if (idx < cards.length - 1) { idx++; renderCard(); }
+    function prev() { if (idx > 0) { idx--; renderCard(); } }
+    function next() { if (idx < cards.length - 1) { idx++; renderCard(); } }
+    $('fc-prev').addEventListener('click', prev);
+    $('fc-next').addEventListener('click', next);
+
+    /* #12: full keyboard flow — ArrowLeft/ArrowRight move between
+       cards, Space/Enter flips — so a deck can be reviewed with no
+       mouse. Active only in flashcard mode and never while typing;
+       Space/Enter are left to native button activation when a button
+       has focus (the card itself handles its own keys above). */
+    document.addEventListener('keydown', function (e) {
+        var cardsMode = $('fc-cards-mode');
+        if (!cardsMode || cardsMode.style.display === 'none') return;
+        var t = e.target;
+        if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' ||
+                  t.tagName === 'SELECT' || t.isContentEditable)) return;
+        if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+        else if ((e.key === ' ' || e.key === 'Enter') &&
+                 (t === document.body || t === cardsMode)) {
+            e.preventDefault(); flip();
+        }
     });
 
     function mark(known) {

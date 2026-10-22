@@ -1,0 +1,32 @@
+{# #19: CSP violation reporting fallback — included by base.html and by
+   every standalone page shell. The browser's native report-uri
+   delivery can be blocked (adblockers, filtering proxies); this
+   listener re-sends each securitypolicyviolation event via fetch and
+   falls back to navigator.sendBeacon when fetch itself is blocked,
+   so violations still reach /csp-report and get logged either way. #}
+<script nonce="{{ csp_nonce() }}">
+(function () {
+  document.addEventListener('securitypolicyviolation', function (e) {
+    var payload = JSON.stringify({'csp-report': {
+      'violated-directive': e.violatedDirective || e.effectiveDirective || '',
+      'blocked-uri': e.blockedURI || '',
+      'source-file': e.sourceFile || '',
+      'line-number': e.lineNumber || 0
+    }});
+    var url = "{{ url_for('csp_report') }}";
+    function beacon() {
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(url,
+          new Blob([payload], {type: 'application/json'}));
+      }
+    }
+    if (window.fetch) {
+      fetch(url, {method: 'POST', body: payload, keepalive: true,
+                  headers: {'Content-Type': 'application/json'}})
+        .catch(beacon);
+    } else {
+      beacon();
+    }
+  });
+})();
+</script>

@@ -4,6 +4,13 @@
 {% block title %}Review Deck — {{ doc_title }} | AI Career &amp; Research Assistant{% endblock %}
 {% block head %}
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+    /* #12: unmistakable focus ring on the flippable card */
+    #fc-card:focus-visible {
+        outline: 3px solid var(--b-a1, #4f8cff);
+        outline-offset: 3px;
+    }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -27,7 +34,7 @@
         <!-- Flashcard mode -->
         <div id="fc-cards-mode">
             <div class="b-sec-head" style="margin-top:0;"><h2 id="fc-progress">Card 1</h2><p id="fc-kind"></p></div>
-            <div id="fc-card" class="b-card b-card--lite" style="min-height:180px;display:flex;flex-direction:column;justify-content:center;cursor:pointer;text-align:center;" role="button" tabindex="0" aria-label="Flip card">
+            <div id="fc-card" class="b-card b-card--lite" style="min-height:180px;display:flex;flex-direction:column;justify-content:center;cursor:pointer;text-align:center;" role="button" tabindex="0" aria-label="Flip card" aria-describedby="fc-kbd-hint">
                 <p id="fc-q" style="font-size:1.1rem;margin:0;"></p>
                 <p id="fc-a" style="display:none;color:var(--b-a3);font-size:1.05rem;margin:1rem 0 0;"></p>
                 <p id="fc-src" style="display:none;color:var(--b-muted);font-size:.78rem;margin:.8rem 0 0;"></p>
@@ -41,6 +48,7 @@
                 <button class="b-btn b-btn--sm" id="fc-unknown" type="button" style="border:1px solid var(--b-danger-border);color:var(--b-danger);background:transparent;">Still learning</button>
                 <button class="b-btn b-btn--sm" id="fc-known" type="button" style="border:1px solid rgba(52,211,153,.4);color:#a7f3d0;background:transparent;">I know this</button>
             </div>
+            <p id="fc-kbd-hint" style="text-align:center;color:var(--b-muted);font-size:.85rem;margin-top:1rem;">Keyboard: <kbd>←</kbd> / <kbd>→</kbd> move between cards, <kbd>Space</kbd> or <kbd>Enter</kbd> flips the card.</p>
         </div>
         <!-- Quiz mode -->
         <div id="fc-quiz-mode" style="display:none;">

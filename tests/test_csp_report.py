@@ -52,3 +52,15 @@ def test_inline_script_nonce_matches_csp_header(csrf_client):
     assert m, "CSP header must carry a per-request nonce"
     html = r.get_data(as_text=True)
     assert f'nonce="{m.group(1)}"' in html
+
+
+def test_csp_beacon_fallback_snippet_present(csrf_client):
+    # #19: when the browser's native report-uri POST is blocked (e.g.
+    # by an adblocker), the base template's securitypolicyviolation
+    # listener re-sends the report via fetch, falling back to
+    # navigator.sendBeacon — so violations still get logged.
+    for path in ("/", "/login", "/resume"):
+        html = csrf_client.get(path).get_data(as_text=True)
+        assert "securitypolicyviolation" in html, path
+        assert "sendBeacon" in html, path
+        assert "/csp-report" in html, path
