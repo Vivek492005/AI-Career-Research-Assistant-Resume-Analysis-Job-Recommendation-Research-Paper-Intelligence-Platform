@@ -840,3 +840,12 @@ body.sb-workspace .hero h2.hero-h {
 .sb-hero-visual .sb-note { z-index: 3; }
 .sb-hero-visual .sb-note--b { bottom: 250px; max-width: 180px; }
 .sb-hero-card { z-index: 4; }
+
+/* Hero figure scale (user): the student now spans the full display block —
+   top at LEARN, bottom at GET HIRED. The source photo is pre-trimmed to
+   the figure, so a headline-height panel renders him at full size. */
+.sb-hero-visual { min-height: 608px; }
+@media (max-width: 900px) { .sb-hero-visual { min-height: 440px; } }
+
+/* Note B wraps inside the free strip left of the enlarged figure. */
+.sb-hero-visual .sb-note--b { max-width: 136px; }
