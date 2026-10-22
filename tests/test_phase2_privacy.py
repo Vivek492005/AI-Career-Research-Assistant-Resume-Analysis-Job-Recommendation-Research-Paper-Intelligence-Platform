@@ -24,6 +24,25 @@ class TestAccountExport:
         assert data["user"]["email"] == "exp2@example.com"
         assert "resume_analyses" in data
 
+    def test_export_includes_llm_consent_record(self, client, app):
+        # #15: the PRIV-03 consent record is personal data and must be
+        # part of the export — null before consent, populated after.
+        from unified_app import User, db
+        with app.app_context():
+            u = User(name="Consent User", email="consent@example.com")
+            u.set_password("Str0ng!Pass1")
+            db.session.add(u)
+            db.session.commit()
+        login(client, email="consent@example.com", password="Str0ng!Pass1")
+        data = json.loads(client.get("/account/export").data)
+        assert "llm_consent" in data
+        assert data["llm_consent"] is None
+        r = client.post("/consent/llm", data={"agree": "yes"})
+        assert r.status_code == 302
+        data = json.loads(client.get("/account/export").data)
+        assert data["llm_consent"]["policy_version"] == "v1"
+        assert data["llm_consent"]["consented_at"]
+
 class TestAccountDelete:
     def test_delete_page_loads(self, client, app):
         from unified_app import User, db

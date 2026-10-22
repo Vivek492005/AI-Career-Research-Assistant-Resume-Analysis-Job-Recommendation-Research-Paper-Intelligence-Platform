@@ -2496,6 +2496,24 @@ def register_security_headers(app):
         return {"csp_nonce": lambda: getattr(g, "csp_nonce", "")}
 
 
+def _load_benchmark_scores(path=None):
+    """#8: parsed benchmarks/results.json, or None when absent/unreadable.
+
+    Surfaced verbatim on /version so deploys can be checked against the
+    gold-set benchmark without shell access. Never raises — a missing
+    or malformed file simply omits the key from the response.
+    """
+    import json as _json
+    p = path or os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                             "benchmarks", "results.json")
+    try:
+        with open(p, encoding="utf-8") as f:
+            data = _json.load(f)
+    except (OSError, ValueError):
+        return None
+    return data if isinstance(data, dict) else None
+
+
 def _error_payload(code, message):
     """JSON for API routes, styled page otherwise (P2#10)."""
     if request.path.startswith("/api/"):
@@ -2969,13 +2987,19 @@ def register_routes(app):
     def readyz():
         checks = {}
         ok = True
-        # DB reachable?
+        # DB reachable? Timed (#17): latency is surfaced so uptime
+        # dashboards can alert on a slow-but-alive database, not just
+        # a dead one. Measured around the existing SELECT 1 probe, so
+        # the statement budget for this route is unchanged.
+        import time
+        _t0 = time.perf_counter()
         try:
             db.session.execute(db.text("SELECT 1"))
             checks["db"] = "ok"
         except Exception as e:  # noqa: BLE001 - readiness must not raise
             checks["db"] = f"error: {type(e).__name__}"
             ok = False
+        checks["db_latency_ms"] = round((time.perf_counter() - _t0) * 1000, 3)
         # Migrations at head?
         try:
             from alembic.config import Config as AlembicConfig
@@ -3027,13 +3051,18 @@ def register_routes(app):
                 schema_rev = ",".join(heads) if heads else "none"
         except Exception:  # noqa: BLE001
             pass
-        return jsonify({
+        payload = {
             "app": "study-buddy",
             "version": app_version,
             "git_sha": sha,
             "schema_revision": schema_rev,
             "python": __import__("sys").version.split()[0],
-        })
+        }
+        # #8: surface gold-set benchmark scores when a results file exists.
+        scores = _load_benchmark_scores()
+        if scores is not None:
+            payload["benchmarks"] = scores
+        return jsonify(payload)
 
     # ---------- AUTH (ARC-01) ----------
     # /register, /login, /logout now live in app/blueprints/auth_bp.py
@@ -3213,6 +3242,20 @@ def register_routes(app):
             },
             "exported_at": str(_utcnow_naive()),
         }
+        # #15: the LLM consent record (PRIV-03) is personal data too —
+        # when it was given and under which policy version. Key is always
+        # present (null when the user never consented) so consumers can
+        # rely on the export shape.
+        try:
+            consent = LLMConsent.query.filter_by(user_id=user.id).first()
+            data["llm_consent"] = (
+                {
+                    "consented_at": str(consent.consented_at),
+                    "policy_version": consent.policy_version,
+                }
+                if consent is not None else None)
+        except Exception:
+            data["llm_consent"] = None
         # Collect all user-owned rows across known tables
         for model, name in [
             (ResumeAnalysis, "resume_analyses"),

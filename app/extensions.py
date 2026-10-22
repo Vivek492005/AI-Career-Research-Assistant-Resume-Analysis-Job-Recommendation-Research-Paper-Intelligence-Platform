@@ -51,6 +51,9 @@ limiter = Limiter(
     storage_uri=(
         __import__("os").environ.get("RATELIMIT_STORAGE_URI") or "memory://"
     ),
+    # #13: emit X-RateLimit-Limit/-Remaining/-Reset so API clients can
+    # back off politely instead of discovering the limit via a 429.
+    headers_enabled=True,
 )
 oauth = OAuth()  # social login clients (registered per-app in create_app)
 

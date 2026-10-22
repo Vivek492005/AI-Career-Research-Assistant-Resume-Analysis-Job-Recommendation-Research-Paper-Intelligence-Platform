@@ -47,6 +47,79 @@ class TestRateLimitKeying:
         assert rules, "login route must exist"
 
 
+class TestRateLimitHeaders:
+    """#13: X-RateLimit-* headers (Flask-Limiter headers_enabled=True).
+
+    Runs in a subprocess on purpose: create_app disables the limiter
+    under TESTING, and flask-limiter 4.x binds its header injection to
+    the first app served in a process — the suite creates hundreds of
+    apps per worker, so in-process assertions would test that quirk
+    instead of the production shape (one app per process, as here).
+    A dedicated RFC-5737 IP keeps the rate bucket isolated.
+    """
+
+    _PROBE = r"""
+import json, os, sys
+sys.path.insert(0, os.getcwd())
+os.environ["OPP_NO_AUTO_REFRESH"] = "1"
+from unified_app import create_app
+from app.extensions import limiter
+
+app = create_app({"TESTING": True,
+                  "SQLALCHEMY_DATABASE_URI": "sqlite:///:memory:",
+                  "SECRET_KEY": "test-secret-key",
+                  "WTF_CSRF_ENABLED": False})
+limiter.enabled = True
+client = app.test_client()
+ip = {"REMOTE_ADDR": "203.0.113.11"}
+out = {}
+r = client.get("/healthz", environ_base=ip)
+out["healthz_status"] = r.status_code
+out["healthz_headers"] = {k: v for k, v in r.headers.items()
+                          if "ratelimit" in k.lower()}
+# /csp-report carries an explicit 60/hour limit (SEC-05): exhaust it.
+statuses = [client.post("/csp-report", json={},
+                        environ_base=ip).status_code for _ in range(61)]
+out["csp_last_status"] = statuses[-1]
+out["csp_ok_count"] = statuses.count(204)
+r = client.post("/csp-report", json={}, environ_base=ip)
+out["csp_429_headers"] = {k: v for k, v in r.headers.items()
+                          if "ratelimit" in k.lower() or k == "Retry-After"}
+print("PROBE_JSON:" + json.dumps(out))
+"""
+
+    def _run_probe(self):
+        import json
+        import os
+        import subprocess
+        import sys
+        result = subprocess.run(
+            [sys.executable, "-c", self._PROBE],
+            capture_output=True, text=True,
+            cwd=os.path.join(os.path.dirname(__file__), ".."),
+            timeout=180)
+        assert result.returncode == 0, result.stderr[-2000:]
+        line = [ln for ln in result.stdout.splitlines()
+                if ln.startswith("PROBE_JSON:")]
+        assert line, result.stdout[-1000:]
+        return json.loads(line[0][len("PROBE_JSON:"):])
+
+    def test_headers_on_default_limited_endpoint(self):
+        out = self._run_probe()
+        assert out["healthz_status"] == 200
+        headers = out["healthz_headers"]
+        assert int(headers["X-RateLimit-Limit"]) > 0
+        assert "X-RateLimit-Remaining" in headers
+        assert "X-RateLimit-Reset" in headers
+
+    def test_headers_and_429_on_exhausted_route_limit(self):
+        out = self._run_probe()
+        assert out["csp_ok_count"] == 60
+        assert out["csp_last_status"] == 429
+        assert "X-RateLimit-Limit" in out["csp_429_headers"]
+        assert "Retry-After" in out["csp_429_headers"]
+
+
 class TestTimeHandling:
     def test_no_utcnow_anywhere(self):
         import pathlib
