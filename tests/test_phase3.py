@@ -103,6 +103,23 @@ class TestDataProvenance:
                          "data", "schemas", "meta.template.json")
         assert os.path.exists(p)
 
+    def test_validator_report_option(self, tmp_path):
+        # #10: --report writes a machine-readable summary CI uploads;
+        # --strict exits 1 while legacy provenance warnings exist.
+        import json
+        root = os.path.join(os.path.dirname(__file__), "..")
+        report = tmp_path / "report.json"
+        result = subprocess.run(
+            [sys.executable, "scripts/validate_data.py",
+             "--strict", "--report", str(report)],
+            capture_output=True, text=True, cwd=root, timeout=120)
+        assert result.returncode == 1
+        data = json.loads(report.read_text())
+        assert data["errors"] == 0
+        assert data["warnings"] > 0
+        assert data["strict"] is True
+        assert data["records_checked"] > 0
+
 
 class TestGracefulDegradation:
     def test_degraded_helper_exists(self):

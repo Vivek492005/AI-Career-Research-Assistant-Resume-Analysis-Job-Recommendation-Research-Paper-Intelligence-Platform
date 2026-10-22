@@ -23,6 +23,20 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
       - run: pip install --require-hashes -r requirements-dev.txt
       - run: ruff check . --no-cache
+      # #6: every full-page template must declare <html lang="...">
+      - run: python scripts/check_lang.py
+      # #10: strict dataset validation, advisory for now (legacy
+      # provenance warnings) — warning count uploaded as an artifact
+      - name: Validate datasets (strict, advisory)
+        continue-on-error: true
+        run: python scripts/validate_data.py --strict --report validate-data-report.json
+      - name: Upload data-validation report
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: validate-data-report
+          path: validate-data-report.json
+          if-no-files-found: ignore
       # NOTE: ruff format is intentionally not gated yet — 187 legacy files
       # would be reformatted. ARC-07 ratchets formatting per-module.
       # ARC-07: mypy on new typed modules (gradual adoption)

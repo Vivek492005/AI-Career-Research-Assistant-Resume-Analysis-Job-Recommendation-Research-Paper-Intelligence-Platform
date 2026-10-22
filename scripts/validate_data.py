@@ -1,8 +1,10 @@
 """DATA-01: Validate dataset provenance (schemas, meta.json, freshness).
 
-Usage: python scripts/validate_data.py [--strict]
+Usage: python scripts/validate_data.py [--strict] [--report PATH]
 Checks every data/*.json against its schema in data/schemas/,
 verifies meta.json presence, and warns on stale last_verified dates.
+With --report, a JSON summary (counts + messages) is written to PATH
+so CI can upload the warning count as an artifact (#10).
 """
 import glob
 import json
@@ -59,6 +61,11 @@ def check_freshness(rec, dataset, warnings):
 
 def main():
     strict = "--strict" in sys.argv
+    report_path = None
+    if "--report" in sys.argv:
+        idx = sys.argv.index("--report")
+        if idx + 1 < len(sys.argv):
+            report_path = sys.argv[idx + 1]
     errors, warnings = [], []
     seen_ids = {}
 
@@ -108,6 +115,19 @@ def main():
     for e in errors:
         print(f"  ERROR: {e}")
     print(f"\n{len(errors)} errors, {len(warnings)} warnings.")
+    if report_path:
+        report = {
+            "records_checked": len(seen_ids),
+            "errors": len(errors),
+            "warnings": len(warnings),
+            "strict": strict,
+            "error_messages": errors,
+            "warning_messages": warnings[:1000],
+            "warning_messages_truncated": len(warnings) > 1000,
+        }
+        with open(report_path, "w") as f:
+            json.dump(report, f, indent=2)
+        print(f"Report written to {report_path}")
     if errors or (strict and warnings):
         sys.exit(1)
 
