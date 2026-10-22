@@ -814,3 +814,29 @@ body.sb-workspace .hero h2.hero-h {
   font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; line-height: 1.1;
   margin-bottom: var(--space-lg); animation: fadeInUp 0.8s ease 0.2s both;
 }
+
+/* Hero photo v2 (user feedback): the FULL figure sits directly on the page —
+   no grey panel, no border. The photo's white background is blended away
+   with multiply so only the student remains on the paper. */
+.sb-hero-visual { background: transparent; border: 0; box-shadow: none; min-height: 540px; overflow: visible; }
+.sb-hero-photo {
+  object-fit: contain; object-position: center bottom;
+  mix-blend-mode: multiply; filter: grayscale(1) contrast(1.06);
+}
+.sb-hero-visual .sb-note--b {
+  color: #0a0a0a; text-shadow: none; bottom: 118px;
+}
+@media (max-width: 900px) { .sb-hero-visual { min-height: 420px; } }
+
+/* Hero photo v2 polish: figure shifts right so the left handwritten note
+   never slides under it; the note wraps inside the free space. */
+.sb-hero-photo { object-position: 84% bottom; }
+.sb-hero-visual .sb-note--b { max-width: 168px; }
+
+/* Hero v2 layering: brush behind the figure (photo blends over it via
+   multiply), notes and card above; second note sits mid-left in open space. */
+.sb-hero-visual .sb-brush--big { z-index: 1; }
+.sb-hero-photo { z-index: 2; object-position: 88% bottom; }
+.sb-hero-visual .sb-note { z-index: 3; }
+.sb-hero-visual .sb-note--b { bottom: 250px; max-width: 180px; }
+.sb-hero-card { z-index: 4; }
