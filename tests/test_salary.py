@@ -80,3 +80,28 @@ def test_options_embedded_in_page(client):
     html = client.get("/salary").get_data(as_text=True)
     assert "Software Development Engineer" in html
     assert "Tier 1" in html
+
+
+# ---------- #11: city-level entry-level SDE ranges ----------
+
+def test_city_entries_five_metros_with_provenance():
+    from studybuddy.salary_data import city_query
+    rows = city_query(role="Software Development Engineer", band="0-1")
+    assert {r["city"] for r in rows} == {
+        "Mumbai", "Delhi NCR", "Bengaluru", "Hyderabad", "Chennai"}
+    for r in rows:
+        # DATA-01 provenance fields on every city record
+        for field in ("id", "source_url", "retrieved_at", "license",
+                      "last_verified", "confidence"):
+            assert r[field], (r["city"], field)
+        assert r["confidence"] in ("high", "medium", "low")
+        assert 0 < r["min_lpa"] <= r["median_lpa"] <= r["max_lpa"]
+
+
+def test_city_lookup():
+    from studybuddy.salary_data import lookup_city
+    e = lookup_city("Software Development Engineer", "Bengaluru", "0-1")
+    assert e is not None
+    assert e["median_lpa"] == 8.5
+    assert lookup_city("Software Development Engineer", "Gotham", "0-1") is None
+    assert lookup_city("Astronaut", "Mumbai", "0-1") is None

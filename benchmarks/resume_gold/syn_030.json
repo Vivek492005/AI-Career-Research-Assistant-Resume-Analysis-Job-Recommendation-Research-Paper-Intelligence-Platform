@@ -1,0 +1,17 @@
+{
+  "id": "syn_030",
+  "text": "Arjun Mehta\narjun.mehta30@example.com\n+91 9812045673\nSKILLS\nEXPERIENCE\nPython, SQL\nData Analyst \u2014 RetailMetrics (2021\u2013Present)\nTableau, Excel\n- Built weekly sales dashboards for 40+ stores\nPower BI\n- Automated KPI reporting, saving 6 hrs/week\nEDUCATION\nB.Com Statistics, 2020\n",
+  "labels": {
+    "name": "Arjun Mehta",
+    "email": "arjun.mehta30@example.com",
+    "phone": "+91 9812045673",
+    "skills": [
+      "Python",
+      "SQL",
+      "Tableau",
+      "Excel",
+      "Power BI"
+    ],
+    "role": "Data Analyst"
+  }
+}

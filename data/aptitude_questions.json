@@ -4579,7 +4579,7 @@
     "category": "verbal",
     "subcategory": "reading_comprehension",
     "difficulty": "Hard",
-    "statement": "Read the passage and answer:\n\nMonsoon rains define life across South Asia. Farmers time their sowing to the arrival of the southwest monsoon, cities brace for both relief from heat and the risk of flooding, and economists watch rainfall figures as closely as stock prices — a weak monsoon can shave points off GDP growth. Climate change is now making monsoons more erratic: intense bursts of rain separated by longer dry spells, challenging centuries-old rhythms of agriculture and water management.\n\nWhy do economists track monsoon rainfall?",
+    "statement": "Read the passage and answer:\n\nMonsoon rains define life across South Asia. Farmers time their sowing to the arrival of the southwest monsoon, cities brace for both relief from heat and the risk of flooding, and economists watch rainfall figures as closely as stock prices \u2014 a weak monsoon can shave points off GDP growth. Climate change is now making monsoons more erratic: intense bursts of rain separated by longer dry spells, challenging centuries-old rhythms of agriculture and water management.\n\nWhy do economists track monsoon rainfall?",
     "options": [
       "It predicts stock market crashes directly.",
       "It significantly affects agricultural output and GDP.",
@@ -4594,7 +4594,7 @@
     "category": "verbal",
     "subcategory": "reading_comprehension",
     "difficulty": "Hard",
-    "statement": "Read the passage and answer:\n\nMonsoon rains define life across South Asia. Farmers time their sowing to the arrival of the southwest monsoon, cities brace for both relief from heat and the risk of flooding, and economists watch rainfall figures as closely as stock prices — a weak monsoon can shave points off GDP growth. Climate change is now making monsoons more erratic: intense bursts of rain separated by longer dry spells, challenging centuries-old rhythms of agriculture and water management.\n\nClimate change is making monsoons",
+    "statement": "Read the passage and answer:\n\nMonsoon rains define life across South Asia. Farmers time their sowing to the arrival of the southwest monsoon, cities brace for both relief from heat and the risk of flooding, and economists watch rainfall figures as closely as stock prices \u2014 a weak monsoon can shave points off GDP growth. Climate change is now making monsoons more erratic: intense bursts of rain separated by longer dry spells, challenging centuries-old rhythms of agriculture and water management.\n\nClimate change is making monsoons",
     "options": [
       "weaker every single year",
       "limited to cities",
@@ -4609,7 +4609,7 @@
     "category": "verbal",
     "subcategory": "reading_comprehension",
     "difficulty": "Hard",
-    "statement": "Read the passage and answer:\n\nOpen-source software powers most of the modern internet, from web servers to smartphone operating systems, yet it is largely built by volunteers. Developers contribute code for reputation, learning, or simply the satisfaction of fixing something they use. Companies now fund many such projects, recognising that shared infrastructure is cheaper than reinventing it — though debates continue about how to sustain maintainers who burn out supporting critical code for free.\n\nMost of the modern internet runs on software that is",
+    "statement": "Read the passage and answer:\n\nOpen-source software powers most of the modern internet, from web servers to smartphone operating systems, yet it is largely built by volunteers. Developers contribute code for reputation, learning, or simply the satisfaction of fixing something they use. Companies now fund many such projects, recognising that shared infrastructure is cheaper than reinventing it \u2014 though debates continue about how to sustain maintainers who burn out supporting critical code for free.\n\nMost of the modern internet runs on software that is",
     "options": [
       "written by governments",
       "built only by companies",
@@ -4624,7 +4624,7 @@
     "category": "verbal",
     "subcategory": "reading_comprehension",
     "difficulty": "Hard",
-    "statement": "Read the passage and answer:\n\nOpen-source software powers most of the modern internet, from web servers to smartphone operating systems, yet it is largely built by volunteers. Developers contribute code for reputation, learning, or simply the satisfaction of fixing something they use. Companies now fund many such projects, recognising that shared infrastructure is cheaper than reinventing it — though debates continue about how to sustain maintainers who burn out supporting critical code for free.\n\nDevelopers contribute to open source mainly for",
+    "statement": "Read the passage and answer:\n\nOpen-source software powers most of the modern internet, from web servers to smartphone operating systems, yet it is largely built by volunteers. Developers contribute code for reputation, learning, or simply the satisfaction of fixing something they use. Companies now fund many such projects, recognising that shared infrastructure is cheaper than reinventing it \u2014 though debates continue about how to sustain maintainers who burn out supporting critical code for free.\n\nDevelopers contribute to open source mainly for",
     "options": [
       "high salaries",
       "legal compulsion",
@@ -4654,7 +4654,7 @@
     "category": "verbal",
     "subcategory": "reading_comprehension",
     "difficulty": "Hard",
-    "statement": "Read the passage and answer:\n\nMonsoon rains define life across South Asia. Farmers time their sowing to the arrival of the southwest monsoon, cities brace for both relief from heat and the risk of flooding, and economists watch rainfall figures as closely as stock prices — a weak monsoon can shave points off GDP growth. Climate change is now making monsoons more erratic: intense bursts of rain separated by longer dry spells, challenging centuries-old rhythms of agriculture and water management.\n\nThe phrase 'shave points off GDP growth' means",
+    "statement": "Read the passage and answer:\n\nMonsoon rains define life across South Asia. Farmers time their sowing to the arrival of the southwest monsoon, cities brace for both relief from heat and the risk of flooding, and economists watch rainfall figures as closely as stock prices \u2014 a weak monsoon can shave points off GDP growth. Climate change is now making monsoons more erratic: intense bursts of rain separated by longer dry spells, challenging centuries-old rhythms of agriculture and water management.\n\nThe phrase 'shave points off GDP growth' means",
     "options": [
       "measure rainfall precisely",
       "cut government spending",
@@ -4669,7 +4669,7 @@
     "category": "verbal",
     "subcategory": "reading_comprehension",
     "difficulty": "Hard",
-    "statement": "Read the passage and answer:\n\nOpen-source software powers most of the modern internet, from web servers to smartphone operating systems, yet it is largely built by volunteers. Developers contribute code for reputation, learning, or simply the satisfaction of fixing something they use. Companies now fund many such projects, recognising that shared infrastructure is cheaper than reinventing it — though debates continue about how to sustain maintainers who burn out supporting critical code for free.\n\nA current debate in open source concerns",
+    "statement": "Read the passage and answer:\n\nOpen-source software powers most of the modern internet, from web servers to smartphone operating systems, yet it is largely built by volunteers. Developers contribute code for reputation, learning, or simply the satisfaction of fixing something they use. Companies now fund many such projects, recognising that shared infrastructure is cheaper than reinventing it \u2014 though debates continue about how to sustain maintainers who burn out supporting critical code for free.\n\nA current debate in open source concerns",
     "options": [
       "banning volunteer work",
       "hiding source code",
@@ -4678,5 +4678,305 @@
     ],
     "answer": 2,
     "explanation": "The final clause names the burnout/sustainability debate."
+  },
+  {
+    "id": "apt-0339",
+    "category": "logical",
+    "subcategory": "number_series",
+    "difficulty": "Medium",
+    "statement": "Find the next term: 2, 6, 12, 20, 30, ?",
+    "options": [
+      "40",
+      "42",
+      "44",
+      "36"
+    ],
+    "answer": 1,
+    "explanation": "Differences are 4, 6, 8, 10 - increasing by 2 each time. Next difference is 12, so the next term is 30 + 12 = 42."
+  },
+  {
+    "id": "apt-0340",
+    "category": "logical",
+    "subcategory": "number_series",
+    "difficulty": "Easy",
+    "statement": "Find the next term: 3, 9, 27, 81, ?",
+    "options": [
+      "162",
+      "243",
+      "324",
+      "121"
+    ],
+    "answer": 1,
+    "explanation": "Each term is multiplied by 3: 81 x 3 = 243."
+  },
+  {
+    "id": "apt-0341",
+    "category": "logical",
+    "subcategory": "number_series",
+    "difficulty": "Easy",
+    "statement": "Find the next term: 1, 1, 2, 3, 5, 8, 13, ?",
+    "options": [
+      "18",
+      "20",
+      "21",
+      "24"
+    ],
+    "answer": 2,
+    "explanation": "Each term is the sum of the previous two (Fibonacci pattern): 8 + 13 = 21."
+  },
+  {
+    "id": "apt-0342",
+    "category": "logical",
+    "subcategory": "letter_series",
+    "difficulty": "Medium",
+    "statement": "Find the next term: A, C, F, J, O, ?",
+    "options": [
+      "T",
+      "U",
+      "V",
+      "S"
+    ],
+    "answer": 1,
+    "explanation": "Gaps grow by one each step: +2, +3, +4, +5, so next is +6: O + 6 = U."
+  },
+  {
+    "id": "apt-0343",
+    "category": "logical",
+    "subcategory": "letter_series",
+    "difficulty": "Easy",
+    "statement": "Find the next term: Z, X, V, T, R, ?",
+    "options": [
+      "Q",
+      "P",
+      "O",
+      "N"
+    ],
+    "answer": 1,
+    "explanation": "Letters step backwards by 2 each time: R - 2 = P."
+  },
+  {
+    "id": "apt-0344",
+    "category": "logical",
+    "subcategory": "coding_decoding",
+    "difficulty": "Medium",
+    "statement": "In a certain code, CAT is written as 3120 using each letter's position in the alphabet. How is DOG written in the same code?",
+    "options": [
+      "4157",
+      "4175",
+      "4715",
+      "4517"
+    ],
+    "answer": 0,
+    "explanation": "D is the 4th letter, O the 15th, G the 7th, written together as 4157."
+  },
+  {
+    "id": "apt-0345",
+    "category": "logical",
+    "subcategory": "coding_decoding",
+    "difficulty": "Easy",
+    "statement": "In a certain code language, APPLE is written as BQQMF. How is MANGO written in the same code?",
+    "options": [
+      "NBOHP",
+      "NAOHP",
+      "MBOHP",
+      "NBOGP"
+    ],
+    "answer": 0,
+    "explanation": "Every letter shifts forward by one: M->N, A->B, N->O, G->H, O->P."
+  },
+  {
+    "id": "apt-0346",
+    "category": "logical",
+    "subcategory": "blood_relations",
+    "difficulty": "Medium",
+    "statement": "A is B's sister. B is C's mother. C is D's father. How is A related to D?",
+    "options": [
+      "Grandmother",
+      "Great-aunt",
+      "Aunt",
+      "Mother"
+    ],
+    "answer": 1,
+    "explanation": "B is D's grandmother (mother of D's father C). A is B's sister, so A is D's great-aunt."
+  },
+  {
+    "id": "apt-0347",
+    "category": "logical",
+    "subcategory": "blood_relations",
+    "difficulty": "Medium",
+    "statement": "Pointing to a photograph, Ravi says: 'She is the daughter of my grandfather's only son.' How is the woman related to Ravi?",
+    "options": [
+      "Mother",
+      "Sister",
+      "Cousin",
+      "Aunt"
+    ],
+    "answer": 1,
+    "explanation": "Ravi's grandfather's only son is Ravi's father. The father's daughter is Ravi's sister."
+  },
+  {
+    "id": "apt-0348",
+    "category": "logical",
+    "subcategory": "blood_relations",
+    "difficulty": "Hard",
+    "statement": "P is Q's brother. Q is R's wife. R is S's father. How is P related to S?",
+    "options": [
+      "Father",
+      "Maternal uncle",
+      "Brother",
+      "Grandfather"
+    ],
+    "answer": 1,
+    "explanation": "Q is S's mother (wife of S's father R). P is Q's brother, so P is S's maternal uncle."
+  },
+  {
+    "id": "apt-0349",
+    "category": "logical",
+    "subcategory": "direction_sense",
+    "difficulty": "Easy",
+    "statement": "A man walks 5 km north, then turns right and walks 3 km, then turns right again and walks 5 km. How far is he from his starting point?",
+    "options": [
+      "3 km",
+      "5 km",
+      "8 km",
+      "13 km"
+    ],
+    "answer": 0,
+    "explanation": "The two 5 km legs cancel out (north, then south), leaving only the 3 km eastward leg."
+  },
+  {
+    "id": "apt-0350",
+    "category": "logical",
+    "subcategory": "direction_sense",
+    "difficulty": "Medium",
+    "statement": "Sara walks 4 km east, then turns left and walks 3 km. In which direction is she from her starting point?",
+    "options": [
+      "North-west",
+      "North-east",
+      "South-east",
+      "South-west"
+    ],
+    "answer": 1,
+    "explanation": "She ends up 4 km east and 3 km north of the start, which is the north-east direction."
+  },
+  {
+    "id": "apt-0351",
+    "category": "logical",
+    "subcategory": "direction_sense",
+    "difficulty": "Hard",
+    "statement": "You are facing south. If you turn 135 degrees clockwise, which direction will you face?",
+    "options": [
+      "North-east",
+      "South-west",
+      "North-west",
+      "West"
+    ],
+    "answer": 2,
+    "explanation": "Turning clockwise from south: 45 degrees reaches south-west, 90 reaches west, and 135 reaches north-west."
+  },
+  {
+    "id": "apt-0352",
+    "category": "logical",
+    "subcategory": "syllogisms",
+    "difficulty": "Medium",
+    "statement": "Statements: All engineers are graduates. Some graduates are managers. Which conclusion logically follows?",
+    "options": [
+      "Some engineers are managers",
+      "All managers are engineers",
+      "Some graduates are engineers",
+      "No graduate is an engineer"
+    ],
+    "answer": 2,
+    "explanation": "Since every engineer is a graduate, some graduates (the engineers) are certainly engineers. The statements do not pin managers to engineers."
+  },
+  {
+    "id": "apt-0353",
+    "category": "logical",
+    "subcategory": "syllogisms",
+    "difficulty": "Hard",
+    "statement": "Statements: No train is a bus. All buses are trucks. Which conclusion logically follows?",
+    "options": [
+      "All trucks are buses",
+      "Some trucks are not trains",
+      "No truck is a train",
+      "Some trains are trucks"
+    ],
+    "answer": 1,
+    "explanation": "Every bus is a truck, and no bus is a train, so the trucks that are buses are definitely not trains - some trucks are not trains."
+  },
+  {
+    "id": "apt-0354",
+    "category": "logical",
+    "subcategory": "syllogisms",
+    "difficulty": "Medium",
+    "statement": "Statements: Some pens are pencils. All pencils are erasers. Which conclusion logically follows?",
+    "options": [
+      "All pens are erasers",
+      "Some pens are erasers",
+      "No pen is an eraser",
+      "All erasers are pens"
+    ],
+    "answer": 1,
+    "explanation": "The pens that are pencils must also be erasers, because every pencil is an eraser."
+  },
+  {
+    "id": "apt-0355",
+    "category": "logical",
+    "subcategory": "analogies",
+    "difficulty": "Easy",
+    "statement": "Carpenter is to Saw as Tailor is to ?",
+    "options": [
+      "Cloth",
+      "Needle",
+      "Shirt",
+      "Stitching"
+    ],
+    "answer": 1,
+    "explanation": "A carpenter works with a saw; a tailor works with a needle."
+  },
+  {
+    "id": "apt-0356",
+    "category": "logical",
+    "subcategory": "analogies",
+    "difficulty": "Medium",
+    "statement": "Captain is to Ship as Pilot is to ?",
+    "options": [
+      "Airport",
+      "Cockpit",
+      "Aeroplane",
+      "Runway"
+    ],
+    "answer": 2,
+    "explanation": "A captain commands a ship; a pilot flies an aeroplane."
+  },
+  {
+    "id": "apt-0357",
+    "category": "logical",
+    "subcategory": "odd_one_out",
+    "difficulty": "Medium",
+    "statement": "Find the odd one out:",
+    "options": [
+      "121",
+      "144",
+      "190",
+      "196"
+    ],
+    "answer": 2,
+    "explanation": "121, 144 and 196 are perfect squares (11, 12 and 14 squared). 190 is not a perfect square."
+  },
+  {
+    "id": "apt-0358",
+    "category": "logical",
+    "subcategory": "ranking",
+    "difficulty": "Easy",
+    "statement": "In a class of 40 students, Meera is ranked 12th from the top. What is her rank from the bottom?",
+    "options": [
+      "28",
+      "29",
+      "30",
+      "27"
+    ],
+    "answer": 1,
+    "explanation": "Rank from the bottom = 40 - 12 + 1 = 29."
   }
 ]

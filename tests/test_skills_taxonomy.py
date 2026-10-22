@@ -69,6 +69,14 @@ class TestNormalizeSkill:
     def test_typescript(self):
         assert normalize_skill("ts") == "TypeScript"
 
+    def test_javascript_ecma_editions(self):
+        # #2: ECMAScript edition names are aliases of JavaScript itself
+        # (NOT of TypeScript/React/Node.js, which are separate skills).
+        for alias in ("ecmascript", "es6", "es2015", "es2016", "es2017",
+                      "es2018", "es2019", "es2020", "es2021", "es2022",
+                      "es2023", "es2024", "vanilla js", "vanilla javascript"):
+            assert normalize_skill(alias) == "JavaScript", alias
+
     def test_unknown_returns_none(self):
         assert normalize_skill("not-a-real-skill-xyz") is None
         assert normalize_skill("") is None

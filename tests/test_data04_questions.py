@@ -95,6 +95,6 @@ class TestRealBanks:
         apt = json.load(open(os.path.join(data_dir, "aptitude_questions.json")))
         iv = json.load(open(os.path.join(data_dir, "interview_questions.json")))
         sq = json.load(open(os.path.join(data_dir, "skill_quizzes.json")))
-        assert len(apt) == 312  # 338 - 26 duplicates
+        assert len(apt) == 332  # 312 + 20 logical-reasoning questions (#16)
         assert len(iv) == 354
         assert len(sq) == 320

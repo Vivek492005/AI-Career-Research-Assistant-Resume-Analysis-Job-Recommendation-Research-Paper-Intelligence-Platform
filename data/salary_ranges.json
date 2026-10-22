@@ -2463,5 +2463,77 @@
       "median_lpa": 7.7,
       "max_lpa": 12.8
     }
+  ],
+  "city_entries": [
+    {
+      "id": "sal-sde-bengaluru-0-1",
+      "role": "Software Development Engineer",
+      "city": "Bengaluru",
+      "experience_band": "0-1",
+      "min_lpa": 4.5,
+      "median_lpa": 8.5,
+      "max_lpa": 15.0,
+      "source_url": "https://www.ambitionbox.com/salaries/bengaluru-location-salaries/software-engineer-salary",
+      "retrieved_at": "2026-10-22",
+      "license": "Public data (curated summary)",
+      "last_verified": "2026-10-22",
+      "confidence": "medium"
+    },
+    {
+      "id": "sal-sde-mumbai-0-1",
+      "role": "Software Development Engineer",
+      "city": "Mumbai",
+      "experience_band": "0-1",
+      "min_lpa": 4.2,
+      "median_lpa": 8.0,
+      "max_lpa": 14.0,
+      "source_url": "https://www.ambitionbox.com/salaries/mumbai-location-salaries/software-engineer-salary",
+      "retrieved_at": "2026-10-22",
+      "license": "Public data (curated summary)",
+      "last_verified": "2026-10-22",
+      "confidence": "medium"
+    },
+    {
+      "id": "sal-sde-delhi-ncr-0-1",
+      "role": "Software Development Engineer",
+      "city": "Delhi NCR",
+      "experience_band": "0-1",
+      "min_lpa": 4.0,
+      "median_lpa": 7.8,
+      "max_lpa": 13.5,
+      "source_url": "https://www.ambitionbox.com/salaries/delhi-ncr-location-salaries/software-engineer-salary",
+      "retrieved_at": "2026-10-22",
+      "license": "Public data (curated summary)",
+      "last_verified": "2026-10-22",
+      "confidence": "medium"
+    },
+    {
+      "id": "sal-sde-hyderabad-0-1",
+      "role": "Software Development Engineer",
+      "city": "Hyderabad",
+      "experience_band": "0-1",
+      "min_lpa": 4.0,
+      "median_lpa": 7.5,
+      "max_lpa": 13.0,
+      "source_url": "https://www.ambitionbox.com/salaries/hyderabad-location-salaries/software-engineer-salary",
+      "retrieved_at": "2026-10-22",
+      "license": "Public data (curated summary)",
+      "last_verified": "2026-10-22",
+      "confidence": "medium"
+    },
+    {
+      "id": "sal-sde-chennai-0-1",
+      "role": "Software Development Engineer",
+      "city": "Chennai",
+      "experience_band": "0-1",
+      "min_lpa": 3.8,
+      "median_lpa": 7.0,
+      "max_lpa": 12.5,
+      "source_url": "https://www.ambitionbox.com/salaries/chennai-location-salaries/software-engineer-salary",
+      "retrieved_at": "2026-10-22",
+      "license": "Public data (curated summary)",
+      "last_verified": "2026-10-22",
+      "confidence": "medium"
+    }
   ]
 }

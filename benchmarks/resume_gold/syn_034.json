@@ -1,0 +1,17 @@
+{
+  "id": "syn_034",
+  "text": "VIKRAM  NAIR\nvikram.nair34@example.com\n+91 98470 22113\n\nPROFESSIONAL SUMMA\nRY\nSupport Engineer with 4 years of experi\nence in troubleshooting SaaS products an\nd handling escalations.\n\nSKILLS\nZendesk, Jira, SQL,\nCustomer Support, Troubleshoo\nting\n\nEXPERIENCE\nSupport Engineer \u2014 HelpDeskly\n(2021\u2013Present)\n- Resolved 95% of tickets within SLA\n\nEDUCATION\nBCA, 2020\n",
+  "labels": {
+    "name": "Vikram Nair",
+    "email": "vikram.nair34@example.com",
+    "phone": "+91 98470 22113",
+    "skills": [
+      "Zendesk",
+      "Jira",
+      "SQL",
+      "Customer Support",
+      "Troubleshooting"
+    ],
+    "role": "Support Engineer"
+  }
+}

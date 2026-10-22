@@ -37,6 +37,16 @@ def load_dataset():
                 raise SalaryDataError("Salary dataset entry is malformed.")
         if not (0 < e["min_lpa"] <= e["median_lpa"] <= e["max_lpa"]):
             raise SalaryDataError("Salary dataset has an inconsistent range.")
+    # #11: optional city-level entries carry DATA-01 provenance fields.
+    for e in data.get("city_entries", []):
+        for k in ("id", "role", "city", "experience_band",
+                  "min_lpa", "median_lpa", "max_lpa",
+                  "source_url", "retrieved_at", "license",
+                  "last_verified", "confidence"):
+            if k not in e:
+                raise SalaryDataError("Salary city entry is malformed.")
+        if not (0 < e["min_lpa"] <= e["median_lpa"] <= e["max_lpa"]):
+            raise SalaryDataError("Salary city entry has an inconsistent range.")
     return data
 
 
@@ -88,6 +98,31 @@ def query(role=None, tier=None, band=None):
 def lookup(role, tier, band):
     """Return the single entry for an exact role/tier/band, or None."""
     rows = query(role=role, tier=tier, band=band)
+    return rows[0] if rows else None
+
+
+def city_query(role=None, city=None, band=None):
+    """Return city-level entries (#11), provenance fields included.
+
+    The tier table gives one range per city group; city_entries refine
+    the metros students ask about most. All filters optional.
+    """
+    data = load_dataset()
+    out = []
+    for e in data.get("city_entries", []):
+        if role is not None and e["role"] != role:
+            continue
+        if city is not None and e["city"] != city:
+            continue
+        if band is not None and e["experience_band"] != band:
+            continue
+        out.append(dict(e))
+    return out
+
+
+def lookup_city(role, city, band):
+    """Return the single city entry for role/city/band, or None."""
+    rows = city_query(role=role, city=city, band=band)
     return rows[0] if rows else None
 
 

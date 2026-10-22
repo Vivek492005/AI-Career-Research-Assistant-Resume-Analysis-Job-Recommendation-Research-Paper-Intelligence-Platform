@@ -1,0 +1,17 @@
+{
+  "id": "syn_033",
+  "text": "Mar\u00eda Jos\u00e9 Fern\u00e1ndez L\u00f3pez\nmj.fernandez33@example.com | +34 612 345 789 | Madrid, Spain\n\nPROFESSIONAL SUMMARY\nMarketing Specialist with 3 years of experience in digital campaigns for retail brands in Spain and Latin America.\n\nSKILLS\nSEO, Google Analytics, Content Marketing, Social Media, Copywriting\n\nEXPERIENCE\nMarketing Specialist \u2014 TiendaMedia (2022\u2013Present)\n- Grew organic traffic 55% year over year\n- Ran bilingual ES/EN campaign calendars\n\nEDUCATION\nGrado en Marketing, 2021\n",
+  "labels": {
+    "name": "Mar\u00eda Jos\u00e9 Fern\u00e1ndez L\u00f3pez",
+    "email": "mj.fernandez33@example.com",
+    "phone": "+34 612 345 789",
+    "skills": [
+      "SEO",
+      "Google Analytics",
+      "Content Marketing",
+      "Social Media",
+      "Copywriting"
+    ],
+    "role": "Marketing Specialist"
+  }
+}

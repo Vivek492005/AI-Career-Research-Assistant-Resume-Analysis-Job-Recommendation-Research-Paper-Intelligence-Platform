@@ -1,0 +1,18 @@
+{
+  "id": "syn_031",
+  "text": "Sana Iqbal\nsana.iqbal31@example.com | +91 9930451287 | github.com/sanaiqbal\n\nOBJECTIVE\nFinal-year B.Sc. student seeking a first role in web development.\n\nEDUCATION\nB.Sc. Computer Science, 2026 (expected)\n\nPROJECTS\n- Attendance tracker web app (HTML, CSS, JavaScript)\n- Library catalogue CLI in Python with SQLite storage\n\nSKILLS\nHTML, CSS, JavaScript, Python, SQLite, Git\n",
+  "labels": {
+    "name": "Sana Iqbal",
+    "email": "sana.iqbal31@example.com",
+    "phone": "+91 9930451287",
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Python",
+      "SQLite",
+      "Git"
+    ],
+    "role": "Web Developer"
+  }
+}
