@@ -374,7 +374,7 @@ body.sb-results { background: #0a0a0a; color: #fff; font-family: var(--sb-body);
 }
 .sb-results .ats-breakdown h3, .sb-results .dash-card h3, .sb-results .full-section h3 { font-family: var(--sb-display); text-transform: uppercase; color: #fff; }
 .sb-results .bg-circle { stroke: #222 !important; fill: none !important; stroke-width: 10 !important; }
-.sb-results .progress-circle { stroke: var(--sb-blue) !important; fill: none !important; stroke-width: 10 !important; stroke-linecap: butt !important; }
+.sb-results .progress-circle { stroke: url("#scoreGradient") !important; fill: none !important; stroke-width: 10 !important; stroke-linecap: butt !important; }
 .sb-results .score-number { font-family: var(--sb-display); color: #fff; }
 .sb-results .score-label, .sb-results .breakdown-label, .sb-results .breakdown-details { color: #a3a3a0 !important; }
 .sb-results .breakdown-bar { background: #222 !important; }
@@ -620,3 +620,62 @@ body.sb-base .b-footer { background: #0a0a0a; border-top: 1px solid #2a2a2a; col
 body.sb-base table thead th { color: #a3a3a0; border-bottom-color: #2a2a2a; }
 body.sb-base table tbody td { border-bottom-color: #222; }
 body.sb-base .b-pill, body.sb-app .b-pill { border-radius: 0 !important; }
+
+/* ---------- Cross-verify alignment with the six reference boards ----------
+   Board 1 home is CREAM editorial (not black); Board 3's resume intro
+   band is paper with a lime accent word; Board 2 greets by name. The
+   rules below flip those surfaces while keeping the V2 layouts. */
+body.sb-editorial { background: var(--sb-paper-2); color: var(--sb-ink); }
+body.sb-editorial .b-nav { background: var(--sb-paper-2) !important; border-bottom: 2px solid var(--sb-ink); }
+body.sb-editorial .b-brand { color: var(--sb-ink); }
+body.sb-editorial .b-nav-links a, body.sb-editorial .b-nav-links .b-dropbtn { color: #2a2a26; }
+body.sb-editorial .b-nav-links a:hover, body.sb-editorial .b-nav-links a.b-active,
+body.sb-editorial .b-nav-links .b-dropbtn:hover, body.sb-editorial .b-nav-links .b-dropbtn.b-active { color: var(--sb-ink); }
+body.sb-editorial .b-nav .b-btn--ghost { border-color: var(--sb-ink) !important; color: var(--sb-ink) !important; }
+body.sb-editorial .b-nav-user { color: var(--sb-ink); }
+body.sb-editorial #b-nav-menu { background: var(--sb-paper-2) !important; }
+body.sb-editorial .sb-kicker { color: var(--sb-blue); }
+body.sb-editorial .sb-display { color: var(--sb-ink); }
+body.sb-editorial .sb-lede { color: #3f3f3a; }
+body.sb-editorial .sb-btn--outline { border-color: var(--sb-ink); color: var(--sb-ink); }
+body.sb-editorial .sb-btn--outline:hover { background: var(--sb-ink); color: #fff; }
+body.sb-editorial .sb-hero-visual { border-color: var(--sb-ink); }
+body.sb-editorial .sb-stats { border-color: #d8d6cc; }
+body.sb-editorial .sb-stat { border-color: #d8d6cc; }
+body.sb-editorial .sb-stat b { color: var(--sb-ink); }
+body.sb-editorial .sb-stat span { color: var(--sb-muted-dark); }
+body.sb-editorial .sb-ticker { border-bottom-color: var(--sb-ink); }
+body.sb-editorial .sb-section-title { color: var(--sb-ink); }
+body.sb-editorial .sb-section-note { color: var(--sb-muted-dark); }
+body.sb-editorial .sb-tool-grid { border-top-color: var(--sb-ink); }
+body.sb-editorial .sb-tool { color: var(--sb-ink); border-color: #d8d6cc; }
+body.sb-editorial .sb-tool:hover, body.sb-editorial .sb-tool:focus-visible { background: #e9e7dd; }
+body.sb-editorial .sb-tool:hover .sb-tool-title, body.sb-editorial .sb-tool:focus-visible .sb-tool-title { color: var(--sb-blue); }
+body.sb-editorial .sb-tool p { color: var(--sb-muted-dark); }
+body.sb-editorial .sb-tool .sb-tool-link { color: var(--sb-ink); }
+body.sb-editorial .sb-tool-num { color: var(--sb-blue); }
+body.sb-editorial .sb-step { border-top-color: var(--sb-ink); }
+body.sb-editorial .sb-step b { color: var(--sb-ink); }
+body.sb-editorial .sb-step p { color: var(--sb-muted-dark); }
+body.sb-editorial .sb-outline-word { -webkit-text-stroke-color: #c4c1b4; }
+.sb-workspace .sb-work-intro { background: var(--sb-paper-2); color: var(--sb-ink); }
+.sb-workspace .sb-work-intro .sb-display { color: var(--sb-ink); }
+.sb-workspace .sb-work-intro .sb-display .sb-accent { color: var(--sb-lime); }
+.sb-workspace .sb-work-intro .sb-lede { color: #3f3f3a; }
+.sb-workspace .sb-work-meta { color: var(--sb-blue); }
+.sb-iv .iv-btn { padding: 12px 22px; min-height: 48px; font-weight: 600; font-size: 0.98rem; font-family: var(--sb-body); cursor: pointer; }
+.sb-research .b-brand { white-space: nowrap; }
+.sb-research .b-grad { background: none !important; -webkit-background-clip: initial !important; background-clip: initial !important; color: var(--sb-blue) !important; }
+.sb-research #btn-cta { background: var(--sb-blue) !important; color: #fff !important; border: 2px solid var(--sb-blue) !important; border-radius: 0 !important; box-shadow: none !important; padding: 10px 18px; font-weight: 600; white-space: nowrap; margin-left: 1rem; }
+body.sb-app {
+  --b-bg: #0a0a0a; --b-surface: #0a0a0a; --b-card: #111111; --b-card-solid: #111111;
+  --b-border: #2a2a2a; --b-text: #ffffff; --b-muted: #a3a3a0;
+  --b-radius: 0px; --b-radius-sm: 0px;
+  --b-a1: #2447ff; --b-a2: #c8ff2e; --b-a3: #2ee6a8;
+  --b-grad: linear-gradient(92deg, #c8ff2e, #c8ff2e);
+  --b-btn-grad: linear-gradient(135deg, #2447ff, #2447ff);
+}
+body.sb-app .b-btn { border-radius: 0 !important; }
+body.sb-app .b-card { border-radius: 0 !important; }
+.sb-research .b-brand { flex: 0 0 auto; }
+.sb-research .b-nav-in { flex-wrap: wrap; }

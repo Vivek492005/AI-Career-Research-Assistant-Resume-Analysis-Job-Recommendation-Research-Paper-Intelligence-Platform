@@ -18,6 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Style Guide (dev) | STUDY-BUDDY</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/kinetic.css') }}" />
   <style>
     body { background: var(--sb-color-bg); color: var(--sb-color-text);
            font-family: var(--sb-font-sans); line-height: var(--sb-line-height);
@@ -31,7 +32,7 @@
                 padding: var(--sb-space-4); background: var(--sb-color-warning-soft); color: var(--sb-color-text); }
   </style>
 </head>
-<body>
+<body class="sb-app">
   <main class="wrap">
     <div class="dev-note" role="note">
       <strong>DEV-ONLY page.</strong> This style guide documents the design tokens and

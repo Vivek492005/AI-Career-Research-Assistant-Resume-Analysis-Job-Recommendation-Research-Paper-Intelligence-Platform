@@ -10,32 +10,33 @@
     <meta name="description" content="{{ portfolio.headline }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kinetic.css') }}">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', system-ui, sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.65; }
-        .pf-hero { background: linear-gradient(135deg, #0f766e 0%, #0e7490 60%, #1d4ed8 100%); color: #fff; padding: 4.5rem 1.5rem 3.5rem; text-align: center; }
-        .pf-hero h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.02em; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.65; }
+        .pf-hero { background: #0a0a0a; border-bottom: 2px solid #2447ff; color: #fff; padding: 4.5rem 1.5rem 3.5rem; text-align: center; }
+        .pf-hero h1 { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-size: 3.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.01em; line-height: 0.95; }
         .pf-hero .pf-headline { font-size: 1.1rem; opacity: 0.92; margin-top: 0.5rem; font-weight: 500; }
         .pf-hero .pf-bio { max-width: 640px; margin: 1rem auto 0; opacity: 0.85; font-size: 0.98rem; white-space: pre-wrap; }
         .pf-links { margin-top: 1.4rem; display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
-        .pf-links a { color: #fff; text-decoration: none; font-weight: 600; font-size: 0.88rem; border: 1px solid rgba(255,255,255,0.45); border-radius: 999px; padding: 0.45rem 1.1rem; }
+        .pf-links a { color: #fff; text-decoration: none; font-weight: 600; font-size: 0.88rem; border: 1px solid rgba(255,255,255,0.45); border-radius: 0; padding: 0.45rem 1.1rem; }
         .pf-links a:hover { background: rgba(255,255,255,0.15); }
         .pf-body { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
         .pf-sec { margin-bottom: 2.5rem; }
-        .pf-sec h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+        .pf-sec h2 { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-size: 1.9rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #2a2a2a; color: #fff; }
         .pf-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .pf-chip { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; font-size: 0.85rem; font-weight: 600; border-radius: 999px; padding: 0.35rem 0.9rem; }
-        .pf-proj { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.2rem 1.3rem; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(15,23,42,0.06); }
+        .pf-chip { background: #1c1c1c; color: #c8ff2e; border: 1px solid #333; font-size: 0.85rem; font-weight: 600; border-radius: 0; padding: 0.35rem 0.9rem; }
+        .pf-proj { background: #111; border: 1px solid #2a2a2a; border-radius: 0; padding: 1.2rem 1.3rem; margin-bottom: 1rem; box-shadow: none; }
         .pf-proj h3 { font-size: 1.05rem; margin-bottom: 0.3rem; }
-        .pf-proj p { font-size: 0.92rem; color: #475569; white-space: pre-wrap; }
-        .pf-proj a { display: inline-block; margin-top: 0.6rem; font-size: 0.85rem; font-weight: 600; color: #0d9488; text-decoration: none; }
+        .pf-proj p { font-size: 0.92rem; color: #a3a3a0; white-space: pre-wrap; }
+        .pf-proj a { display: inline-block; margin-top: 0.6rem; font-size: 0.85rem; font-weight: 600; color: #6e86ff; text-decoration: none; }
         .pf-proj a:hover { text-decoration: underline; }
         .pf-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
-        .pf-stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.2rem; text-align: center; }
-        .pf-stat .num { font-size: 1.8rem; font-weight: 800; color: #0f766e; }
-        .pf-stat .lbl { font-size: 0.82rem; color: #64748b; margin-top: 0.2rem; }
-        .pf-stat a { font-size: 0.82rem; color: #0d9488; font-weight: 600; }
-        .pf-foot { text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 1rem; }
+        .pf-stat { background: #111; border: 1px solid #2a2a2a; border-radius: 0; padding: 1.2rem; text-align: center; }
+        .pf-stat .num { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-size: 2.4rem; font-weight: 800; color: #fff; }
+        .pf-stat .lbl { font-size: 0.82rem; color: #a3a3a0; margin-top: 0.2rem; }
+        .pf-stat a { font-size: 0.82rem; color: #6e86ff; font-weight: 600; }
+        .pf-foot { text-align: center; color: #a3a3a0; font-size: 0.8rem; padding: 2rem 1rem; border-top: 1px solid #2a2a2a; }
         @media (max-width: 560px) { .pf-hero h1 { font-size: 1.8rem; } .pf-hero { padding: 3rem 1rem 2.5rem; } }
     </style>
 </head>

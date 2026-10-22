@@ -4,7 +4,7 @@
 <div class="sb-dash">
 <div style="margin-top:2rem;">
     <p class="sb-kicker">Your workspace — real work, not sample data</p>
-    <h1 class="sb-display" style="font-size:clamp(3rem,8vw,6.5rem);margin:0;">Your<br>workspace.</h1>
+    <h1 class="sb-display" style="font-size:clamp(3rem,8vw,6.5rem);margin:0;"><span id="sb-greet">Good evening</span>,<br>{{ current_user.name.split(' ')[0] if current_user.name else 'there' }}<span style="color:var(--sb-blue)">.</span></h1><script>try{var _h=new Date().getHours(),_g=_h<12?"Good morning":(_h<17?"Good afternoon":"Good evening");document.getElementById("sb-greet").textContent=_g;}catch(e){}</script>
     <p class="sb-lede">Every analysis you run while logged in is saved here. Keep building, {{ current_user.name }}.</p>
 </div>
 
