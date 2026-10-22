@@ -1,5 +1,4 @@
 """PRIV-08: PII redaction tests."""
-import pytest
 
 from studybuddy.pii_redaction import (
     redact,

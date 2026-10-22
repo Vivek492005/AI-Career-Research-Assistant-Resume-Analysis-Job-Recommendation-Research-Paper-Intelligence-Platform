@@ -1,5 +1,4 @@
 """LLM-04, LLM-06, LLM-08 + PRIV-06 tests."""
-import pytest
 
 from studybuddy import ai_gateway
 from studybuddy.age_gate import is_13_or_older
@@ -22,7 +21,6 @@ class TestLLM04Cache:
         monkeypatch.setattr(ai_gateway, "groq_configured", lambda: False)
         monkeypatch.setattr(ai_gateway, "openrouter_configured", lambda: False)
         monkeypatch.setattr(ai_gateway, "local_configured", lambda: False)
-        import os
         monkeypatch.setenv("LLM_MODE", "server")
 
         r1 = ai_gateway.generate("test prompt", redact_pii=False)
@@ -47,7 +45,6 @@ class TestLLM06Redaction:
         monkeypatch.setattr(ai_gateway, "groq_configured", lambda: False)
         monkeypatch.setattr(ai_gateway, "openrouter_configured", lambda: False)
         monkeypatch.setattr(ai_gateway, "local_configured", lambda: False)
-        import os
         monkeypatch.setenv("LLM_MODE", "server")
         ai_gateway._CACHE.clear()
 
@@ -66,7 +63,6 @@ class TestLLM06Redaction:
         monkeypatch.setattr(ai_gateway, "groq_configured", lambda: False)
         monkeypatch.setattr(ai_gateway, "openrouter_configured", lambda: False)
         monkeypatch.setattr(ai_gateway, "local_configured", lambda: False)
-        import os
         monkeypatch.setenv("LLM_MODE", "server")
         ai_gateway._CACHE.clear()
 

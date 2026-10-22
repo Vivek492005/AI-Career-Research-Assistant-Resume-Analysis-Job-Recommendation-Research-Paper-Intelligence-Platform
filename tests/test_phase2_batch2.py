@@ -4,7 +4,7 @@ import os
 import subprocess
 import sys
 
-from tests.conftest import login, register
+from tests.conftest import login
 
 
 class TestRagEval:

@@ -19,7 +19,7 @@ import json
 import os
 import re
 import sys
-from collections import Counter, defaultdict
+from collections import Counter
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(
     os.path.abspath(__file__))), "data")
@@ -239,7 +239,7 @@ def main():
     print(f"  duplicates: {len(dupes)}, missing fields: {len(missing)}, "
           f"company claims: {len(claims)}, answer out-of-range: {len(oob)}")
     if all_issues:
-        print(f"\nFirst 30 issues:")
+        print("\nFirst 30 issues:")
         for issue in all_issues[:30]:
             print(f"  - {issue}")
         if len(all_issues) > 30:

@@ -7,7 +7,6 @@ get 401/302. Adding a route without classifying it fails CI.
 import os
 import re
 
-import pytest
 import yaml
 
 

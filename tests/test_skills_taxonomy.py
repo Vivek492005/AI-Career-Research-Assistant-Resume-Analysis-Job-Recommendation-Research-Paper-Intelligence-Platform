@@ -1,7 +1,6 @@
 """ENG-06: Skills taxonomy tests — aliases, hierarchy, fast matching."""
 import time
 
-import pytest
 
 from studybuddy.skills_taxonomy import (
     extract_skills_fast,

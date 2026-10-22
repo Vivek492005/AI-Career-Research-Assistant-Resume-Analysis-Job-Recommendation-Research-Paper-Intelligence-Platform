@@ -2150,6 +2150,36 @@ def _store_snapshot(user_id, provider, username, data):
 # --- APP FACTORY ---
 # ========================================================
 
+def _create_all_race_safe():
+    """``db.create_all()`` for SQLite dev/test, tolerant of worker races.
+
+    Two gunicorn workers booting against a fresh SQLite file race inside
+    create_all: both pass the checkfirst probe, both issue CREATE TABLE,
+    and the loser dies with ``table ... already exists`` — which kills
+    the whole master (``Worker failed to boot``). Seen in the Lighthouse
+    CI boot (2026-10-22): ``--workers 2`` + fresh sqlite file. Postgres
+    is immune (advisory lock in ``_ensure_prod_schema``). Retry briefly:
+    once the winning worker finishes, create_all is a no-op. Only the
+    ``already exists`` race is tolerated; anything else still raises.
+    """
+    import time
+
+    from sqlalchemy.exc import OperationalError
+
+    last = None
+    for _ in range(20):
+        try:
+            db.create_all()
+            return
+        except OperationalError as e:
+            if "already exists" not in str(e.orig):
+                raise
+            last = e
+            db.session.remove()
+            time.sleep(0.5)
+    raise last
+
+
 def _ensure_prod_schema(app):
     """ARC-03 self-heal for production Postgres (idempotent, additive-only).
 
@@ -2361,7 +2391,7 @@ def create_app(config_overrides=None):
         if os.environ.get("SKIP_DB_INIT") == "1":
             pass  # no DDL at all (used when generating migrations)
         elif not _is_prod_db:
-            db.create_all()
+            _create_all_race_safe()
         else:
             # ARC-03: no release step runs `flask db upgrade` on the free
             # tier, so repair/verify the schema additively at boot.
@@ -2387,6 +2417,15 @@ def register_security_headers(app):
     configure_logging(app)
     register_request_tracking(app)
 
+    @app.before_request
+    def _mint_csp_nonce():
+        # Minted before the view renders so templates can embed the same
+        # nonce the CSP header will carry (see after_request below).
+        import secrets
+
+        from flask import g
+        g.csp_nonce = secrets.token_urlsafe(16)
+
     @app.after_request
     def _set_security_headers(resp):
         resp.headers.setdefault("X-Content-Type-Options", "nosniff")
@@ -2398,11 +2437,13 @@ def register_security_headers(app):
         # SEC-05: CSP in report-only mode. Violations go to /csp-report
         # (rate-limited, logged without payloads). Full enforcement after
         # inline scripts are eliminated (43 blocks) via nonces.
-        # Generate a per-request nonce for inline scripts that need it.
+        # Use the per-request nonce minted in _mint_csp_nonce
+        # (before_request): templates render BEFORE after_request runs,
+        # so a nonce created here could never match the rendered pages —
+        # the pipeline silently produced nonce="" until 2026-10-22.
         import secrets
-        nonce = secrets.token_urlsafe(16)
-        # Store nonce in g for templates to use: {{ csp_nonce() }}
         from flask import g
+        nonce = getattr(g, "csp_nonce", None) or secrets.token_urlsafe(16)
         g.csp_nonce = nonce
         csp = (
             "default-src 'self'; "
@@ -2429,9 +2470,13 @@ def register_security_headers(app):
                 "max-age=31536000; includeSubDomains")
         return resp
 
-    # SEC-05: CSP violation reporting endpoint (rate-limited, no payloads logged)
+    # SEC-05: CSP violation reporting endpoint (rate-limited, no payloads
+    # logged). CSRF-exempt: browsers send violation reports without any
+    # token, so CSRFProtect 400'd every report and the pipeline never
+    # logged a thing (found via Lighthouse best-practices, 2026-10-22).
     @app.route('/csp-report', methods=['POST'])
     @limiter.limit("60 per hour")
+    @csrf.exempt
     def csp_report():
         try:
             # Log only the violated directive + blocked URI, never full payload

@@ -1,5 +1,4 @@
 """ENG-04 + ENG-13 tests."""
-import pytest
 
 from studybuddy.anti_gaming import (
     cap_keyword_counts,

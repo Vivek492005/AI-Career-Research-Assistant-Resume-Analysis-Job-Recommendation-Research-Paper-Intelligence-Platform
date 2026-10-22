@@ -1,12 +1,10 @@
 """ARC-09: custom exceptions wired into the app."""
-import pytest
 
 
 class TestARC09Handler:
     def test_api_json_error(self, client):
         # Register a route that raises ValidationError
         from studybuddy.exceptions import ValidationError
-        from unified_app import create_app
         app = client.application
 
         @app.route("/api/_test_validation")

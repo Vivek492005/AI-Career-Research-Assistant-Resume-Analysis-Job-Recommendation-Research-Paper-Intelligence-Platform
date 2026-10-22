@@ -1,5 +1,4 @@
 """RAG-07: Paper constructor integrity guardrails tests."""
-import pytest
 
 from studybuddy.constructor_guardrails import (
     AI_DISCLOSURE_TEMPLATE,

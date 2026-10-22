@@ -16,7 +16,6 @@ import pytest
 import studybuddy.community as community_mod
 from tests.conftest import login, register
 from unified_app import (
-    db,
     Mentor,
     MentorApplication,
     OfficeHour,

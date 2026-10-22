@@ -3,13 +3,11 @@ import json
 import os
 import sys
 
-import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
 from validate_questions import (
     norm_stem,
     validate_aptitude,
-    validate_csv,
     validate_interview,
     validate_skill_quiz,
 )

@@ -5,8 +5,8 @@ Thanks for your interest! This guide gets you from zero to your first PR in unde
 ## Quick setup
 
 ```bash
-git clone https://github.com/Vivek492005/AI-Career-Research-Assistant-Resume-Analysis-Job-Recommendation-Research-Paper-Intelligence-Platform
-cd AI-Career-Research-Assistant-Resume-Analysis-Job-Recommendation-Research-Paper-Intelligence-Platform
+git clone https://github.com/Vivek492005/STUDY-BUDDY
+cd STUDY-BUDDY
 python3.12 -m venv .venv && source .venv/bin/activate
 pip install -r requirements-dev.txt
 cp .env.example .env   # then add your keys

@@ -1,7 +1,5 @@
 """SEC-09: Authentication hardening tests."""
-import re
 
-import pytest
 
 from studybuddy.auth_hardening import (
     check_password_policy,

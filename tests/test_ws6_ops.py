@@ -317,7 +317,7 @@ def test_memory_budget_script_passes():
     # so passing on ANY of 3 attempts measures the app's true footprint.
     # The script itself stays strict: CI runs it standalone as the enforcer.
     last_err = ""
-    for attempt in range(3):
+    for _attempt in range(3):
         try:
             result = subprocess.run(
                 [sys.executable, str(ROOT / "scripts" / "check_memory.py"),
@@ -337,7 +337,7 @@ def test_memory_budget_script_passes():
             f"stdout={result.stdout[-800:]!r} "
             f"stderr={result.stderr[-800:]!r}"
         )
-    assert False, f"memory budget check failed 3 times: {last_err}"
+    raise AssertionError(f"memory budget check failed 3 times: {last_err}")
 
 
 def test_perf_budget_constants():

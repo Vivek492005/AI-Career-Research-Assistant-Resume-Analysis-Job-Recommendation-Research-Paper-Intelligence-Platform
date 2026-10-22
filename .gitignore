@@ -42,3 +42,6 @@ data/cache/
 # OS
 Thumbs.db
 .DS_Store
+
+# Lighthouse CI local runs
+.lighthouseci/

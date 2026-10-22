@@ -3,6 +3,7 @@ import json
 from datetime import date
 
 import pytest
+from markupsafe import escape
 
 from studybuddy.opportunities import (
     get_opportunity,
@@ -25,6 +26,19 @@ def _bm(client, opp_id="gate-2027", remove=False):
     url = "/opportunities/bookmark/remove" if remove else "/opportunities/bookmark"
     return client.post(url, data=json.dumps({"opp_id": opp_id}),
                        content_type="application/json")
+
+
+def _board_picks():
+    """One live exam + one live internship from the board's own data source.
+
+    Board tests must never hardcode a specific listing: curated deadlines
+    pass (GATE 2027 closed 2026-10-20) and the board correctly hides
+    expired entries, so a hardcoded title turns the suite red on a
+    calendar date instead of on a code change.
+    """
+    exam = list_opportunities(opp_type="exam")[0]
+    internship = list_opportunities(opp_type="internship")[0]
+    return exam, internship
 
 
 def test_dataset_loads():
@@ -85,24 +99,28 @@ def test_opp_exists():
 
 
 def test_board_renders_public(client):
+    exam, _internship = _board_picks()
     r = client.get("/opportunities")
     assert r.status_code == 200
     html = r.get_data(as_text=True)
     assert "Opportunity" in html and "Radar" in html
     assert "Curated starter set" in html
-    assert "GATE 2027" in html
+    assert str(escape(exam["title"])) in html
     assert "opportunities.py" in html  # schema pointer
 
 
 def test_board_type_filter(client):
+    exam, internship = _board_picks()
     html = client.get("/opportunities?type=exam").get_data(as_text=True)
-    assert "GATE 2027" in html
-    assert "Google STEP" not in html
+    assert str(escape(exam["title"])) in html
+    assert str(escape(internship["title"])) not in html
 
 
 def test_board_invalid_type_defaults_to_all(client):
+    exam, internship = _board_picks()
     html = client.get("/opportunities?type=hack").get_data(as_text=True)
-    assert "GATE 2027" in html and "Google STEP" in html
+    assert str(escape(exam["title"])) in html
+    assert str(escape(internship["title"])) in html
 
 
 def test_board_anon_no_bookmark_buttons(client):
@@ -117,11 +135,12 @@ def test_unauth_bookmark_401(client):
 
 
 def test_bookmark_add_remove(authed_client, app):
-    r = _bm(authed_client)
+    exam, internship = _board_picks()
+    r = _bm(authed_client, opp_id=exam["id"])
     assert r.status_code == 201
-    assert r.get_json()["opp_id"] == "gate-2027"
+    assert r.get_json()["opp_id"] == exam["id"]
     # idempotent re-add
-    assert _bm(authed_client).status_code == 201
+    assert _bm(authed_client, opp_id=exam["id"]).status_code == 201
     with app.app_context():
         assert OpportunityBookmark.query.count() == 1
     # shows as saved on the board
@@ -129,9 +148,10 @@ def test_bookmark_add_remove(authed_client, app):
     assert "★ Saved" in html
     # saved-only filter
     html = authed_client.get("/opportunities?saved=1").get_data(as_text=True)
-    assert "GATE 2027" in html and "Google STEP" not in html
+    assert str(escape(exam["title"])) in html
+    assert str(escape(internship["title"])) not in html
     # remove
-    assert _bm(authed_client, remove=True).status_code == 200
+    assert _bm(authed_client, opp_id=exam["id"], remove=True).status_code == 200
     with app.app_context():
         assert OpportunityBookmark.query.count() == 0
     assert _bm(authed_client, remove=True).status_code == 404
