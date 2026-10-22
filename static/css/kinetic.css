@@ -679,3 +679,138 @@ body.sb-app .b-btn { border-radius: 0 !important; }
 body.sb-app .b-card { border-radius: 0 !important; }
 .sb-research .b-brand { flex: 0 0 auto; }
 .sb-research .b-nav-in { flex-wrap: wrap; }
+
+/* Board 1 fidelity: tilted display block, photo hero panel with the big
+   brush stroke, floating resume card, trusted-by strip (real counts). */
+body.sb-editorial .sb-display { transform: rotate(-1.6deg); transform-origin: left top; }
+.sb-hero-visual { padding: 0; background: #e8e6df; }
+.sb-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 28%; filter: grayscale(1) contrast(1.05); }
+.sb-hero-visual .sb-brush--big { right: -8px; top: 0; width: auto; height: 100%; opacity: 0.95; }
+.sb-hero-visual .sb-note--a { color: #0a0a0a; }
+.sb-hero-visual .sb-note--b { color: #fff; left: 24px; right: auto; bottom: 92px; text-align: left; }
+.sb-hero-card {
+  position: absolute; right: 18px; bottom: 18px; z-index: 3;
+  display: flex; align-items: center; gap: 14px; max-width: 264px;
+  background: #fff; color: #0a0a0a; text-decoration: none;
+  padding: 14px 16px; box-shadow: 0 14px 34px rgba(10, 10, 10, 0.22);
+}
+.sb-hero-card-t b { display: block; font-size: 0.95rem; line-height: 1.25; }
+.sb-hero-card-t span { display: block; color: #6b6b66; font-size: 0.84rem; margin-top: 2px; }
+.sb-hero-card-arrow {
+  flex: 0 0 auto; width: 38px; height: 38px; border-radius: 50%;
+  background: #0a0a0a; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.05rem;
+}
+.sb-hero-card:hover .sb-hero-card-arrow { background: var(--sb-blue); }
+.sb-trust { display: flex; align-items: center; gap: 16px; margin-top: 36px; }
+.sb-avatars { display: flex; flex: 0 0 auto; }
+.sb-avatars span {
+  width: 38px; height: 38px; border-radius: 50%; margin-left: -10px;
+  border: 2px solid var(--sb-paper-2); display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85rem; color: #fff;
+}
+.sb-avatars span:first-child { margin-left: 0; }
+.sb-av-1 { background: #0a0a0a; } .sb-av-2 { background: #2447ff; }
+.sb-av-3 { background: #7c5cff; } .sb-av-4 { background: #0e7490; }
+.sb-trust-k { font-family: var(--sb-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sb-muted-dark); margin: 0; }
+.sb-trust-t { margin: 3px 0 0; font-size: 0.95rem; color: #3f3f3a; }
+.sb-trust-t strong { color: var(--sb-ink); }
+@media (max-width: 700px) { .sb-hero-card { max-width: 220px; } .sb-trust { flex-wrap: wrap; } }
+
+/* === User batch 2026-10-22 (late): dropdown contrast, full-width, app shell === */
+
+/* 1) Dropdown menus (image-6 bug): panels are dark on EVERY nav, so their
+   links stay WHITE with a slide-in hover — the light homepage nav no longer
+   recolours them ink-on-black. */
+.b-dropdown-menu a,
+body.sb-editorial .b-nav-links .b-dropdown-menu a,
+body.sb-base .b-dropdown-menu a { color: #f2f2ee !important; transition: color 0.15s ease, transform 0.15s ease, background 0.15s ease; }
+.b-dropdown-menu a:hover { color: #ffffff !important; transform: translateX(3px); }
+.b-dropdown:hover .b-dropdown-menu,
+.b-dropdown:focus-within .b-dropdown-menu { animation: sbMenuIn 0.18s ease-out; }
+@keyframes sbMenuIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .b-dropdown:hover .b-dropdown-menu, .b-dropdown:focus-within .b-dropdown-menu { animation: none; }
+  .b-dropdown-menu a:hover { transform: none; }
+}
+
+/* 2) Full-width: containers span the page instead of a narrow centre column. */
+:root { --sb-max: 1600px; --sb-work-max: 1480px; }
+body.sb-base, body.sb-app { --b-maxw: 1600px; }
+.sb-dsa-wrap, .sb-iv-wrap { max-width: 1480px; }
+body.sb-app .ap-wrap, body.sb-app .ch-wrap, body.sb-app .cr-wrap { max-width: 1120px; }
+body.sb-app .as-wrap { max-width: 1040px; }
+body.sb-app .rp-wrap { max-width: 1120px; }
+body.sb-app .st-wrap { max-width: 1120px; }
+body.sb-app .dg-wrap, body.sb-app .dp-wrap { max-width: 1480px; }
+body.sb-app .opp-wrap, body.sb-app .sal-wrap { max-width: 1560px; }
+body.sb-app .pb-wrap { max-width: 1560px; }
+body.sb-app .tk-wrap { max-width: 1560px; }
+.sb-hero-visual .sb-note--b { text-shadow: 0 1px 10px rgba(10, 10, 10, 0.45); }
+
+/* 3) App shell (boards 2/4/5/6): fixed left sidebar + topbar. When a page
+   includes _app_sidebar.html, the top site nav steps aside. */
+.sb-side {
+  position: fixed; left: 0; top: 0; bottom: 0; width: 240px; z-index: 70;
+  background: #0a0a0a; border-right: 1px solid #23232b;
+  display: flex; flex-direction: column; padding: 22px 16px;
+}
+.sb-side-brand {
+  display: flex; align-items: center; gap: 10px; text-decoration: none;
+  font-family: var(--sb-display); font-weight: 700; font-size: 1.28rem;
+  letter-spacing: 0.02em; color: #fff; padding: 2px 8px;
+}
+.sb-side-brand img { border-radius: 7px; }
+.sb-side-nav { display: flex; flex-direction: column; gap: 4px; margin-top: 30px; }
+.sb-side-nav a, .sb-side-foot a {
+  display: flex; align-items: center; gap: 12px; padding: 11px 12px;
+  color: #b9b9b4; text-decoration: none; font-weight: 550; font-size: 0.97rem;
+  border-radius: 10px; transition: background 0.15s ease, color 0.15s ease;
+}
+.sb-side-nav a svg, .sb-side-foot a svg {
+  width: 19px; height: 19px; flex: 0 0 auto; fill: none; stroke: currentColor;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.sb-side-nav a:hover, .sb-side-foot a:hover { color: #fff; background: #15151c; }
+.sb-side-nav a.active { background: var(--sb-blue); color: #fff; }
+.sb-side-foot { margin-top: auto; display: flex; flex-direction: column; gap: 4px; border-top: 1px solid #23232b; padding-top: 14px; }
+.sb-topbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 16px 0 6px;
+}
+.sb-topbar-title {
+  font-family: var(--sb-display); font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; font-size: 1.05rem; margin: 0; opacity: 0.9;
+}
+.sb-topbar-user { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+.sb-topbar-av {
+  width: 38px; height: 38px; border-radius: 50%; background: #7c5cff; color: #fff;
+  display: flex; align-items: center; justify-content: center; font-weight: 700;
+}
+.sb-topbar-name { font-weight: 650; line-height: 1.15; }
+.sb-topbar-name small { display: block; font-weight: 500; opacity: 0.55; font-size: 0.76rem; }
+body:has(.sb-side) { padding-left: 240px; }
+body:has(.sb-side) > .b-nav, body:has(.sb-side) .b-nav#navbar { display: none; }
+body.sb-research:has(.sb-side) .res-nav { display: none; }
+@media (max-width: 920px) {
+  .sb-side { display: none; }
+  body:has(.sb-side) { padding-left: 0; }
+  body:has(.sb-side) > .b-nav, body:has(.sb-side) .b-nav#navbar { display: block; }
+  body.sb-research:has(.sb-side) .res-nav { display: block; }
+}
+
+/* Topbar inset on standalone shell pages (it is a direct body child there;
+   on base pages it already inherits the wrap padding). */
+body > .sb-topbar { padding-left: 24px; padding-right: 24px; }
+
+/* Lighthouse fixes: self-hosted mono alias (Google Fonts @import removed
+   from resume_style.css), deep-lime accent on the paper resume band,
+   white text on the light-nav primary button, hero h2 parity. */
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/ibm-plex-mono-400.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/ibm-plex-mono-500.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 600 700; font-display: swap; src: url("../fonts/ibm-plex-mono-600.woff2") format("woff2"); }
+body.sb-workspace .sb-work-intro .sb-display .sb-accent { color: #4d7c0f; }
+body.sb-editorial .b-nav .b-btn--primary { color: #fff; }
+body.sb-workspace .hero h2.hero-h {
+  font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; line-height: 1.1;
+  margin-bottom: var(--space-lg); animation: fadeInUp 0.8s ease 0.2s both;
+}

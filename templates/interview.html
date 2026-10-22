@@ -16,6 +16,7 @@
 <body class="sb-iv">
     {% set nav_active = 'practice' %}
     {% include "_site_nav.html" %}
+    {% with sb_active="interview", sb_title="Mock Interview" %}{% include "_app_sidebar.html" %}{% endwith %}
 
     <div class="sb-iv-wrap">
         <div class="iv-head">

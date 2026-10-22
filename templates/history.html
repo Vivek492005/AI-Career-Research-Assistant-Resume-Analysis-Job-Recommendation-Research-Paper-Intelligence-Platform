@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Dashboard | Study-Buddy{% endblock %}
 {% block content %}
+{% with sb_active='home', sb_title='Dashboard' %}{% include "_app_sidebar.html" %}{% endwith %}
 <div class="sb-dash">
 <div style="margin-top:2rem;">
     <p class="sb-kicker">Your workspace — real work, not sample data</p>

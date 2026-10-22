@@ -33,17 +33,21 @@
         <section class="sb-hero" aria-label="Introduction">
             <p class="sb-kicker">Free &amp; open source — for students</p>
             <div class="sb-hero-grid">
-                <h1 class="sb-display" aria-label="Learn. Practice. Build. Get hired.">
-                    <span class="sb-mask"><span>Learn.</span></span>
-                    <span class="sb-mask"><span style="--sb-delay:90ms">Practice.</span></span>
-                    <span class="sb-mask"><span style="--sb-delay:180ms">Build.</span></span>
+                <h1 class="sb-display" aria-label="Learn Practice Build Get hired.">
+                    <span class="sb-mask"><span>Learn</span></span>
+                    <span class="sb-mask"><span style="--sb-delay:90ms">Practice</span></span>
+                    <span class="sb-mask"><span style="--sb-delay:180ms">Build</span></span>
                     <span class="sb-mask"><span style="--sb-delay:270ms"><span class="sb-accent">Get hired.</span></span></span>
                 </h1>
-                <div class="sb-hero-visual" aria-hidden="true">
-                    <svg class="sb-brush" viewBox="0 0 400 120" fill="none" aria-hidden="true"><path d="M12 78 C 90 20, 180 110, 260 48 C 310 10, 360 60, 392 42 L 388 84 C 320 96, 240 40, 160 82 C 100 108, 40 92, 12 78 Z" fill="#2447ff"/></svg>
+                <div class="sb-hero-visual">
+                    <img class="sb-hero-photo" src="{{ url_for('static', filename='img/hero-student.jpg') }}" alt="" aria-hidden="true">
+                    <svg class="sb-brush sb-brush--big" viewBox="0 0 300 400" fill="none" aria-hidden="true"><path d="M196 6 C 232 84, 176 148, 222 226 C 254 282, 214 344, 232 398 L 138 398 C 140 322, 184 262, 142 188 C 110 128, 152 58, 140 6 Z" fill="#2447ff"/></svg>
                     <p class="sb-note sb-note--a">Same you,<br>sharper future.</p>
                     <p class="sb-note sb-note--b">Better skills.<br>Brighter opportunities. →</p>
-                    <div class="sb-marker">01<i>.</i></div>
+                    <a class="sb-hero-card" href="{{ url_for('resume_home') }}">
+                        <span class="sb-hero-card-t"><b>AI-Powered Resume Analysis</b><span>Get instant feedback</span></span>
+                        <span class="sb-hero-card-arrow" aria-hidden="true">↗</span>
+                    </a>
                 </div>
             </div>
             <div class="sb-hero-below">
@@ -51,6 +55,13 @@
                 <div class="sb-cta-row">
                     <a class="sb-btn sb-btn--primary" href="{{ url_for('resume_home') }}">Analyse my resume →</a>
                     <a class="sb-btn sb-btn--outline" href="#tools">Explore the tools</a>
+                </div>
+            </div>
+            <div class="sb-trust">
+                <div class="sb-avatars" aria-hidden="true"><span class="sb-av-1">A</span><span class="sb-av-2">R</span><span class="sb-av-3">S</span><span class="sb-av-4">K</span></div>
+                <div>
+                    <p class="sb-trust-k">Trusted by students</p>
+                    <p class="sb-trust-t"><strong>339</strong> interview questions · <strong>320</strong> quiz questions · <strong>132</strong> DSA problems — free &amp; open source</p>
                 </div>
             </div>
             <div class="sb-stats" aria-label="Question and problem library">
