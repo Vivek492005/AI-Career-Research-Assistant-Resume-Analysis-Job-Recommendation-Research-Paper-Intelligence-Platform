@@ -15,6 +15,7 @@
 
 /* Self-hosted OFL fonts (latin subsets, from Google Fonts). No external
    font request at runtime; system stacks remain as fallbacks. */
+@font-face { font-family: "Caveat"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/caveat-600.woff2") format("woff2"); }
 @font-face { font-family: "Barlow Condensed"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/barlow-condensed-600.woff2") format("woff2"); }
 @font-face { font-family: "Barlow Condensed"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/barlow-condensed-700.woff2") format("woff2"); }
 @font-face { font-family: "Barlow Condensed"; font-style: normal; font-weight: 800; font-display: swap; src: url("../fonts/barlow-condensed-800.woff2") format("woff2"); }
@@ -945,16 +946,50 @@ body.sb-workspace .hero h2.hero-h {
    the same multiply (full colour, no hero grayscale) to match. */
 .sb-work-intro--split .b-wrap {
   max-width: 1280px; display: grid;
-  grid-template-columns: 1.05fr 0.95fr; gap: 44px; align-items: center;
+  grid-template-columns: 0.92fr 1.08fr; gap: 44px; align-items: center;
 }
-.sb-work-intro--split .sb-display { font-size: clamp(3rem, 6.2vw, 5.6rem); }
+.sb-work-intro--split .sb-display { font-size: clamp(2.8rem, 5.8vw, 5.2rem); }
 .sb-resume-visual { position: relative; margin: 0; }
 .sb-resume-photo {
   display: block; width: 100%; height: auto;
-  aspect-ratio: 1540 / 1220; object-fit: cover;
+  aspect-ratio: 1580 / 1220; object-fit: cover;
   mix-blend-mode: multiply;
 }
-.sb-resume-visual .sb-pixel-canvas { mix-blend-mode: multiply; filter: none; }
+/* Photo entrance (this page has no pixel reveal): a soft rise + fade
+   when the visual first comes into view. */
+.sb-resume-visual.sb-photo-in .sb-resume-photo { animation: sbPhotoIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes sbPhotoIn {
+  from { opacity: 0; transform: translateY(26px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+/* The writing pen: the photo's blue pen, lifted out as its own
+   element (white ground, multiply — invisible over the paper). It
+   rests beside the slogan line, glides to the start and hand-writes
+   the line in cursive while the text wipes in under its tip. */
+.sb-write { position: relative; padding: 16px 4px 4px; min-height: 88px; }
+.sb-write-text {
+  display: inline-block; white-space: nowrap;
+  font-family: "Caveat", cursive; font-weight: 600;
+  font-size: clamp(2.1rem, 3.6vw, 3rem); line-height: 1.15;
+  color: var(--sb-blue); transform: rotate(-1.4deg);
+  padding: 0 0.12em;
+}
+.sb-resume-visual.sb-write-live .sb-write-text { opacity: 0; }
+.sb-pen-wrap {
+  position: absolute; left: 0; top: 0; width: 19%; z-index: 4;
+  pointer-events: none; opacity: 0;
+  mix-blend-mode: multiply;
+}
+.sb-resume-visual.sb-write-live .sb-pen-wrap { opacity: 1; transition: opacity 0.5s ease; }
+.sb-write-pen {
+  display: block; width: 100%; height: auto;
+  transform-origin: 12% 97%;
+}
+.sb-pen-wrap.is-writing .sb-write-pen { animation: sbPenBob 0.16s ease-in-out infinite alternate; }
+@keyframes sbPenBob {
+  from { transform: rotate(-1.6deg) translateY(0); }
+  to { transform: rotate(1.8deg) translateY(1.5px); }
+}
 @media (max-width: 900px) {
   .sb-work-intro--split .b-wrap { grid-template-columns: 1fr; gap: 28px; }
 }
