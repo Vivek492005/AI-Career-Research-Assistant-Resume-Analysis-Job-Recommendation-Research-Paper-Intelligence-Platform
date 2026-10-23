@@ -116,6 +116,21 @@
     }
   }
 
+  /* Headline word replay: hovering a masked display line replays its
+     rise-up reveal (exit up, re-appear from below). Restartable. */
+  document.querySelectorAll('.sb-mask').forEach(function (mask) {
+    var inner = mask.querySelector('span');
+    if (!inner) return;
+    mask.addEventListener('mouseenter', function () {
+      inner.classList.remove('sb-replay');
+      void inner.offsetWidth;
+      inner.classList.add('sb-replay');
+    });
+    inner.addEventListener('animationend', function () {
+      inner.classList.remove('sb-replay');
+    });
+  });
+
   /* Magnetic CTAs: drift toward the pointer, snap back on leave. */
   document.querySelectorAll('a.sb-btn, .b-btn--primary, .sb-hero-card').forEach(function (elm) {
     elm.addEventListener('mousemove', function (e) {
