@@ -59,7 +59,25 @@ body.sb-editorial .sb-stat b {
 body.sb-editorial .sb-stat span { font-size: 0.98rem; transition: color 0.3s ease; }
 body.sb-editorial .sb-stat:hover b { color: var(--sb-lime); transform: translateY(-2px) scale(1.05); }
 body.sb-editorial .sb-stat:hover span { color: #b9b9b3; }
-body.sb-editorial .sb-step { transition: border-color 0.3s ease, background-color 0.3s ease; }
+/* How-it-works steps: black sweep like the cards, and the hovered step
+   grows past its normal size (CSS `scale`, so it composes with the JS
+   tilt transform instead of fighting it). */
+body.sb-editorial .sb-step {
+  position: relative; overflow: hidden; padding: 20px 16px 22px;
+  transition: scale 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.3s ease;
+}
+body.sb-editorial .sb-step::before {
+  content: ""; position: absolute; inset: 0; background: #0a0a0a; z-index: 0;
+  transform: translateY(101%);
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+body.sb-editorial .sb-step:hover { scale: 1.045; z-index: 2; }
+body.sb-editorial .sb-step:hover::before { transform: translateY(0); }
+body.sb-editorial .sb-step > * { position: relative; z-index: 1; }
+body.sb-editorial .sb-step b { transition: color 0.3s ease; }
+body.sb-editorial .sb-step p { transition: color 0.3s ease; }
+body.sb-editorial .sb-step:hover b { color: var(--sb-lime); }
+body.sb-editorial .sb-step:hover p { color: #b9b9b3; }
 body.sb-editorial .sb-tool { transition: border-color 0.3s ease, background-color 0.3s ease; }
 body.sb-editorial .sb-section-title {
   background-image: linear-gradient(var(--sb-blue), var(--sb-blue));
