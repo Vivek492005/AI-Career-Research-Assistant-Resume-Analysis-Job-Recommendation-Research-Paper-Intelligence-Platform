@@ -38,17 +38,17 @@
             </div>
 
             <div class="dt-embed-hero">
-                <div class="sb-liquid" data-pct="{{ a2z.pct }}" data-label="Solved"></div>
+                <div class="sb-liquid" id="dt-gauge" data-pct="{{ a2z.pct }}" data-label="Solved"></div>
                 <div>
                     <div class="dt-embed-stats">
-                        <div class="dt-stat"><b>{{ a2z.solved }}/{{ a2z.total }}</b><span>Problems solved</span></div>
-                        <div class="dt-stat"><b>{{ a2z.attempted + a2z.stuck }}</b><span>In progress</span></div>
-                        <div class="dt-stat"><b>{{ a2z.stuck }}</b><span>Marked stuck</span></div>
-                        <div class="dt-stat"><b>{{ a2z.total - a2z.tracked }}</b><span>Not started</span></div>
+                        <div class="dt-stat"><b data-stat="solved">{{ a2z.solved }}/{{ a2z.total }}</b><span>Problems solved</span></div>
+                        <div class="dt-stat"><b data-stat="inprogress">{{ a2z.attempted + a2z.stuck }}</b><span>In progress</span></div>
+                        <div class="dt-stat"><b data-stat="stuck">{{ a2z.stuck }}</b><span>Marked stuck</span></div>
+                        <div class="dt-stat"><b data-stat="notstarted">{{ a2z.total - a2z.tracked }}</b><span>Not started</span></div>
                     </div>
                     <h3 class="dt-mini-h">By difficulty</h3>
                     {% for d in a2z.by_difficulty %}
-                    <div class="dt-diff-row">
+                    <div class="dt-diff-row" data-diff="{{ d.difficulty }}">
                         <span class="dt-name">{{ d.difficulty }}</span>
                         <span class="dt-track"><span class="dt-fill dt-fill--{{ d.difficulty | lower }}" style="display:block;width:{{ d.pct }}%"></span></span>
                         <span class="dt-num">{{ d.solved }}/{{ d.total }} · {{ d.pct }}%</span>
@@ -60,7 +60,7 @@
             <h3 class="dt-mini-h dt-module-h">By module</h3>
             <div class="dt-module-grid">
                 {% for s in a2z.by_step %}
-                <div class="dt-mod">
+                <div class="dt-mod" data-step="{{ s.step }}">
                     <div class="dt-mod-top">
                         <span class="dt-mod-name">{{ '%02d' % s.step }} · {{ s.step_name }}</span>
                         <span class="dt-mod-num">{{ s.solved }}/{{ s.total }} · {{ s.pct }}%</span>
@@ -71,7 +71,7 @@
             </div>
 
             <p class="dt-classic-line">
-                Classic set: <strong>{{ classic.solved }}/{{ classic.total }} solved ({{ classic.pct }}%)</strong> ·
+                Classic set: <strong id="classic-strong">{{ classic.solved }}/{{ classic.total }} solved ({{ classic.pct }}%)</strong> ·
                 <a href="{{ url_for('dsa_diagnosis') }}">weak-topic diagnosis</a>
                 {%- if not is_authed %} · <a href="{{ url_for('auth.login') }}">Log in</a> to save your progress{% elif a2z.tracked == 0 %} · <a href="{{ url_for('dsa_a2z_page') }}">mark your first problem</a> to get started{% endif %}
             </p>
@@ -119,6 +119,7 @@
     </footer>
 
     <script src="{{ url_for('static', filename='js/liquid_gauge.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/dsa_tracker_embed.js') }}"></script>
     <script src="{{ url_for('static', filename='js/dsa.js') }}"></script>
     <script src="{{ url_for('static', filename='js/kinetic.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bento.js') }}" defer></script>

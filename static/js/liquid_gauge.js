@@ -127,7 +127,9 @@
       var label = root.getAttribute("data-label") || "";
       // Start empty, then fill — the rise IS the entrance.
       requestAnimationFrame(function () { setTimeout(function () { setPct(inst, root, pct, label); }, 150); });
-      return { set: function (p, l) { setPct(inst, root, p, l); } };
+      var api = { set: function (p, l) { setPct(inst, root, p, l); } };
+      root._lqApi = api;  // live updates (e.g. tracker refresh) reuse this
+      return api;
     }
   };
   document.addEventListener("DOMContentLoaded", function () {

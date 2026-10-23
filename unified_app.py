@@ -2363,9 +2363,17 @@ def create_app(config_overrides=None):
     login_manager.init_app(app)
     login_manager.login_view = "auth.login"  # ARC-01: auth blueprint endpoint
     login_manager.login_message_category = "info"
-    # SEC-06: strong session protection (tracks user agent + IP, invalidates
-    # the session on mismatch), 12h absolute lifetime, no sliding refresh.
-    login_manager.session_protection = "strong"
+    # SEC-06 (revised 2026-10-23): session protection stays on, but in
+    # "basic" mode. "strong" binds the session to the client IP + UA and
+    # destroys the login on any mismatch — behind ProxyFix that IP is the
+    # user's real egress address, which rotates constantly on CGNAT /
+    # mobile networks (verified live: consecutive requests from one
+    # machine egressed via different IPs). Real users were silently
+    # logged out mid-task: progress marks failed with 401 and dashboards
+    # fell back to the anonymous view. "basic" still detects identifier
+    # changes (marks the session not-fresh) without killing the login.
+    # 12h absolute lifetime, no sliding refresh.
+    login_manager.session_protection = "basic"
     app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=12)
     app.config["SESSION_REFRESH_EACH_REQUEST"] = False
     csrf.init_app(app)
@@ -4826,6 +4834,24 @@ def register_routes(app):
         else:
             out = problems
         return jsonify({'problems': out, 'count': len(out)})
+
+    @app.route('/api/dsa/progress')
+    def dsa_progress_api():
+        """Progress summary JSON for the tracker embedded on /dsa.
+
+        The embedded tracker refreshes from this endpoint when the tab
+        becomes visible again, so marks made in another tab (or on a
+        problem page) show up without a manual reload. Anonymous
+        visitors get the zeroed summary.
+        """
+        progress_rows = []
+        if current_user.is_authenticated:
+            rows = DSAProgress.query.filter_by(user_id=current_user.id).all()
+            progress_rows = [(r.problem_id, r.status) for r in rows]
+        summary = progress_summary(progress_rows)
+        return jsonify({'is_authed': current_user.is_authenticated,
+                        'a2z': summary['a2z'],
+                        'classic': summary['classic']})
 
     @app.route('/dsa/diagnosis')
     @login_required

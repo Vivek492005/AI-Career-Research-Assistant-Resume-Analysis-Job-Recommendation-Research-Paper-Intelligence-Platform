@@ -45,9 +45,14 @@ def _mkuser(app, email="b1@example.com", password="pw-12345"):
 
 
 class TestSessionHardening:
-    def test_session_protection_strong(self, app):
+    def test_session_protection_basic(self, app):
+        # Deliberately "basic", not "strong" (changed 2026-10-23):
+        # strong mode destroys the login whenever the client IP changes,
+        # and real users on CGNAT/mobile networks rotate egress IPs
+        # between requests — they were silently logged out mid-task and
+        # their progress marks failed. Basic still detects the change.
         from unified_app import login_manager
-        assert login_manager.session_protection == "strong"
+        assert login_manager.session_protection == "basic"
 
     def test_permanent_session_lifetime_12h(self, app):
         assert app.config["PERMANENT_SESSION_LIFETIME"] == timedelta(hours=12)

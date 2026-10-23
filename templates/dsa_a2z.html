@@ -42,6 +42,7 @@
         </div>
 
         <p class="az-empty" id="az-empty">No problem matches that search.</p>
+        <p id="az-msg" role="alert" style="display:none;margin-top:0.8rem;padding:0.7rem 1rem;border:1px solid #f87171;color:#fca5a5;font-family:var(--sb-mono);font-size:0.82rem;"></p>
 
         {% for s in steps %}
         <details class="az-step" id="step-{{ s.step }}" data-step="{{ s.step }}" {% if loop.first %}open{% endif %}>
@@ -114,9 +115,21 @@
           btn.disabled = true;
           var req = done ? post('/dsa/' + id + '/untrack')
                          : post('/dsa/' + id + '/status', { status: 'solved' });
-          req.then(function (r) { return r.json().then(function () { return r.ok; }); })
-             .then(function (ok) {
-               if (!ok) return;
+          req.then(function (r) { return r.json().then(function () { return { ok: r.ok, status: r.status }; }); })
+             .then(function (res) {
+               if (!res.ok) {
+                 // Never fail silently: a mark that did not save must
+                 // be visible, or the tracker looks broken downstream.
+                 var msg = document.getElementById('az-msg');
+                 if (msg) {
+                   msg.style.display = 'block';
+                   msg.textContent = res.status === 401
+                     ? 'Your login session has ended, so that mark was NOT saved. Please log in again and re-mark it.'
+                     : 'That mark could NOT be saved (server error). Please reload the page and try again.';
+                   msg.scrollIntoView({ block: 'nearest' });
+                 }
+                 return;
+               }
                if (done) {
                  btn.classList.remove('is-done');
                  btn.setAttribute('aria-pressed', 'false');
@@ -131,7 +144,13 @@
                  refreshStep(stepEl, 1);
                }
              })
-             .catch(function () {})
+             .catch(function () {
+               var msg = document.getElementById('az-msg');
+               if (msg) {
+                 msg.style.display = 'block';
+                 msg.textContent = 'That mark could NOT be saved (network error). Please check your connection and try again.';
+               }
+             })
              .finally(function () { btn.disabled = false; });
         });
       });

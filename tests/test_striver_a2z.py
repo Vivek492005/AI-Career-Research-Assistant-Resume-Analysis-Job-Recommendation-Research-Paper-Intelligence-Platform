@@ -146,6 +146,53 @@ def test_dsa_home_tracker_reflects_saved_progress(authed_client):
     assert f"1/{len(all_problems())} solved" in body
 
 
+def test_progress_api_anonymous_gets_zeroed_summary(client):
+    r = client.get("/api/dsa/progress")
+    assert r.status_code == 200
+    d = r.get_json()
+    assert d["is_authed"] is False
+    assert d["a2z"]["total"] == 495 and d["a2z"]["solved"] == 0
+    assert d["classic"]["total"] == len(all_problems())
+
+
+def test_progress_api_reflects_marks(authed_client):
+    """Regression (2026-10-23): marks must show up in the data the
+    embedded tracker refreshes from."""
+    classic_id = all_problems()[0]["id"]
+    authed_client.post("/dsa/a2z-0001/status", json={"status": "solved"})
+    authed_client.post(f"/dsa/{classic_id}/status", json={"status": "solved"})
+    d = authed_client.get("/api/dsa/progress").get_json()
+    assert d["is_authed"] is True
+    assert d["a2z"]["solved"] == 1
+    assert d["a2z"]["by_step"][0]["solved"] == 1
+    assert d["classic"]["solved"] == 1
+
+
+def test_session_survives_client_ip_change(authed_client):
+    """Regression (2026-10-23): with ProxyFix the session identifier
+    includes the real client IP; users on CGNAT/mobile networks rotate
+    IPs between requests and 'strong' protection silently logged them
+    out — marks then failed with 401 and the tracker showed the
+    anonymous zeros. The session must survive an IP change."""
+    page = authed_client.get("/dsa/a2z",
+                             environ_base={"REMOTE_ADDR": "203.0.113.99"})
+    assert page.status_code == 200
+    body = page.get_data(as_text=True)
+    assert 'id="az-solved-count"' in body  # still logged in, not anon
+    r = authed_client.post("/dsa/a2z-0007/status", json={"status": "solved"},
+                           environ_base={"REMOTE_ADDR": "198.51.100.7"})
+    assert r.status_code == 200  # the mark must save from the new IP too
+
+
+def test_dsa_home_has_live_refresh_hooks(client):
+    body = client.get("/dsa").get_data(as_text=True)
+    assert "dsa_tracker_embed.js" in body
+    assert 'data-stat="solved"' in body
+    assert 'data-diff="Easy"' in body
+    assert 'data-step="1"' in body
+    assert 'id="classic-strong"' in body
+
+
 def test_tracker_requires_login(client):
     r = client.get("/dsa/tracker")
     assert r.status_code in (301, 302)
