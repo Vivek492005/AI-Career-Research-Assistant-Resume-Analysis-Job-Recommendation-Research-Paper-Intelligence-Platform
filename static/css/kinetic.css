@@ -390,6 +390,15 @@ body.sb-dsa { background: #0a0a0a; color: #fff; font-family: var(--sb-body); }
 .sb-dsa .dsa-head h1 { font-family: var(--sb-display); font-size: clamp(3rem, 8vw, 6.5rem); text-transform: uppercase; line-height: 0.9; margin: 0; }
 .sb-dsa .dsa-head h1 .sb-accent { color: var(--sb-lime); }
 .sb-dsa .dsa-head p { color: #a3a3a0; line-height: 1.65; max-width: 720px; }
+/* DSA hero photo: B&W photo on pure black, screen-blended into the ink
+   ground (the dark-page mirror of the homepage's multiply treatment)
+   so no box or panel edge ever shows. */
+.sb-dsa .dsa-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 430px); gap: 2.5rem; align-items: center; }
+.sb-dsa .dsa-hero-art img { width: 100%; height: auto; display: block; mix-blend-mode: screen; filter: grayscale(1) contrast(1.05); }
+@media (max-width: 900px) {
+    .sb-dsa .dsa-hero { grid-template-columns: 1fr; gap: 1.2rem; }
+    .sb-dsa .dsa-hero-art { max-width: 360px; }
+}
 .sb-dsa .dsa-head a { color: #fff; font-weight: 600; }
 .sb-dsa .dsa-card { background: #111 !important; border: 1px solid #2a2a2a !important; border-radius: 0 !important; box-shadow: none !important; color: #fff !important; }
 .sb-dsa .dsa-field label { color: #a3a3a0; font-family: var(--sb-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }

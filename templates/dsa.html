@@ -19,13 +19,18 @@
     {% with sb_active="dsa", sb_title="DSA Practice" %}{% include "_app_sidebar.html" %}{% endwith %}
 
     <div class="sb-dsa-wrap">
-        <div class="dsa-head">
-            <p class="sb-kicker">Practice — 01 / Problems</p><h1>Practice.<br>Solve.<br><span class="sb-accent">Improve.</span></h1>
-            <p>{{ total }} problems across {{ topics|length }} topics. Filter, solve, reveal hints progressively — and check your <a href="{{ url_for('dsa_diagnosis') }}" style="color:var(--accent-primary);font-weight:700;">weak-topic diagnosis</a>.
-            Working through Striver's sheet? Open the <a href="{{ url_for('dsa_a2z_page') }}" style="color:var(--accent-primary);font-weight:700;">A2Z sheet (495 problems)</a>
-            — your progress tracker is built in right below.</p>
-            <!-- DATA-05: honesty label — this is a practice tracker, not an auto-judge -->
-            <p class="sb-card__meta"><span class="sb-badge sb-badge--rule">Practice tracker</span> Self-reported progress — not an auto-judge. Solve on the original platform; track here.</p>
+        <div class="dsa-hero">
+            <div class="dsa-head">
+                <p class="sb-kicker">Practice — 01 / Problems</p><h1>Practice.<br>Solve.<br><span class="sb-accent">Improve.</span></h1>
+                <p>{{ total }} problems across {{ topics|length }} topics. Filter, solve, reveal hints progressively — and check your <a href="{{ url_for('dsa_diagnosis') }}" style="color:var(--accent-primary);font-weight:700;">weak-topic diagnosis</a>.
+                Working through Striver's sheet? Open the <a href="{{ url_for('dsa_a2z_page') }}" style="color:var(--accent-primary);font-weight:700;">A2Z sheet (495 problems)</a>
+                — your progress tracker is built in right below.</p>
+                <!-- DATA-05: honesty label — this is a practice tracker, not an auto-judge -->
+                <p class="sb-card__meta"><span class="sb-badge sb-badge--rule">Practice tracker</span> Self-reported progress — not an auto-judge. Solve on the original platform; track here.</p>
+            </div>
+            <div class="dsa-hero-art" aria-hidden="true">
+                <img src="{{ url_for('static', filename='img/dsa-hero-coder.jpg') }}" alt="" loading="eager">
+            </div>
         </div>
 
         <section class="dsa-card b-card b-reveal dsa-tracker-embed" id="progress-tracker" aria-label="DSA progress tracker">
