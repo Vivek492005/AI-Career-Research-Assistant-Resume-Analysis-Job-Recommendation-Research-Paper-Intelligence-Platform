@@ -37,3 +37,20 @@ body.sb-cursor-on .sb-cursor-dot, body.sb-cursor-on .sb-cursor-ring { opacity: 1
   opacity: 0; transition: opacity 0.25s ease;
 }
 .sb-tilt:hover::after { opacity: 1; }
+
+/* Homepage reactivity: every card and heading answers the pointer. */
+body.sb-editorial .sb-stat { transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
+body.sb-editorial .sb-stat b { display: inline-block; transition: transform 0.3s ease, color 0.3s ease; }
+body.sb-editorial .sb-stat:hover { transform: translateY(-4px); }
+body.sb-editorial .sb-stat:hover b { color: var(--sb-lime); transform: translateY(-2px) scale(1.04); }
+body.sb-editorial .sb-step { transition: border-color 0.3s ease, background-color 0.3s ease; }
+body.sb-editorial .sb-tool { transition: border-color 0.3s ease, background-color 0.3s ease; }
+body.sb-editorial .sb-section-title {
+  background-image: linear-gradient(var(--sb-blue), var(--sb-blue));
+  background-repeat: no-repeat; background-position: 0 96%; background-size: 0% 0.09em;
+  transition: background-size 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  padding-bottom: 0.08em;
+}
+body.sb-editorial .sb-section-title:hover { background-size: 100% 0.09em; }
+body.sb-editorial .sb-hero .sb-note { transition: opacity 0.3s ease; }
+body.sb-editorial .sb-hero:hover .sb-note { opacity: 1; }

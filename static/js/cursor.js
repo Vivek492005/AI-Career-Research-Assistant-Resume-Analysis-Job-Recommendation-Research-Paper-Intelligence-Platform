@@ -86,6 +86,36 @@
     else ring.classList.remove('is-hover');
   }, { passive: true });
 
+  /* Homepage hero parallax: figure, brush, notes, card and headline drift
+     at different depths with the pointer (body.sb-editorial only). */
+  if (document.body.classList.contains('sb-editorial')) {
+    var hero = document.querySelector('.sb-hero');
+    if (hero) {
+      var layers = [
+        [hero.querySelector('.sb-hero-visual'), 10, 8],
+        [hero.querySelector('.sb-brush'), -6, -5],
+        [hero.querySelector('.sb-note--a'), 15, 11],
+        [hero.querySelector('.sb-note--b'), 18, 13],
+        [hero.querySelector('.sb-hero-card'), 7, 6],
+        [hero.querySelector('.sb-display'), 4, 3]
+      ].filter(function (l) { return l[0]; });
+      var pnx = 0, pny = 0, pcx = 0, pcy = 0;
+      hero.addEventListener('mousemove', function (e) {
+        var r = hero.getBoundingClientRect();
+        pnx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+        pny = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      });
+      hero.addEventListener('mouseleave', function () { pnx = 0; pny = 0; });
+      (function ploop() {
+        pcx += (pnx - pcx) * 0.06; pcy += (pny - pcy) * 0.06;
+        for (var i = 0; i < layers.length; i++) {
+          layers[i][0].style.translate = (pcx * layers[i][1]).toFixed(1) + 'px ' + (pcy * layers[i][2]).toFixed(1) + 'px';
+        }
+        requestAnimationFrame(ploop);
+      })();
+    }
+  }
+
   /* Magnetic CTAs: drift toward the pointer, snap back on leave. */
   document.querySelectorAll('a.sb-btn, .b-btn--primary, .sb-hero-card').forEach(function (elm) {
     elm.addEventListener('mousemove', function (e) {
@@ -98,7 +128,7 @@
   });
 
   /* 3D tilt + shine on showcase cards. */
-  document.querySelectorAll('.sb-tool, .feature-card, [data-tilt]').forEach(function (card) {
+  document.querySelectorAll('.sb-tool, .sb-step, .feature-card, [data-tilt]').forEach(function (card) {
     card.classList.add('sb-tilt');
     card.addEventListener('mousemove', function (e) {
       var r = card.getBoundingClientRect();
