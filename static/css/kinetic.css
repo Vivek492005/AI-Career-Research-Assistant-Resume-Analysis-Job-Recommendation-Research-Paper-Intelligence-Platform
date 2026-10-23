@@ -275,7 +275,7 @@ body.sb-workspace { background: var(--sb-paper-2); color: var(--sb-ink); font-fa
   min-height: 48px; padding: 12px 22px; cursor: pointer; font-family: var(--sb-body) !important;
 }
 .sb-work .btn-analyze:hover, .sb-work .jd-submit:hover { background: var(--sb-blue-dark) !important; }
-.sb-work .jd-section { padding: 0 !important; margin: 40px 0 0 !important; }
+.sb-work .jd-section { padding: 0 !important; margin: 84px 0 0 !important; }
 .sb-work .jd-card {
   background: #fff !important; border: 1px solid var(--sb-line-soft) !important; border-radius: 0 !important;
   box-shadow: none !important; color: var(--sb-ink) !important; padding: 32px !important;
@@ -1222,3 +1222,45 @@ body.sb-workspace .hero h2.hero-h {
 /* A trailing group (e.g. the LinkedIn audit) pins to the rail's
    bottom — declared after the group-spacing rule it overrides. */
 .jd-demo > .dm-group:last-child { margin-top: auto; }
+
+/* Card separation: a printed dashed rule floats in the wide gap
+   before every feature section, spanning card + rail, so the five
+   sections read as clearly separate chapters on the paper. */
+.sb-work .jd-section { position: relative; }
+.sb-work .jd-section::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -42px;
+  border-top: 2px dashed rgba(10, 10, 10, 0.16); pointer-events: none;
+}
+.sb-work #features { margin-top: 84px; }
+
+/* Upload section sits in the middle of the page width. */
+.sb-work .hero { margin-inline: auto; }
+
+/* Upload card background life: a scanner sweep glides down the
+   card (it IS an analyser), over a soft breathing glow — both
+   behind the content, click-through, off under reduced motion. */
+.sb-work .upload-card { position: relative; overflow: hidden; isolation: isolate; }
+.sb-work .upload-card::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 34%;
+  background: linear-gradient(180deg, rgba(36, 71, 255, 0) 0%, rgba(36, 71, 255, 0.07) 55%, rgba(36, 71, 255, 0.16) 88%, rgba(36, 71, 255, 0.3) 100%);
+  border-bottom: 2px solid rgba(36, 71, 255, 0.35);
+  transform: translateY(-110%); animation: sbScan 7s ease-in-out infinite;
+  pointer-events: none; z-index: 0;
+}
+@keyframes sbScan {
+  0% { transform: translateY(-110%); }
+  26% { transform: translateY(320%); }
+  100% { transform: translateY(320%); }
+}
+.sb-work .upload-card::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(420px 200px at 12% 0%, rgba(200, 255, 46, 0.13), transparent 60%),
+    radial-gradient(520px 260px at 88% 100%, rgba(36, 71, 255, 0.1), transparent 60%);
+  animation: sbGlow 9s ease-in-out infinite alternate;
+}
+@keyframes sbGlow { from { opacity: 0.5; } to { opacity: 1; } }
+.sb-work .upload-card > * { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .sb-work .upload-card::before, .sb-work .upload-card::after { animation: none; }
+}
