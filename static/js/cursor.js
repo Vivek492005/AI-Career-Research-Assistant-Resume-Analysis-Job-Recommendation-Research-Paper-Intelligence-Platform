@@ -156,7 +156,7 @@
       var dx = (W - dw) * 0.58, dy = H - dh;
       var small = document.createElement('canvas');
       var sctx = small.getContext('2d');
-      var steps = [[90, 140], [64, 125], [44, 110], [30, 100], [20, 90], [13, 80], [8, 70], [4, 60]];
+      var steps = [[80, 70], [48, 60], [28, 55], [16, 50], [8, 45], [3, 40]];
       var i = 0;
       /* Blank first: hide the photo, show the empty canvas. */
       heroImg.style.opacity = '0';
@@ -186,10 +186,10 @@
           heroImg.style.opacity = '';
           pxCanvas.classList.add('off');
           pxCanvas.classList.remove('on');
-          setTimeout(function () { pxBusy = false; }, 220);
+          setTimeout(function () { pxBusy = false; }, 150);
         }
       }
-      setTimeout(step, 150);
+      setTimeout(step, 60);
     });
   }
 
