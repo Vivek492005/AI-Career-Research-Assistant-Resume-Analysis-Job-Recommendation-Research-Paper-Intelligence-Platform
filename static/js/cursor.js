@@ -144,7 +144,7 @@
     pxCanvas.setAttribute('aria-hidden', 'true');
     heroVisual.appendChild(pxCanvas);
     var pxBusy = false;
-    heroVisual.addEventListener('mouseenter', function () {
+    function playGeneration() {
       if (pxBusy || !heroImg.complete || !heroImg.naturalWidth) return;
       pxBusy = true;
       var box = heroImg.getBoundingClientRect();
@@ -190,7 +190,105 @@
         }
       }
       setTimeout(step, 60);
-    });
+    }
+    heroVisual.addEventListener('mouseenter', playGeneration);
+    /* Auto-play once when the page opens, like the headline reveal on
+       the left: shortly after load, if the hero is on screen. */
+    function autoPlay() {
+      var r = heroVisual.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < window.innerHeight) playGeneration();
+    }
+    if (heroImg.complete && heroImg.naturalWidth) setTimeout(autoPlay, 750);
+    else heroImg.addEventListener('load', function () { setTimeout(autoPlay, 750); });
+  }
+
+  /* Outline stage: a blocky theme character runs in and places the
+     slogan block by block (arm swing + block pop + dust puffs), then
+     jumps and poofs away. Loops while the band is on screen. */
+  var band = document.querySelector('.sb-outline-band');
+  var stage = band ? band.querySelector('.sb-outline-stage') : null;
+  var charEl = band ? band.querySelector('.sb-char') : null;
+  var blks = band ? Array.prototype.slice.call(band.querySelectorAll('.sb-blk')) : [];
+  if (band && stage && charEl && blks.length) {
+    var playing = false, inView = false;
+    function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+    function puff(x, y, cls) {
+      for (var i = 0; i < 7; i++) {
+        var p = document.createElement('i');
+        p.className = 'sb-puff' + (cls ? ' ' + cls : '');
+        p.style.left = x + 'px'; p.style.top = y + 'px';
+        stage.appendChild(p);
+        var ang = (i / 7) * Math.PI * 2, dist = 16 + (i % 3) * 9;
+        var anim = p.animate([
+          { transform: 'translate(0,0) scale(1)', opacity: 1 },
+          { transform: 'translate(' + (Math.cos(ang) * dist).toFixed(1) + 'px,' + (Math.sin(ang) * dist - 12).toFixed(1) + 'px) scale(0.4)', opacity: 0 }
+        ], { duration: 480, easing: 'ease-out' });
+        anim.onfinish = (function (el) { return function () { el.remove(); }; })(p);
+      }
+    }
+    function moveCharTo(x, speed) {
+      var cur = parseFloat(charEl.dataset.x || '-90');
+      var dur = Math.max(80, Math.abs(x - cur) / speed);
+      charEl.dataset.x = x;
+      charEl.classList.add('is-running');
+      charEl.style.transition = 'transform ' + dur + 'ms linear';
+      charEl.style.transform = 'translateX(' + x + 'px)';
+      return wait(dur).then(function () { charEl.classList.remove('is-running'); });
+    }
+    function stageCenterX(el) {
+      var sr = stage.getBoundingClientRect(), r = el.getBoundingClientRect();
+      return r.left - sr.left + r.width / 2 - 23;
+    }
+    function stageBaseY(el) {
+      var sr = stage.getBoundingClientRect(), r = el.getBoundingClientRect();
+      return r.bottom - sr.top - 8;
+    }
+    async function playOnce() {
+      band.classList.remove('is-clearing');
+      band.classList.add('is-live');
+      blks.forEach(function (b) { b.classList.remove('is-placed'); });
+      charEl.hidden = false;
+      charEl.style.opacity = '1';
+      charEl.style.transition = 'none';
+      charEl.style.transform = 'translateX(-90px)';
+      charEl.dataset.x = -90;
+      await wait(80);
+      for (var i = 0; i < blks.length; i++) {
+        await moveCharTo(stageCenterX(blks[i]), 0.55);
+        charEl.classList.add('is-placing');
+        await wait(150);
+        blks[i].classList.add('is-placed');
+        puff(stageCenterX(blks[i]) + 14, stageBaseY(blks[i]), i === 1 ? 'sb-puff--blue' : '');
+        await wait(240);
+        charEl.classList.remove('is-placing');
+      }
+      await moveCharTo(stageCenterX(blks[blks.length - 1]) + 130, 0.7);
+      charEl.classList.add('is-jumping');
+      await wait(210);
+      var sr2 = stage.getBoundingClientRect();
+      puff(parseFloat(charEl.dataset.x) + 8, sr2.height - 62, 'sb-puff--ink');
+      puff(parseFloat(charEl.dataset.x) + 22, sr2.height - 30, '');
+      charEl.style.opacity = '0';
+      charEl.classList.remove('is-jumping');
+      await wait(450);
+      charEl.hidden = true;
+      await wait(3600);
+      band.classList.add('is-clearing');
+      await wait(650);
+      band.classList.remove('is-live');
+    }
+    async function stageLoop() {
+      if (playing) return;
+      playing = true;
+      while (inView) { await playOnce(); await wait(400); }
+      playing = false;
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        inView = entries[0].isIntersecting;
+        if (inView) stageLoop();
+      }, { threshold: 0.3 }).observe(band);
+    } else { inView = true; stageLoop(); }
   }
 
   /* Magnetic CTAs: drift toward the pointer, snap back on leave. */

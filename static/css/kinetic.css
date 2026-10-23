@@ -894,3 +894,50 @@ body.sb-workspace .hero h2.hero-h {
   font-size: clamp(4.2rem, 10.5vw, 11.5rem);
   white-space: nowrap; padding-right: 0.55em; margin: 0;
 }
+
+/* Outline stage: the slogan as three placeable blocks, centred, with a
+   blocky character who sets them (JS choreography in cursor.js; without
+   it — or with reduced motion — everything is simply visible). */
+.sb-outline-stage {
+  position: relative; display: flex; justify-content: center; align-items: baseline;
+  gap: 0.32em; font-size: clamp(3.4rem, 8.6vw, 9.5rem); line-height: 0.95;
+}
+.sb-outline-stage .sb-outline-word {
+  font-size: 1em; white-space: nowrap; margin: 0; padding: 0;
+}
+.sb-outline-band.is-live .sb-blk { opacity: 0; }
+.sb-outline-band.is-live .sb-blk.is-placed {
+  opacity: 1; animation: sbBlkPop 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.4) both;
+}
+.sb-outline-band.is-clearing .sb-blk { opacity: 0; transition: opacity 0.5s ease; }
+@keyframes sbBlkPop {
+  0% { transform: scale(0.4) translateY(30px); }
+  60% { transform: scale(1.07) translateY(-4px); }
+  100% { transform: scale(1) translateY(0); }
+}
+.sb-char {
+  position: absolute; left: 0; bottom: -6px; width: 46px; height: 92px;
+  z-index: 5; pointer-events: none; will-change: transform;
+}
+.sb-char-arm-l, .sb-char-arm-r, .sb-char-leg-l, .sb-char-leg-r {
+  transform-box: fill-box; transform-origin: 50% 0;
+}
+.sb-char.is-running .sb-char-leg-l { animation: sbLegSwing 0.28s ease-in-out infinite alternate; }
+.sb-char.is-running .sb-char-leg-r { animation: sbLegSwing 0.28s ease-in-out infinite alternate-reverse; }
+.sb-char.is-running .sb-char-arm-l { animation: sbLegSwing 0.28s ease-in-out infinite alternate-reverse; }
+.sb-char.is-running .sb-char-arm-r { animation: sbLegSwing 0.28s ease-in-out infinite alternate; }
+@keyframes sbLegSwing { from { transform: rotate(16deg); } to { transform: rotate(-16deg); } }
+.sb-char.is-placing .sb-char-arm-r { animation: sbArmPlace 0.32s ease-in-out; }
+@keyframes sbArmPlace {
+  0% { transform: rotate(0); } 45% { transform: rotate(-95deg); } 100% { transform: rotate(0); }
+}
+.sb-char.is-jumping { animation: sbCharJump 0.4s ease-out; }
+@keyframes sbCharJump {
+  0% { margin-bottom: 0; } 45% { margin-bottom: 26px; } 100% { margin-bottom: 0; }
+}
+.sb-puff { position: absolute; width: 9px; height: 9px; background: #c9c6ba; z-index: 6; pointer-events: none; }
+.sb-puff--blue { background: #2447ff; }
+.sb-puff--ink { background: #0a0a0a; }
+
+/* The stage variant is centred, not a marquee — no edge fade. */
+.sb-outline-band { -webkit-mask-image: none; mask-image: none; }
