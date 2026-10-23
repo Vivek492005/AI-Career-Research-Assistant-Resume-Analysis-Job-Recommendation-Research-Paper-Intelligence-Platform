@@ -270,7 +270,7 @@
       for (var i = 0; i < blks.length; i++) {
         var r = relRect(blks[i]);
         /* Stand within reach, just left of the target word. */
-        await moveCharTo(r.left - charW() - 10, 1.15);
+        await moveCharTo(r.right + 10, 1.15);
         await flashSelBox(blks[i], r.width < 70);
         charEl.classList.add('is-placing');
         await wait(140);
@@ -280,7 +280,7 @@
         charEl.classList.remove('is-placing');
       }
       var last = relRect(blks[blks.length - 1]);
-      await moveCharTo(last.right + 34, 1.05);
+      await moveCharTo(last.right + 110, 1.05);
       charEl.classList.add('is-jumping');
       await wait(200);
       var cx = parseFloat(charEl.dataset.x) + charW() / 2;

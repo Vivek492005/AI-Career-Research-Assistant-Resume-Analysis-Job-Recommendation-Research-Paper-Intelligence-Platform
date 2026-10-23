@@ -927,9 +927,9 @@ body.sb-workspace .hero h2.hero-h {
 .sb-char.is-running .sb-char-arm-l { animation: sbLegSwing 0.28s ease-in-out infinite alternate-reverse; }
 .sb-char.is-running .sb-char-arm-r { animation: sbLegSwing 0.28s ease-in-out infinite alternate; }
 @keyframes sbLegSwing { from { transform: rotate(16deg); } to { transform: rotate(-16deg); } }
-.sb-char.is-placing .sb-char-arm-r { animation: sbArmPlace 0.32s ease-in-out; }
+.sb-char.is-placing .sb-char-arm-l { animation: sbArmPlace 0.32s ease-in-out; }
 @keyframes sbArmPlace {
-  0% { transform: rotate(0); } 45% { transform: rotate(-95deg); } 100% { transform: rotate(0); }
+  0% { transform: rotate(0); } 45% { transform: rotate(82deg); } 100% { transform: rotate(0); }
 }
 .sb-char.is-jumping { animation: sbCharJump 0.4s ease-out; }
 @keyframes sbCharJump {
