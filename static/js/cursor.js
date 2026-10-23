@@ -244,7 +244,7 @@
       var sr = stage.getBoundingClientRect(), r = el.getBoundingClientRect();
       return { left: r.left - sr.left, top: r.top - sr.top, right: r.right - sr.left, bottom: r.bottom - sr.top, width: r.width, height: r.height };
     }
-    async function flashSelBox(word) {
+    async function flashSelBox(word, quick) {
       var r = relRect(word);
       selBox.style.left = (r.left - 8) + 'px';
       selBox.style.top = (r.top - 6) + 'px';
@@ -252,7 +252,7 @@
       selBox.style.height = (r.height + 12) + 'px';
       selBox.hidden = false;
       selBox.classList.add('on');
-      await wait(210);
+      await wait(quick ? 120 : 210);
       selBox.classList.remove('on');
       selBox.hidden = true;
     }
@@ -270,13 +270,13 @@
       for (var i = 0; i < blks.length; i++) {
         var r = relRect(blks[i]);
         /* Stand within reach, just left of the target word. */
-        await moveCharTo(r.left - charW() - 14, 0.95);
-        await flashSelBox(blks[i]);
+        await moveCharTo(r.left - charW() - 10, 1.15);
+        await flashSelBox(blks[i], r.width < 70);
         charEl.classList.add('is-placing');
         await wait(140);
         blks[i].classList.add('is-placed');
-        puff(r.left + r.width / 2, r.bottom - 6, i === 1 ? 'sb-puff--blue' : '', 6, 9);
-        await wait(260);
+        puff(r.left + r.width / 2, r.bottom - 6, blks[i].classList.contains('sb-blk-arrow') ? 'sb-puff--blue' : '', 4, 7);
+        await wait(r.width < 70 ? 170 : 260);
         charEl.classList.remove('is-placing');
       }
       var last = relRect(blks[blks.length - 1]);

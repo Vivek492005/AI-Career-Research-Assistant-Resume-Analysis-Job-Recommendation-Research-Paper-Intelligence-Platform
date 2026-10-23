@@ -962,3 +962,8 @@ body.sb-workspace .hero h2.hero-h {
   70% { color: #0a0a0a; -webkit-text-stroke-color: #0a0a0a; }
   100% { transform: scale(1) translateY(0); color: transparent; opacity: 1; }
 }
+
+/* Letter-by-letter building: tight letter groups, each letter its own
+   placeable block. */
+.sb-outline-stage .sb-grp { display: inline-flex; letter-spacing: 0.02em; }
+.sb-outline-stage .sb-blk { display: inline-block; }
