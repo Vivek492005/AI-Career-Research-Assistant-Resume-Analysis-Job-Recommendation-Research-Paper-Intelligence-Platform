@@ -73,6 +73,7 @@
     <script src="{{ url_for('static', filename='js/kinetic.js') }}" defer></script>
     {% block scripts %}{% endblock %}
     {% include "_csp_beacon.html" %}
+    <script src="{{ url_for('static', filename='js/cursor.js') }}" defer></script>
     <!-- UX-04 PWA: service worker registration -->
     <script nonce="{{ csp_nonce() }}">
     if ('serviceWorker' in navigator) {

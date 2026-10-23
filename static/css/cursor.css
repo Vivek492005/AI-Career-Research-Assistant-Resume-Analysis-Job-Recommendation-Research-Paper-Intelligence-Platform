@@ -1,0 +1,39 @@
+/* Cursor FX (loaded by cursor.js on pointer-fine devices only).
+   Native cursor is kept; these are accent layers. Transform/opacity only. */
+.sb-cursor-dot, .sb-cursor-ring, .sb-cursor-glow {
+  position: fixed; top: 0; left: 0; pointer-events: none; border-radius: 50%;
+  opacity: 0; will-change: transform;
+}
+.sb-cursor-dot { width: 6px; height: 6px; background: #2447ff; z-index: 9999; }
+.sb-cursor-ring {
+  width: 34px; height: 34px; z-index: 9998;
+  border: 1.5px solid rgba(36, 71, 255, 0.6);
+  display: flex; align-items: center; justify-content: center;
+  transition: width 0.18s ease, height 0.18s ease, background-color 0.18s ease,
+    border-radius 0.18s ease, border-color 0.18s ease, opacity 0.25s ease;
+}
+body.sb-cursor-on .sb-cursor-dot, body.sb-cursor-on .sb-cursor-ring { opacity: 1; }
+.sb-cursor-ring.is-hover { width: 54px; height: 54px; background: rgba(36, 71, 255, 0.08); }
+.sb-cursor-ring.is-label {
+  width: auto; min-width: 76px; height: 30px; border-radius: 999px;
+  background: #2447ff; border-color: #2447ff; padding: 0 12px;
+}
+.sb-cursor-label {
+  font: 600 11px/1 "Inter", system-ui, sans-serif; letter-spacing: 0.05em;
+  color: #fff; white-space: nowrap; opacity: 0; transition: opacity 0.12s ease;
+}
+.sb-cursor-ring.is-label .sb-cursor-label { opacity: 1; }
+.sb-cursor-glow {
+  width: 520px; height: 520px; z-index: 1;
+  background: radial-gradient(circle, rgba(36, 71, 255, 0.13) 0%, rgba(36, 71, 255, 0) 62%);
+  transition: opacity 0.4s ease;
+}
+.sb-cursor-glow.on { opacity: 1; }
+/* 3D tilt cards: shine sweep follows the pointer via --mx/--my. */
+.sb-tilt { position: relative; }
+.sb-tilt::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.13), transparent 45%);
+  opacity: 0; transition: opacity 0.25s ease;
+}
+.sb-tilt:hover::after { opacity: 1; }
