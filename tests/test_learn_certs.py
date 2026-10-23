@@ -114,7 +114,9 @@ def test_learn_hub_renders(client):
     r = client.get("/learn")
     assert r.status_code == 200
     html = r.get_data(as_text=True)
-    assert _bento_ok(html)
+    # The hub was converted to the kinetic editorial design (issue #41):
+    # site shell (b-nav) + kinetic.css + sb-tool track cards, no bento cards.
+    assert 'b-nav' in html and 'kinetic.css' in html and 'sb-tool' in html
     assert '/learn/roadmaps' in html and '/learn/quizzes' in html and '/learn/certs' in html
 
 
