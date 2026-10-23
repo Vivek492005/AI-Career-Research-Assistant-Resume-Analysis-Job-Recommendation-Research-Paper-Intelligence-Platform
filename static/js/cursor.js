@@ -145,6 +145,17 @@
   /* 3D tilt + shine on showcase cards. */
   document.querySelectorAll('.sb-tool, .sb-step, .feature-card, [data-tilt]').forEach(function (card) {
     card.classList.add('sb-tilt');
+    var title = card.querySelector('.sb-tool-title');
+    if (title) {
+      card.addEventListener('mouseenter', function () {
+        title.classList.remove('sb-title-replay');
+        void title.offsetWidth;
+        title.classList.add('sb-title-replay');
+      });
+      title.addEventListener('animationend', function () {
+        title.classList.remove('sb-title-replay');
+      });
+    }
     card.addEventListener('mousemove', function (e) {
       var r = card.getBoundingClientRect();
       var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;

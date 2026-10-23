@@ -67,3 +67,32 @@ body.sb-editorial .sb-hero:hover .sb-note { opacity: 1; }
   animation: sbWordReplay 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 .sb-mask { cursor: default; }
+
+/* Tool cards (homepage paper grid): black-theme sweep on hover — the
+   ink background wipes up, text inverts, title goes lime; the title
+   itself re-appears with a dip-and-rise replay like the headline words. */
+body.sb-editorial .sb-tool { position: relative; overflow: hidden; }
+body.sb-editorial .sb-tool::before {
+  content: ""; position: absolute; inset: 0; background: #0a0a0a; z-index: 0;
+  transform: translateY(101%);
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+body.sb-editorial .sb-tool:hover::before,
+body.sb-editorial .sb-tool:focus-visible::before { transform: translateY(0); }
+body.sb-editorial .sb-tool > * { position: relative; z-index: 1; }
+body.sb-editorial .sb-tool .sb-tool-num,
+body.sb-editorial .sb-tool .sb-tool-title,
+body.sb-editorial .sb-tool p,
+body.sb-editorial .sb-tool .sb-tool-link { transition: color 0.35s ease; }
+body.sb-editorial .sb-tool:hover .sb-tool-title,
+body.sb-editorial .sb-tool:focus-visible .sb-tool-title { color: var(--sb-lime); }
+body.sb-editorial .sb-tool:hover .sb-tool-num { color: var(--sb-lime); }
+body.sb-editorial .sb-tool:hover p { color: #b9b9b3; }
+body.sb-editorial .sb-tool:hover .sb-tool-link { color: #fff; }
+@keyframes sbTitleReplay {
+  0% { transform: translateY(0); opacity: 1; }
+  32% { transform: translateY(12px); opacity: 0; }
+  33% { transform: translateY(-12px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.sb-tool-title.sb-title-replay { animation: sbTitleReplay 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
