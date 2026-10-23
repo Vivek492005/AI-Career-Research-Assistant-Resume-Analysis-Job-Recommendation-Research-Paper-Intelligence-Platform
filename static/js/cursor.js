@@ -131,8 +131,11 @@
     });
   });
 
-  /* Hero photo pixel re-appear: on hover the student dissolves into
-     pixels and re-resolves (canvas snapshot, shrinking pixel size). */
+  /* Hero photo "generation" reveal: on hover the photo vanishes to
+     blank, then materialises like an AI image generating — huge pixel
+     blocks that refine step by step into the sharp full image. The
+     real <img> hides underneath while the canvas performs, so there
+     is no double-image muddiness. */
   var heroVisual = document.querySelector('.sb-hero-visual');
   var heroImg = heroVisual ? heroVisual.querySelector('.sb-hero-photo') : null;
   if (heroVisual && heroImg) {
@@ -153,27 +156,40 @@
       var dx = (W - dw) * 0.58, dy = H - dh;
       var small = document.createElement('canvas');
       var sctx = small.getContext('2d');
-      var sizes = [46, 34, 25, 18, 12, 7, 3];
+      var steps = [[90, 140], [64, 125], [44, 110], [30, 100], [20, 90], [13, 80], [8, 70], [4, 60]];
       var i = 0;
+      /* Blank first: hide the photo, show the empty canvas. */
+      heroImg.style.opacity = '0';
+      ctx.clearRect(0, 0, W, H);
       pxCanvas.classList.remove('off');
       pxCanvas.classList.add('on');
-      function step() {
-        var s = sizes[i];
-        var w2 = Math.max(1, Math.round(dw / s)), h2 = Math.max(1, Math.round(dh / s));
+      function drawPixels(size) {
+        var w2 = Math.max(1, Math.round(dw / size)), h2 = Math.max(1, Math.round(dh / size));
         small.width = w2; small.height = h2;
         sctx.drawImage(heroImg, 0, 0, w2, h2);
         ctx.imageSmoothingEnabled = false;
         ctx.clearRect(0, 0, W, H);
         ctx.drawImage(small, 0, 0, w2, h2, dx, dy, dw, dh);
-        i++;
-        if (i < sizes.length) setTimeout(step, 55);
-        else setTimeout(function () {
+      }
+      function step() {
+        if (i < steps.length) {
+          drawPixels(steps[i][0]);
+          var wait = steps[i][1];
+          i++;
+          setTimeout(step, wait);
+        } else {
+          /* Sharp final frame on the canvas, then cross-fade back to
+             the real image (identical rendering, invisible swap). */
+          ctx.imageSmoothingEnabled = true;
+          ctx.clearRect(0, 0, W, H);
+          ctx.drawImage(heroImg, dx, dy, dw, dh);
+          heroImg.style.opacity = '';
           pxCanvas.classList.add('off');
           pxCanvas.classList.remove('on');
-          setTimeout(function () { pxBusy = false; }, 140);
-        }, 70);
+          setTimeout(function () { pxBusy = false; }, 220);
+        }
       }
-      step();
+      setTimeout(step, 150);
     });
   }
 
