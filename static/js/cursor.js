@@ -131,42 +131,41 @@
     });
   });
 
-  /* Hero photo "generation" reveal: on hover the photo vanishes to
-     blank, then materialises like an AI image generating — huge pixel
-     blocks that refine step by step into the sharp full image. The
-     real <img> hides underneath while the canvas performs, so there
-     is no double-image muddiness. */
-  var heroVisual = document.querySelector('.sb-hero-visual');
-  var heroImg = heroVisual ? heroVisual.querySelector('.sb-hero-photo') : null;
-  if (heroVisual && heroImg) {
+  /* "Generation" reveal: the photo vanishes to blank, then
+     materialises like an AI image generating — huge pixel blocks
+     that refine step by step into the sharp full image. The real
+     <img> hides underneath while the canvas performs, so there is
+     no double-image muddiness. Used by the homepage hero figure
+     (contain fit, bottom-anchored) and by any [data-gen-reveal]
+     visual (cover fit, full colour). */
+  function attachGeneration(visual, img, fit) {
     var pxCanvas = document.createElement('canvas');
     pxCanvas.className = 'sb-pixel-canvas';
     pxCanvas.setAttribute('aria-hidden', 'true');
-    heroVisual.appendChild(pxCanvas);
+    visual.appendChild(pxCanvas);
     var pxBusy = false;
     function playGeneration() {
-      if (pxBusy || !heroImg.complete || !heroImg.naturalWidth) return;
+      if (pxBusy || !img.complete || !img.naturalWidth) return;
       pxBusy = true;
-      var box = heroImg.getBoundingClientRect();
+      var box = img.getBoundingClientRect();
       var W = Math.max(2, Math.round(box.width)), H = Math.max(2, Math.round(box.height));
       pxCanvas.width = W; pxCanvas.height = H;
       var ctx = pxCanvas.getContext('2d');
-      var scale = Math.min(W / heroImg.naturalWidth, H / heroImg.naturalHeight);
-      var dw = heroImg.naturalWidth * scale, dh = heroImg.naturalHeight * scale;
-      var dx = (W - dw) * 0.58, dy = H - dh;
+      var f = fit(W, H, img);
+      var dx = f[0], dy = f[1], dw = f[2], dh = f[3];
       var small = document.createElement('canvas');
       var sctx = small.getContext('2d');
       var steps = [[80, 70], [48, 60], [28, 55], [16, 50], [8, 45], [3, 40]];
       var i = 0;
       /* Blank first: hide the photo, show the empty canvas. */
-      heroImg.style.opacity = '0';
+      img.style.opacity = '0';
       ctx.clearRect(0, 0, W, H);
       pxCanvas.classList.remove('off');
       pxCanvas.classList.add('on');
       function drawPixels(size) {
         var w2 = Math.max(1, Math.round(dw / size)), h2 = Math.max(1, Math.round(dh / size));
         small.width = w2; small.height = h2;
-        sctx.drawImage(heroImg, 0, 0, w2, h2);
+        sctx.drawImage(img, 0, 0, w2, h2);
         ctx.imageSmoothingEnabled = false;
         ctx.clearRect(0, 0, W, H);
         ctx.drawImage(small, 0, 0, w2, h2, dx, dy, dw, dh);
@@ -182,8 +181,8 @@
              the real image (identical rendering, invisible swap). */
           ctx.imageSmoothingEnabled = true;
           ctx.clearRect(0, 0, W, H);
-          ctx.drawImage(heroImg, dx, dy, dw, dh);
-          heroImg.style.opacity = '';
+          ctx.drawImage(img, dx, dy, dw, dh);
+          img.style.opacity = '';
           pxCanvas.classList.add('off');
           pxCanvas.classList.remove('on');
           setTimeout(function () { pxBusy = false; }, 150);
@@ -191,16 +190,34 @@
       }
       setTimeout(step, 60);
     }
-    heroVisual.addEventListener('mouseenter', playGeneration);
-    /* Auto-play once when the page opens, like the headline reveal on
-       the left: shortly after load, if the hero is on screen. */
+    visual.addEventListener('mouseenter', playGeneration);
+    /* Auto-play once when the page opens, like the headline reveal:
+       shortly after load, if the visual is on screen. */
     function autoPlay() {
-      var r = heroVisual.getBoundingClientRect();
+      var r = visual.getBoundingClientRect();
       if (r.bottom > 0 && r.top < window.innerHeight) playGeneration();
     }
-    if (heroImg.complete && heroImg.naturalWidth) setTimeout(autoPlay, 750);
-    else heroImg.addEventListener('load', function () { setTimeout(autoPlay, 750); });
+    if (img.complete && img.naturalWidth) setTimeout(autoPlay, 750);
+    else img.addEventListener('load', function () { setTimeout(autoPlay, 750); });
   }
+  var heroVisual = document.querySelector('.sb-hero-visual');
+  var heroImg = heroVisual ? heroVisual.querySelector('.sb-hero-photo') : null;
+  if (heroVisual && heroImg) {
+    attachGeneration(heroVisual, heroImg, function (W, H, img) {
+      var scale = Math.min(W / img.naturalWidth, H / img.naturalHeight);
+      var dw = img.naturalWidth * scale, dh = img.naturalHeight * scale;
+      return [(W - dw) * 0.58, H - dh, dw, dh];
+    });
+  }
+  document.querySelectorAll('[data-gen-reveal]').forEach(function (visual) {
+    var img = visual.querySelector('img');
+    if (!img) return;
+    attachGeneration(visual, img, function (W, H, im) {
+      var scale = Math.max(W / im.naturalWidth, H / im.naturalHeight);
+      var dw = im.naturalWidth * scale, dh = im.naturalHeight * scale;
+      return [(W - dw) / 2, (H - dh) / 2, dw, dh];
+    });
+  });
 
   /* Outline stage: the slogan's letters stream in one after another
      at a steady place-rate (~7/sec) with the solid block-pop, then

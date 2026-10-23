@@ -936,3 +936,23 @@ body.sb-workspace .hero h2.hero-h {
 .sb-outline-stage .sb-blk { display: inline-block; }
 
 .sb-outline-band.is-live .sb-blk.is-placed { animation-duration: 0.3s; }
+
+/* Resume Studio intro split: intro text left, the annotated-resume
+   photo right, filling the old blank half. The photo reuses the
+   generation reveal; its canvas must render full colour (no hero
+   grayscale/multiply), so the blend is reset inside this visual. */
+.sb-work-intro--split .b-wrap {
+  max-width: 1280px; display: grid;
+  grid-template-columns: 1.05fr 0.95fr; gap: 44px; align-items: center;
+}
+.sb-work-intro--split .sb-display { font-size: clamp(3rem, 6.2vw, 5.6rem); }
+.sb-resume-visual { position: relative; margin: 0; }
+.sb-resume-photo {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 1400 / 1180; object-fit: cover;
+  border: 1px solid var(--sb-line-soft);
+}
+.sb-resume-visual .sb-pixel-canvas { mix-blend-mode: normal; filter: none; }
+@media (max-width: 900px) {
+  .sb-work-intro--split .b-wrap { grid-template-columns: 1fr; gap: 28px; }
+}

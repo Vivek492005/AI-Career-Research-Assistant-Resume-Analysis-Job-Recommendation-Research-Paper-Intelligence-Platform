@@ -21,8 +21,9 @@
     {% include "_site_nav.html" %}
 
     <!-- Mode A intro, separated from the Mode B workspace below. -->
-    <section class="sb-work-intro" aria-label="Resume Studio introduction">
+    <section class="sb-work-intro sb-work-intro--split" aria-label="Resume Studio introduction">
         <div class="b-wrap">
+            <div class="sb-work-intro-text">
             <p class="sb-work-meta">Resume Studio — 01 / Upload · 02 / JD match · 03 / Rewrite · 04 / Versions · 05 / Cover · 06 / LinkedIn</p>
             <h1 class="sb-display" aria-label="Turn your resume into opportunities.">
                 <span class="sb-mask"><span>Turn your</span></span>
@@ -30,6 +31,10 @@
                 <span class="sb-mask"><span style="--sb-delay:180ms"><span class="sb-accent">opportunities.</span></span></span>
             </h1>
             <p class="sb-lede">Upload a resume and get readable, evidence-based feedback — what matches, what is missing, and what to fix first. No decorative scores, no mystery numbers.</p>
+            </div>
+            <figure class="sb-resume-visual" data-gen-reveal>
+                <img class="sb-resume-photo" src="{{ url_for('static', filename='img/resume-annotated.jpg') }}" alt="A printed student resume reviewed by hand — key skills highlighted in blue, experience ticked in green, with sticky-note reminders for an interview and a submission deadline" width="1400" height="1180">
+            </figure>
         </div>
     </section>
 
