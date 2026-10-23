@@ -97,3 +97,13 @@ body.sb-editorial .sb-tool:hover .sb-tool-link { color: #fff; }
   100% { transform: translateY(0); opacity: 1; }
 }
 .sb-tool-title.sb-title-replay { animation: sbTitleReplay 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+/* Pixel re-appear canvas: mirrors the photo's blend/filter so only the
+   figure pixelates; the white ground blends away exactly like the img. */
+.sb-pixel-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 3; pointer-events: none; opacity: 0;
+  mix-blend-mode: multiply; filter: grayscale(1) contrast(1.06);
+}
+.sb-pixel-canvas.on { opacity: 1; }
+.sb-pixel-canvas.off { opacity: 0; transition: opacity 0.12s ease; }

@@ -131,6 +131,52 @@
     });
   });
 
+  /* Hero photo pixel re-appear: on hover the student dissolves into
+     pixels and re-resolves (canvas snapshot, shrinking pixel size). */
+  var heroVisual = document.querySelector('.sb-hero-visual');
+  var heroImg = heroVisual ? heroVisual.querySelector('.sb-hero-photo') : null;
+  if (heroVisual && heroImg) {
+    var pxCanvas = document.createElement('canvas');
+    pxCanvas.className = 'sb-pixel-canvas';
+    pxCanvas.setAttribute('aria-hidden', 'true');
+    heroVisual.appendChild(pxCanvas);
+    var pxBusy = false;
+    heroVisual.addEventListener('mouseenter', function () {
+      if (pxBusy || !heroImg.complete || !heroImg.naturalWidth) return;
+      pxBusy = true;
+      var box = heroImg.getBoundingClientRect();
+      var W = Math.max(2, Math.round(box.width)), H = Math.max(2, Math.round(box.height));
+      pxCanvas.width = W; pxCanvas.height = H;
+      var ctx = pxCanvas.getContext('2d');
+      var scale = Math.min(W / heroImg.naturalWidth, H / heroImg.naturalHeight);
+      var dw = heroImg.naturalWidth * scale, dh = heroImg.naturalHeight * scale;
+      var dx = (W - dw) * 0.58, dy = H - dh;
+      var small = document.createElement('canvas');
+      var sctx = small.getContext('2d');
+      var sizes = [46, 34, 25, 18, 12, 7, 3];
+      var i = 0;
+      pxCanvas.classList.remove('off');
+      pxCanvas.classList.add('on');
+      function step() {
+        var s = sizes[i];
+        var w2 = Math.max(1, Math.round(dw / s)), h2 = Math.max(1, Math.round(dh / s));
+        small.width = w2; small.height = h2;
+        sctx.drawImage(heroImg, 0, 0, w2, h2);
+        ctx.imageSmoothingEnabled = false;
+        ctx.clearRect(0, 0, W, H);
+        ctx.drawImage(small, 0, 0, w2, h2, dx, dy, dw, dh);
+        i++;
+        if (i < sizes.length) setTimeout(step, 55);
+        else setTimeout(function () {
+          pxCanvas.classList.add('off');
+          pxCanvas.classList.remove('on');
+          setTimeout(function () { pxBusy = false; }, 140);
+        }, 70);
+      }
+      step();
+    });
+  }
+
   /* Magnetic CTAs: drift toward the pointer, snap back on leave. */
   document.querySelectorAll('a.sb-btn, .b-btn--primary, .sb-hero-card').forEach(function (elm) {
     elm.addEventListener('mousemove', function (e) {

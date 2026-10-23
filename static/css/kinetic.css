@@ -872,3 +872,11 @@ body.sb-workspace .hero h2.hero-h {
   .sb-learn-stats { grid-template-columns: repeat(2, 1fr); }
   .sb-learn-step { flex-wrap: wrap; }
 }
+
+/* Hero stretch (user): the figure reaches further left — wider visual
+   column, tighter gap, photo anchored left-of-centre. The empty strip
+   between headline and student shrinks by roughly a third. */
+@media (min-width: 901px) {
+  .sb-hero-grid { grid-template-columns: 6.3fr 5.7fr; gap: 32px; }
+}
+.sb-hero-photo { object-position: 58% bottom; }
