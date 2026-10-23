@@ -1363,3 +1363,133 @@ body .dg-card:hover p, body .dp-card:hover p { color: #4c4c46 !important; }
 .dg-card:hover .dg-h3 { color: var(--sb-ink) !important; }
 .dg-card:hover .dg-stat .v { color: var(--sb-blue) !important; }
 .dg-card:hover .dg-stat .l { color: #4c4c46 !important; }
+
+/* body.sb-app is a dark scope (Mode D remaps every surface to
+   ink): its tile cards take the PAPER flood like the other dark
+   contexts, with ink text and ink icon chips on hover. */
+body.sb-app .b-card--feature::before, body.sb-app .b-card--lite::before,
+body.sb-app .b-card--stat::before, body.sb-app .b-card--cta::before { background: var(--sb-paper); }
+body.sb-app .b-card--feature:hover, body.sb-app .b-card--lite:hover,
+body.sb-app .b-card--stat:hover, body.sb-app .b-card--cta:hover { border-color: var(--sb-paper); }
+body.sb-app .b-card--feature:hover :is(h2, h3, h4), body.sb-app .b-card--lite:hover :is(h2, h3, h4),
+body.sb-app .b-card--stat:hover :is(h2, h3, h4), body.sb-app .b-card--cta:hover :is(h2, h3, h4) { color: var(--sb-ink) !important; }
+body.sb-app .b-card--feature:hover p, body.sb-app .b-card--lite:hover p,
+body.sb-app .b-card--stat:hover p, body.sb-app .b-card--cta:hover p { color: #4c4c46 !important; }
+body.sb-app .b-card--feature:hover .b-icon, body.sb-app .b-card--lite:hover .b-icon {
+  background: var(--sb-ink) !important; color: var(--sb-paper) !important; border-color: var(--sb-ink) !important;
+}
+body.sb-app .b-card--stat:hover :is(b, strong) { color: var(--sb-blue) !important; }
+/* Practice hub company cards: the name/count are plain divs and
+   the logos are filtered white — flip all three with the flood,
+   or the logo would vanish on paper. */
+.company-grid .company-card:hover .company-name { color: var(--sb-ink) !important; }
+.company-grid .company-card:hover .company-count { color: #4c4c46 !important; }
+.company-grid .company-card:hover .company-logo { background: rgba(10, 10, 10, 0.06); border-color: rgba(10, 10, 10, 0.14); }
+.company-grid .company-card:hover .company-logo img { filter: brightness(0); opacity: 1; }
+
+/* body.sb-base tool pages (roadmaps, quizzes, learn grids) are
+   dark bento scopes too: same paper flood as sb-app/sb-dsa, plus
+   flips for the card atoms that are not h/p elements — domain
+   tags, key-value rows and the inline-muted topic lines. */
+body.sb-base .b-card--feature::before, body.sb-base .b-card--lite::before,
+body.sb-base .b-card--stat::before, body.sb-base .b-card--cta::before { background: var(--sb-paper); }
+body.sb-base .b-card--feature:hover, body.sb-base .b-card--lite:hover,
+body.sb-base .b-card--stat:hover, body.sb-base .b-card--cta:hover { border-color: var(--sb-paper); }
+body.sb-base .b-card--feature:hover :is(h2, h3, h4), body.sb-base .b-card--lite:hover :is(h2, h3, h4),
+body.sb-base .b-card--stat:hover :is(h2, h3, h4), body.sb-base .b-card--cta:hover :is(h2, h3, h4) { color: var(--sb-ink) !important; }
+body.sb-base .b-card--feature:hover p, body.sb-base .b-card--lite:hover p,
+body.sb-base .b-card--stat:hover p, body.sb-base .b-card--cta:hover p { color: #4c4c46 !important; }
+body.sb-base .b-card--feature:hover .b-icon, body.sb-base .b-card--lite:hover .b-icon {
+  background: var(--sb-ink) !important; color: var(--sb-paper) !important; border-color: var(--sb-ink) !important;
+}
+body.sb-base .b-card--stat:hover :is(b, strong) { color: var(--sb-blue) !important; }
+/* Card atoms: tags flip with the flood (paper text on ink flood,
+   ink text on paper flood); KV rows and muted lines follow. */
+.b-card--feature:hover .b-tag, .b-card--lite:hover .b-tag {
+  color: var(--sb-paper) !important; border-color: rgba(242, 241, 234, 0.45) !important;
+}
+:is(body.sb-app, body.sb-base, body.sb-dsa) .b-card--feature:hover .b-tag,
+:is(body.sb-app, body.sb-base, body.sb-dsa) .b-card--lite:hover .b-tag {
+  color: var(--sb-ink) !important; border-color: rgba(10, 10, 10, 0.35) !important;
+}
+:is(body.sb-app, body.sb-base, body.sb-dsa) .b-card--feature:hover .b-kv-label,
+:is(body.sb-app, body.sb-base, body.sb-dsa) .b-card--lite:hover .b-kv-label { color: #4c4c46 !important; }
+:is(body.sb-app, body.sb-base, body.sb-dsa) .b-card--feature:hover .b-kv-val,
+:is(body.sb-app, body.sb-base, body.sb-dsa) .b-card--lite:hover .b-kv-val { color: var(--sb-ink) !important; }
+:is(body.sb-app, body.sb-base, body.sb-dsa) .b-card--lite:hover > div { color: #4c4c46 !important; }
+
+/* Salary range cards (standalone dark page, own inline styles):
+   paper flood as well — the range bar keeps its data colours,
+   only its pale track darkens so it stays visible on paper. */
+.sal-card { position: relative; z-index: 0; overflow: hidden; }
+.sal-card::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--sb-paper); transform: translateY(101%);
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.sal-card:hover::before, .sal-card:focus-visible::before { transform: translateY(0); }
+.sal-card:hover { border-color: var(--sb-paper); }
+.sal-card:hover h3 { color: var(--sb-ink) !important; }
+.sal-card:hover .sal-sub, .sal-card:hover .sal-nums .lo { color: #4c4c46 !important; }
+.sal-card:hover .sal-bar { background: rgba(10, 10, 10, 0.12); }
+.sal-card:hover .sal-bar .you { background: var(--sb-ink); }
+
+/* Opportunity cards ride the sb-app paper flood (they are
+   b-card--lite); their inner atoms flip too, while the type
+   badges deepen to print-safe shades, the countdown keeps its
+   accent, and a closing-soon card keeps its amber edge. */
+.opp-card:hover .opp-org, .opp-card:hover .opp-elig { color: #4c4c46 !important; }
+.opp-card:hover .opp-deadline { color: var(--sb-ink) !important; }
+.opp-card:hover .opp-badge.hackathon { color: #7c3aed; }
+.opp-card:hover .opp-badge.internship { color: #047857; }
+.opp-card:hover .opp-badge.scholarship { color: #0369a1; }
+.opp-card:hover .opp-badge.exam { color: #b45309; }
+.opp-card:hover .opp-badge.competition { color: #be185d; }
+.opp-card:hover .opp-soon { color: #b45309; }
+.opp-card.soon:hover { border-color: rgba(245, 158, 11, 0.55) !important; }
+.opp-card:hover .opp-link { color: #047857; border-color: rgba(4, 120, 87, 0.5); }
+.opp-card:hover .opp-bm { color: var(--sb-ink); border-color: rgba(10, 10, 10, 0.35); }
+.opp-card:hover .opp-bm.saved { color: #b45309; border-color: #b45309; }
+
+/* Research pages (body.sb-research) are a dark scope as well:
+   same paper flood for their bento tiles; the feature icon
+   keeps a blue accent on paper. Tracker kanban cards (.tk-card)
+   are dark-board tiles and flood the same way, and stat-card
+   labels follow their numbers onto paper. */
+body.sb-research .b-card--feature::before, body.sb-research .b-card--lite::before,
+body.sb-research .b-card--stat::before, body.sb-research .b-card--cta::before { background: var(--sb-paper); }
+body.sb-research .b-card--feature:hover, body.sb-research .b-card--lite:hover,
+body.sb-research .b-card--stat:hover, body.sb-research .b-card--cta:hover { border-color: var(--sb-paper); }
+body.sb-research .b-card--feature:hover :is(h2, h3, h4), body.sb-research .b-card--lite:hover :is(h2, h3, h4),
+body.sb-research .b-card--stat:hover :is(h2, h3, h4), body.sb-research .b-card--cta:hover :is(h2, h3, h4) { color: var(--sb-ink) !important; }
+body.sb-research .b-card--feature:hover p, body.sb-research .b-card--lite:hover p,
+body.sb-research .b-card--stat:hover p, body.sb-research .b-card--cta:hover p { color: #4c4c46 !important; }
+body.sb-research .b-card--feature:hover .b-icon, body.sb-research .b-card--lite:hover .b-icon {
+  background: var(--sb-ink) !important; color: var(--sb-paper) !important; border-color: var(--sb-ink) !important;
+}
+body.sb-research .b-card--stat:hover :is(b, strong) { color: var(--sb-blue) !important; }
+.feature-card:hover .feature-icon { color: var(--sb-blue) !important; }
+:is(body.sb-app, body.sb-base, body.sb-dsa, body.sb-research) .b-card--stat:hover span { color: #4c4c46 !important; }
+.tk-card { position: relative; z-index: 0; overflow: hidden; }
+.tk-card::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--sb-paper); transform: translateY(101%);
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.tk-card:hover::before { transform: translateY(0); }
+.tk-card:hover :is(h3, h4, b, strong) { color: var(--sb-ink) !important; }
+.tk-card:hover :is(p, span, small) { color: #4c4c46 !important; }
+/* Ultimate Lab cards expand a working form inside the card:
+   while a tool is open the flood drains back out and the text
+   stays on the dark theme, so the form remains usable. The
+   collapsed card's Open button inverts with the flood. */
+.lab-card:not(:has(.lab-form.b-open)):hover > .b-btn {
+  background: var(--sb-ink) !important; color: var(--sb-paper) !important; border-color: var(--sb-ink) !important;
+}
+.lab-card:has(.lab-form.b-open)::before { transform: translateY(101%) !important; }
+.lab-card:has(.lab-form.b-open):hover { border-color: var(--b-border); }
+.lab-card:has(.lab-form.b-open):hover h3 { color: #fff !important; }
+.lab-card:has(.lab-form.b-open):hover p { color: #fff !important; }
+.lab-card:has(.lab-form.b-open):hover .b-tag {
+  color: var(--sb-paper) !important; border-color: rgba(242, 241, 234, 0.45) !important;
+}
