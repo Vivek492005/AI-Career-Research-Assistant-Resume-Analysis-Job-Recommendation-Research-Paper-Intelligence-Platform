@@ -1114,15 +1114,6 @@ body.sb-workspace .hero h2.hero-h {
 @keyframes dmCaret { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
 
 /* 06 — LinkedIn grader */
-.jd-demo--linkedin { z-index: 0; }
-.jd-demo--linkedin::before {
-  content: ""; position: absolute; inset: 0; background: var(--sb-ink);
-  transform: translateY(101%); transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1); z-index: -1;
-}
-.jd-demo--linkedin:hover::before { transform: translateY(0); }
-.jd-demo--linkedin:hover .dm-name, .jd-demo--linkedin:hover .dm-note { color: #fff; }
-.jd-demo--linkedin:hover .dm-headline { color: #d8d8d2; }
-.jd-demo--linkedin:hover .dm-avatar { background: var(--sb-lime); }
 .dm-profile { display: flex; gap: 12px; align-items: flex-start; }
 .dm-avatar {
   flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%;
@@ -1156,10 +1147,74 @@ body.sb-workspace .hero h2.hero-h {
   .sb-work .hero { max-width: 1072px; }
   .sb-work .jd-section {
     display: grid; grid-template-columns: minmax(0, 1fr) 400px;
-    gap: 44px; align-items: start;
+    gap: 44px; align-items: stretch;
   }
+  .sb-work .jd-section .jd-card { align-self: start; }
   .sb-work .jd-section .jd-demo {
-    margin-top: 6px; max-width: none; position: sticky; top: 92px;
+    margin-top: 0; max-width: none; position: relative;
   }
   .sb-work #features .b-wrap { max-width: none; padding-left: 0; padding-right: 0; }
 }
+
+/* Full-length rail scenes: the demo is a flex column as tall as
+   its card — first group at the top, last group pinned to the
+   bottom, so the animation spans the card's whole length while
+   sitting directly on the page paper. */
+.jd-demo { display: flex; flex-direction: column; }
+.jd-demo > :last-child { margin-top: auto; }
+.dm-group + .dm-group, .dm-group + .dm-note { margin-top: 26px; }
+.jd-demo > .dm-note { margin-top: 18px; }
+.jd-demo > .dm-note:last-child { margin-top: auto; padding-top: 18px; }
+.dm-sub {
+  font-family: var(--sb-mono); font-size: 0.68rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--sb-muted-dark); margin: 0 0 4px;
+}
+.dm-meter, .dm-check {
+  display: grid; grid-template-columns: 104px minmax(0, 1fr) 42px;
+  align-items: center; gap: 10px; margin-top: 10px;
+}
+.dm-check { grid-template-columns: 104px minmax(0, 1fr) 78px; opacity: 0.35; transition: opacity 0.45s ease; }
+.dm-check.is-in { opacity: 1; }
+.dm-meter > span, .dm-check > span { font-size: 0.82rem; font-weight: 600; color: var(--sb-ink); }
+.dm-track { height: 8px; background: rgba(10, 10, 10, 0.1); overflow: hidden; }
+.dm-track i { display: block; height: 100%; width: 0; background: var(--sb-blue); }
+.dm-meter b { font-family: var(--sb-mono); font-size: 0.78rem; text-align: right; color: var(--sb-ink); }
+.dm-check em {
+  font-style: normal; font-family: var(--sb-mono); font-size: 0.64rem;
+  padding: 3px 6px; text-align: center; white-space: nowrap;
+}
+.dm-check em.is-ok { background: var(--sb-ink); color: var(--sb-lime); }
+.dm-check em.is-warn { border: 1px dashed #a09d8f; color: var(--sb-muted-dark); }
+/* versions timeline thread */
+.dm-timeline { position: relative; padding-left: 20px; }
+.dm-timeline::before {
+  content: ""; position: absolute; left: 6px; top: 16px; bottom: 16px;
+  width: 2px; background: rgba(10, 10, 10, 0.14);
+}
+.dm-timeline .dm-vs::after {
+  content: ""; position: absolute; left: -19px; top: 50%; width: 9px; height: 9px;
+  margin-top: -5px; border-radius: 50%; background: var(--sb-paper);
+  border: 2px solid rgba(10, 10, 10, 0.35); transition: background 0.3s ease, border-color 0.3s ease;
+}
+.dm-timeline .dm-vs.is-active { transform: none; }
+.dm-timeline .dm-vs.is-active::after { background: var(--sb-blue); border-color: var(--sb-blue); }
+/* bullet: second sheet spacing */
+.dm-sheet + .dm-sheet { margin-top: 14px; }
+/* cover: taller letter + outreach slip */
+.dm-letter .dm-type { min-height: 212px; }
+.dm-slip {
+  background: #fff; border: 1px solid var(--sb-line-soft);
+  padding: 14px 16px; transform: rotate(-1.1deg);
+}
+.dm-slip-tag {
+  display: block; font-family: var(--sb-mono); font-size: 0.64rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--sb-blue);
+  margin-bottom: 8px;
+}
+.dm-type--sm { font-size: 0.88rem; min-height: 76px; }
+[data-dm-caret2] { display: none; }
+.jd-demo--cover.is-note [data-dm-caret] { display: none; }
+.jd-demo--cover.is-note [data-dm-caret2] { display: inline-block; }
+/* A trailing group (e.g. the LinkedIn audit) pins to the rail's
+   bottom — declared after the group-spacing rule it overrides. */
+.jd-demo > .dm-group:last-child { margin-top: auto; }
