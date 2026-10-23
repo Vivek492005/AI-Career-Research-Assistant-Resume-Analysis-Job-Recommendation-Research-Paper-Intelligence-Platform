@@ -39,10 +39,26 @@ body.sb-cursor-on .sb-cursor-dot, body.sb-cursor-on .sb-cursor-ring { opacity: 1
 .sb-tilt:hover::after { opacity: 1; }
 
 /* Homepage reactivity: every card and heading answers the pointer. */
-body.sb-editorial .sb-stat { transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
-body.sb-editorial .sb-stat b { display: inline-block; transition: transform 0.3s ease, color 0.3s ease; }
-body.sb-editorial .sb-stat:hover { transform: translateY(-4px); }
-body.sb-editorial .sb-stat:hover b { color: var(--sb-lime); transform: translateY(-2px) scale(1.04); }
+/* Stats band: centred, larger, and the same black-sweep hover as the
+   tool cards — ink wipes up, number goes lime, label inverts. */
+body.sb-editorial .sb-stat {
+  text-align: center; padding: 26px 12px;
+  position: relative; overflow: hidden;
+}
+body.sb-editorial .sb-stat::before {
+  content: ""; position: absolute; inset: 0; background: #0a0a0a; z-index: 0;
+  transform: translateY(101%);
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+body.sb-editorial .sb-stat:hover::before { transform: translateY(0); }
+body.sb-editorial .sb-stat > * { position: relative; z-index: 1; }
+body.sb-editorial .sb-stat b {
+  display: inline-block; font-size: 3.4rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+body.sb-editorial .sb-stat span { font-size: 0.98rem; transition: color 0.3s ease; }
+body.sb-editorial .sb-stat:hover b { color: var(--sb-lime); transform: translateY(-2px) scale(1.05); }
+body.sb-editorial .sb-stat:hover span { color: #b9b9b3; }
 body.sb-editorial .sb-step { transition: border-color 0.3s ease, background-color 0.3s ease; }
 body.sb-editorial .sb-tool { transition: border-color 0.3s ease, background-color 0.3s ease; }
 body.sb-editorial .sb-section-title {
