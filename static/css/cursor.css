@@ -58,14 +58,12 @@ body.sb-editorial .sb-hero:hover .sb-note { opacity: 1; }
 /* Headline word replay: hovering a display line makes the word exit up
    and re-appear rising from below — the load-in reveal, on demand. */
 @keyframes sbWordReplay {
-  0% { transform: translateX(0); }
-  28% { transform: translateX(112%); }
-  29% { transform: translateX(-112%); }
-  100% { transform: translateX(0); }
+  0% { clip-path: inset(-8% 100% -8% -2%); transform: translateX(-10px); }
+  100% { clip-path: inset(-8% -2% -8% -2%); transform: translateX(0); }
 }
 .sb-mask > span.sb-replay {
   display: inline-block;
-  animation: sbWordReplay 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: sbWordReplay 0.9s cubic-bezier(0.25, 0.7, 0.25, 1) both;
 }
 .sb-mask { cursor: default; }
 
