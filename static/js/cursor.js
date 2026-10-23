@@ -202,17 +202,14 @@
     else heroImg.addEventListener('load', function () { setTimeout(autoPlay, 750); });
   }
 
-  /* Outline stage, Minecraft-realistic: the player-size character
-     walks to within reach of the next word, the black selection
-     outline flashes on the target (as in-game), his arm swings and
-     the block pops in solid for a beat before settling to outline.
-     Word by word; at the end he steps past, jumps and poofs away. */
+  /* Outline stage: the slogan's letters stream in one after another
+     at a steady place-rate (~7/sec) with the solid block-pop, then
+     settle to outline; the band dwells, clears and loops while in
+     view. Without JS (or reduced motion) the slogan simply shows. */
   var band = document.querySelector('.sb-outline-band');
   var stage = band ? band.querySelector('.sb-outline-stage') : null;
-  var charEl = band ? band.querySelector('.sb-char') : null;
-  var selBox = band ? band.querySelector('.sb-selbox') : null;
   var blks = band ? Array.prototype.slice.call(band.querySelectorAll('.sb-blk')) : [];
-  if (band && stage && charEl && selBox && blks.length) {
+  if (band && stage && blks.length) {
     var playing = false, inView = false;
     function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
     function puff(x, y, cls, n, size) {
@@ -230,82 +227,21 @@
         anim.onfinish = (function (el) { return function () { el.remove(); }; })(p);
       }
     }
-    function charW() { return charEl.offsetWidth || 60; }
-    function moveCharTo(leftX, speed) {
-      var cur = parseFloat(charEl.dataset.x || '-140');
-      var dur = Math.max(70, Math.abs(leftX - cur) / speed);
-      charEl.dataset.x = leftX;
-      charEl.classList.add('is-running');
-      charEl.style.transition = 'transform ' + dur + 'ms linear';
-      charEl.style.transform = 'translateX(' + leftX + 'px)';
-      return wait(dur).then(function () { charEl.classList.remove('is-running'); });
-    }
     function relRect(el) {
       var sr = stage.getBoundingClientRect(), r = el.getBoundingClientRect();
       return { left: r.left - sr.left, top: r.top - sr.top, right: r.right - sr.left, bottom: r.bottom - sr.top, width: r.width, height: r.height };
-    }
-    async function flashSelBox(word, quick) {
-      var r = relRect(word);
-      selBox.style.left = (r.left - 8) + 'px';
-      selBox.style.top = (r.top - 6) + 'px';
-      selBox.style.width = (r.width + 16) + 'px';
-      selBox.style.height = (r.height + 12) + 'px';
-      selBox.hidden = false;
-      selBox.classList.add('on');
-      await wait(quick ? 120 : 210);
-      selBox.classList.remove('on');
-      selBox.hidden = true;
     }
     async function playOnce() {
       band.classList.remove('is-clearing');
       band.classList.add('is-live');
       blks.forEach(function (b) { b.classList.remove('is-placed'); });
-      charEl.hidden = false;
-      charEl.style.opacity = '1';
-      charEl.style.transition = 'none';
-      var startX = -charW() - 30;
-      charEl.style.transform = 'translateX(' + startX + 'px)';
-      charEl.dataset.x = startX;
-      await wait(80);
-      /* Trigger point per letter: the char's left edge when his hand is
-         at that letter (he faces left, standing just right of it). */
-      var triggers = blks.map(function (b) { return relRect(b).right + 10; });
-      var firstX = triggers[0];
-      var endX = triggers[triggers.length - 1] + 110;
-      /* Walk in to the first letter. */
-      await moveCharTo(firstX, 1.5);
-      /* Stream: run the whole line at a steady pace while the letters
-         pop in under his hand, like holding place in Minecraft
-         (reference: ~8 blocks/sec stream). No stops, no pauses. */
-      var streamDur = Math.max(1400, (endX - firstX) / 0.62);
-      charEl.classList.add('is-running', 'is-streaming');
-      var move = charEl.animate(
-        [{ transform: 'translateX(' + firstX + 'px)' }, { transform: 'translateX(' + endX + 'px)' }],
-        { duration: streamDur, easing: 'linear', fill: 'forwards' });
-      var timers = triggers.map(function (tx, i) {
-        var t = Math.max(0, (tx - firstX) / (endX - firstX)) * streamDur;
-        return setTimeout(function () {
-          blks[i].classList.add('is-placed');
-          var r = relRect(blks[i]);
-          puff(r.left + r.width / 2, r.bottom - 4, blks[i].classList.contains('sb-blk-arrow') ? 'sb-puff--blue' : '', 2, 6);
-        }, t);
-      });
-      await wait(streamDur + 120);
-      timers.forEach(clearTimeout);
-      charEl.classList.remove('is-running', 'is-streaming');
-      if (move) { try { move.commitStyles(); move.cancel(); } catch (e) {} }
-      charEl.style.transform = 'translateX(' + endX + 'px)';
-      charEl.dataset.x = endX;
-      /* Outro: a hop, then the poof. */
-      charEl.classList.add('is-jumping');
       await wait(200);
-      var sr = stage.getBoundingClientRect();
-      puff(endX + charW() / 2 - 10, sr.height - 70, 'sb-puff--ink', 6, 12);
-      puff(endX + charW() / 2 - 4, sr.height - 34, '', 6, 10);
-      charEl.style.opacity = '0';
-      charEl.classList.remove('is-jumping');
-      await wait(480);
-      charEl.hidden = true;
+      for (var i = 0; i < blks.length; i++) {
+        blks[i].classList.add('is-placed');
+        var r = relRect(blks[i]);
+        puff(r.left + r.width / 2, r.bottom - 4, blks[i].classList.contains('sb-blk-arrow') ? 'sb-puff--blue' : '', 2, 6);
+        await wait(120);
+      }
       await wait(3800);
       band.classList.add('is-clearing');
       await wait(650);

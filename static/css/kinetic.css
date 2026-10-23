@@ -915,26 +915,6 @@ body.sb-workspace .hero h2.hero-h {
   60% { transform: scale(1.07) translateY(-4px); }
   100% { transform: scale(1) translateY(0); }
 }
-.sb-char {
-  position: absolute; left: 0; bottom: -6px; width: 46px; height: 92px;
-  z-index: 5; pointer-events: none; will-change: transform;
-}
-.sb-char-arm-l, .sb-char-arm-r, .sb-char-leg-l, .sb-char-leg-r {
-  transform-box: fill-box; transform-origin: 50% 0;
-}
-.sb-char.is-running .sb-char-leg-l { animation: sbLegSwing 0.28s ease-in-out infinite alternate; }
-.sb-char.is-running .sb-char-leg-r { animation: sbLegSwing 0.28s ease-in-out infinite alternate-reverse; }
-.sb-char.is-running .sb-char-arm-l { animation: sbLegSwing 0.28s ease-in-out infinite alternate-reverse; }
-.sb-char.is-running .sb-char-arm-r { animation: sbLegSwing 0.28s ease-in-out infinite alternate; }
-@keyframes sbLegSwing { from { transform: rotate(16deg); } to { transform: rotate(-16deg); } }
-.sb-char.is-placing .sb-char-arm-l { animation: sbArmPlace 0.32s ease-in-out; }
-@keyframes sbArmPlace {
-  0% { transform: rotate(0); } 45% { transform: rotate(82deg); } 100% { transform: rotate(0); }
-}
-.sb-char.is-jumping { animation: sbCharJump 0.4s ease-out; }
-@keyframes sbCharJump {
-  0% { margin-bottom: 0; } 45% { margin-bottom: 26px; } 100% { margin-bottom: 0; }
-}
 .sb-puff { position: absolute; width: 9px; height: 9px; background: #c9c6ba; z-index: 6; pointer-events: none; }
 .sb-puff--blue { background: #2447ff; }
 .sb-puff--ink { background: #0a0a0a; }
@@ -942,19 +922,6 @@ body.sb-workspace .hero h2.hero-h {
 /* The stage variant is centred, not a marquee — no edge fade. */
 .sb-outline-band { -webkit-mask-image: none; mask-image: none; }
 
-/* Minecraft-realistic pass (researched): player-size character (about
-   the words' height, like a 1.8-block player beside a build), a black
-   selection outline on the target before each placement, and the block
-   popping in solid for a beat before settling to outline. */
-.sb-outline-stage .sb-char { width: 0.52em; height: 1.04em; bottom: -0.06em; }
-.sb-char svg { width: 100%; height: 100%; display: block; }
-.sb-char.is-running svg { animation: sbCharBob 0.24s ease-in-out infinite alternate; }
-@keyframes sbCharBob { from { transform: translateY(0); } to { transform: translateY(-0.03em); } }
-.sb-selbox {
-  position: absolute; border: 3px solid rgba(10, 10, 10, 0.9);
-  opacity: 0; z-index: 4; pointer-events: none; transition: opacity 0.1s linear;
-}
-.sb-selbox.on { opacity: 1; }
 .sb-outline-band.is-live .sb-blk.is-placed { animation: sbBlkPopMc 0.5s steps(6, end) both; }
 @keyframes sbBlkPopMc {
   0% { transform: scale(1.07) translateY(8px); color: #0a0a0a; -webkit-text-stroke-color: #0a0a0a; opacity: 1; }
@@ -968,9 +935,4 @@ body.sb-workspace .hero h2.hero-h {
 .sb-outline-stage .sb-grp { display: inline-flex; letter-spacing: 0.02em; }
 .sb-outline-stage .sb-blk { display: inline-block; }
 
-/* Streaming placement (from the reference video): while Steve runs the
-   line, his placing arm swings continuously (hold-to-place) and the
-   letters pop in fast — solid beat is brief, no theatrical pauses. */
-.sb-char.is-streaming .sb-char-arm-l { animation: sbArmStream 0.19s ease-in-out infinite alternate; }
-@keyframes sbArmStream { from { transform: rotate(6deg); } to { transform: rotate(74deg); } }
 .sb-outline-band.is-live .sb-blk.is-placed { animation-duration: 0.3s; }
