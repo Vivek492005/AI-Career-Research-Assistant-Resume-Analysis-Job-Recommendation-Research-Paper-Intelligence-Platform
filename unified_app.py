@@ -325,6 +325,7 @@ from studybuddy.aptitude_test import mastery_from_attempts as aptitude_mastery
 from studybuddy.aptitude_test import mistakes_from_attempts as aptitude_mistakes_calc
 from studybuddy.aptitude_test import pick_for_setup as aptitude_pick_for_setup
 from studybuddy.aptitude_test import pick_questions as aptitude_pick
+from studybuddy.aptitude_test import selection_counts as aptitude_selection_counts
 from studybuddy.aptitude_test import topics as aptitude_topics
 from studybuddy.aptitude_test import track_counts as aptitude_track_counts
 from studybuddy.aptitude_test import COMPANY_TESTS as APTITUDE_COMPANY_TESTS
@@ -5143,6 +5144,7 @@ def register_routes(app):
             topics_by_track=topics_by_track,
             concept_topics=concept_topics,
             company_tests=APTITUDE_COMPANY_TESTS,
+            selection_counts=aptitude_selection_counts(),
             mastery=mastery, mistake_count=mistake_count, recent=recent)
 
     @app.route('/aptitude/start', methods=['POST'])

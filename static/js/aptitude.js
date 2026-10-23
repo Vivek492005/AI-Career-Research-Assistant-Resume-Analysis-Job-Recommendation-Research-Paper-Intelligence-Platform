@@ -96,15 +96,26 @@
         updateProgress();
     }
 
+    function formPayload() {
+        var payload = {
+            num_questions: parseInt(document.getElementById('sel-count').value, 10),
+            time_limit: parseInt(document.getElementById('sel-time').value, 10),
+        };
+        var topic = document.getElementById('sel-topic').value;
+        var track = document.getElementById('sel-track').value;
+        var diff = document.getElementById('sel-difficulty').value;
+        if (topic) payload.topic = topic;
+        else if (track) payload.track = track;
+        else payload.category = 'mixed';
+        if (diff) payload.difficulty = diff;
+        return payload;
+    }
+
     function startTest(overridePayload) {
         hideError('setup-error');
         var btn = document.getElementById('btn-start');
         if (btn) btn.disabled = true;
-        var payload = overridePayload || {
-            category: document.getElementById('sel-category').value,
-            num_questions: parseInt(document.getElementById('sel-count').value, 10),
-            time_limit: parseInt(document.getElementById('sel-time').value, 10),
-        };
+        var payload = overridePayload || formPayload();
         fetch('/aptitude/start', {
             method: 'POST',
             headers: csrfHeaders({ 'Content-Type': 'application/json' }),
@@ -305,9 +316,77 @@
         } catch (e) { /* leave empty */ }
     }
 
+    function initSetupForm() {
+        var trackSel = document.getElementById('sel-track');
+        if (!trackSel) return;
+        var topicSel = document.getElementById('sel-topic');
+        var diffSel = document.getElementById('sel-difficulty');
+        var hint = document.getElementById('pool-hint');
+        var counts = {};
+        try {
+            counts = JSON.parse(
+                document.getElementById('selection-data').textContent) || {};
+        } catch (e) { counts = {}; }
+
+        function poolSize() {
+            var topic = topicSel.value;
+            var track = trackSel.value;
+            var diff = diffSel.value;
+            if (topic && counts.topics && counts.topics[topic]) {
+                var t = counts.topics[topic];
+                return diff ? (t[diff] || 0) : t.total;
+            }
+            if (track && counts.tracks && counts.tracks[track]) {
+                var tr = counts.tracks[track];
+                return diff ? (tr[diff] || 0) : tr.total;
+            }
+            var total = 0;
+            Object.keys(counts.tracks || {}).forEach(function (k) {
+                var tr = counts.tracks[k];
+                total += diff ? (tr[diff] || 0) : tr.total;
+            });
+            return total;
+        }
+
+        function refresh() {
+            var track = trackSel.value;
+            Array.prototype.forEach.call(topicSel.options, function (opt) {
+                if (!opt.value) return;
+                opt.hidden = !!(track &&
+                    opt.getAttribute('data-track') !== track);
+            });
+            if (topicSel.selectedOptions.length &&
+                topicSel.selectedOptions[0].hidden) {
+                topicSel.value = '';
+            }
+            var n = parseInt(document.getElementById('sel-count').value, 10);
+            var pool = poolSize();
+            hint.textContent = pool
+                ? pool + ' questions match this selection — the test will draw ' +
+                  Math.min(n, pool) + '.'
+                : '';
+        }
+        [trackSel, topicSel, diffSel,
+         document.getElementById('sel-count')].forEach(function (s) {
+            s.addEventListener('change', refresh);
+        });
+        document.querySelectorAll('[data-preset]').forEach(function (b) {
+            b.addEventListener('click', function () {
+                try {
+                    var p = JSON.parse(b.getAttribute('data-preset'));
+                    document.getElementById('sel-count').value = String(p.n);
+                    document.getElementById('sel-time').value = String(p.t);
+                    refresh();
+                } catch (e) { /* ignore */ }
+            });
+        });
+        refresh();
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         var startBtn = document.getElementById('btn-start');
         if (startBtn) startBtn.addEventListener('click', function () { startTest(null); });
+        initSetupForm();
         document.querySelectorAll('[data-start]').forEach(function (b) {
             b.addEventListener('click', function () {
                 try {

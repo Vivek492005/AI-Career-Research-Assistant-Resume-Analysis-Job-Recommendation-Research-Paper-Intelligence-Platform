@@ -248,7 +248,7 @@ def public_question(q):
 
 
 def pick_questions(category=None, n=10, seed=None, subcategory=None,
-                   track=None):
+                   track=None, difficulty=None):
     """Pick n questions (shuffled). category=None/'mixed' draws evenly."""
     pool = _load()
     if track in TRACKS:
@@ -258,10 +258,34 @@ def pick_questions(category=None, n=10, seed=None, subcategory=None,
         pool = [q for q in pool if q["category"] == category]
     if subcategory:
         pool = [q for q in pool if q["subcategory"] == subcategory]
+    if difficulty in DIFFICULTIES:
+        pool = [q for q in pool if q["difficulty"] == difficulty]
     rnd = random.Random(seed)
     picked = rnd.sample(pool, min(n, len(pool)))
     rnd.shuffle(picked)
     return [public_question(q) for q in picked]
+
+
+def selection_counts():
+    """Exact pool sizes for the custom-test builder UI.
+
+    Returns {"tracks": {track: {"total": n, "Easy": n, ...}},
+             "topics": {subcategory: {"total": n, "Easy": n, ...,
+                                      "track": track, "category": cat}}}.
+    """
+    tracks = {}
+    topics_map = {}
+    for q in _load():
+        track = track_of_category(q["category"])
+        t = tracks.setdefault(track, {"total": 0})
+        t["total"] += 1
+        t[q["difficulty"]] = t.get(q["difficulty"], 0) + 1
+        s = topics_map.setdefault(
+            q["subcategory"],
+            {"total": 0, "track": track, "category": q["category"]})
+        s["total"] += 1
+        s[q["difficulty"]] = s.get(q["difficulty"], 0) + 1
+    return {"tracks": tracks, "topics": topics_map}
 
 
 def pick_for_setup(cleaned, seed=None):
@@ -284,11 +308,14 @@ def pick_for_setup(cleaned, seed=None):
         return picked
     if mode == "topic":
         return pick_questions(cleaned["category"], n=cleaned["n"],
-                              seed=seed, subcategory=cleaned["subcategory"])
+                              seed=seed, subcategory=cleaned["subcategory"],
+                              difficulty=cleaned.get("difficulty"))
     if mode == "track":
         return pick_questions(n=cleaned["n"], seed=seed,
-                              track=cleaned["track"])
-    return pick_questions(cleaned["category"], n=cleaned["n"], seed=seed)
+                              track=cleaned["track"],
+                              difficulty=cleaned.get("difficulty"))
+    return pick_questions(cleaned["category"], n=cleaned["n"], seed=seed,
+                          difficulty=cleaned.get("difficulty"))
 
 
 def _setup_time_limit(payload, default):
@@ -311,14 +338,29 @@ def _setup_n(payload):
     return n, None
 
 
+def _setup_difficulty(payload):
+    """Optional difficulty filter: (value_or_None, error)."""
+    raw = str(payload.get("difficulty") or "").strip()
+    if not raw or raw.lower() == "mixed":
+        return None, None
+    for d in DIFFICULTIES:
+        if raw.lower() == d.lower():
+            return d, None
+    return None, "Unknown difficulty."
+
+
 def validate_test_setup(payload):
     """Return (cleaned, error).
 
     Modes: legacy category test; track test; single-topic test;
     company mock (blueprint); mistake retest (explicit question_ids).
+    Category/track/topic modes accept an optional difficulty filter.
     """
     if not isinstance(payload, dict):
         return None, "Invalid request."
+    difficulty, derr = _setup_difficulty(payload)
+    if derr:
+        return None, derr
 
     qids = payload.get("question_ids")
     if qids:
@@ -357,6 +399,7 @@ def validate_test_setup(payload):
         if err:
             return None, err
         return {"mode": "topic", "category": cat, "subcategory": topic,
+                "difficulty": difficulty,
                 "n": n, "time_limit": limit}, None
 
     track = str(payload.get("track") or "").strip().lower()
@@ -370,7 +413,8 @@ def validate_test_setup(payload):
         if err:
             return None, err
         return {"mode": "track", "category": f"track:{track}",
-                "track": track, "n": n, "time_limit": limit}, None
+                "track": track, "difficulty": difficulty,
+                "n": n, "time_limit": limit}, None
 
     category = str(payload.get("category") or "mixed").strip().lower()
     if category not in CATEGORIES and category != "mixed":
@@ -381,7 +425,8 @@ def validate_test_setup(payload):
     limit, err = _setup_time_limit(payload, 600)
     if err:
         return None, err
-    return {"mode": "category", "category": category, "n": n,
+    return {"mode": "category", "category": category,
+            "difficulty": difficulty, "n": n,
             "time_limit": limit}, None
 
 

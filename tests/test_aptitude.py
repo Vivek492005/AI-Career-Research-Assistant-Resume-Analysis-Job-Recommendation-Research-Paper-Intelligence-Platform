@@ -82,7 +82,7 @@ def test_validate_setup_ok():
         {"category": "logical", "num_questions": 15, "time_limit": 900})
     assert err is None
     assert cleaned == {"mode": "category", "category": "logical",
-                       "n": 15, "time_limit": 900}
+                       "difficulty": None, "n": 15, "time_limit": 900}
 
 
 def test_validate_setup_rejects_bad():
@@ -338,6 +338,41 @@ def test_mistakes_and_mastery_helpers():
     mastery = mastery_from_attempts([newest, older])
     assert mastery["percentages"]["total"] == 3
     assert mastery["percentages"]["correct"] == 2
+
+
+def test_difficulty_filter_modes():
+    cleaned, err = validate_test_setup(
+        {"track": "logical", "num_questions": 10, "time_limit": 600,
+         "difficulty": "hard"})
+    assert err is None and cleaned["difficulty"] == "Hard"
+    qs = pick_for_setup(cleaned, seed=3)
+    assert len(qs) == 10
+    assert all(q["difficulty"] == "Hard" for q in qs)
+    assert all(q["category"] in ("logical", "quantitative") for q in qs)
+    cleaned, err = validate_test_setup(
+        {"category": "verbal", "num_questions": 10, "time_limit": 600,
+         "difficulty": "Extreme"})
+    assert cleaned is None and err
+    from studybuddy.aptitude_test import selection_counts
+    counts = selection_counts()
+    assert counts["tracks"]["verbal"]["total"] > 300
+    assert counts["topics"]["percentages"]["track"] == "logical"
+
+
+def test_custom_builder_route(authed_client):
+    r = authed_client.post(
+        "/aptitude/start",
+        json={"track": "verbal", "difficulty": "Easy",
+              "num_questions": 8, "time_limit": 480},
+        headers={"X-CSRFToken": "test"})
+    assert r.status_code == 200, r.data[:200]
+    qs = r.get_json()["questions"]
+    assert len(qs) == 8
+    assert all(q["category"] == "verbal" and q["difficulty"] == "Easy"
+               for q in qs)
+    page = authed_client.get("/aptitude")
+    assert b"sel-track" in page.data and b"sel-topic" in page.data
+    assert b"data-preset" in page.data
 
 
 def test_company_start_route(authed_client):

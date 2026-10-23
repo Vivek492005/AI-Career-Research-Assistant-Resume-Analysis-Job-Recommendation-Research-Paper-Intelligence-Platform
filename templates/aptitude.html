@@ -169,12 +169,39 @@
 
         <div class="ap-card b-card" id="setup-card">
             <h3 class="ap-h3">Custom timed test</h3>
+            <p style="font-size:0.88rem;color:#cbd5e1;margin-bottom:1rem;">Build your own test from the new bank — pick a track, narrow to one topic, set the difficulty. Or tap a preset.</p>
+            <div class="ap-actions" style="margin:0 0 1.1rem;">
+                <button type="button" class="ap-btn ap-btn-sm ap-btn-ghost" data-preset='{"n": 10, "t": 600}'>Sprint · 10 Q / 10 min</button>
+                <button type="button" class="ap-btn ap-btn-sm ap-btn-ghost" data-preset='{"n": 20, "t": 1200}'>Standard · 20 Q / 20 min</button>
+                <button type="button" class="ap-btn ap-btn-sm ap-btn-ghost" data-preset='{"n": 30, "t": 1800}'>Full Mock · 30 Q / 30 min</button>
+                <button type="button" class="ap-btn ap-btn-sm ap-btn-ghost" data-preset='{"n": 50, "t": 3000}'>Marathon · 50 Q / 50 min</button>
+            </div>
+            <div class="ap-grid2">
+                <div class="ap-field">
+                    <label for="sel-track">Track</label>
+                    <select id="sel-track">
+                        <option value="">Both tracks (mixed)</option>
+                        {% for name, label, count in tracks %}
+                        <option value="{{ name }}">{{ label }} ({{ count }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="ap-field">
+                    <label for="sel-difficulty">Difficulty</label>
+                    <select id="sel-difficulty">
+                        <option value="">Mixed difficulties</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
+            </div>
             <div class="ap-field">
-                <label for="sel-category">Category</label>
-                <select id="sel-category">
-                    <option value="mixed">Mixed (all categories)</option>
-                    {% for cat, count in categories %}
-                    <option value="{{ cat }}">{{ cat|title }} ({{ count }} questions)</option>
+                <label for="sel-topic">Topic (optional)</label>
+                <select id="sel-topic">
+                    <option value="">All topics in the track</option>
+                    {% for sub, meta in selection_counts.topics.items() | sort %}
+                    <option value="{{ sub }}" data-track="{{ meta.track }}">{{ sub | replace('_', ' ') | title }} ({{ meta.total }} questions)</option>
                     {% endfor %}
                 </select>
             </div>
@@ -187,19 +214,24 @@
                         <option value="20" selected>20 questions</option>
                         <option value="25">25 questions</option>
                         <option value="30">30 questions</option>
+                        <option value="40">40 questions</option>
+                        <option value="50">50 questions</option>
                     </select>
                 </div>
                 <div class="ap-field">
                     <label for="sel-time">Time limit</label>
                     <select id="sel-time">
                         <option value="300">5 minutes</option>
-                        <option value="600" selected>10 minutes</option>
+                        <option value="600">10 minutes</option>
                         <option value="900">15 minutes</option>
-                        <option value="1200">20 minutes</option>
+                        <option value="1200" selected>20 minutes</option>
                         <option value="1800">30 minutes</option>
+                        <option value="2700">45 minutes</option>
+                        <option value="3600">60 minutes</option>
                     </select>
                 </div>
             </div>
+            <p class="ap-hintline" id="pool-hint" style="font-size:0.85rem;color:var(--text-muted,#94a3b8);margin-bottom:0.8rem;"></p>
             <button class="ap-btn b-magnet" id="btn-start">Start Test</button>
             <div class="ap-error" id="setup-error" role="alert" style="display:none"></div>
         </div>
@@ -257,6 +289,7 @@
         </div>
     </footer>
 
+    <script id="selection-data" type="application/json">{{ selection_counts | tojson }}</script>
     <script src="{{ url_for('static', filename='js/aptitude.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bento.js') }}" defer></script>
     {% include "_csp_beacon.html" %}
