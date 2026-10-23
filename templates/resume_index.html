@@ -90,7 +90,8 @@
 
     <!-- JD-Matched ATS Scoring (Wave 1, feature #1) -->
     <section class="jd-section b-reveal" id="jd-match">
-        <div class="jd-card b-card">
+        <div class="jd-card b-card jd-card--split">
+            <div class="jd-main">
             <span class="sb-work-num">02 — JD match</span>
             <h2>Match My Resume <span class="b-grad">to a Job Description</span></h2>
             <p>Paste any job posting and get a transparent 0&ndash;100 ATS-style match score: keyword coverage, required-skills hit rate, experience alignment, and formatting checks &mdash; plus exactly what's missing and how to fix it.</p>
@@ -126,12 +127,33 @@
                 <a href="{{ url_for('auth.login', next=url_for('resume_home')) }}">Log in to start matching</a>
             </div>
             {% endif %}
+            </div>
+            <aside class="jd-demo jd-demo--match" data-demo="match" aria-hidden="true">
+                <span class="dm-tag" data-dm-tag>Sample run</span>
+                <div class="dm-ring-wrap">
+                    <svg class="dm-ring" viewBox="0 0 120 120">
+                        <circle class="dm-ring-bg" cx="60" cy="60" r="52"></circle>
+                        <circle class="dm-ring-fg" cx="60" cy="60" r="52"></circle>
+                    </svg>
+                    <div class="dm-score"><b data-dm-score>0</b><span>/ 100 match</span></div>
+                </div>
+                <div class="dm-chips">
+                    <span class="dm-chip is-hit">Python ✓</span>
+                    <span class="dm-chip is-hit">SQL ✓</span>
+                    <span class="dm-chip is-hit">Excel ✓</span>
+                    <span class="dm-chip is-hit">Communication ✓</span>
+                    <span class="dm-chip is-miss">Docker ✕</span>
+                    <span class="dm-chip is-miss">Tableau ✕</span>
+                </div>
+                <p class="dm-note">Data Analyst Intern — sample JD. Run a real match and this panel mirrors your score.</p>
+            </aside>
         </div>
     </section>
 
     <!-- AI Bullet Rewriter (Wave 1, feature #2) -->
     <section class="jd-section b-reveal" id="bullet-rewriter">
-        <div class="jd-card b-card">
+        <div class="jd-card b-card jd-card--split">
+            <div class="jd-main">
             <span class="sb-work-num">03 — Bullet rewriter</span>
             <h2>Rewrite Any <span class="gradient-text">Resume Bullet</span></h2>
             <p>Paste one bullet from your resume and get 2&ndash;3 stronger versions: punchier action verbs, quantified impact, and an ATS-friendly tightened line. Accept or edit any variant &mdash; every rewrite is saved to your dashboard.</p>
@@ -157,12 +179,27 @@
                 <a href="{{ url_for('auth.login', next=url_for('resume_home')) }}">Log in to start rewriting</a>
             </div>
             {% endif %}
+            </div>
+            <aside class="jd-demo jd-demo--bullet" data-demo="bullet" aria-hidden="true">
+                <span class="dm-tag">Sample rewrite</span>
+                <div class="dm-sheet">
+                    <p class="dm-line dm-line--weak"><span class="dm-cut">Responsible for making</span> weekly reports for the team</p>
+                    <p class="dm-line dm-line--strong"><span data-dm-strong>Built 12 automated weekly reports in Python — saved the team 6 hrs/week</span></p>
+                    <span class="dm-pen"><img src="{{ url_for('static', filename='img/resume-pen.jpg') }}" alt="" width="325" height="555"></span>
+                </div>
+                <div class="dm-badges">
+                    <span class="dm-badge">Strong verb</span>
+                    <span class="dm-badge">+ Numbers</span>
+                    <span class="dm-badge">ATS-ready</span>
+                </div>
+            </aside>
         </div>
     </section>
 
     <!-- Saved Resume Versions (Wave 1, feature #3) -->
     <section class="jd-section b-reveal" id="resume-versions">
-        <div class="jd-card b-card">
+        <div class="jd-card b-card jd-card--split">
+            <div class="jd-main">
             <span class="sb-work-num">04 — Saved versions</span>
             <h2>Saved <span class="gradient-text">Resume Versions</span></h2>
             <p>Keep named versions of your resume &mdash; one per target role. Set a default, compare any two versions line-by-line, and use a version directly in JD matching.</p>
@@ -186,12 +223,23 @@
                 <a href="{{ url_for('auth.login', next=url_for('resume_home')) }}">Log in to manage versions</a>
             </div>
             {% endif %}
+            </div>
+            <aside class="jd-demo jd-demo--versions" data-demo="versions" aria-hidden="true">
+                <span class="dm-tag">Sample stack</span>
+                <div class="dm-stack" data-dm-stack>
+                    <div class="dm-vs" data-pos="0"><b>Data Analyst — v3</b><span>Updated today</span><em>86</em></div>
+                    <div class="dm-vs" data-pos="1"><b>Backend Dev — v2</b><span>Last week</span><em>78</em></div>
+                    <div class="dm-vs" data-pos="2"><b>General Fresher — v1</b><span>Sep 2026</span><em>64</em></div>
+                </div>
+                <p class="dm-note">One version per target role — the spotlight walks your stack.</p>
+            </aside>
         </div>
     </section>
 
     <!-- Cover Letter + Cold Outreach Generator (Wave 1, feature #4) -->
     <section class="jd-section b-reveal" id="cover-generator">
-        <div class="jd-card b-card">
+        <div class="jd-card b-card jd-card--split">
+            <div class="jd-main">
             <span class="sb-work-num">05 — Cover letter</span>
             <h2>Cover Letter <span class="b-grad">& Cold Outreach</span></h2>
             <p>Pick a resume version, paste the job description (or describe the company and role), choose a tone — get a tailored cover letter plus a short LinkedIn/email outreach message. Both are saved to your dashboard.</p>
@@ -222,12 +270,21 @@
                 <a href="{{ url_for('auth.login', next=url_for('resume_home')) }}">Log in to generate</a>
             </div>
             {% endif %}
+            </div>
+            <aside class="jd-demo jd-demo--cover" data-demo="cover" aria-hidden="true">
+                <span class="dm-tag">Sample letter</span>
+                <div class="dm-letter">
+                    <p class="dm-type"><span data-dm-type></span><span class="dm-caret"></span></p>
+                </div>
+                <p class="dm-note">Tailored to the JD, in the tone you pick.</p>
+            </aside>
         </div>
     </section>
 
     <!-- LinkedIn Profile Grader (Wave 1, feature #5) -->
     <section class="jd-section b-reveal" id="linkedin-grader">
-        <div class="jd-card b-card">
+        <div class="jd-card b-card jd-card--split">
+            <div class="jd-main">
             <span class="sb-work-num">06 — LinkedIn grader</span>
             <h2>LinkedIn Profile <span class="b-grad">Grader</span></h2>
             <p>Paste your LinkedIn profile sections as plain text (we never scrape LinkedIn) and get a transparent 0&ndash;100 grade: headline strength, About quality, experience quantification, skills relevance, and completeness &mdash; plus prioritized fixes. Reports are saved to your dashboard.</p>
@@ -256,6 +313,20 @@
                 <a href="{{ url_for('auth.login', next=url_for('resume_home')) }}">Log in to start grading</a>
             </div>
             {% endif %}
+            </div>
+            <aside class="jd-demo jd-demo--linkedin" data-demo="linkedin" aria-hidden="true">
+                <span class="dm-tag">Sample grade</span>
+                <div class="dm-profile">
+                    <span class="dm-avatar">EC</span>
+                    <div class="dm-profile-main">
+                        <b class="dm-name">Eliza Chen</b>
+                        <p class="dm-headline"><span data-dm-headline>Student at University of Washington</span></p>
+                    </div>
+                    <span class="dm-grade" data-dm-grade>D</span>
+                </div>
+                <div class="dm-bar"><i data-dm-bar></i></div>
+                <p class="dm-note"><b data-dm-pct>38%</b> profile strength — the fixes below push it to <b>92%</b>.</p>
+            </aside>
         </div>
     </section>
 
@@ -359,6 +430,7 @@
     <script src="{{ url_for('static', filename='js/resume_versions.js') }}"></script>
     <script src="{{ url_for('static', filename='js/cover_generator.js') }}"></script>
     <script src="{{ url_for('static', filename='js/linkedin_grader.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/resume_demos.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/bento.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/kinetic.js') }}" defer></script>
     {% include "_csp_beacon.html" %}

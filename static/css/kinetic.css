@@ -1003,3 +1003,154 @@ body.sb-workspace .hero h2.hero-h {
 @media (max-width: 900px) {
   .sb-intro-grid { grid-template-columns: 1fr; gap: 28px; }
 }
+
+/* ---------- Resume feature demo panels ----------
+   Each feature card (02-06) becomes form-left + living demo-right on
+   desktop; the demos are honest samples (labelled as such) that loop
+   while in view and settle to their final state under reduced
+   motion. All animation is transform/opacity/clip-path only. */
+.jd-main { min-width: 0; }
+.jd-main > p { color: var(--sb-muted-dark); line-height: 1.65; max-width: 720px; margin-bottom: 1.5rem; }
+.jd-demo {
+  /* Blends into the card: no background, no border — the demos play
+     directly on the card's own surface, the way the intro photo
+     melts into the page paper. */
+  position: relative; margin-top: 28px; overflow: hidden;
+  background: transparent; border: 0;
+  padding: 4px 2px; min-height: 300px;
+}
+@media (min-width: 1024px) {
+  .sb-work .jd-card--split {
+    display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 36px; align-items: start;
+  }
+  .jd-card--split .jd-demo { margin-top: 0; position: sticky; top: 92px; }
+}
+.dm-tag {
+  display: inline-block; font-family: var(--sb-mono); font-size: 0.68rem;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--sb-blue);
+  border: 1px solid currentColor; padding: 3px 8px; margin-bottom: 16px;
+}
+.dm-note { margin-top: 16px; font-size: 0.86rem; line-height: 1.55; color: var(--sb-muted-dark); }
+
+/* 02 — match ring + keyword chips */
+.dm-ring-wrap { position: relative; width: 148px; height: 148px; margin: 4px auto 6px; }
+.dm-ring { width: 100%; height: 100%; transform: rotate(-90deg); }
+.dm-ring circle { fill: none; stroke-width: 10; }
+.dm-ring-bg { stroke: #e3e1d8; }
+.dm-ring-fg { stroke: var(--sb-blue); stroke-linecap: round; stroke-dasharray: 326.7; stroke-dashoffset: 326.7; }
+.dm-score {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; line-height: 1;
+}
+.dm-score b { font-family: var(--sb-display); font-size: 2.9rem; font-weight: 800; color: var(--sb-ink); }
+.dm-score span { font-family: var(--sb-mono); font-size: 0.66rem; letter-spacing: 0.1em; color: var(--sb-muted-dark); margin-top: 4px; }
+.dm-chips { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin-top: 12px; }
+.dm-chip {
+  font-family: var(--sb-mono); font-size: 0.74rem; padding: 4px 9px;
+  border: 1.5px solid var(--sb-ink); background: #fff; color: var(--sb-ink);
+  opacity: 0; transform: scale(0.5);
+}
+.dm-chip.is-miss { border-style: dashed; color: var(--sb-muted-dark); border-color: #b9b6a9; }
+.dm-chip.is-in { animation: dmChipPop 0.38s cubic-bezier(0.2, 0.9, 0.3, 1.4) both; }
+@keyframes dmChipPop { from { opacity: 0; transform: scale(0.5) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+
+/* 03 — bullet rewrite sheet + pen */
+.dm-sheet {
+  position: relative; background: var(--sb-paper-2); border: 1px solid var(--sb-line-soft);
+  padding: 18px 18px 22px; min-height: 158px;
+}
+.dm-line { font-size: 0.98rem; line-height: 1.55; margin: 0; }
+.dm-line--weak { color: var(--sb-muted-dark); transition: opacity 0.5s ease, transform 0.5s ease; }
+.dm-line--weak .dm-cut { position: relative; white-space: nowrap; }
+.dm-line--weak .dm-cut::after {
+  content: ""; position: absolute; left: -2px; right: -2px; top: 54%;
+  height: 2px; background: #d43d2a; transform: scaleX(0); transform-origin: left center;
+}
+.dm-sheet.is-struck .dm-cut::after { transform: scaleX(1); transition: transform 0.55s ease 0.1s; }
+.dm-sheet.is-done .dm-line--weak { opacity: 0.38; }
+.dm-line--strong { margin-top: 12px; font-weight: 600; color: var(--sb-ink); }
+.dm-line--strong [data-dm-strong] { display: inline-block; }
+.dm-pen {
+  position: absolute; left: 0; top: 0; width: 46px; z-index: 3;
+  pointer-events: none; opacity: 0; mix-blend-mode: multiply;
+  transform-origin: 12% 97%; will-change: transform;
+}
+.dm-pen img { display: block; width: 100%; height: auto; transform-origin: 12% 97%; }
+.dm-pen.is-writing img { animation: sbPenBob 0.16s ease-in-out infinite alternate; }
+.dm-badges { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+.dm-badge {
+  font-family: var(--sb-mono); font-size: 0.72rem; padding: 4px 9px;
+  background: var(--sb-ink); color: var(--sb-lime);
+  opacity: 0; transform: translateY(8px);
+}
+.dm-badge.is-in { animation: dmChipPop 0.35s ease both; }
+
+/* 04 — version spotlight rows */
+.dm-stack { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+.dm-vs {
+  position: relative; background: #fff; border: 1.5px solid #c9c6ba;
+  padding: 11px 16px 12px; opacity: 0.5;
+  transition: opacity 0.5s ease, border-color 0.5s ease, transform 0.5s ease;
+}
+.dm-vs b { display: block; font-family: var(--sb-display); font-size: 1.18rem; line-height: 1.1; text-transform: uppercase; letter-spacing: 0.02em; }
+.dm-vs span { display: block; margin-top: 2px; font-size: 0.8rem; color: var(--sb-muted-dark); }
+.dm-vs em {
+  position: absolute; right: 12px; top: 12px; font-style: normal;
+  font-family: var(--sb-mono); font-size: 0.78rem; font-weight: 600;
+  background: #e3e1d8; color: var(--sb-ink); padding: 3px 8px;
+  transition: background 0.4s ease;
+}
+.dm-vs::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  background: var(--sb-blue); transform: scaleY(0); transform-origin: top center;
+}
+.dm-vs.is-active { opacity: 1; border-color: var(--sb-ink); transform: translateX(6px); }
+.dm-vs.is-active em { background: var(--sb-lime); }
+.dm-vs.is-active::before { transform: scaleY(1); transition: transform 2.55s linear; }
+
+/* 05 — cover letter typewriter */
+.dm-letter {
+  background: var(--sb-paper-2); border: 1px solid var(--sb-line-soft);
+  padding: 18px; min-height: 196px;
+}
+.dm-type { margin: 0; font-size: 0.95rem; line-height: 1.65; color: var(--sb-ink); white-space: pre-wrap; min-height: 158px; }
+.dm-caret {
+  display: inline-block; width: 8px; height: 1.05em; margin-left: 2px;
+  background: var(--sb-blue); vertical-align: text-bottom;
+  animation: dmCaret 0.85s steps(1) infinite;
+}
+@keyframes dmCaret { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
+
+/* 06 — LinkedIn grader */
+.jd-demo--linkedin { z-index: 0; }
+.jd-demo--linkedin::before {
+  content: ""; position: absolute; inset: 0; background: var(--sb-ink);
+  transform: translateY(101%); transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1); z-index: -1;
+}
+.jd-demo--linkedin:hover::before { transform: translateY(0); }
+.jd-demo--linkedin:hover .dm-name, .jd-demo--linkedin:hover .dm-note { color: #fff; }
+.jd-demo--linkedin:hover .dm-headline { color: #d8d8d2; }
+.jd-demo--linkedin:hover .dm-avatar { background: var(--sb-lime); }
+.dm-profile { display: flex; gap: 12px; align-items: flex-start; }
+.dm-avatar {
+  flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%;
+  background: var(--sb-blue); color: #fff; display: flex; align-items: center;
+  justify-content: center; font-family: var(--sb-display); font-weight: 700;
+  transition: background 0.3s ease;
+}
+.dm-profile-main { min-width: 0; flex: 1; }
+.dm-name { font-size: 1.02rem; transition: color 0.3s ease; }
+.dm-headline { margin: 2px 0 0; font-size: 0.86rem; line-height: 1.45; color: var(--sb-muted-dark); transition: color 0.3s ease; }
+.dm-headline [data-dm-headline] { display: inline-block; }
+.dm-grade {
+  flex: 0 0 auto; width: 44px; height: 44px; border: 2px solid var(--sb-ink);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--sb-display); font-size: 1.5rem; font-weight: 800;
+  background: #fff; color: var(--sb-ink);
+}
+.dm-grade.is-pop { animation: dmChipPop 0.35s ease both; }
+.dm-bar { height: 10px; background: #e3e1d8; margin-top: 18px; overflow: hidden; }
+.dm-bar i { display: block; height: 100%; width: 38%; background: var(--sb-blue); transform-origin: left center; }
+.jd-demo { transition: opacity 0.35s ease; }
+.jd-demo.is-resetting { opacity: 0.12; }
