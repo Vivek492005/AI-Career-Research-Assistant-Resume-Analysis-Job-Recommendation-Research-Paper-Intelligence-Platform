@@ -880,3 +880,17 @@ body.sb-workspace .hero h2.hero-h {
   .sb-hero-grid { grid-template-columns: 6.3fr 5.7fr; gap: 32px; }
 }
 .sb-hero-photo { object-position: 58% bottom; }
+
+/* Outline word -> full-width marquee band: the phrase stretches to the
+   page width and drifts (motion rules live in cursor.css, so reduced-
+   motion / no-JS keeps this static stretched layout). */
+.sb-outline-band {
+  overflow: hidden; margin-top: 56px; padding: 12px 0 18px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+.sb-outline-track { display: flex; width: max-content; }
+.sb-outline-band .sb-outline-word {
+  font-size: clamp(4.2rem, 10.5vw, 11.5rem);
+  white-space: nowrap; padding-right: 0.55em; margin: 0;
+}

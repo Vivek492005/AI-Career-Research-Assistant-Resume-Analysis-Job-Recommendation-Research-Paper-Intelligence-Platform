@@ -139,3 +139,18 @@ body.sb-editorial .sb-tool:hover .sb-tool-link { color: #fff; }
 }
 .sb-pixel-canvas.on { opacity: 1; }
 .sb-pixel-canvas.off { opacity: 0; transition: opacity 0.12s ease; }
+
+/* Outline marquee: slow seamless drift; hover pauses it and the words
+   fill solid brand blue. */
+@keyframes sbOutlineDrift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.sb-outline-track { animation: sbOutlineDrift 30s linear infinite; }
+.sb-outline-band:hover .sb-outline-track { animation-play-state: paused; }
+.sb-outline-band .sb-outline-word {
+  transition: color 0.5s ease, -webkit-text-stroke-color 0.5s ease;
+}
+.sb-outline-band:hover .sb-outline-word {
+  color: var(--sb-blue); -webkit-text-stroke-color: var(--sb-blue);
+}
