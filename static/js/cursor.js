@@ -270,6 +270,11 @@
       };
     }
     function wipeText(dur) {
+      /* Cancel any finished fill-forwards animation first: a stale
+         fade left at opacity 0 would otherwise keep overriding the
+         inline opacity and the text would never reappear (the
+         second-loop bug). */
+      rText.getAnimations().forEach(function (a) { a.cancel(); });
       rText.style.opacity = '1';
       var a = rText.animate([
         { clipPath: 'inset(-12% 103% -12% -3%)' },
@@ -278,6 +283,8 @@
       return a.finished.catch(function () {});
     }
     function fadeText(dur) {
+      rText.getAnimations().forEach(function (a) { a.cancel(); });
+      rText.style.opacity = '1';
       var a = rText.animate([{ opacity: 1 }, { opacity: 0 }], { duration: dur, easing: 'ease', fill: 'forwards' });
       return a.finished.catch(function () {});
     }
