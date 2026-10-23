@@ -849,3 +849,26 @@ body.sb-workspace .hero h2.hero-h {
 
 /* Note B wraps inside the free strip left of the enlarged figure. */
 .sb-hero-visual .sb-note--b { max-width: 136px; }
+
+/* Learn hub — editorial conversion (issue #41): display headline, real
+   stats, sb-tool-grid tracks, numbered connection steps. */
+.sb-learn-h2 {
+  font-family: var(--sb-display); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.02; color: #fff; margin: 0 0 0.6rem;
+}
+.sb-learn-sub { color: #a3a3a0; margin: 0 0 1.6rem; }
+.sb-learn-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #26262e; margin-top: 0.5rem; }
+.sb-learn-stat { padding: 20px 18px 4px 0; }
+.sb-learn-stat b { font-family: var(--sb-display); font-weight: 700; font-size: 2.6rem; line-height: 1; color: #fff; display: block; }
+.sb-learn-stat span { color: #a3a3a0; font-size: 0.9rem; }
+.sb-learn-steps { border-top: 1px solid #26262e; margin-top: 1.4rem; }
+.sb-learn-step { display: flex; justify-content: space-between; align-items: baseline; gap: 18px; padding: 16px 2px; border-bottom: 1px solid #26262e; }
+.sb-learn-step p { margin: 0; color: #a3a3a0; }
+.sb-learn-step b { font-family: var(--sb-display); font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.02em; color: #fff; font-weight: 700; }
+.sb-learn-step b i { font-style: normal; color: var(--sb-blue); margin-right: 12px; }
+.sb-learn-step a { font-family: var(--sb-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; text-decoration: none; white-space: nowrap; }
+.sb-learn-step a:hover { color: var(--sb-lime); }
+@media (max-width: 800px) {
+  .sb-learn-stats { grid-template-columns: repeat(2, 1fr); }
+  .sb-learn-step { flex-wrap: wrap; }
+}
