@@ -12,10 +12,40 @@
         <div class="b-card b-card--hero b-span-4 b-reveal">
             <span class="b-pill"><span class="b-pulse"></span>Peer practice</span>
             <h1>Interview <span class="b-grad">each other</span>, get sharper together.</h1>
-            <p class="b-lede">Create a room, share the link with a peer, and take turns interviewing. The platform draws questions from the shared 339-question interview bank, runs per-question timers, and structures reciprocal rubric feedback — finishing a session earns <strong>+40 XP</strong> for both of you.</p>
+            <p class="b-lede">Create a room, share the link with a peer, and take turns interviewing. The platform draws questions from the shared <strong>{{ bank_total }}-question</strong> interview bank — target a role, a category, even a specific company's pattern — runs per-question timers, and structures reciprocal rubric feedback. After the session you get a full recap: your answers, the key points, and exactly where your peer rated you weakest. Finishing a session earns <strong>+40 XP</strong> for both of you.</p>
+            <div style="display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1.1rem;">
+                <span><strong style="font-size:1.3rem;">{{ bank_total }}</strong> <span style="color:var(--b-muted);font-size:.85rem;">questions in the bank</span></span>
+                <span><strong style="font-size:1.3rem;">{{ companies|length }}</strong> <span style="color:var(--b-muted);font-size:.85rem;">company patterns</span></span>
+                <span><strong style="font-size:1.3rem;">{{ my_feedback.sessions_done }}</strong> <span style="color:var(--b-muted);font-size:.85rem;">sessions you've finished</span></span>
+                <span><strong style="font-size:1.3rem;">{{ my_feedback.count }}</strong> <span style="color:var(--b-muted);font-size:.85rem;">peer reviews received</span></span>
+            </div>
         </div>
     </div>
 </section>
+
+{# ---------- Feedback received ---------- #}
+{% if my_feedback.count %}
+<section class="b-section" aria-label="Feedback you have received">
+    <div class="b-sec-head"><h2>How peers <span class="b-grad">rate you</span></h2><p>Your average rubric scores across {{ my_feedback.count }} review{{ 's' if my_feedback.count != 1 }} received.</p></div>
+    <div class="b-card b-reveal">
+        <div style="display:grid;gap:.7rem;">
+            {% for dim in rubric_dims %}
+            {% set avg = my_feedback.averages.get(dim) %}
+            {% if avg is not none %}
+            <div style="display:grid;grid-template-columns:130px 1fr 44px;gap:.8rem;align-items:center;">
+                <span style="font-size:.88rem;">{{ dim|capitalize }}{% if my_feedback.weakest == dim %} <span class="b-tag">weakest</span>{% endif %}</span>
+                <span style="background:var(--b-surface-2,#1a1d24);border-radius:99px;height:.55rem;overflow:hidden;"><span style="display:block;height:100%;width:{{ (avg / 5 * 100)|round }}%;background:{% if my_feedback.weakest == dim %}#f59e0b{% else %}var(--b-accent,#4f7cff){% endif %};"></span></span>
+                <strong style="font-size:.9rem;">{{ avg }}/5</strong>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% if my_feedback.weakest %}
+        <p style="color:var(--b-muted);font-size:.9rem;margin:1rem 0 0;">Peers rate your <strong>{{ my_feedback.weakest }}</strong> lowest. Drill it with the <a href="{{ url_for('coach_home') }}">Communication Coach</a> — timed answers with instant structure and delivery scoring.</p>
+        {% endif %}
+    </div>
+</section>
+{% endif %}
 
 {# ---------- Create a room ---------- #}
 <section class="b-section" aria-label="Create a peer room">
@@ -37,6 +67,34 @@
                         {% for c in categories %}
                         <option value="{{ c }}">{{ c|capitalize }}</option>
                         {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="peer-company" class="b-label">Company pattern <span style="color:var(--b-muted);">(optional)</span></label>
+                    <select id="peer-company" class="b-input" style="width:100%;">
+                        <option value="">Any company</option>
+                        {% for name, count in companies %}
+                        <option value="{{ name }}">{{ name }} ({{ count }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="peer-difficulty" class="b-label">Difficulty</label>
+                    <select id="peer-difficulty" class="b-input" style="width:100%;">
+                        <option value="">Mixed</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="peer-num" class="b-label">Questions per round</label>
+                    <select id="peer-num" class="b-input" style="width:100%;">
+                        <option value="4">4 questions</option>
+                        <option value="6" selected>6 questions</option>
+                        <option value="8">8 questions</option>
+                        <option value="10">10 questions</option>
+                        <option value="12">12 questions</option>
                     </select>
                 </div>
                 <div>
@@ -67,6 +125,8 @@
             <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.6rem;">
                 <span class="b-tag">{{ room.role|capitalize }}</span>
                 <span class="b-tag">{{ room.category|capitalize }}</span>
+                {% if room.company %}<span class="b-tag">{{ room.company }} pattern</span>{% endif %}
+                {% if room.difficulty %}<span class="b-tag">{{ room.difficulty }}</span>{% endif %}
                 {% if room.scheduled_at %}<span class="b-tag">{{ room.scheduled_at.strftime('%b %d, %H:%M') }}</span>{% endif %}
             </div>
             <h3 style="margin:.2rem 0;">{{ room.host.name }}'s room</h3>
@@ -94,6 +154,7 @@
             <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.6rem;">
                 <span class="b-tag">{{ room.role|capitalize }}</span>
                 <span class="b-tag">{{ room.category|capitalize }}</span>
+                {% if room.company %}<span class="b-tag">{{ room.company }} pattern</span>{% endif %}
                 <span class="b-tag" data-peer-status="{{ room.status }}">{{ room.status|replace('_',' ')|capitalize }}</span>
                 {% if room.invite_only %}<span class="b-tag">Invite-only</span>{% endif %}
             </div>
@@ -130,6 +191,20 @@
         var el = document.getElementById('peer-create-status');
         el.textContent = msg; el.style.display = 'inline-block';
     }
+    /* Prefill from query params (rematch links from finished rooms). */
+    (function () {
+        var params = new URLSearchParams(window.location.search);
+        ['role', 'category', 'company'].forEach(function (key) {
+            var v = params.get(key);
+            var sel = document.getElementById('peer-' + key);
+            if (v && sel) {
+                for (var i = 0; i < sel.options.length; i++) {
+                    if (sel.options[i].value === v) { sel.value = v; break; }
+                }
+            }
+        });
+    })();
+
     var btn = document.getElementById('peer-create-btn');
     btn.addEventListener('click', function () {
         document.getElementById('peer-create-error').style.display = 'none';
@@ -137,6 +212,9 @@
         var body = {
             role: document.getElementById('peer-role').value,
             category: document.getElementById('peer-category').value,
+            company: document.getElementById('peer-company').value || undefined,
+            difficulty: document.getElementById('peer-difficulty').value || undefined,
+            num_questions: parseInt(document.getElementById('peer-num').value, 10),
             invite_only: document.getElementById('peer-invite-only').checked
         };
         if (when) body.scheduled_at = when.replace('T', ' ').slice(0, 16);

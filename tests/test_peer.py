@@ -337,7 +337,8 @@ def test_peer_questions_technical_backend():
     qs = _peer_questions("backend", "technical", n=6)
     assert len(qs) == 6
     for q in qs:
-        assert q["category"] in ("dsa", "system_design", "puzzles")
+        assert q["category"] in ("technical", "dsa", "system_design",
+                                 "puzzles")
         assert "backend" in q["roles"]
 
 
@@ -914,3 +915,99 @@ def test_csrf_rejected_on_peer_posts(csrf_app):
             ("/peer/api/report", {"user_id": 1})):
         rr = client.post(url, json=body)
         assert rr.status_code == 400, url
+
+
+# ---------------------------------------------------------------------------
+# Bank alignment: full 1,050-question bank, company/difficulty targeting
+# ---------------------------------------------------------------------------
+
+def test_peer_questions_technical_includes_bank_technical():
+    from unified_app import PEER_CATEGORY_MAP, _peer_bank
+    bank = {q["id"]: q for q in _peer_bank()}
+    seen = set()
+    for _ in range(10):
+        qs = _peer_questions("general", "technical", n=12)
+        assert len(qs) == 12
+        assert all(q["category"] in PEER_CATEGORY_MAP["technical"]
+                   for q in qs)
+        seen |= {q["category"] for q in qs}
+    assert "technical" in seen  # the bank's own technical set is drawn
+
+
+def test_peer_questions_company_and_difficulty_filters():
+    qs = _peer_questions("general", "mixed", n=6, company="Google")
+    assert len(qs) == 6
+    assert all("Google" in (q.get("companies") or []) for q in qs)
+    qs = _peer_questions("general", "mixed", n=6, difficulty="Hard")
+    assert len(qs) == 6
+    assert all(q["difficulty"] == "Hard" for q in qs)
+
+
+def test_peer_questions_new_roles():
+    for role in ("sde", "devops", "pm"):
+        qs = _peer_questions(role, "mixed", n=6)
+        assert len(qs) == 6
+        assert all(any(r in (q.get("roles") or [])
+                       for r in (role,)) for q in qs)
+
+
+def test_create_room_with_company_difficulty_and_count(authed_client, app):
+    r = authed_client.post("/peer/api/rooms", json={
+        "role": "sde", "category": "technical", "company": "Amazon",
+        "difficulty": "Medium", "num_questions": 4})
+    assert r.status_code == 200, r.get_data(as_text=True)[:300]
+    token = r.get_json()["token"]
+    room = _room(app, token)
+    assert room.company == "Amazon" and room.difficulty == "Medium"
+    assert room.num_questions == 4
+    assert len(room.question_ids) == 4
+    from unified_app import _peer_question_by_id
+    for qid in room.question_ids:
+        q = _peer_question_by_id(qid)
+        assert "Amazon" in (q.get("companies") or [])
+        assert q["difficulty"] == "Medium"
+
+
+def test_create_room_rejects_bad_targeting(authed_client):
+    for body in ({"role": "sde", "category": "technical",
+                  "company": "NoSuchCorp"},
+                 {"role": "sde", "category": "technical",
+                  "difficulty": "Extreme"},
+                 {"role": "sde", "category": "technical",
+                  "num_questions": 2},
+                 {"role": "sde", "category": "technical",
+                  "num_questions": 99}):
+        r = authed_client.post("/peer/api/rooms", json=body)
+        assert r.status_code == 400, body
+
+
+def test_hub_shows_feedback_received(authed_client, app):
+    room_tok = _two_users_room(authed_client, app)
+    host_id = _uid(app, "aarav@example.com")
+    _login_as(authed_client, "aarav@example.com")
+    _finish(authed_client, room_tok)
+    _login_as(authed_client, "priya@example.com")
+    r = authed_client.post("/peer/api/room/%s/feedback" % room_tok,
+                           json=_feedback_body(host_id, confidence=2))
+    assert r.status_code == 200
+    _login_as(authed_client, "aarav@example.com")
+    page = authed_client.get("/peer")
+    assert page.status_code == 200
+    assert b"How peers" in page.data
+    assert b"weakest" in page.data  # confidence=2 is the lowest score
+
+
+def test_room_recap_and_key_points_after_finish(authed_client, app):
+    room_tok = _two_users_room(authed_client, app)
+    host_id = _uid(app, "aarav@example.com")
+    _login_as(authed_client, "aarav@example.com")
+    _finish(authed_client, room_tok)
+    _login_as(authed_client, "priya@example.com")
+    authed_client.post("/peer/api/room/%s/feedback" % room_tok,
+                       json=_feedback_body(host_id))
+    _login_as(authed_client, "aarav@example.com")
+    page = authed_client.get("/peer/room/%s" % room_tok)
+    assert page.status_code == 200
+    assert b"Session" in page.data and b"recap" in page.data
+    assert b"Key points" in page.data  # revealed to both after finish
+    assert b"Rematch" in page.data

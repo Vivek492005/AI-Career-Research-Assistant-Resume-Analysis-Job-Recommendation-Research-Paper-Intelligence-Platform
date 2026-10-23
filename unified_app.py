@@ -1055,6 +1055,9 @@ class PeerRoom(db.Model):
                        index=True)
     role = db.Column(db.String(30), nullable=False, default="general")
     category = db.Column(db.String(30), nullable=False, default="behavioral")
+    company = db.Column(db.String(60), nullable=True)
+    difficulty = db.Column(db.String(10), nullable=True)
+    num_questions = db.Column(db.Integer, nullable=True)
     status = db.Column(db.String(20), nullable=False, default="open", index=True)
     scheduled_at = db.Column(db.DateTime, nullable=True)
     guest_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=True,
@@ -1909,23 +1912,33 @@ def _momentum_hook(user_id, event_type):
 # Peer mock interviews (Wave 5 #28): shared constants and helpers
 # ---------------------------------------------------------------------------
 
-#: Roles a peer room can target. 'data' covers data_analyst + data_scientist
-#: in the interview question bank; 'general' draws category-only.
-PEER_ROLES = ("frontend", "backend", "data", "general")
+#: Roles a peer room can target, aligned with the roles tagged in the
+#: 1,050-question interview bank. 'data' covers data_analyst +
+#: data_scientist; 'general' draws category-only.
+PEER_ROLES = ("sde", "frontend", "backend", "data", "devops", "pm",
+              "general")
 
-#: Room categories. The interview bank has no literal 'technical' category,
-#: so it maps onto the bank's technical categories (dsa/system_design/puzzles).
-PEER_CATEGORIES = ("behavioral", "technical")
+#: Room categories, aligned with the bank's own categories: 'technical'
+#: covers the bank's technical set plus dsa / system_design / puzzles;
+#: 'mixed' draws from everything.
+PEER_CATEGORIES = ("behavioral", "technical", "hr", "mixed")
 PEER_CATEGORY_MAP = {
     "behavioral": ("behavioral", "hr"),
-    "technical": ("dsa", "system_design", "puzzles"),
+    "technical": ("technical", "dsa", "system_design", "puzzles"),
+    "hr": ("hr",),
+    "mixed": ("behavioral", "technical", "hr", "dsa", "system_design",
+              "puzzles"),
 }
 PEER_ROLE_MAP = {
+    "sde": ("sde",),
     "frontend": ("frontend",),
     "backend": ("backend",),
     "data": ("data_analyst", "data_scientist"),
+    "devops": ("devops",),
+    "pm": ("pm",),
     "general": (),
 }
+PEER_DIFFICULTIES = ("Easy", "Medium", "Hard")
 
 PEER_STATUSES = ("open", "waiting", "in_progress", "done", "cancelled")
 N_PEER_QUESTIONS = 6
@@ -1936,17 +1949,33 @@ PEER_RUBRIC_DIMS = ("clarity", "structure", "depth", "relevance",
 
 
 def _peer_bank():
-    """The shared 339-question interview bank (mock_interview.py)."""
+    """The shared interview bank (mock_interview.py; 1,050 questions)."""
     from studybuddy.mock_interview import _load_bank
     return _load_bank()
 
 
-def _peer_questions(role, category, n=N_PEER_QUESTIONS, exclude=None):
+def _peer_companies():
+    """[(company, question_count)] for the bank, most questions first."""
+    from collections import Counter
+    counts = Counter()
+    try:
+        for q in _peer_bank() or []:
+            for c in (q.get("companies") or []):
+                counts[c] += 1
+    except Exception:
+        log.exception("Peer company list failed")
+    return sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
+
+
+def _peer_questions(role, category, n=N_PEER_QUESTIONS, exclude=None,
+                    company=None, difficulty=None):
     """Draw n bank questions for a peer room.
 
-    Filters by role + mapped category with graceful fallbacks
-    (role+category -> category-only). Never raises: returns [] when the
-    bank cannot satisfy the request.
+    Filters by role + mapped category, optionally narrowed to one
+    company and/or difficulty. Filters relax stepwise (difficulty ->
+    company -> role) until the pool can fill the round, so a room
+    always gets questions. Never raises: returns [] only when the
+    bank itself is unreadable.
     """
     try:
         bank = _peer_bank() or []
@@ -1957,19 +1986,63 @@ def _peer_questions(role, category, n=N_PEER_QUESTIONS, exclude=None):
     roles = PEER_ROLE_MAP.get(role, ())
     excluded = set(exclude or [])
 
-    def _pool(with_role):
-        return [q for q in bank
-                if q.get("category") in cats
-                and q.get("id") not in excluded
-                and (not with_role or not roles
-                     or any(r in (q.get("roles") or []) for r in roles))]
+    def _pool(use_role, use_company, use_difficulty):
+        out = []
+        for q in bank:
+            if q.get("category") not in cats or q.get("id") in excluded:
+                continue
+            if use_role and roles and not any(
+                    r in (q.get("roles") or []) for r in roles):
+                continue
+            if use_company and company and company not in (
+                    q.get("companies") or []):
+                continue
+            if use_difficulty and difficulty and \
+                    q.get("difficulty") != difficulty:
+                continue
+            out.append(q)
+        return out
 
-    pool = _pool(with_role=True)
-    if not pool:
-        pool = _pool(with_role=False)
+    pool = []
+    for flags in ((True, True, True), (True, True, False),
+                  (True, False, False), (False, False, False)):
+        pool = _pool(*flags)
+        if len(pool) >= max(1, n):
+            break
     rng = random.Random()
     rng.shuffle(pool)
     return pool[:max(0, n)]
+
+
+def _peer_feedback_received(user_id):
+    """Aggregate the rubric feedback a user has received across rooms.
+
+    Returns {count, averages {dim: float}, weakest (dim or None),
+    sessions_done} — the hub's 'how peers rate you' summary.
+    """
+    summary = {"count": 0, "averages": {}, "weakest": None,
+               "sessions_done": 0}
+    try:
+        rows = PeerFeedback.query.filter_by(reviewee_id=user_id).all()
+        summary["count"] = len(rows)
+        if rows:
+            for dim in PEER_RUBRIC_DIMS:
+                vals = [getattr(r, dim) for r in rows
+                        if getattr(r, dim) is not None]
+                if vals:
+                    summary["averages"][dim] = round(
+                        sum(vals) / len(vals), 1)
+            if summary["averages"]:
+                summary["weakest"] = min(
+                    summary["averages"],
+                    key=lambda d: summary["averages"][d])
+        summary["sessions_done"] = PeerRoom.query.filter(
+            PeerRoom.status == "done",
+            (PeerRoom.host_id == user_id)
+            | (PeerRoom.guest_id == user_id)).count()
+    except Exception:
+        log.exception("Peer feedback summary failed")
+    return summary
 
 
 def _peer_token():
@@ -7454,16 +7527,25 @@ def register_routes(app):
         except Exception:
             log.exception("Peer hub query failed")
             open_rooms, my_rooms = [], []
+        try:
+            bank_total = len(_peer_bank() or [])
+        except Exception:
+            bank_total = 0
         return render_template('peer_hub.html', open_rooms=open_rooms,
                                my_rooms=my_rooms, roles=PEER_ROLES,
                                categories=PEER_CATEGORIES,
+                               companies=_peer_companies(),
+                               bank_total=bank_total,
+                               my_feedback=_peer_feedback_received(me),
+                               rubric_dims=PEER_RUBRIC_DIMS,
                                nav_active='practice')
 
     @app.route('/peer/api/rooms', methods=['POST'])
     @login_required
     @limiter.limit("20 per hour")
     def peer_create_room():
-        """Create a room: JSON {role, category, invite_only?, scheduled_at?}.
+        """Create a room: JSON {role, category, company?, difficulty?,
+        num_questions?, invite_only?, scheduled_at?}.
 
         Returns the share token + room URL. Draws the first question round
         from the shared interview bank immediately.
@@ -7477,6 +7559,21 @@ def register_routes(app):
         if category not in PEER_CATEGORIES:
             return _peer_api_error('Unknown category. Pick one of: %s.'
                                    % ', '.join(PEER_CATEGORIES), 400)
+        company = (payload.get('company') or '').strip() or None
+        if company and company not in dict(_peer_companies()):
+            return _peer_api_error('Unknown company.', 400)
+        difficulty = (payload.get('difficulty') or '').strip() or None
+        if difficulty and difficulty not in PEER_DIFFICULTIES:
+            return _peer_api_error('Unknown difficulty. Pick one of: %s.'
+                                   % ', '.join(PEER_DIFFICULTIES), 400)
+        try:
+            num_questions = int(payload.get('num_questions')
+                                or N_PEER_QUESTIONS)
+        except (TypeError, ValueError):
+            return _peer_api_error('num_questions must be a number.', 400)
+        if not 3 <= num_questions <= 12:
+            return _peer_api_error('num_questions must be between 3 and '
+                                   '12.', 400)
         invite_only = bool(payload.get('invite_only'))
         scheduled_at = None
         if payload.get('scheduled_at'):
@@ -7486,10 +7583,14 @@ def register_routes(app):
                     'scheduled_at must look like "YYYY-MM-DD HH:MM".', 400)
         try:
             token = _peer_token()
-            questions = _peer_questions(role, category)
+            questions = _peer_questions(role, category, n=num_questions,
+                                        company=company,
+                                        difficulty=difficulty)
             qids = [q['id'] for q in questions]
             room = PeerRoom(token=token, host_id=current_user.id, role=role,
-                            category=category, status='open',
+                            category=category, company=company,
+                            difficulty=difficulty,
+                            num_questions=num_questions, status='open',
                             scheduled_at=scheduled_at,
                             invite_only=invite_only,
                             interviewer_id=current_user.id,
@@ -7559,8 +7660,31 @@ def register_routes(app):
                 partner = None
         i_am_interviewer = (room.interviewer_id == me)
         my_feedback_done = any(f['reviewer_id'] == me for f in feedbacks)
+        fb_recap = None
+        if room.status == 'done' and is_participant and feedbacks:
+            def _avg(scores):
+                vals = [scores[d] for d in PEER_RUBRIC_DIMS
+                        if scores.get(d) is not None]
+                return round(sum(vals) / len(vals), 1) if vals else None
+            received = next((f for f in feedbacks
+                             if f['reviewee_id'] == me), None)
+            given = next((f for f in feedbacks
+                          if f['reviewee_id'] == partner_id), None)
+            fb_recap = {
+                'received_avg': _avg(received['scores']) if received else None,
+                'received': received,
+                'given_avg': _avg(given['scores']) if given else None,
+                'given': given,
+            }
+            if received:
+                weakest = min(
+                    (d for d in PEER_RUBRIC_DIMS
+                     if received['scores'].get(d) is not None),
+                    key=lambda d: received['scores'][d], default=None)
+                fb_recap['weakest'] = weakest
         return render_template('peer_room.html', room=room, questions=questions,
                                answers=answers, feedbacks=feedbacks,
+                               fb_recap=fb_recap,
                                is_participant=is_participant, can_join=can_join,
                                partner=partner, partner_id=partner_id,
                                i_am_interviewer=i_am_interviewer,
@@ -7704,8 +7828,10 @@ def register_routes(app):
         partner_id = _peer_partner_id(room, me)
         try:
             drawn = list(room.drawn_ids or []) + list(room.question_ids or [])
-            questions = _peer_questions(room.role, room.category,
-                                        exclude=drawn)
+            questions = _peer_questions(
+                room.role, room.category,
+                n=room.num_questions or N_PEER_QUESTIONS, exclude=drawn,
+                company=room.company, difficulty=room.difficulty)
             qids = [q['id'] for q in questions]
             room.interviewer_id = partner_id
             room.question_ids = qids

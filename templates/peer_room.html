@@ -19,6 +19,8 @@
             </p>
             <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem;">
                 <span class="b-tag" data-peer-status="{{ room.status }}">{{ room.status|replace('_',' ')|capitalize }}</span>
+                {% if room.company %}<span class="b-tag">{{ room.company }} pattern</span>{% endif %}
+                {% if room.difficulty %}<span class="b-tag">{{ room.difficulty }}</span>{% endif %}
                 {% if room.invite_only %}<span class="b-tag">Invite-only</span>{% endif %}
                 {% if room.scheduled_at %}<span class="b-tag">Scheduled: {{ room.scheduled_at.strftime('%b %d, %H:%M') }}</span>{% endif %}
                 {% if is_participant %}
@@ -39,6 +41,9 @@
                 {% endif %}
                 {% if is_participant and room.host_id == current_user.id and room.status not in ('done','cancelled') %}
                     <button class="b-btn b-btn--ghost" id="peer-cancel" type="button">Cancel room</button>
+                {% endif %}
+                {% if is_participant and room.status == 'done' %}
+                    <a class="b-btn b-btn--primary" href="{{ url_for('peer_hub') }}?role={{ room.role }}&amp;category={{ room.category }}{% if room.company %}&amp;company={{ room.company }}{% endif %}">Rematch — same setup</a>
                 {% endif %}
             </div>
             <p class="b-form-error" id="peer-room-error" style="display:none;" role="alert"></p>
@@ -102,9 +107,9 @@
                 <span class="b-pill peer-timer" data-minutes="{{ q.time_minutes }}" style="margin-left:auto;">Timer ready</span>
             </div>
             <h3 style="margin:.2rem 0 0.6rem;font-size:1.02rem;line-height:1.45;">{{ q.question }}</h3>
-            {% if i_am_interviewer and q.key_points %}
-            <details style="margin-bottom:.8rem;">
-                <summary style="cursor:pointer;color:var(--b-muted);font-size:.88rem;">Interviewer guidance ({{ q.key_points|length }} key points)</summary>
+            {% if q.key_points and (i_am_interviewer or room.status == 'done') %}
+            <details style="margin-bottom:.8rem;"{% if room.status == 'done' %} open{% endif %}>
+                <summary style="cursor:pointer;color:var(--b-muted);font-size:.88rem;">{% if room.status == 'done' %}Key points — review what a strong answer covers{% else %}Interviewer guidance{% endif %} ({{ q.key_points|length }} key points)</summary>
                 <ul style="color:var(--b-muted);font-size:.88rem;margin:.5rem 0 0;padding-left:1.2rem;">
                     {% for kp in q.key_points %}<li>{{ kp }}</li>{% endfor %}
                 </ul>
@@ -138,6 +143,32 @@
     <div class="b-card b-reveal"><p style="color:var(--b-muted);margin:0;">No questions drawn for this round.</p></div>
     {% endif %}
 </section>
+
+{# ---------- Session recap ---------- #}
+{% if is_participant and room.status == 'done' and fb_recap %}
+<section class="b-section" aria-label="Session recap">
+    <div class="b-sec-head"><h2>Session <span class="b-grad">recap</span></h2><p>What your peer saw in you — and what to work on next.</p></div>
+    <div class="b-card b-reveal">
+        {% if fb_recap.received_avg is not none %}
+        <p style="margin:0 0 .6rem;">Your peer rated you <strong style="font-size:1.25rem;">{{ fb_recap.received_avg }}/5</strong> overall.</p>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+            {% for dim, val in fb_recap.received.scores.items() %}
+            <span class="b-tag">{{ dim|capitalize }}: {{ val }}/5{% if fb_recap.weakest == dim %} · weakest{% endif %}</span>
+            {% endfor %}
+        </div>
+        {% if fb_recap.received.comments %}<p style="font-size:.92rem;margin:.8rem 0 0;">“{{ fb_recap.received.comments }}”</p>{% endif %}
+        {% if fb_recap.weakest %}
+        <p style="color:var(--b-muted);font-size:.9rem;margin:.9rem 0 0;">Weakest dimension: <strong>{{ fb_recap.weakest }}</strong>. Re-read the key points on the question cards above, then drill this dimension in the <a href="{{ url_for('coach_home') }}">Communication Coach</a>.</p>
+        {% endif %}
+        {% else %}
+        <p style="color:var(--b-muted);margin:0;">Your peer hasn't submitted feedback yet — your recap appears here as soon as they do. Your answers and the key points above are saved for review.</p>
+        {% endif %}
+        {% if fb_recap.given_avg is not none %}
+        <p style="color:var(--b-muted);font-size:.88rem;margin:.9rem 0 0;">You rated your peer {{ fb_recap.given_avg }}/5.</p>
+        {% endif %}
+    </div>
+</section>
+{% endif %}
 
 {# ---------- Feedback ---------- #}
 {% if is_participant and room.status == 'done' and partner_id %}
