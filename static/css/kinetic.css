@@ -223,7 +223,7 @@ body.sb-editorial {
 .sb-cta-band p { color: #dbe2ff; max-width: 560px; line-height: 1.65; }
 .sb-outline-word {
   font-family: var(--sb-display); font-weight: 800; text-transform: uppercase;
-  color: transparent; -webkit-text-stroke: 1.5px #3a3a3a; line-height: 0.9;
+  color: transparent; -webkit-text-stroke: 2.5px #3a3a3a; line-height: 0.9;
   font-size: clamp(3rem, 8vw, 7rem); user-select: none;
 }
 @media (max-width: 900px) {
@@ -941,3 +941,24 @@ body.sb-workspace .hero h2.hero-h {
 
 /* The stage variant is centred, not a marquee — no edge fade. */
 .sb-outline-band { -webkit-mask-image: none; mask-image: none; }
+
+/* Minecraft-realistic pass (researched): player-size character (about
+   the words' height, like a 1.8-block player beside a build), a black
+   selection outline on the target before each placement, and the block
+   popping in solid for a beat before settling to outline. */
+.sb-outline-stage .sb-char { width: 0.52em; height: 1.04em; bottom: -0.06em; }
+.sb-char svg { width: 100%; height: 100%; display: block; }
+.sb-char.is-running svg { animation: sbCharBob 0.24s ease-in-out infinite alternate; }
+@keyframes sbCharBob { from { transform: translateY(0); } to { transform: translateY(-0.03em); } }
+.sb-selbox {
+  position: absolute; border: 3px solid rgba(10, 10, 10, 0.9);
+  opacity: 0; z-index: 4; pointer-events: none; transition: opacity 0.1s linear;
+}
+.sb-selbox.on { opacity: 1; }
+.sb-outline-band.is-live .sb-blk.is-placed { animation: sbBlkPopMc 0.5s steps(6, end) both; }
+@keyframes sbBlkPopMc {
+  0% { transform: scale(1.07) translateY(8px); color: #0a0a0a; -webkit-text-stroke-color: #0a0a0a; opacity: 1; }
+  45% { transform: scale(1.0) translateY(0); color: #0a0a0a; -webkit-text-stroke-color: #0a0a0a; opacity: 1; }
+  70% { color: #0a0a0a; -webkit-text-stroke-color: #0a0a0a; }
+  100% { transform: scale(1) translateY(0); color: transparent; opacity: 1; }
+}

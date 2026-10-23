@@ -202,46 +202,59 @@
     else heroImg.addEventListener('load', function () { setTimeout(autoPlay, 750); });
   }
 
-  /* Outline stage: a blocky theme character runs in and places the
-     slogan block by block (arm swing + block pop + dust puffs), then
-     jumps and poofs away. Loops while the band is on screen. */
+  /* Outline stage, Minecraft-realistic: the player-size character
+     walks to within reach of the next word, the black selection
+     outline flashes on the target (as in-game), his arm swings and
+     the block pops in solid for a beat before settling to outline.
+     Word by word; at the end he steps past, jumps and poofs away. */
   var band = document.querySelector('.sb-outline-band');
   var stage = band ? band.querySelector('.sb-outline-stage') : null;
   var charEl = band ? band.querySelector('.sb-char') : null;
+  var selBox = band ? band.querySelector('.sb-selbox') : null;
   var blks = band ? Array.prototype.slice.call(band.querySelectorAll('.sb-blk')) : [];
-  if (band && stage && charEl && blks.length) {
+  if (band && stage && charEl && selBox && blks.length) {
     var playing = false, inView = false;
     function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
-    function puff(x, y, cls) {
-      for (var i = 0; i < 7; i++) {
+    function puff(x, y, cls, n, size) {
+      for (var i = 0; i < n; i++) {
         var p = document.createElement('i');
         p.className = 'sb-puff' + (cls ? ' ' + cls : '');
+        p.style.width = size + 'px'; p.style.height = size + 'px';
         p.style.left = x + 'px'; p.style.top = y + 'px';
         stage.appendChild(p);
-        var ang = (i / 7) * Math.PI * 2, dist = 16 + (i % 3) * 9;
+        var ang = (i / n) * Math.PI * 2 + 0.4, dist = 18 + (i % 3) * 11;
         var anim = p.animate([
           { transform: 'translate(0,0) scale(1)', opacity: 1 },
-          { transform: 'translate(' + (Math.cos(ang) * dist).toFixed(1) + 'px,' + (Math.sin(ang) * dist - 12).toFixed(1) + 'px) scale(0.4)', opacity: 0 }
-        ], { duration: 480, easing: 'ease-out' });
+          { transform: 'translate(' + (Math.cos(ang) * dist).toFixed(1) + 'px,' + (Math.sin(ang) * dist - 14).toFixed(1) + 'px) scale(0.35)', opacity: 0 }
+        ], { duration: 500, easing: 'ease-out' });
         anim.onfinish = (function (el) { return function () { el.remove(); }; })(p);
       }
     }
-    function moveCharTo(x, speed) {
-      var cur = parseFloat(charEl.dataset.x || '-90');
-      var dur = Math.max(80, Math.abs(x - cur) / speed);
-      charEl.dataset.x = x;
+    function charW() { return charEl.offsetWidth || 60; }
+    function moveCharTo(leftX, speed) {
+      var cur = parseFloat(charEl.dataset.x || '-140');
+      var dur = Math.max(70, Math.abs(leftX - cur) / speed);
+      charEl.dataset.x = leftX;
       charEl.classList.add('is-running');
       charEl.style.transition = 'transform ' + dur + 'ms linear';
-      charEl.style.transform = 'translateX(' + x + 'px)';
+      charEl.style.transform = 'translateX(' + leftX + 'px)';
       return wait(dur).then(function () { charEl.classList.remove('is-running'); });
     }
-    function stageCenterX(el) {
+    function relRect(el) {
       var sr = stage.getBoundingClientRect(), r = el.getBoundingClientRect();
-      return r.left - sr.left + r.width / 2 - 23;
+      return { left: r.left - sr.left, top: r.top - sr.top, right: r.right - sr.left, bottom: r.bottom - sr.top, width: r.width, height: r.height };
     }
-    function stageBaseY(el) {
-      var sr = stage.getBoundingClientRect(), r = el.getBoundingClientRect();
-      return r.bottom - sr.top - 8;
+    async function flashSelBox(word) {
+      var r = relRect(word);
+      selBox.style.left = (r.left - 8) + 'px';
+      selBox.style.top = (r.top - 6) + 'px';
+      selBox.style.width = (r.width + 16) + 'px';
+      selBox.style.height = (r.height + 12) + 'px';
+      selBox.hidden = false;
+      selBox.classList.add('on');
+      await wait(210);
+      selBox.classList.remove('on');
+      selBox.hidden = true;
     }
     async function playOnce() {
       band.classList.remove('is-clearing');
@@ -250,29 +263,35 @@
       charEl.hidden = false;
       charEl.style.opacity = '1';
       charEl.style.transition = 'none';
-      charEl.style.transform = 'translateX(-90px)';
-      charEl.dataset.x = -90;
+      var startX = -charW() - 30;
+      charEl.style.transform = 'translateX(' + startX + 'px)';
+      charEl.dataset.x = startX;
       await wait(80);
       for (var i = 0; i < blks.length; i++) {
-        await moveCharTo(stageCenterX(blks[i]), 0.55);
+        var r = relRect(blks[i]);
+        /* Stand within reach, just left of the target word. */
+        await moveCharTo(r.left - charW() - 14, 0.95);
+        await flashSelBox(blks[i]);
         charEl.classList.add('is-placing');
-        await wait(150);
+        await wait(140);
         blks[i].classList.add('is-placed');
-        puff(stageCenterX(blks[i]) + 14, stageBaseY(blks[i]), i === 1 ? 'sb-puff--blue' : '');
-        await wait(240);
+        puff(r.left + r.width / 2, r.bottom - 6, i === 1 ? 'sb-puff--blue' : '', 6, 9);
+        await wait(260);
         charEl.classList.remove('is-placing');
       }
-      await moveCharTo(stageCenterX(blks[blks.length - 1]) + 130, 0.7);
+      var last = relRect(blks[blks.length - 1]);
+      await moveCharTo(last.right + 34, 1.05);
       charEl.classList.add('is-jumping');
-      await wait(210);
-      var sr2 = stage.getBoundingClientRect();
-      puff(parseFloat(charEl.dataset.x) + 8, sr2.height - 62, 'sb-puff--ink');
-      puff(parseFloat(charEl.dataset.x) + 22, sr2.height - 30, '');
+      await wait(200);
+      var cx = parseFloat(charEl.dataset.x) + charW() / 2;
+      var sr = stage.getBoundingClientRect();
+      puff(cx - 10, sr.height - 70, 'sb-puff--ink', 6, 12);
+      puff(cx - 4, sr.height - 34, '', 6, 10);
       charEl.style.opacity = '0';
       charEl.classList.remove('is-jumping');
-      await wait(450);
+      await wait(480);
       charEl.hidden = true;
-      await wait(3600);
+      await wait(3800);
       band.classList.add('is-clearing');
       await wait(650);
       band.classList.remove('is-live');
