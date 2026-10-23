@@ -89,6 +89,27 @@
             </div>
             {% endfor %}
 
+            {% if report.dimensions %}
+            {% set dims = report.dimensions %}
+            <h3 class="cr-h3">Delivery &amp; depth</h3>
+            {% if report.question %}<p style="font-size:0.88rem;color:var(--text-muted,#94a3b8);">Question: {{ report.question.question }}</p>{% endif %}
+            {% for label, key in [('STAR structure', 'star'), ('Impact & evidence', 'impact'), ('Confidence', 'confidence'), ('Delivery & length', 'delivery'), ('Vocabulary', 'vocabulary')] %}
+            {% set v = dims[key].score if dims.get(key) else 0 %}
+            <div class="cr-bar-row">
+                <span>{{ label }}</span>
+                <div class="cr-bar"><div style="width:{{ v }}%"></div></div>
+                <span>{{ v }}/100</span>
+            </div>
+            {% endfor %}
+            {% if dims.star %}
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.5rem;">
+                {% for part, label in [('situation', 'Situation'), ('task', 'Task'), ('action', 'Action'), ('result', 'Result')] %}
+                <span style="border-radius:999px;padding:0.3rem 0.75rem;font-size:0.76rem;border:1px solid {% if dims.star.parts[part] %}rgba(46,230,168,0.6);color:#2ee6a8{% else %}rgba(239,68,68,0.5);color:#f87171{% endif %};">{{ '✓' if dims.star.parts[part] else '✗' }} {{ label }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endif %}
+
             <h3 class="cr-h3">Metrics</h3>
             <div class="cr-metrics">
                 {% set m = report.metrics or {} %}
@@ -145,6 +166,7 @@
             {% for d in report.drills %}
             <div class="cr-drill">
                 <div class="before">&ldquo;{{ d.sentence }}&rdquo;</div>
+                {% if d.after %}<div style="font-size:0.9rem;color:#a7f3d0;margin-top:0.4rem;">Try: &ldquo;{{ d.after }}&rdquo;</div>{% endif %}
                 <div class="issues">Issues: {{ (d.issues or []) | join(', ') }}</div>
             </div>
             {% endfor %}

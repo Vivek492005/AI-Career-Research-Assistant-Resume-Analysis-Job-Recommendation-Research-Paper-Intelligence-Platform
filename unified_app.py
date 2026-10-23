@@ -354,7 +354,16 @@ from studybuddy.citation_fmt import (
     style_guide,
     to_bibtex,
 )
-from studybuddy.communication_coach import analyze_transcript, validate_coach_inputs
+from studybuddy.communication_coach import (
+    QUESTION_TYPES as COACH_QUESTION_TYPES,
+)
+from studybuddy.communication_coach import (
+    analyze_transcript,
+    coach_questions,
+    validate_coach_extras,
+    validate_coach_inputs,
+    video_presence_checklist,
+)
 from studybuddy.cover_generator import (
     rule_based_cover_letter,
     rule_based_outreach,
@@ -2800,12 +2809,16 @@ def _coach_polish(report, text):
         try:
             parsed = _parse_json_safely(raw)
             if isinstance(parsed, dict) and parsed.get("cleaned"):
+                after_by_sentence = {d.get("sentence"): d.get("after")
+                                     for d in fallback_drills}
                 drills = []
                 for d in (parsed.get("drills") or [])[:5]:
                     if isinstance(d, dict) and d.get("sentence"):
+                        sentence = str(d["sentence"])[:500]
                         drills.append({
-                            "sentence": str(d["sentence"])[:500],
+                            "sentence": sentence,
                             "issues": [str(x)[:60] for x in (d.get("issues") or [])[:4]],
+                            "after": after_by_sentence.get(sentence) or "",
                         })
                 return (str(parsed["cleaned"])[:8000],
                         drills or fallback_drills, True)
@@ -4748,9 +4761,36 @@ def register_routes(app):
     # ---------- COMMUNICATION COACH (Wave 2 #14) ----------
     @app.route('/coach')
     def coach_home():
-        """Communication coach: paste an answer, get filler/pacing/clarity analysis."""
+        """Communication coach: paste or speak an answer, get scored on
+        fillers, pacing, STAR structure, impact, confidence and delivery."""
+        history = []
+        trend = None
+        if current_user.is_authenticated:
+            rows = (CommunicationAnalysis.query
+                    .filter_by(user_id=current_user.id)
+                    .order_by(CommunicationAnalysis.created_at.desc())
+                    .limit(8).all())
+            history = [{
+                'id': r.id,
+                'score': r.clarity_score,
+                'question_type': (r.analysis_json or {}).get(
+                    'question_type', 'general'),
+                'question': ((r.analysis_json or {}).get('question') or {}).get(
+                    'question'),
+                'created_at': r.created_at,
+            } for r in rows]
+            if len(rows) >= 2:
+                trend = {'first': rows[-1].clarity_score,
+                         'latest': rows[0].clarity_score,
+                         'delta': round((rows[0].clarity_score or 0)
+                                        - (rows[-1].clarity_score or 0), 1),
+                         'count': CommunicationAnalysis.query.filter_by(
+                             user_id=current_user.id).count()}
         return render_template('coach.html',
-                               is_authed=current_user.is_authenticated)
+                               is_authed=current_user.is_authenticated,
+                               questions=coach_questions(),
+                               question_types=COACH_QUESTION_TYPES,
+                               history=history, trend=trend)
 
     @app.route('/coach/analyze', methods=['POST'])
     @limiter.limit("10 per hour")
@@ -4766,8 +4806,17 @@ def register_routes(app):
         text, error = validate_coach_inputs(payload or {})
         if error:
             return jsonify({'error': error}), 400
+        qtype, question, spoken_seconds, error = validate_coach_extras(
+            payload or {})
+        if error:
+            return jsonify({'error': error}), 400
 
-        report = analyze_transcript(text)
+        report = analyze_transcript(text, question_type=qtype,
+                                    spoken_seconds=spoken_seconds)
+        if question is not None:
+            report['question'] = {'id': question.get('id'),
+                                  'question': question.get('question'),
+                                  'type': question.get('type')}
         cleaned, drills, ai_powered = _coach_polish(report, text)
         report['cleaned_version'] = cleaned
         report['drills'] = drills
@@ -4791,6 +4840,19 @@ def register_routes(app):
         return jsonify({'success': True, 'analysis_id': row.id,
                         'report': json_safe(report),
                         'report_url': url_for('view_coach_report', analysis_id=row.id)})
+
+    @app.route('/coach/video-checklist', methods=['POST'])
+    @limiter.limit("30 per hour")
+    def coach_video_checklist():
+        """Score the video-presence self-checklist (login required)."""
+        if not current_user.is_authenticated:
+            return jsonify({'error': 'Please log in to use the communication coach.'}), 401
+        payload = request.get_json(silent=True) or {}
+        scores = payload.get('scores')
+        if scores is not None and not isinstance(scores, dict):
+            return jsonify({'error': 'Scores must be an object.'}), 400
+        return jsonify({'success': True,
+                        'result': video_presence_checklist(scores or {})})
 
     @app.route('/coach/<int:analysis_id>')
     @login_required

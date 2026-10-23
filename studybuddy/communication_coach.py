@@ -90,9 +90,251 @@ def _rewrite_clean(text, hits):
     return out.strip()
 
 
-def analyze_transcript(text):
+# ---------------------------------------------------------------------------
+# Analyzer v2 dimensions: STAR structure, impact/evidence, confidence,
+# delivery pacing and vocabulary. These sit alongside the original
+# clarity score (whose formula is unchanged) so a student sees not
+# just "how clean" an answer is, but whether it would land.
+# ---------------------------------------------------------------------------
+
+QUESTION_TYPES = {
+    "general": {"label": "General answer", "target_seconds": (45, 120)},
+    "self_intro": {"label": "Self-introduction", "target_seconds": (60, 90)},
+    "behavioral": {"label": "Behavioral answer (STAR)", "target_seconds": (90, 150)},
+    "hr": {"label": "HR question", "target_seconds": (45, 90)},
+    "technical": {"label": "Technical explanation", "target_seconds": (60, 120)},
+}
+
+QUESTIONS_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data", "coach_questions.json")
+
+_questions = None
+
+
+def coach_questions():
+    """The practice-question bank (data/coach_questions.json)."""
+    global _questions
+    if _questions is None:
+        try:
+            with open(QUESTIONS_PATH, encoding="utf-8") as f:
+                _questions = json.load(f).get("questions", [])
+        except (FileNotFoundError, ValueError):
+            _questions = []
+    return _questions
+
+
+def get_coach_question(question_id):
+    for q in coach_questions():
+        if q.get("id") == question_id:
+            return q
+    return None
+
+
+_ACTION_VERBS = {
+    "built", "led", "designed", "implemented", "improved", "reduced",
+    "increased", "launched", "automated", "debugged", "shipped", "created",
+    "developed", "optimized", "optimised", "coordinated", "mentored",
+    "analyzed", "analysed", "delivered", "achieved", "resolved", "migrated",
+    "refactored", "tested", "documented", "presented", "negotiated",
+    "planned", "trained", "organized", "organised", "fixed", "wrote",
+    "researched", "proposed", "introduced", "streamlined", "monitored",
+    "collaborated", "convinced", "prioritized", "prioritised", "tracked",
+    "reviewed", "deployed", "integrated", "identified", "suggested",
+}
+
+_SITUATION_MARKERS = (
+    "when i", "during", "at my previous", "in my previous", "we had",
+    "there was", "there were", "our project", "the project was",
+    "back in", "while i was", "in college", "at the time", "we faced",
+    "the challenge was", "the problem was", "in my internship",
+    "in our team", "the situation",
+)
+_TASK_MARKERS = (
+    "my task", "i was responsible", "responsible for", "i needed to",
+    "we needed to", "the goal was", "my goal", "asked me to", "assigned",
+    "my role was", "i had to", "we had to", "expected to", "in charge",
+)
+_RESULT_WORDS = (
+    "resulted", "improved", "reduced", "increased", "achieved",
+    "successfully", "as a result", "led to", "in the end", "eventually",
+    "helped us", "won", "selected", "shipped", "launched", "saved",
+    "boosted", "cut down", "brought down",
+)
+_APOLOGY_MARKERS = (
+    "sorry", "i guess", "not sure", "i don't know", "dont know",
+    "maybe i", "just wanted", "i just", "only did", "i only",
+)
+_CERTAINTY_MARKERS = (
+    "i will", "i can", "definitely", "clearly", "i decided", "i chose",
+    "i am confident", "i ensured", "i made sure",
+)
+_CRUTCH_WORDS = ("actually", "basically", "literally", "stuff", "things",
+                 "like", "right", "you know")
+_JARGON_WORDS = ("synergy", "leverage", "paradigm", "bandwidth",
+                 "deep dive", "circle back", "touch base", "low-hanging")
+_METRIC_RE = re.compile(
+    r"\d+(?:\.\d+)?\s*(?:%|percent|x\b|times\b|users?\b|customers?\b|"
+    r"students?\b|hours?\b|days?\b|weeks?\b|months?\b|rupees?\b|lakhs?\b|"
+    r"crores?\b|₹|rs\.?\b|k\b)", re.IGNORECASE)
+_STOPWORDS = {
+    "that", "this", "with", "from", "have", "were", "was", "been", "then",
+    "them", "they", "their", "there", "when", "what", "which", "about",
+    "would", "could", "should", "into", "over", "also", "just", "like",
+    "because", "really", "very", "much", "many", "some", "more", "most",
+    "other", "after", "before", "during", "while", "where", "being",
+}
+
+
+def _marker_count(lowered, markers):
+    return sum(lowered.count(m) for m in markers)
+
+
+def _star_analysis(lowered, sentences):
+    situation = _marker_count(lowered, _SITUATION_MARKERS) > 0
+    task = _marker_count(lowered, _TASK_MARKERS) > 0
+    i_actions = 0
+    for s in sentences:
+        toks = [w.lower() for w in _words(s)]
+        for i, tok in enumerate(toks[:-1]):
+            if tok in ("i",) and toks[i + 1] in _ACTION_VERBS:
+                i_actions += 1
+    action = i_actions >= 2
+    result = _marker_count(lowered, _RESULT_WORDS) > 0 or bool(
+        _METRIC_RE.search(lowered))
+    parts = {"situation": situation, "task": task,
+             "action": action, "result": result}
+    missing = [name for name, ok in parts.items() if not ok]
+    return {"parts": parts, "missing": missing,
+            "action_verb_count": i_actions,
+            "score": round(25 * (4 - len(missing)))}
+
+
+def _impact_analysis(lowered, words_lower):
+    metrics = [m.group(0) for m in _METRIC_RE.finditer(lowered)][:10]
+    verbs = sum(1 for w in words_lower if w in _ACTION_VERBS)
+    i_count = words_lower.count("i")
+    we_count = words_lower.count("we")
+    ownership = round(i_count / (i_count + we_count), 2) \
+        if (i_count + we_count) else 0.0
+    score = min(40, len(metrics) * 10) + min(30, verbs * 3) \
+        + round(ownership * 30)
+    return {"metrics_found": metrics, "action_verbs": verbs,
+            "ownership_ratio": ownership,
+            "score": max(0, min(100, score))}
+
+
+def _confidence_analysis(lowered, hedge_events):
+    apologies = _marker_count(lowered, _APOLOGY_MARKERS)
+    certainty = _marker_count(lowered, _CERTAINTY_MARKERS)
+    score = 100 - min(60, hedge_events * 6 + apologies * 10) \
+        + min(15, certainty * 3)
+    return {"apology_markers": apologies, "certainty_markers": certainty,
+            "score": max(0, min(100, round(score)))}
+
+
+def _delivery_analysis(n_words, question_type, spoken_seconds=None):
+    est_seconds = round(n_words / 140 * 60)
+    lo, hi = QUESTION_TYPES[question_type]["target_seconds"]
+    wpm = None
+    pace_verdict = None
+    if spoken_seconds:
+        wpm = round(n_words / spoken_seconds * 60)
+        pace_verdict = ("too slow" if wpm < 110 else
+                        "rushed" if wpm > 170 else "good pace")
+        judge_seconds = spoken_seconds
+    else:
+        judge_seconds = est_seconds
+    if judge_seconds < lo:
+        length_verdict = "too short"
+    elif judge_seconds > hi:
+        length_verdict = "too long"
+    else:
+        length_verdict = "in range"
+    pace_part = 50
+    if pace_verdict == "too slow":
+        pace_part = 25
+    elif pace_verdict == "rushed":
+        pace_part = 20
+    length_part = {"in range": 50, "too short": 25, "too long": 30}[
+        length_verdict]
+    return {"estimated_seconds": est_seconds,
+            "spoken_seconds": spoken_seconds,
+            "wpm": wpm, "pace_verdict": pace_verdict,
+            "target_seconds": [lo, hi], "length_verdict": length_verdict,
+            "score": pace_part + length_part}
+
+
+def _vocabulary_analysis(lowered, words_lower):
+    n = len(words_lower)
+    ttr = round(len(set(words_lower)) / n, 3) if n else 0.0
+    counts = {}
+    for w in words_lower:
+        if len(w) >= 4 and w not in _STOPWORDS:
+            counts[w] = counts.get(w, 0) + 1
+    repeated = sorted(({"word": w, "count": c} for w, c in counts.items()
+                         if c >= 3), key=lambda d: -d["count"])[:5]
+    crutches = sum(lowered.count(w) for w in _CRUTCH_WORDS)
+    jargon = sum(lowered.count(w) for w in _JARGON_WORDS)
+    if ttr >= 0.55:
+        base = 100
+    elif ttr <= 0.30:
+        base = 40
+    else:
+        base = round(40 + (ttr - 0.30) / 0.25 * 60)
+    score = max(0, base - min(20, crutches * 2) - min(15, jargon * 5))
+    return {"unique_ratio": ttr, "repeated_words": repeated,
+            "crutch_count": crutches, "jargon_count": jargon,
+            "score": score}
+
+
+def _dimension_suggestions(dims, question_type):
+    out = []
+    star = dims["star"]
+    if star["missing"] and (question_type == "behavioral"
+                            or star["score"] < 100):
+        pretty = {"situation": "the Situation (set the scene)",
+                  "task": "your Task (what YOU were responsible for)",
+                  "action": "your Actions (use 'I built / I led…')",
+                  "result": "the Result (end with the outcome, ideally a number)"}
+        out.append("STAR check — your answer is missing "
+                   + ", ".join(pretty[m] for m in star["missing"]) + ".")
+    impact = dims["impact"]
+    if not impact["metrics_found"]:
+        out.append("Add at least one number — a %, a count, a time saved. "
+                   "Interviewers remember quantified results.")
+    if impact["ownership_ratio"] and impact["ownership_ratio"] < 0.4:
+        out.append("You say 'we' a lot — switch to 'I' for your own "
+                   "actions so your contribution is visible.")
+    delivery = dims["delivery"]
+    if delivery["pace_verdict"] == "rushed":
+        out.append(f"You spoke at {delivery['wpm']} wpm — slow down; "
+                   "130-150 wpm lands best.")
+    elif delivery["pace_verdict"] == "too slow":
+        out.append(f"You spoke at {delivery['wpm']} wpm — pick up the "
+                   "pace a little; 130-150 wpm sounds energetic.")
+    if delivery["length_verdict"] == "too short":
+        out.append("This answer is short for its question type — add one "
+                   "concrete example before you finish.")
+    elif delivery["length_verdict"] == "too long":
+        out.append("This answer runs long — cut background detail and get "
+                   "to your actions sooner.")
+    vocab = dims["vocabulary"]
+    if vocab["repeated_words"]:
+        top = vocab["repeated_words"][0]
+        out.append(f"You repeat \u201c{top['word']}\u201d {top['count']}x — "
+                   "vary the word or cut a few uses.")
+    if dims["confidence"]["apology_markers"] >= 2:
+        out.append("Drop the apologies and qualifiers ('sorry', 'I guess', "
+                   "'just') — state your points plainly.")
+    return out
+
+
+def analyze_transcript(text, question_type=None, spoken_seconds=None):
     """Full analysis. Returns a JSON-serializable report dict."""
     text = (text or "").strip()
+    if question_type not in QUESTION_TYPES:
+        question_type = "general"
     words = _words(text)
     sentences = _sentences(text)
     n_words = len(words)
@@ -136,7 +378,7 @@ def analyze_transcript(text):
 
     cleaned = _rewrite_clean(text, filler_hits)
 
-    # --- practice drills: 5 worst sentences ---
+    # --- practice drills: 5 worst sentences, each with a target rewrite ---
     drills = []
     for s in sentences:
         s_hits = find_filler_hits(s)
@@ -144,7 +386,12 @@ def analyze_transcript(text):
         if len(_words(s)) > 30:
             score += 4
         if score > 0:
-            drills.append({"sentence": s, "issues": [h["word"] for h in s_hits][:5]})
+            cleaned_sentence = _rewrite_clean(s, s_hits)
+            drills.append({
+                "sentence": s,
+                "issues": [h["word"] for h in s_hits][:5],
+                "after": cleaned_sentence if cleaned_sentence != s else "",
+            })
     drills.sort(key=lambda d: -sum(1 for _ in d["issues"]))
     drills = drills[:5]
 
@@ -166,6 +413,20 @@ def analyze_transcript(text):
     if hedge_events >= 3:
         suggestions.append("You hedge a lot - replace 'I think / maybe / probably' with "
                            "evidence or a clear stance.")
+
+    # --- v2 dimensions ---
+    lowered = text.lower()
+    words_lower = [w.lower() for w in words]
+    dimensions = {
+        "star": _star_analysis(lowered, sentences),
+        "impact": _impact_analysis(lowered, words_lower),
+        "confidence": _confidence_analysis(lowered, hedge_events),
+        "delivery": _delivery_analysis(n_words, question_type,
+                                       spoken_seconds),
+        "vocabulary": _vocabulary_analysis(lowered, words_lower),
+    }
+    suggestions = (suggestions
+                   + _dimension_suggestions(dimensions, question_type))[:12]
 
     return {
         "clarity_score": clarity,
@@ -193,6 +454,8 @@ def analyze_transcript(text):
         "suggestions": suggestions,
         "cleaned_version": cleaned,
         "drills": drills,
+        "question_type": question_type,
+        "dimensions": dimensions,
     }
 
 
@@ -204,6 +467,37 @@ def validate_coach_inputs(payload):
     if len(text) > MAX_CHARS:
         return None, f"Please keep your answer under {MAX_CHARS} characters."
     return text, None
+
+
+def validate_coach_extras(payload):
+    """Validate the optional v2 fields of an analyze request.
+
+    Returns (question_type, question, spoken_seconds, error). When a
+    bank question is chosen, its own type drives the scoring targets.
+    """
+    payload = payload or {}
+    question = None
+    qid = (payload.get("question_id") or "").strip()
+    if qid:
+        question = get_coach_question(qid)
+        if question is None:
+            return None, None, None, "Unknown practice question."
+    qtype = (payload.get("question_type") or "general").strip().lower()
+    if question is not None:
+        qtype = question.get("type") or qtype
+    if qtype not in QUESTION_TYPES:
+        return None, None, None, "Unknown question type."
+    spoken = payload.get("spoken_seconds")
+    if spoken is not None and spoken != "":
+        try:
+            spoken = int(spoken)
+        except (TypeError, ValueError):
+            return None, None, None, "Speaking time must be a number of seconds."
+        if spoken < 5 or spoken > 1800:
+            return None, None, None, "Speaking time must be between 5 seconds and 30 minutes."
+    else:
+        spoken = None
+    return qtype, question, spoken, None
 
 
 # ================= Feature 13 Ultimate Enhancements =================
