@@ -1143,8 +1143,12 @@ body.sb-workspace .hero h2.hero-h {
    its card at a capped width. */
 .jd-demo { max-width: 540px; }
 @media (min-width: 1280px) {
-  .sb-work { max-width: 1560px; }
-  .sb-work .hero { max-width: 1072px; }
+  .sb-work { max-width: 1600px; }
+  .sb-work .hero { max-width: 1112px; }
+  /* The old stylesheet caps every section at 900px — lift it here
+     so the CARD takes the widened space (the rail comes out of the
+     new width, never out of the card). */
+  .sb-work .jd-section { max-width: none; }
   .sb-work .jd-section {
     display: grid; grid-template-columns: minmax(0, 1fr) 400px;
     gap: 44px; align-items: stretch;
