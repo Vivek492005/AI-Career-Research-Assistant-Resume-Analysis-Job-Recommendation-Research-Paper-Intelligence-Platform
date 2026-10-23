@@ -1616,3 +1616,65 @@ body.sb-research .b-card--stat:hover :is(b, strong) { color: var(--sb-blue) !imp
   .sb-dsa .az-row { flex-wrap: wrap; }
   .dt-row { grid-template-columns: 120px 1fr 92px; }
 }
+
+/* ---------- Mock interview setup (redesign + resume mode) ---------- */
+.sb-iv .iv-stats { display: flex; gap: 2.2rem; flex-wrap: wrap; margin-top: 1.3rem; }
+.sb-iv .iv-stat b { display: block; font-family: var(--sb-display); font-size: 1.9rem; color: #fff; line-height: 1; }
+.sb-iv .iv-stat span { font-family: var(--sb-mono); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: #a3a3a0; }
+.sb-iv .iv-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.6rem 0 1.2rem; }
+.sb-iv .iv-mode {
+  text-align: left; cursor: pointer; background: #111; border: 1px solid #2c2c2c;
+  color: #f2f1ea; padding: 1.1rem 1.2rem; font: inherit;
+}
+.sb-iv .iv-mode:hover { border-color: #4a4a4a; }
+.sb-iv .iv-mode.is-active { border-color: var(--sb-lime); background: #141410; }
+.sb-iv .iv-mode h3 { font-family: var(--sb-display); font-size: 1.35rem; text-transform: uppercase; margin: 0 0 0.3rem; color: #fff; }
+.sb-iv .iv-mode p { margin: 0; color: #a3a3a0; font-size: 0.88rem; line-height: 1.45; }
+.sb-iv .iv-mode .iv-new {
+  font-family: var(--sb-mono); font-size: 0.6rem; letter-spacing: 0.12em;
+  background: var(--sb-lime); color: #0a0a0a; font-weight: 700; padding: 0.14rem 0.45rem;
+  vertical-align: super; margin-left: 0.4rem;
+}
+.sb-iv .iv-companies { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.2rem; }
+.sb-iv .iv-co {
+  cursor: pointer; background: transparent; border: 1px solid #3a3a3a; color: #e8e8e2;
+  font-family: var(--sb-mono); font-size: 0.74rem; padding: 0.42rem 0.7rem;
+}
+.sb-iv .iv-co small { color: #8f8f8a; margin-left: 0.3rem; }
+.sb-iv .iv-co:hover { border-color: var(--sb-lime); }
+.sb-iv .iv-co.is-active { background: var(--sb-lime); border-color: var(--sb-lime); color: #0a0a0a; font-weight: 700; }
+.sb-iv .iv-co.is-active small { color: #333; }
+.sb-iv .iv-seg { display: inline-flex; border: 1px solid #3a3a3a; }
+.sb-iv .iv-seg button {
+  cursor: pointer; background: transparent; border: 0; color: #d8d8d2; font: inherit;
+  font-family: var(--sb-mono); font-size: 0.82rem; padding: 0.5rem 1rem;
+}
+.sb-iv .iv-seg button.is-active { background: var(--sb-blue); color: #fff; font-weight: 700; }
+.sb-iv .iv-intel { border: 1px dashed #3d3d3d; padding: 1rem 1.1rem; margin: 0 0 1.2rem; display: none; }
+.sb-iv .iv-intel h4 { margin: 0 0 0.4rem; font-family: var(--sb-display); font-size: 1.15rem; text-transform: uppercase; color: #fff; }
+.sb-iv .iv-intel p { color: #c9c9c2; font-size: 0.88rem; margin: 0.2rem 0; }
+.sb-iv .iv-intel ul { margin: 0.5rem 0 0; padding-left: 1.1rem; color: #a3a3a0; font-size: 0.85rem; }
+.sb-iv .iv-drop {
+  display: block; border: 2px dashed #3d3d3d; padding: 1.6rem 1.2rem; text-align: center;
+  cursor: pointer; color: #d8d8d2; margin-bottom: 1rem;
+}
+.sb-iv .iv-drop:hover, .sb-iv .iv-drop.is-over { border-color: var(--sb-lime); color: #fff; }
+.sb-iv .iv-drop b { font-family: var(--sb-display); font-size: 1.2rem; text-transform: uppercase; display: block; color: #fff; }
+.sb-iv .iv-drop input { display: none; }
+.sb-iv .iv-aspects { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0 0 1.1rem; }
+.sb-iv .iv-aspects span {
+  font-family: var(--sb-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase;
+  border: 1px solid #3a3a3a; color: #c9c9c2; padding: 0.3rem 0.6rem;
+}
+.sb-iv .iv-profile { display: none; border: 1px solid var(--sb-lime); padding: 1rem 1.1rem; margin-top: 1rem; }
+.sb-iv .iv-profile h4 { margin: 0 0 0.5rem; font-family: var(--sb-display); font-size: 1.2rem; text-transform: uppercase; color: #fff; }
+.sb-iv .iv-profile .iv-aspects { margin-bottom: 0.6rem; }
+.sb-iv .iv-recent-row {
+  display: flex; gap: 1rem; align-items: baseline; padding: 0.55rem 0;
+  border-bottom: 1px dashed #2c2c2c; flex-wrap: wrap;
+}
+.sb-iv .iv-recent-row b { color: #fff; }
+.sb-iv .iv-recent-row .iv-score { font-family: var(--sb-mono); color: var(--sb-lime); }
+.sb-iv .iv-recent-row a { color: var(--accent-primary); font-weight: 700; margin-left: auto; }
+.sb-iv .iv-recent-row time { color: #8f8f8a; font-family: var(--sb-mono); font-size: 0.72rem; }
+@media (max-width: 700px) { .sb-iv .iv-modes { grid-template-columns: 1fr; } }

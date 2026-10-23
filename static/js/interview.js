@@ -57,16 +57,23 @@
             btn.disabled = false;
             if (res.status === 401) { window.location.href = '/login?next=/interview'; return; }
             if (!res.body.success) { setText(err, res.body.error || 'Could not start.'); return; }
-            sessionId = res.body.session_id;
-            questions = res.body.questions;
-            answers = new Array(questions.length).fill('');
-            idx = 0;
-            el('setup-card').style.display = 'none';
-            el('quiz-area').style.display = 'block';
-            renderQ();
+            begin(res.body.session_id, res.body.questions);
         })
         .catch(function () { btn.disabled = false; setText(err, 'Network error. Please try again.'); });
     });
+
+    function begin(sid, qs) {
+        sessionId = sid;
+        questions = qs;
+        answers = new Array(questions.length).fill('');
+        idx = 0;
+        ['setup-card', 'panel-resume', 'mode-row', 'recent-card'].forEach(function (id) {
+            var n = el(id); if (n) n.style.display = 'none';
+        });
+        el('quiz-area').style.display = 'block';
+        renderQ();
+    }
+    window.SBInterview = { begin: begin };
 
     function renderQ() {
         var q = questions[idx];

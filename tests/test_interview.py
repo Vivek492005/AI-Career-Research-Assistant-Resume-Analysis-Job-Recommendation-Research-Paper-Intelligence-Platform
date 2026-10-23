@@ -30,7 +30,7 @@ def test_bank_loads_with_required_fields():
                 "difficulty", "key_points", "time_minutes"}
     for q in bank:
         assert required <= set(q.keys()), q.get("id")
-        assert q["category"] in ("behavioral", "hr", "puzzles", "system_design", "dsa")
+        assert q["category"] in ("behavioral", "hr", "puzzles", "system_design", "dsa", "technical")
         assert q["difficulty"] in ("Easy", "Medium", "Hard")
         assert len(q["key_points"]) >= 3
         assert q["companies"] and q["roles"]
@@ -48,14 +48,14 @@ def test_bank_covers_companies_and_categories():
     for want in ("Google", "Amazon", "TCS", "Flipkart"):
         assert want in companies
     cats = {q["category"] for q in bank}
-    assert cats == {"behavioral", "hr", "puzzles", "system_design", "dsa"}
+    assert cats == {"behavioral", "hr", "puzzles", "system_design", "dsa", "technical"}
 
 
 def test_interview_options_shape():
     opts = interview_options()
     assert len(opts["companies"]) >= 10
     assert "sde" in opts["roles"]
-    assert set(opts["categories"]) == {"behavioral", "hr", "puzzles", "system_design", "dsa"}
+    assert set(opts["categories"]) == {"behavioral", "hr", "puzzles", "system_design", "dsa", "technical"}
 
 
 # ---------- question picking ----------

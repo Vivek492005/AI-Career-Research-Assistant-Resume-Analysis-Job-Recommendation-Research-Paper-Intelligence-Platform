@@ -5,13 +5,12 @@
     <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>AI Mock Interviews | AI Resume Analyzer</title>
+    <title>AI Mock Interviews | Study-Buddy</title>
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon-32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/favicon-16.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bento.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/kinetic.css') }}">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2310b981'/><path d='M30 52l12 12 28-30' stroke='white' stroke-width='10' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 </head>
 <body class="sb-iv">
     {% set nav_active = 'practice' %}
@@ -21,7 +20,15 @@
     <div class="sb-iv-wrap">
         <div class="iv-head">
             <p class="sb-kicker">Practice — 02 / Interviews</p><h1>Mock<br><span class="sb-accent">Interviews</span></h1>
-            <p>Company-specific questions from a bank of {{ options.companies|length }} companies and {{ total_questions }} questions. Answer against the clock, get rubric-scored feedback.</p>
+            <p>Two ways to rehearse. Face real questions asked at top companies — or upload your
+               resume and get interviewed on your own projects, skills and experience.
+               Every answer is timed and rubric-scored.</p>
+            <div class="iv-stats">
+                <div class="iv-stat"><b>{{ options.companies|length }}</b><span>Companies</span></div>
+                <div class="iv-stat"><b>{{ total_questions }}</b><span>Banked questions</span></div>
+                <div class="iv-stat"><b>{{ options.categories|length }}</b><span>Categories</span></div>
+                <div class="iv-stat"><b>12</b><span>Resume-mock questions</span></div>
+            </div>
         </div>
 
         {% if not is_authed %}
@@ -30,35 +37,108 @@
         </div>
         {% endif %}
 
-        <div class="iv-card b-card" id="setup-card" {% if not is_authed %}style="display:none"{% endif %}>
-            <div class="iv-field">
-                <label for="sel-company">Company</label>
-                <select id="sel-company">
-                    {% for c in options.companies %}<option value="{{ c }}">{{ c }}</option>{% endfor %}
-                </select>
+        <div id="setup-region" {% if not is_authed %}style="display:none"{% endif %}>
+            <div class="iv-modes" id="mode-row" role="tablist" aria-label="Interview mode">
+                <button type="button" class="iv-mode is-active" id="mode-company" role="tab" aria-selected="true">
+                    <h3>Company Mock</h3>
+                    <p>Real questions asked at {{ options.companies|length }} companies — pick a company, role and category.</p>
+                </button>
+                <button type="button" class="iv-mode" id="mode-resume" role="tab" aria-selected="false">
+                    <h3>Resume Mock <span class="iv-new">New</span></h3>
+                    <p>Upload your resume — 12 questions built from your projects, skills, experience and profiles.</p>
+                </button>
             </div>
-            <div class="iv-field">
-                <label for="sel-role">Role</label>
-                <select id="sel-role">
-                    {% for r in options.roles %}<option value="{{ r }}">{{ r.replace('_', ' ').title() }}</option>{% endfor %}
-                </select>
+
+            <div class="iv-card b-card" id="setup-card">
+                <div class="iv-field">
+                    <label>Company</label>
+                    <div class="iv-companies" id="co-chips">
+                        {% for c in options.companies %}<button type="button" class="iv-co" data-company="{{ c }}">{{ c }}<small>{{ company_counts.get(c, 0) }}</small></button>{% endfor %}
+                    </div>
+                    <div style="display:none">
+                        <select id="sel-company">
+                            {% for c in options.companies %}<option value="{{ c }}">{{ c }}</option>{% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="iv-intel" id="intel-card">
+                    <h4 id="intel-title"></h4>
+                    <p id="intel-note"></p>
+                    <p id="intel-focus" style="color:var(--sb-lime);font-weight:600;"></p>
+                    <ul id="intel-samples"></ul>
+                </div>
+                <div class="iv-field">
+                    <label for="sel-role">Role</label>
+                    <select id="sel-role">
+                        {% for r in options.roles %}<option value="{{ r }}">{{ r.replace('_', ' ').title() }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="iv-field">
+                    <label for="sel-category">Category</label>
+                    <select id="sel-category">
+                        {% for c in options.categories %}<option value="{{ c }}">{{ c.replace('_', ' ').title() }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="iv-field">
+                    <label>Number of questions</label>
+                    <div class="iv-seg" id="seg-n">
+                        <button type="button" data-n="3">3</button>
+                        <button type="button" data-n="5" class="is-active">5</button>
+                        <button type="button" data-n="8">8</button>
+                        <button type="button" data-n="10">10</button>
+                    </div>
+                    <div style="display:none">
+                        <select id="sel-n">
+                            <option value="3">3</option>
+                            <option value="5" selected>5</option>
+                            <option value="8">8</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="iv-btn b-magnet" id="btn-start">Start Interview</button>
+                <div class="iv-error" id="setup-error" role="alert"></div>
             </div>
-            <div class="iv-field">
-                <label for="sel-category">Category</label>
-                <select id="sel-category">
-                    {% for c in options.categories %}<option value="{{ c }}">{{ c.replace('_', ' ').title() }}</option>{% endfor %}
-                </select>
+
+            <div class="iv-card b-card" id="panel-resume" style="display:none">
+                <p style="margin-top:0;">We read your resume and build the interview around it —
+                   your interviewer will ask about <strong>your</strong> work, not generic topics.</p>
+                <div class="iv-aspects">
+                    <span>Project deep-dives</span><span>Skill probes</span><span>Experience (STAR)</span>
+                    <span>Personality</span><span>GitHub / profiles</span><span>Career goals</span>
+                </div>
+                <label class="iv-drop" id="resume-drop">
+                    <b>Drop your resume here</b>
+                    <span id="resume-drop-hint">or click to choose a PDF / DOCX file</span>
+                    <input type="file" id="resume-file" accept=".pdf,.docx">
+                </label>
+                <p style="margin:0 0 1rem;"><a href="#" id="paste-toggle">…or paste the resume text instead</a></p>
+                <textarea class="iv-answer" id="resume-text" style="display:none;min-height:150px;" placeholder="Paste your full resume text here — sections like Projects, Skills and Experience help us ask better questions."></textarea>
+                <button class="iv-btn b-magnet" id="btn-resume-start">Build My Interview</button>
+                <div class="iv-error" id="resume-error" role="alert"></div>
+                <div class="iv-profile" id="resume-profile">
+                    <h4 id="rp-title">Your mock is ready</h4>
+                    <p id="rp-summary" style="color:#c9c9c2;margin:0 0 0.6rem;"></p>
+                    <div class="iv-aspects" id="rp-skills"></div>
+                    <ul id="rp-projects" style="color:#a3a3a0;margin:0 0 0.9rem;padding-left:1.1rem;"></ul>
+                    <button class="iv-btn" id="btn-resume-begin">Begin — 12 Questions</button>
+                </div>
             </div>
-            <div class="iv-field">
-                <label for="sel-n">Number of questions</label>
-                <select id="sel-n">
-                    <option value="3">3</option>
-                    <option value="5" selected>5</option>
-                    <option value="8">8</option>
-                </select>
+
+            {% if recent_sessions %}
+            <div class="iv-card b-card" id="recent-card" style="margin-top:1.2rem;">
+                <h3 style="font-family:var(--sb-display);text-transform:uppercase;margin-top:0;">Your recent sessions</h3>
+                {% for s in recent_sessions %}
+                <div class="iv-recent-row">
+                    <b>{{ s.company }}</b>
+                    <span>{{ s.category.replace('_', ' ').title() }}</span>
+                    {% if s.total_score is not none %}<span class="iv-score">{{ s.total_score }}/100</span>{% else %}<span>not submitted</span>{% endif %}
+                    <time>{{ s.created_at.strftime('%d %b %Y') }}</time>
+                    <a href="{{ url_for('view_interview', session_id=s.id) }}">View report</a>
+                </div>
+                {% endfor %}
             </div>
-            <button class="iv-btn b-magnet" id="btn-start">Start Interview</button>
-            <div class="iv-error" id="setup-error" role="alert"></div>
+            {% endif %}
         </div>
 
         <div id="quiz-area" style="display:none">
@@ -100,6 +180,135 @@
     </footer>
 
     <script src="{{ url_for('static', filename='js/interview.js') }}"></script>
+    <script>
+    (function () {
+      'use strict';
+      function el(id) { return document.getElementById(id); }
+      var csrf = document.querySelector('meta[name="csrf-token"]').content;
+
+      /* ----- mode switching ----- */
+      var mCo = el('mode-company'), mRe = el('mode-resume');
+      function setMode(resume) {
+        mCo.classList.toggle('is-active', !resume);
+        mRe.classList.toggle('is-active', resume);
+        mCo.setAttribute('aria-selected', String(!resume));
+        mRe.setAttribute('aria-selected', String(resume));
+        el('setup-card').style.display = resume ? 'none' : '';
+        el('panel-resume').style.display = resume ? '' : 'none';
+      }
+      if (mCo) { mCo.addEventListener('click', function () { setMode(false); });
+                 mRe.addEventListener('click', function () { setMode(true); }); }
+
+      /* ----- company chips + intel ----- */
+      var sel = el('sel-company');
+      function markChip() {
+        document.querySelectorAll('.iv-co').forEach(function (b) {
+          b.classList.toggle('is-active', b.getAttribute('data-company') === sel.value);
+        });
+      }
+      function loadIntel() {
+        fetch('/api/interview/intel/' + encodeURIComponent(sel.value))
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            if (d.error) return;
+            el('intel-title').textContent = d.company + ' — ' + d.total_questions + ' questions in the bank';
+            el('intel-note').textContent = d.note;
+            el('intel-focus').textContent = d.focus_tip;
+            var ul = el('intel-samples'); ul.innerHTML = '';
+            (d.sample_questions || []).slice(0, 3).forEach(function (s) {
+              var li = document.createElement('li');
+              li.textContent = s.question;
+              ul.appendChild(li);
+            });
+            el('intel-card').style.display = 'block';
+          })
+          .catch(function () {});
+      }
+      if (sel) {
+        document.querySelectorAll('.iv-co').forEach(function (b) {
+          b.addEventListener('click', function () {
+            sel.value = b.getAttribute('data-company');
+            markChip(); loadIntel();
+          });
+        });
+        markChip(); loadIntel();
+      }
+
+      /* ----- number-of-questions segmented control ----- */
+      var selN = el('sel-n');
+      document.querySelectorAll('#seg-n button').forEach(function (b) {
+        b.addEventListener('click', function () {
+          document.querySelectorAll('#seg-n button').forEach(function (x) { x.classList.remove('is-active'); });
+          b.classList.add('is-active');
+          selN.value = b.getAttribute('data-n');
+        });
+      });
+
+      /* ----- resume mode ----- */
+      var pending = null;
+      var drop = el('resume-drop'), fileInput = el('resume-file');
+      if (drop) {
+        ['dragover', 'dragenter'].forEach(function (ev) {
+          drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('is-over'); });
+        });
+        ['dragleave', 'drop'].forEach(function (ev) {
+          drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove('is-over'); });
+        });
+        drop.addEventListener('drop', function (e) {
+          var f = e.dataTransfer.files && e.dataTransfer.files[0];
+          if (f) { fileInput.files = e.dataTransfer.files; showFile(); }
+        });
+        fileInput.addEventListener('change', showFile);
+      }
+      function showFile() {
+        var f = fileInput.files && fileInput.files[0];
+        if (f) el('resume-drop-hint').textContent = f.name + ' — ready when you are';
+      }
+      el('paste-toggle').addEventListener('click', function (e) {
+        e.preventDefault();
+        var t = el('resume-text');
+        t.style.display = t.style.display === 'none' ? '' : 'none';
+        if (t.style.display !== 'none') t.focus();
+      });
+      el('btn-resume-start').addEventListener('click', function () {
+        var err = el('resume-error'); err.textContent = '';
+        var btn = el('btn-resume-start'); btn.disabled = true;
+        var fd = new FormData();
+        var f = fileInput.files && fileInput.files[0];
+        var txt = el('resume-text').value.trim();
+        if (f) fd.append('resume', f);
+        else if (txt) fd.append('resume_text', txt);
+        else { err.textContent = 'Choose a resume file or paste the text first.'; btn.disabled = false; return; }
+        fetch('/interview/resume/start', { method: 'POST',
+          headers: { 'X-CSRFToken': csrf }, body: fd })
+          .then(function (r) { return r.json().then(function (d) { return { status: r.status, body: d }; }); })
+          .then(function (res) {
+            btn.disabled = false;
+            if (res.status === 401) { window.location.href = '/login?next=/interview'; return; }
+            if (!res.body.success) { err.textContent = res.body.error || 'Could not build the interview.'; return; }
+            pending = res.body;
+            var p = res.body.profile || {};
+            el('rp-title').textContent = 'Your mock is ready' + (p.name ? ', ' + p.name.split(' ')[0] : '');
+            el('rp-summary').textContent = res.body.questions.length + ' questions built from your resume' +
+              (p.experience_entries ? ' — including your experience entries.' : '.');
+            var sk = el('rp-skills'); sk.innerHTML = '';
+            (p.skills || []).forEach(function (s) {
+              var sp = document.createElement('span'); sp.textContent = s; sk.appendChild(sp);
+            });
+            var ul = el('rp-projects'); ul.innerHTML = '';
+            (p.projects || []).forEach(function (t) {
+              var li = document.createElement('li'); li.textContent = t; ul.appendChild(li);
+            });
+            el('resume-profile').style.display = 'block';
+            el('resume-profile').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          })
+          .catch(function () { btn.disabled = false; err.textContent = 'Network error. Please try again.'; });
+      });
+      el('btn-resume-begin').addEventListener('click', function () {
+        if (pending && window.SBInterview) window.SBInterview.begin(pending.session_id, pending.questions);
+      });
+    })();
+    </script>
     <script src="{{ url_for('static', filename='js/kinetic.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bento.js') }}" defer></script>
     {% include "_csp_beacon.html" %}

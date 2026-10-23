@@ -4530,11 +4530,35 @@ def register_routes(app):
     # ---------- COMPANY-SPECIFIC MOCK INTERVIEWS (Wave 2 #13) ----------
     @app.route('/interview')
     def interview_home():
-        """Mock interview setup: pick company, role, category."""
+        """Mock interview setup: company mock or resume-based mock."""
+        from collections import Counter
+
         from studybuddy.mock_interview import _load_bank
+        bank = _load_bank()
+        company_counts = Counter()
+        for q in bank:
+            for comp in q.get("companies", []):
+                company_counts[comp] += 1
+        recent = []
+        if current_user.is_authenticated:
+            recent = (InterviewSession.query
+                      .filter_by(user_id=current_user.id)
+                      .order_by(InterviewSession.id.desc())
+                      .limit(5).all())
         return render_template('interview.html', options=interview_options(),
-                               total_questions=len(_load_bank()),
+                               total_questions=len(bank),
+                               company_counts=company_counts,
+                               recent_sessions=recent,
                                is_authed=current_user.is_authenticated)
+
+    @app.route('/api/interview/intel/<company>')
+    def interview_intel_api(company):
+        """Company intel card data (public bank aggregates)."""
+        from studybuddy.mock_interview import company_intel
+        try:
+            return jsonify(company_intel(company))
+        except ValueError as exc:
+            return jsonify({'error': str(exc)}), 400
 
     @app.route('/interview/start', methods=['POST'])
     @limiter.limit("10 per hour")
@@ -4572,6 +4596,77 @@ def register_routes(app):
         return jsonify({'success': True, 'session_id': row.id,
                         'questions': json_safe(questions)})
 
+    @app.route('/interview/resume/start', methods=['POST'])
+    @limiter.limit("10 per hour")
+    def interview_resume_start():
+        """Start a resume-based mock interview.
+
+        The candidate uploads a resume (PDF/DOCX) or pastes its text;
+        questions are generated deterministically from the resume's
+        own projects, skills and experience, each with rubric key
+        points built from those facts (studybuddy.resume_interview).
+        """
+        if not current_user.is_authenticated:
+            return jsonify({'error': 'Please log in to start a mock interview.'}), 401
+        from studybuddy.parsing import ParseError as _ResumeParseError
+        from studybuddy.parsing import parse_document
+        from studybuddy.resume_interview import (
+            extract_profile,
+            generate_resume_questions,
+        )
+        text = ""
+        upload = request.files.get('resume')
+        if upload is not None and upload.filename:
+            try:
+                result = parse_document(upload.read(),
+                                        filename=upload.filename,
+                                        kind='resume')
+            except _ResumeParseError as exc:
+                return jsonify({'error': str(exc)}), 400
+            if not result.ok:
+                return jsonify({'error': result.error or
+                                'Could not read that file.'}), 400
+            text = result.text
+        elif request.is_json:
+            text = (request.get_json(silent=True) or {}).get('resume_text') or ''
+        else:
+            text = request.form.get('resume_text') or ''
+        text = (text or '').strip()
+        if len(text) < 200:
+            return jsonify({'error': 'That resume looks too short to build '
+                            'a personal mock from. Upload the full resume '
+                            '(PDF/DOCX) or paste the complete text.'}), 400
+        profile = extract_profile(text)
+        questions = generate_resume_questions(profile, n=12)
+        if not questions:
+            return jsonify({'error': 'We could not find projects, skills '
+                            'or experience in that resume. Add a Projects '
+                            'and Skills section and try again.'}), 400
+        try:
+            row = InterviewSession(
+                user_id=current_user.id,
+                company='Resume-Based Mock', role='resume',
+                category='resume',
+                questions_json=json_safe(questions),
+                answers_json=[],
+            )
+            db.session.add(row)
+            db.session.commit()
+        except Exception:
+            log.exception("Resume interview session creation failed")
+            db.session.rollback()
+            return jsonify({'error': 'Could not start the interview. '
+                            'Please try again.'}), 500
+        return jsonify({'success': True, 'session_id': row.id,
+                        'questions': json_safe(questions),
+                        'profile': {
+                            'name': profile['name'],
+                            'skills': profile['skills'][:8],
+                            'projects': [p['title']
+                                         for p in profile['projects']],
+                            'experience_entries': len(profile['experience']),
+                        }})
+
     @app.route('/interview/<int:session_id>/submit', methods=['POST'])
     @limiter.limit("10 per hour")
     def interview_submit(session_id):
@@ -4594,7 +4689,7 @@ def register_routes(app):
         questions = row.questions_json or []
         qmap = {q.get("id"): q for q in questions}
         scored = []
-        for item in raw_answers[:10]:
+        for item in raw_answers[:15]:  # company mocks cap at 10; resume mocks run to 12
             if not isinstance(item, dict):
                 continue
             qid = str(item.get("question_id") or "")
