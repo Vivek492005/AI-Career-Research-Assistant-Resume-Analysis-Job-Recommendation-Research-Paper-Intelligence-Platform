@@ -967,3 +967,10 @@ body.sb-workspace .hero h2.hero-h {
    placeable block. */
 .sb-outline-stage .sb-grp { display: inline-flex; letter-spacing: 0.02em; }
 .sb-outline-stage .sb-blk { display: inline-block; }
+
+/* Streaming placement (from the reference video): while Steve runs the
+   line, his placing arm swings continuously (hold-to-place) and the
+   letters pop in fast — solid beat is brief, no theatrical pauses. */
+.sb-char.is-streaming .sb-char-arm-l { animation: sbArmStream 0.19s ease-in-out infinite alternate; }
+@keyframes sbArmStream { from { transform: rotate(6deg); } to { transform: rotate(74deg); } }
+.sb-outline-band.is-live .sb-blk.is-placed { animation-duration: 0.3s; }

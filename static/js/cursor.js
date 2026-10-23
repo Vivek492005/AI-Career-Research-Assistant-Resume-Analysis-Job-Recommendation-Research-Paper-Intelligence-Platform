@@ -267,26 +267,41 @@
       charEl.style.transform = 'translateX(' + startX + 'px)';
       charEl.dataset.x = startX;
       await wait(80);
-      for (var i = 0; i < blks.length; i++) {
-        var r = relRect(blks[i]);
-        /* Stand within reach, just left of the target word. */
-        await moveCharTo(r.right + 10, 1.15);
-        await flashSelBox(blks[i], r.width < 70);
-        charEl.classList.add('is-placing');
-        await wait(140);
-        blks[i].classList.add('is-placed');
-        puff(r.left + r.width / 2, r.bottom - 6, blks[i].classList.contains('sb-blk-arrow') ? 'sb-puff--blue' : '', 4, 7);
-        await wait(r.width < 70 ? 170 : 260);
-        charEl.classList.remove('is-placing');
-      }
-      var last = relRect(blks[blks.length - 1]);
-      await moveCharTo(last.right + 110, 1.05);
+      /* Trigger point per letter: the char's left edge when his hand is
+         at that letter (he faces left, standing just right of it). */
+      var triggers = blks.map(function (b) { return relRect(b).right + 10; });
+      var firstX = triggers[0];
+      var endX = triggers[triggers.length - 1] + 110;
+      /* Walk in to the first letter. */
+      await moveCharTo(firstX, 1.5);
+      /* Stream: run the whole line at a steady pace while the letters
+         pop in under his hand, like holding place in Minecraft
+         (reference: ~8 blocks/sec stream). No stops, no pauses. */
+      var streamDur = Math.max(1400, (endX - firstX) / 0.62);
+      charEl.classList.add('is-running', 'is-streaming');
+      var move = charEl.animate(
+        [{ transform: 'translateX(' + firstX + 'px)' }, { transform: 'translateX(' + endX + 'px)' }],
+        { duration: streamDur, easing: 'linear', fill: 'forwards' });
+      var timers = triggers.map(function (tx, i) {
+        var t = Math.max(0, (tx - firstX) / (endX - firstX)) * streamDur;
+        return setTimeout(function () {
+          blks[i].classList.add('is-placed');
+          var r = relRect(blks[i]);
+          puff(r.left + r.width / 2, r.bottom - 4, blks[i].classList.contains('sb-blk-arrow') ? 'sb-puff--blue' : '', 2, 6);
+        }, t);
+      });
+      await wait(streamDur + 120);
+      timers.forEach(clearTimeout);
+      charEl.classList.remove('is-running', 'is-streaming');
+      if (move) { try { move.commitStyles(); move.cancel(); } catch (e) {} }
+      charEl.style.transform = 'translateX(' + endX + 'px)';
+      charEl.dataset.x = endX;
+      /* Outro: a hop, then the poof. */
       charEl.classList.add('is-jumping');
       await wait(200);
-      var cx = parseFloat(charEl.dataset.x) + charW() / 2;
       var sr = stage.getBoundingClientRect();
-      puff(cx - 10, sr.height - 70, 'sb-puff--ink', 6, 12);
-      puff(cx - 4, sr.height - 34, '', 6, 10);
+      puff(endX + charW() / 2 - 10, sr.height - 70, 'sb-puff--ink', 6, 12);
+      puff(endX + charW() / 2 - 4, sr.height - 34, '', 6, 10);
       charEl.style.opacity = '0';
       charEl.classList.remove('is-jumping');
       await wait(480);
