@@ -1009,8 +1009,6 @@ body.sb-workspace .hero h2.hero-h {
    desktop; the demos are honest samples (labelled as such) that loop
    while in view and settle to their final state under reduced
    motion. All animation is transform/opacity/clip-path only. */
-.jd-main { min-width: 0; }
-.jd-main > p { color: var(--sb-muted-dark); line-height: 1.65; max-width: 720px; margin-bottom: 1.5rem; }
 .jd-demo {
   /* Blends into the card: no background, no border — the demos play
      directly on the card's own surface, the way the intro photo
@@ -1018,13 +1016,6 @@ body.sb-workspace .hero h2.hero-h {
   position: relative; margin-top: 28px; overflow: hidden;
   background: transparent; border: 0;
   padding: 4px 2px; min-height: 300px;
-}
-@media (min-width: 1024px) {
-  .sb-work .jd-card--split {
-    display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-    gap: 36px; align-items: start;
-  }
-  .jd-card--split .jd-demo { margin-top: 0; position: sticky; top: 92px; }
 }
 .dm-tag {
   display: inline-block; font-family: var(--sb-mono); font-size: 0.68rem;
@@ -1154,3 +1145,21 @@ body.sb-workspace .hero h2.hero-h {
 .dm-bar i { display: block; height: 100%; width: 38%; background: var(--sb-blue); transform-origin: left center; }
 .jd-demo { transition: opacity 0.35s ease; }
 .jd-demo.is-resetting { opacity: 0.12; }
+
+/* Demo rail: on wide screens the workspace widens and each feature
+   section becomes card (left) + demo (right, in the page's open
+   paper area beside the card). Below that the demo stacks under
+   its card at a capped width. */
+.jd-demo { max-width: 540px; }
+@media (min-width: 1280px) {
+  .sb-work { max-width: 1560px; }
+  .sb-work .hero { max-width: 1072px; }
+  .sb-work .jd-section {
+    display: grid; grid-template-columns: minmax(0, 1fr) 400px;
+    gap: 44px; align-items: start;
+  }
+  .sb-work .jd-section .jd-demo {
+    margin-top: 6px; max-width: none; position: sticky; top: 92px;
+  }
+  .sb-work #features .b-wrap { max-width: none; padding-left: 0; padding-right: 0; }
+}
