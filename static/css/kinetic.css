@@ -938,9 +938,11 @@ body.sb-workspace .hero h2.hero-h {
 .sb-outline-band.is-live .sb-blk.is-placed { animation-duration: 0.3s; }
 
 /* Resume Studio intro split: intro text left, the annotated-resume
-   photo right, filling the old blank half. The photo reuses the
-   generation reveal; its canvas must render full colour (no hero
-   grayscale/multiply), so the blend is reset inside this visual. */
+   photo right, filling the old blank half. Like the homepage hero,
+   the photo sits on a pure-white ground and uses mix-blend multiply,
+   so it melts into the page paper with no box or border — only the
+   sheet, its shadow, notes and pen show. Its generation canvas uses
+   the same multiply (full colour, no hero grayscale) to match. */
 .sb-work-intro--split .b-wrap {
   max-width: 1280px; display: grid;
   grid-template-columns: 1.05fr 0.95fr; gap: 44px; align-items: center;
@@ -949,10 +951,10 @@ body.sb-workspace .hero h2.hero-h {
 .sb-resume-visual { position: relative; margin: 0; }
 .sb-resume-photo {
   display: block; width: 100%; height: auto;
-  aspect-ratio: 1400 / 1180; object-fit: cover;
-  border: 1px solid var(--sb-line-soft);
+  aspect-ratio: 1540 / 1220; object-fit: cover;
+  mix-blend-mode: multiply;
 }
-.sb-resume-visual .sb-pixel-canvas { mix-blend-mode: normal; filter: none; }
+.sb-resume-visual .sb-pixel-canvas { mix-blend-mode: multiply; filter: none; }
 @media (max-width: 900px) {
   .sb-work-intro--split .b-wrap { grid-template-columns: 1fr; gap: 28px; }
 }
