@@ -5,7 +5,7 @@
     <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Timed Aptitude Tests | AI Resume Analyzer</title>
+    <title>Timed Aptitude Tests | Study-Buddy</title>
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon-32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/favicon-16.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bento.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/resume_style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/kinetic.css') }}">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='none' stroke='%2310b981' stroke-width='10'/><path d='M50 28v22l16 10' stroke='%2310b981' stroke-width='10' fill='none' stroke-linecap='round'/></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='none' stroke='%2310b981' stroke-width='10'/><path d='M50 28v22l16 10' stroke='%2310b981' stroke-width='10' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
     <style>
-        .ap-wrap { max-width: 860px; margin: 0 auto; padding: 6.5rem 1.2rem 4rem; }
+        .ap-wrap { max-width: 920px; margin: 0 auto; padding: 6.5rem 1.2rem 4rem; }
         .ap-head h1 { font-size: 1.9rem; margin-bottom: 0.4rem; }
         .ap-head h1 .gradient-text { background: var(--gradient-primary); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .ap-head p { color: var(--text-muted, #94a3b8); margin-bottom: 1.4rem; }
@@ -30,6 +30,7 @@
         .ap-btn { display: inline-block; background: var(--gradient-primary); color: #04120c; font-weight: 700; border: none; border-radius: 12px; padding: 0.9rem 1.8rem; font-size: 1rem; cursor: pointer; }
         .ap-btn:disabled { opacity: 0.55; cursor: not-allowed; }
         .ap-btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text-main, #f8fafc); }
+        .ap-btn-sm { padding: 0.6rem 1.1rem; font-size: 0.88rem; }
         .ap-error { color: var(--accent-danger); font-size: 0.88rem; margin-top: 0.8rem; }
         .ap-login-cta { text-align: center; padding: 2rem; }
         .ap-login-cta a { color: var(--accent-primary); font-weight: 700; }
@@ -43,6 +44,7 @@
         .ap-chip { font-size: 0.75rem; font-weight: 700; background: rgba(46,230,168,0.14); color: var(--accent-primary); border-radius: 999px; padding: 0.25rem 0.75rem; }
         .ap-chip.diff-Hard { background: rgba(239,68,68,0.14); color: var(--accent-danger); }
         .ap-chip.diff-Medium { background: rgba(245,158,11,0.14); color: #f59e0b; }
+        .ap-chip.co { background: rgba(59,130,246,0.16); color: #93c5fd; }
         .ap-qtext { font-weight: 600; margin-bottom: 0.9rem; line-height: 1.55; white-space: pre-wrap; }
         .ap-opt { display: flex; gap: 0.7rem; align-items: flex-start; padding: 0.65rem 0.8rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; margin-bottom: 0.5rem; cursor: pointer; transition: border-color 0.15s; }
         .ap-opt:hover { border-color: rgba(46,230,168,0.5); }
@@ -50,15 +52,43 @@
         .ap-opt.sel { border-color: #2ee6a8; background: rgba(46,230,168,0.08); }
         .ap-opt.correct { border-color: #2ee6a8; background: rgba(46,230,168,0.12); }
         .ap-opt.wrong { border-color: var(--accent-danger); background: rgba(239,68,68,0.1); }
-        .ap-expl { margin-top: 0.7rem; font-size: 0.88rem; color: #cbd5e1; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 0.7rem 0.9rem; }
+        .ap-expl { margin-top: 0.7rem; font-size: 0.88rem; color: #cbd5e1; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 0.7rem 0.9rem; line-height: 1.6; }
         .ap-expl strong { color: var(--accent-primary); }
+        .ap-trick { margin-top: 0.5rem; font-size: 0.85rem; color: #fbbf24; }
         .ap-score-ring { width: 130px; height: 130px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.9rem; font-weight: 800; margin: 0 auto 1rem; }
-        .ap-bar-row { display: grid; grid-template-columns: 130px 1fr 48px; gap: 0.7rem; align-items: center; margin-bottom: 0.55rem; font-size: 0.85rem; }
+        .ap-bar-row { display: grid; grid-template-columns: 150px 1fr 48px; gap: 0.7rem; align-items: center; margin-bottom: 0.55rem; font-size: 0.85rem; }
         .ap-bar { height: 8px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
         .ap-bar > div { height: 100%; background: var(--gradient-primary); border-radius: 999px; }
         .ap-weak { margin-top: 1rem; padding: 0.9rem 1.1rem; border-radius: 12px; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.35); font-size: 0.9rem; }
         .ap-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.2rem; }
-        @media (max-width: 700px) { .ap-wrap { padding-top: 5.5rem; } .ap-card, .ap-q { padding: 1.2rem; } .ap-grid2 { grid-template-columns: 1fr; } .ap-bar-row { grid-template-columns: 96px 1fr 44px; } }
+        .ap-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; margin-bottom: 1.4rem; }
+        .ap-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 0.85rem; text-align: center; }
+        .ap-stat .v { font-size: 1.45rem; font-weight: 800; color: var(--accent-primary); }
+        .ap-stat .l { font-size: 0.74rem; color: var(--text-muted, #94a3b8); margin-top: 0.2rem; }
+        .ap-tracks { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem; }
+        .ap-track { background: var(--bg-card); border: 1px solid rgba(46,230,168,0.3); border-radius: 18px; padding: 1.6rem; backdrop-filter: blur(12px); }
+        .ap-track h3 { font-size: 1.12rem; margin-bottom: 0.4rem; }
+        .ap-track p { font-size: 0.87rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 0.9rem; }
+        .ap-track .big { font-size: 1.9rem; font-weight: 800; color: var(--accent-primary); }
+        .ap-h3 { font-size: 1.05rem; margin: 0 0 0.8rem; color: var(--accent-primary); }
+        .ap-topics { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 0.6rem; }
+        .ap-topic { display: block; text-decoration: none; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.11); border-radius: 12px; padding: 0.75rem 0.9rem; color: #e2e8f0; }
+        .ap-topic:hover { border-color: var(--accent-primary); }
+        .ap-topic .t { font-weight: 700; font-size: 0.9rem; display: block; }
+        .ap-topic .s { font-size: 0.76rem; color: var(--text-muted, #94a3b8); }
+        .ap-topic .mbar { height: 5px; background: rgba(255,255,255,0.1); border-radius: 999px; margin-top: 0.5rem; overflow: hidden; }
+        .ap-topic .mbar > div { height: 100%; background: var(--gradient-primary); }
+        .ap-companies { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.8rem; }
+        .ap-company { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 1.1rem 1.2rem; }
+        .ap-company h4 { margin: 0 0 0.3rem; font-size: 1rem; }
+        .ap-company p { font-size: 0.82rem; color: #cbd5e1; line-height: 1.55; margin: 0 0 0.7rem; }
+        .ap-company .meta { font-size: 0.76rem; color: var(--text-muted, #94a3b8); margin-bottom: 0.7rem; }
+        .ap-recent { display: grid; gap: 0.5rem; }
+        .ap-recent a { display: flex; gap: 0.8rem; align-items: baseline; color: #e2e8f0; text-decoration: none; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.6rem 0.9rem; font-size: 0.87rem; }
+        .ap-recent a:hover { border-color: var(--accent-primary); }
+        .ap-recent .sc { font-weight: 800; color: var(--accent-primary); }
+        .ap-recent .dt { margin-left: auto; color: var(--text-muted, #94a3b8); font-size: 0.78rem; white-space: nowrap; }
+        @media (max-width: 700px) { .ap-wrap { padding-top: 5.5rem; } .ap-card, .ap-q { padding: 1.2rem; } .ap-grid2, .ap-tracks { grid-template-columns: 1fr; } .ap-bar-row { grid-template-columns: 104px 1fr 44px; } }
         @media (prefers-reduced-motion: reduce) { .ap-progress > div { transition: none; } }
     </style>
 </head>
@@ -77,16 +107,68 @@
     <div class="ap-wrap">
         <div class="ap-head">
             <h1>Timed <span class="gradient-text">Aptitude Tests</span></h1>
-            <p>{{ total }} curated questions across quantitative aptitude, logical reasoning, and verbal ability. Beat the clock — timing is validated server-side.</p>
+            <p>Placement-grade aptitude prep in two tracks — learn every topic with primers and worked examples, evaluate yourself with timed tests and company mocks, and review every mistake until it sticks.</p>
         </div>
 
+        <div class="ap-stats">
+            <div class="ap-stat"><div class="v">{{ total }}</div><div class="l">Questions in the bank</div></div>
+            <div class="ap-stat"><div class="v">{{ topics_by_track['logical']|length + topics_by_track['verbal']|length }}</div><div class="l">Topics to master</div></div>
+            <div class="ap-stat"><div class="v">{{ company_tests|length }}</div><div class="l">Company mock patterns</div></div>
+            <div class="ap-stat"><div class="v">{{ mistake_count }}</div><div class="l">Your open mistakes</div></div>
+        </div>
+
+        <div id="hub-view">
         {% if not is_authed %}
         <div class="ap-card ap-login-cta">
-            <p><a href="{{ url_for('auth.login', next='/aptitude') }}">Log in</a> to take timed tests and save your attempts.</p>
+            <p><a href="{{ url_for('auth.login', next='/aptitude') }}">Log in</a> to take timed tests, practice topics and build your mistake book.</p>
         </div>
-        {% endif %}
+        {% else %}
 
-        <div class="ap-card b-card" id="setup-card" {% if not is_authed %}style="display:none"{% endif %}>
+        <div class="ap-tracks">
+            {% for name, label, count in tracks %}
+            <div class="ap-track">
+                <div class="big">{{ count }}</div>
+                <h3>{{ label }}</h3>
+                <p>{{ track_meta[name].blurb }}</p>
+                <button class="ap-btn ap-btn-sm" data-start='{"track": "{{ name }}", "num_questions": 20, "time_limit": 1200}'>Start {{ 'Reasoning' if name == 'logical' else 'Verbal' }} Test (20 Q · 20 min)</button>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="ap-card">
+            <h3 class="ap-h3">Learn &amp; practice by topic</h3>
+            <p style="font-size:0.88rem;color:#cbd5e1;margin-bottom:1rem;">Untimed, one question at a time, with the concept primer, a worked example, instant feedback and shortcuts. Your bar shows test accuracy per topic.</p>
+            {% for track in ['logical', 'verbal'] %}
+            <p style="font-weight:700;font-size:0.85rem;color:var(--text-muted,#94a3b8);margin:0.9rem 0 0.5rem;">{{ track_meta[track].label }}</p>
+            <div class="ap-topics">
+                {% for t in topics_by_track[track] %}
+                <a class="ap-topic" href="{{ url_for('aptitude_practice', track=track, topic=t.subcategory) }}">
+                    <span class="t">{{ t.subcategory | replace('_', ' ') | title }}{% if t.subcategory in concept_topics %} · primer{% endif %}</span>
+                    <span class="s">{{ t.count }} questions{% if t.mastery %} · your accuracy {{ t.mastery.pct }}%{% endif %}</span>
+                    {% if t.mastery %}<span class="mbar"><div style="width:{{ t.mastery.pct }}%"></div></span>{% endif %}
+                </a>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="ap-card">
+            <h3 class="ap-h3">Company mock tests</h3>
+            <p style="font-size:0.88rem;color:#cbd5e1;margin-bottom:1rem;">Section mixes modeled on recent foundation-round papers (2021–2026 patterns). Timing is validated server-side, like the real thing.</p>
+            <div class="ap-companies">
+                {% for name, preset in company_tests.items() %}
+                <div class="ap-company">
+                    <h4>{{ name }}</h4>
+                    <p>{{ preset.note }}</p>
+                    <div class="meta">{{ preset.blueprint.values() | sum }} questions · {{ preset.time_limit // 60 }} minutes · {% for cat, n in preset.blueprint.items() %}{{ cat|title }} {{ n }}{% if not loop.last %} · {% endif %}{% endfor %}</div>
+                    <button class="ap-btn ap-btn-sm ap-btn-ghost" data-start='{"company": "{{ name }}"}'>Start {{ name }} Mock</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="ap-card b-card" id="setup-card">
+            <h3 class="ap-h3">Custom timed test</h3>
             <div class="ap-field">
                 <label for="sel-category">Category</label>
                 <select id="sel-category">
@@ -120,6 +202,33 @@
             </div>
             <button class="ap-btn b-magnet" id="btn-start">Start Test</button>
             <div class="ap-error" id="setup-error" role="alert" style="display:none"></div>
+        </div>
+
+        {% if mistake_count %}
+        <div class="ap-card" style="border-color:rgba(245,158,11,0.45);">
+            <h3 class="ap-h3" style="color:#f59e0b;">Mistake Book — {{ mistake_count }} open</h3>
+            <p style="font-size:0.9rem;color:#cbd5e1;">Every question you got wrong or skipped, collected from your tests with the full solution. Review them, then retest until the book is empty.</p>
+            <div class="ap-actions">
+                <a class="ap-btn ap-btn-sm" href="{{ url_for('aptitude_mistakes') }}" style="text-decoration:none;">Open Mistake Book</a>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if recent %}
+        <div class="ap-card">
+            <h3 class="ap-h3">Your recent tests</h3>
+            <div class="ap-recent">
+                {% for r in recent %}
+                <a href="{{ url_for('aptitude_report', attempt_id=r.id) }}">
+                    <span class="sc">{{ r.score_pct }}%</span>
+                    <span>{{ r.category | replace('track:', '') | replace('company:', '') | replace('_', ' ') | title }}</span>
+                    <span class="dt">{{ r.submitted_at.strftime('%d %b, %H:%M') if r.submitted_at else '' }}</span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% endif %}
         </div>
 
         <div id="test-view" style="display:none">

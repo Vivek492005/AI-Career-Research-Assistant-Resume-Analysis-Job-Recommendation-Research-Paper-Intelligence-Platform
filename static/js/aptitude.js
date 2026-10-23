@@ -66,7 +66,11 @@
             var meta = el('div', 'ap-qmeta');
             meta.appendChild(el('span', 'ap-chip', 'Q' + (i + 1)));
             meta.appendChild(el('span', 'ap-chip', q.category));
+            if (q.subcategory) meta.appendChild(el('span', 'ap-chip', q.subcategory.replace(/_/g, ' ')));
             meta.appendChild(el('span', 'ap-chip diff-' + q.difficulty, q.difficulty));
+            (q.companies || []).forEach(function (c) {
+                meta.appendChild(el('span', 'ap-chip co', c + ' pattern'));
+            });
             card.appendChild(meta);
             card.appendChild(el('div', 'ap-qtext', q.statement));
             q.options.forEach(function (opt, oi) {
@@ -92,11 +96,11 @@
         updateProgress();
     }
 
-    function startTest() {
+    function startTest(overridePayload) {
         hideError('setup-error');
         var btn = document.getElementById('btn-start');
-        btn.disabled = true;
-        var payload = {
+        if (btn) btn.disabled = true;
+        var payload = overridePayload || {
             category: document.getElementById('sel-category').value,
             num_questions: parseInt(document.getElementById('sel-count').value, 10),
             time_limit: parseInt(document.getElementById('sel-time').value, 10),
@@ -108,7 +112,7 @@
         }).then(function (r) {
             return r.json().then(function (d) { return { status: r.status, body: d }; });
         }).then(function (res) {
-            btn.disabled = false;
+            if (btn) btn.disabled = false;
             if (res.status !== 200 || !res.body.success) {
                 showError('setup-error', (res.body && res.body.error) || 'Could not start the test.');
                 return;
@@ -118,7 +122,10 @@
             state.answers = {};
             state.timeLeft = res.body.time_limit_sec;
             state.submitted = false;
-            document.getElementById('setup-card').style.display = 'none';
+            var hub = document.getElementById('hub-view');
+            if (hub) hub.style.display = 'none';
+            var setup = document.getElementById('setup-card');
+            if (setup) setup.style.display = 'none';
             document.getElementById('result-view').style.display = 'none';
             document.getElementById('test-view').style.display = 'block';
             renderQuestions();
@@ -129,7 +136,7 @@
             state.timerId = setInterval(tick, 1000);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }).catch(function () {
-            btn.disabled = false;
+            if (btn) btn.disabled = false;
             showError('setup-error', 'Network error. Please try again.');
         });
     }
@@ -208,21 +215,47 @@
             var v = summary.by_difficulty[k];
             head.appendChild(barRow(k, v.pct));
         });
+        if (summary.by_subcategory && Object.keys(summary.by_subcategory).length > 1) {
+            var bdTitle3 = el('h3', null, 'Accuracy by topic');
+            bdTitle3.style.margin = '1.2rem 0 0.7rem';
+            head.appendChild(bdTitle3);
+            Object.keys(summary.by_subcategory).forEach(function (k) {
+                var v = summary.by_subcategory[k];
+                head.appendChild(barRow(k.replace(/_/g, ' '), v.pct));
+            });
+        }
         if (summary.weak_areas && summary.weak_areas.length) {
             head.appendChild(el('div', 'ap-weak',
                 'Weak areas to practice: ' + summary.weak_areas.join(', ')));
         }
+        if (summary.weak_topics && summary.weak_topics.length) {
+            head.appendChild(el('div', 'ap-weak',
+                'Weak topics: ' + summary.weak_topics.map(function (t) {
+                    return t.replace(/_/g, ' ');
+                }).join(', ') + ' — practice them from the topic grid.'));
+        }
+        var wrongCount = results.filter(function (r) { return !r.correct; }).length;
         var actions = el('div', 'ap-actions');
         var again = el('button', 'ap-btn ap-btn-ghost', 'Retake Test');
         again.addEventListener('click', function () {
             document.getElementById('result-view').style.display = 'none';
-            document.getElementById('setup-card').style.display = 'block';
+            var hub = document.getElementById('hub-view');
+            if (hub) hub.style.display = 'block';
+            var setup = document.getElementById('setup-card');
+            if (setup) setup.style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+        actions.appendChild(again);
+        if (wrongCount > 0) {
+            var book = el('a', 'ap-btn ap-btn-ghost',
+                          'Mistake Book (' + wrongCount + ' to review)');
+            book.href = '/aptitude/mistakes';
+            book.style.textDecoration = 'none';
+            actions.appendChild(book);
+        }
         var dash = el('a', 'ap-btn ap-btn-ghost', 'View History');
         dash.href = '/dashboard';
         dash.style.textDecoration = 'none';
-        actions.appendChild(again);
         actions.appendChild(dash);
         head.appendChild(actions);
         view.appendChild(head);
@@ -251,6 +284,12 @@
             expl.appendChild(el('strong', null, 'Why: '));
             expl.appendChild(el('span', null, r.explanation));
             card.appendChild(expl);
+            if (r.trick) {
+                var trick = el('div', 'ap-expl');
+                trick.appendChild(el('strong', null, 'Shortcut: '));
+                trick.appendChild(el('span', null, r.trick));
+                card.appendChild(trick);
+            }
             view.appendChild(card);
         });
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -268,9 +307,20 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         var startBtn = document.getElementById('btn-start');
-        if (startBtn) startBtn.addEventListener('click', startTest);
+        if (startBtn) startBtn.addEventListener('click', function () { startTest(null); });
+        document.querySelectorAll('[data-start]').forEach(function (b) {
+            b.addEventListener('click', function () {
+                try {
+                    startTest(JSON.parse(b.getAttribute('data-start')));
+                } catch (e) { /* malformed payload: ignore */ }
+            });
+        });
         var subBtn = document.getElementById('btn-submit');
         if (subBtn) subBtn.addEventListener('click', function () { submitAnswers(false); });
         renderSaved();
+        var auto = document.getElementById('autostart-data');
+        if (auto) {
+            try { startTest(JSON.parse(auto.textContent)); } catch (e) { /* ignore */ }
+        }
     });
 })();

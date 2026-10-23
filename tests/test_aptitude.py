@@ -4,12 +4,19 @@ from datetime import UTC, datetime, timedelta
 import pytest
 
 from studybuddy.aptitude_test import (
+    COMPANY_TESTS,
     all_questions,
     categories,
+    check_answer,
     get_question,
+    mastery_from_attempts,
+    mistakes_from_attempts,
+    pick_for_setup,
     pick_questions,
     public_question,
     score_attempt,
+    topics,
+    track_counts,
     validate_test_setup,
 )
 from tests.conftest import login, register
@@ -74,7 +81,8 @@ def test_validate_setup_ok():
     cleaned, err = validate_test_setup(
         {"category": "logical", "num_questions": 15, "time_limit": 900})
     assert err is None
-    assert cleaned == {"category": "logical", "n": 15, "time_limit": 900}
+    assert cleaned == {"mode": "category", "category": "logical",
+                       "n": 15, "time_limit": 900}
 
 
 def test_validate_setup_rejects_bad():
@@ -232,3 +240,167 @@ def test_aptitude_home_renders(client):
     r = client.get("/aptitude")
     assert r.status_code == 200
     assert b"Timed" in r.data
+
+
+# ---------- expansion: tracks, topics, company mocks, mistakes ----------
+
+def test_tracks_cover_the_whole_bank():
+    total = len(all_questions())
+    counts = {name: n for name, _label, n in track_counts()}
+    assert counts["logical"] + counts["verbal"] == total
+    assert counts["logical"] > counts["verbal"] > 150
+
+
+def test_topics_by_track_are_consistent():
+    verbal_topics = topics("verbal")
+    assert verbal_topics
+    assert all(cat == "verbal" for _sub, cat, _n in verbal_topics)
+    logical_subs = {sub for sub, _cat, _n in topics("logical")}
+    for expected in ("seating_arrangement", "data_interpretation",
+                     "time_work", "percentages"):
+        assert expected in logical_subs
+
+
+def test_validate_new_modes():
+    cleaned, err = validate_test_setup(
+        {"track": "verbal", "num_questions": 10, "time_limit": 600})
+    assert err is None and cleaned["mode"] == "track"
+    cleaned, err = validate_test_setup(
+        {"topic": "percentages", "num_questions": 10, "time_limit": 600})
+    assert err is None and cleaned["mode"] == "topic"
+    assert cleaned["category"] == "quantitative"
+    cleaned, err = validate_test_setup({"company": "TCS NQT"})
+    assert err is None and cleaned["mode"] == "company"
+    assert cleaned["n"] == 30 and cleaned["time_limit"] == 1800
+    qid = all_questions()[0]["id"]
+    cleaned, err = validate_test_setup({"question_ids": [qid]})
+    assert err is None and cleaned["mode"] == "retest"
+    for bad in ({"track": "nope"}, {"topic": "nope"}, {"company": "Nope Co"},
+                {"question_ids": ["apt-9999"]}, {"question_ids": []}):
+        cleaned, err = validate_test_setup(bad)
+        assert cleaned is None and err, bad
+
+
+def test_pick_for_setup_modes():
+    cleaned, _ = validate_test_setup({"company": "Infosys"})
+    qs = pick_for_setup(cleaned, seed=7)
+    assert len(qs) == sum(COMPANY_TESTS["Infosys"]["blueprint"].values())
+    from collections import Counter
+    got = Counter(q["category"] for q in qs)
+    for cat, n in COMPANY_TESTS["Infosys"]["blueprint"].items():
+        assert got[cat] == n
+    cleaned, _ = validate_test_setup(
+        {"topic": "blood_relations", "num_questions": 8, "time_limit": 480})
+    qs = pick_for_setup(cleaned, seed=7)
+    assert len(qs) == 8
+    assert all(q["subcategory"] == "blood_relations" for q in qs)
+    ids = [q["id"] for q in all_questions()[:3]]
+    cleaned, _ = validate_test_setup({"question_ids": ids})
+    qs = pick_for_setup(cleaned, seed=7)
+    assert {q["id"] for q in qs} == set(ids)
+
+
+def test_score_attempt_has_topic_breakdown():
+    bank = all_questions()[:6]
+    ids = [q["id"] for q in bank]
+    answers = {q["id"]: q["answer"] for q in bank[:3]}
+    results, summary = score_attempt(ids, answers)
+    assert summary["by_subcategory"]
+    assert "weak_topics" in summary
+    assert all("trick" in r for r in results)
+
+
+def test_check_answer_practice_mode():
+    q = all_questions()[0]
+    r = check_answer(q["id"], q["answer"])
+    assert r["correct"] is True and r["explanation"]
+    r = check_answer(q["id"], (q["answer"] + 1) % 4)
+    assert r["correct"] is False
+    assert check_answer("apt-9999", 0) is None
+
+
+def _fake_result(qid, sub, correct, chosen=0):
+    return {"id": qid, "category": "logical", "subcategory": sub,
+            "difficulty": "Easy", "statement": "s", "options": ["a"] * 4,
+            "chosen": chosen, "correct_index": 1, "correct": correct,
+            "explanation": "e", "trick": "", "companies": []}
+
+
+def test_mistakes_and_mastery_helpers():
+    newest = [_fake_result("q1", "percentages", False),
+              _fake_result("q2", "percentages", True)]
+    older = [_fake_result("q1", "percentages", True),
+             _fake_result("q3", "idioms", False)]
+    wrong, by_sub = mistakes_from_attempts([newest, older])
+    # q1 was fixed in the newest attempt? No: newest has q1 wrong -> stays.
+    assert {r["id"] for r in wrong} == {"q1", "q3"}
+    assert by_sub == {"percentages": 1, "idioms": 1}
+    mastery = mastery_from_attempts([newest, older])
+    assert mastery["percentages"]["total"] == 3
+    assert mastery["percentages"]["correct"] == 2
+
+
+def test_company_start_route(authed_client):
+    r = authed_client.post("/aptitude/start", json={"company": "TCS NQT"},
+                           headers={"X-CSRFToken": "test"})
+    assert r.status_code == 200, r.data[:200]
+    d = r.get_json()
+    assert len(d["questions"]) == 30
+    assert d["time_limit_sec"] == 1800
+
+
+def test_practice_flow(authed_client, app):
+    fresh = app.test_client()
+    r = fresh.post("/aptitude/practice/check",
+                   json={"question_id": "apt-0001", "chosen": 0})
+    assert r.status_code == 401
+    page = authed_client.get("/aptitude/practice/logical/percentages")
+    assert page.status_code == 200
+    assert b"Practice" in page.data
+    q = next(q for q in all_questions()
+             if q["subcategory"] == "percentages")
+    r = authed_client.post("/aptitude/practice/check",
+                           json={"question_id": q["id"],
+                                 "chosen": q["answer"]},
+                           headers={"X-CSRFToken": "test"})
+    assert r.status_code == 200
+    assert r.get_json()["result"]["correct"] is True
+    assert authed_client.get(
+        "/aptitude/practice/verbal/percentages").status_code == 404
+    assert authed_client.get(
+        "/aptitude/practice/logical/nope").status_code == 404
+
+
+def test_mistake_book_flow(authed_client):
+    r = authed_client.post(
+        "/aptitude/start",
+        json={"category": "logical", "num_questions": 5,
+              "time_limit": 300},
+        headers={"X-CSRFToken": "test"})
+    d = r.get_json()
+    # answer everything wrong on purpose
+    answers = {}
+    for pub in d["questions"]:
+        q = get_question(pub["id"])
+        answers[pub["id"]] = (q["answer"] + 1) % 4
+    r = authed_client.post(f"/aptitude/{d['attempt_id']}/submit",
+                           json={"answers": answers},
+                           headers={"X-CSRFToken": "test"})
+    assert r.status_code == 200
+    page = authed_client.get("/aptitude/mistakes")
+    assert page.status_code == 200
+    assert b"open mistakes" in page.data
+    assert b"Retest These Mistakes" in page.data
+    # fix them all in a retest -> book empties
+    ids = [pub["id"] for pub in d["questions"]]
+    r = authed_client.post("/aptitude/start",
+                           json={"question_ids": ids},
+                           headers={"X-CSRFToken": "test"})
+    d2 = r.get_json()
+    answers = {pub["id"]: get_question(pub["id"])["answer"]
+               for pub in d2["questions"]}
+    authed_client.post(f"/aptitude/{d2['attempt_id']}/submit",
+                       json={"answers": answers},
+                       headers={"X-CSRFToken": "test"})
+    page = authed_client.get("/aptitude/mistakes")
+    assert b"mistake book is empty" in page.data

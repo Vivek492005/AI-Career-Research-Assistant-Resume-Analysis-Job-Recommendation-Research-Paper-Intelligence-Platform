@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" data-theme="resume">
+<head>
+    <meta charset="UTF-8">
+    <script>document.documentElement.classList.replace('no-js', 'js');</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Practice {{ topic | replace('_', ' ') | title }} | Study-Buddy</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon-32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/favicon-16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bento.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resume_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kinetic.css') }}">
+    <style>
+        .ap-wrap { max-width: 860px; margin: 0 auto; padding: 6.5rem 1.2rem 4rem; }
+        .ap-head h1 { font-size: 1.9rem; margin-bottom: 0.4rem; }
+        .ap-head h1 .gradient-text { background: var(--gradient-primary); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .ap-head p { color: var(--text-muted, #94a3b8); margin-bottom: 1.4rem; }
+        .ap-head a { color: var(--accent-primary); font-weight: 700; text-decoration: none; }
+        .ap-card { background: var(--bg-card); border: 1px solid rgba(46,230,168,0.25); border-radius: 20px; padding: 2rem; backdrop-filter: blur(12px); margin-bottom: 1.2rem; }
+        .ap-h3 { font-size: 1.05rem; margin: 0 0 0.7rem; color: var(--accent-primary); }
+        .ap-primer { white-space: pre-wrap; line-height: 1.75; font-size: 0.94rem; color: #e2e8f0; }
+        .ap-pitfalls { margin: 0.8rem 0 0 1.2rem; color: #fbbf24; font-size: 0.88rem; line-height: 1.6; }
+        .ap-q { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.4rem; margin-bottom: 1rem; }
+        .ap-qmeta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.7rem; }
+        .ap-chip { font-size: 0.75rem; font-weight: 700; background: rgba(46,230,168,0.14); color: var(--accent-primary); border-radius: 999px; padding: 0.25rem 0.75rem; }
+        .ap-chip.diff-Hard { background: rgba(239,68,68,0.14); color: var(--accent-danger); }
+        .ap-chip.diff-Medium { background: rgba(245,158,11,0.14); color: #f59e0b; }
+        .ap-chip.co { background: rgba(59,130,246,0.16); color: #93c5fd; }
+        .ap-qtext { font-weight: 600; margin-bottom: 0.9rem; line-height: 1.55; white-space: pre-wrap; }
+        .ap-opt { display: flex; gap: 0.7rem; align-items: flex-start; padding: 0.65rem 0.8rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; margin-bottom: 0.5rem; cursor: pointer; }
+        .ap-opt:hover { border-color: rgba(46,230,168,0.5); }
+        .ap-opt input { margin-top: 0.25rem; accent-color: #2ee6a8; }
+        .ap-opt.sel { border-color: #2ee6a8; background: rgba(46,230,168,0.08); }
+        .ap-opt.correct { border-color: #2ee6a8; background: rgba(46,230,168,0.12); }
+        .ap-opt.wrong { border-color: var(--accent-danger); background: rgba(239,68,68,0.1); }
+        .ap-opt.locked { pointer-events: none; opacity: 0.85; }
+        .ap-expl { margin-top: 0.7rem; font-size: 0.88rem; color: #cbd5e1; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 0.7rem 0.9rem; line-height: 1.6; }
+        .ap-expl strong { color: var(--accent-primary); }
+        .ap-btn { display: inline-block; background: var(--gradient-primary); color: #04120c; font-weight: 700; border: none; border-radius: 12px; padding: 0.8rem 1.5rem; font-size: 0.95rem; cursor: pointer; }
+        .ap-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+        .ap-btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text-main, #f8fafc); }
+        .ap-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem; align-items: center; }
+        .ap-score { font-weight: 800; color: var(--accent-primary); }
+        .ap-error { color: var(--accent-danger); font-size: 0.88rem; margin-top: 0.6rem; }
+        .ap-verdict { font-weight: 800; font-size: 1rem; margin-top: 0.4rem; }
+        .ap-verdict.ok { color: #2ee6a8; }
+        .ap-verdict.bad { color: #f87171; }
+        @media (max-width: 700px) { .ap-wrap { padding-top: 5.5rem; } .ap-card, .ap-q { padding: 1.2rem; } }
+    </style>
+</head>
+<body class="sb-app">
+    <div class="b-scroll-progress" data-scroll-progress aria-hidden="true"></div>
+    <div class="b-ambient" aria-hidden="true">
+        <div class="b-blob b-b1"></div>
+        <div class="b-blob b-b2"></div>
+        <div class="b-blob b-b3"></div>
+        <div class="b-gridlines"></div>
+    </div>
+
+    {% set nav_active = 'practice' %}
+    {% include "_site_nav.html" %}
+
+    <div class="ap-wrap">
+        <div class="ap-head">
+            <p><a href="{{ url_for('aptitude_home') }}">&larr; Aptitude hub</a> · {{ track_label }}</p>
+            <h1>{{ topic | replace('_', ' ') | title }} <span class="gradient-text">Practice</span></h1>
+            <p>Learn the concept, see a worked example, then practice untimed with instant feedback.</p>
+        </div>
+
+        {% if concept %}
+        <div class="ap-card">
+            <h3 class="ap-h3">{{ concept.title }} — the concept</h3>
+            <div class="ap-primer">{{ concept.primer }}</div>
+            {% if concept.pitfalls %}
+            <h3 class="ap-h3" style="color:#f59e0b;margin-top:1.2rem;">Watch out for</h3>
+            <ul class="ap-pitfalls">
+                {% for p in concept.pitfalls %}<li>{{ p }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+            <h3 class="ap-h3" style="margin-top:1.2rem;">Worked example</h3>
+            <div class="ap-qtext">{{ concept.example_statement }}</div>
+            {% for opt in concept.example_options %}
+            <div class="ap-opt {% if loop.index0 == concept.example_answer %}correct{% endif %}"><span>{{ opt }}</span></div>
+            {% endfor %}
+            <div class="ap-expl"><strong>Solution:</strong> <span style="white-space:pre-wrap;">{{ concept.example_solution }}</span></div>
+        </div>
+        {% endif %}
+
+        {% if not is_authed %}
+        <div class="ap-card" style="text-align:center;">
+            <p><a href="{{ url_for('auth.login', next=request.path) }}" style="color:var(--accent-primary);font-weight:700;">Log in</a> to practice with instant feedback.</p>
+        </div>
+        {% else %}
+        <div id="practice-root">
+            <div class="ap-actions" style="margin:0 0 1rem;">
+                <span class="ap-score" id="pr-progress">Question 1 of {{ questions|length }}</span>
+                <span class="ap-score" id="pr-score">Score: 0/0</span>
+            </div>
+            <div id="pr-question"></div>
+            <div class="ap-actions">
+                <button class="ap-btn" id="pr-check">Check Answer</button>
+                <button class="ap-btn ap-btn-ghost" id="pr-next" style="display:none">Next Question</button>
+            </div>
+            <div class="ap-error" id="pr-error" role="alert"></div>
+            <div id="pr-feedback"></div>
+        </div>
+        {% endif %}
+    </div>
+
+    <footer class="b-footer">
+        <div class="b-wrap b-foot-in">
+            <span>&copy; 2026 Study-Buddy</span>
+            <span>
+                <a href="{{ url_for('privacy') }}">Privacy</a>
+                <a href="{{ url_for('terms') }}">Terms</a>
+                <a href="{{ url_for('index') }}">Home</a>
+            </span>
+        </div>
+    </footer>
+
+    <script id="practice-data" type="application/json">{{ questions | tojson }}</script>
+    <script src="{{ url_for('static', filename='js/aptitude_practice.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bento.js') }}" defer></script>
+    {% include "_csp_beacon.html" %}
+    <script src="{{ url_for('static', filename='js/cursor.js') }}" defer></script>
+</body>
+</html>

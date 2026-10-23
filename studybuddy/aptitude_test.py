@@ -49,6 +49,182 @@ def categories():
     return [(c, counts.get(c, 0)) for c in CATEGORIES]
 
 
+# ---------------------------------------------------------------------------
+# Tracks, topics, company mocks, concepts, mistakes (expansion)
+# ---------------------------------------------------------------------------
+
+TRACKS = {
+    "logical": {
+        "label": "Logical Reasoning & Problem Solving",
+        "blurb": "Series, puzzles, blood relations, seating, data "
+                 "interpretation — plus the quantitative problem solving "
+                 "(percentages, time & work, speed, probability) that "
+                 "fills company aptitude papers.",
+        "categories": ("logical", "quantitative"),
+    },
+    "verbal": {
+        "label": "Verbal Ability",
+        "blurb": "Grammar (error spotting, correction, voice, narration, "
+                 "para jumbles) and vocabulary (synonyms, antonyms, "
+                 "idioms, one-word substitutions) with reading "
+                 "comprehension.",
+        "categories": ("verbal",),
+    },
+}
+
+CONCEPTS_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data", "aptitude_concepts.json")
+
+_concepts = None
+
+
+def track_of_category(category):
+    for name, meta in TRACKS.items():
+        if category in meta["categories"]:
+            return name
+    return None
+
+
+def track_counts():
+    """[(track, label, question_count)] for the two tracks."""
+    counts = {name: 0 for name in TRACKS}
+    for q in _load():
+        t = track_of_category(q["category"])
+        if t:
+            counts[t] += 1
+    return [(name, TRACKS[name]["label"], counts[name]) for name in TRACKS]
+
+
+def topics(track=None):
+    """[(subcategory, category, count)] — optionally for one track only."""
+    counts = {}
+    for q in _load():
+        if track and track_of_category(q["category"]) != track:
+            continue
+        key = (q["subcategory"], q["category"])
+        counts[key] = counts.get(key, 0) + 1
+    return sorted((sub, cat, n) for (sub, cat), n in counts.items())
+
+
+def topic_category(subcategory):
+    for q in _load():
+        if q["subcategory"] == subcategory:
+            return q["category"]
+    return None
+
+
+# Company mock blueprints: scaled-down versions of the real papers'
+# section mixes (foundation rounds), with a matching time budget.
+COMPANY_TESTS = {
+    "TCS NQT": {
+        "blueprint": {"quantitative": 10, "logical": 10, "verbal": 10},
+        "time_limit": 1800,
+        "note": "Foundation pattern — numerical, reasoning and verbal "
+                "in equal measure.",
+    },
+    "Infosys": {
+        "blueprint": {"logical": 10, "quantitative": 8, "verbal": 7},
+        "time_limit": 1500,
+        "note": "Reasoning-heavy: puzzles, series and data sufficiency "
+                "style problem solving.",
+    },
+    "Accenture": {
+        "blueprint": {"verbal": 10, "logical": 10, "quantitative": 5},
+        "time_limit": 1500,
+        "note": "English comprehension and abstract reasoning lead; "
+                "quant is lighter.",
+    },
+    "Wipro": {
+        "blueprint": {"quantitative": 8, "logical": 8, "verbal": 9},
+        "time_limit": 1500,
+        "note": "Balanced paper with a strong verbal section.",
+    },
+    "Cognizant": {
+        "blueprint": {"logical": 10, "quantitative": 8, "verbal": 7},
+        "time_limit": 1500,
+        "note": "Aptitude + reasoning with quick verbal checks.",
+    },
+    "Capgemini": {
+        "blueprint": {"quantitative": 8, "logical": 9, "verbal": 8},
+        "time_limit": 1500,
+        "note": "Game-based reasoning style: patterns, deductions, "
+                "data interpretation.",
+    },
+}
+
+
+def concepts():
+    global _concepts
+    if _concepts is None:
+        try:
+            with open(CONCEPTS_PATH, encoding="utf-8") as f:
+                _concepts = json.load(f).get("concepts", [])
+        except (FileNotFoundError, ValueError):
+            _concepts = []
+    return _concepts
+
+
+def get_concept(topic):
+    for c in concepts():
+        if c.get("topic") == topic:
+            return c
+    return None
+
+
+def check_answer(question_id, chosen):
+    """Practice-mode instant check. Returns a result dict or None."""
+    q = get_question(question_id)
+    if q is None:
+        return None
+    try:
+        chosen = int(chosen)
+    except (TypeError, ValueError):
+        chosen = None
+    return {
+        "id": q["id"],
+        "correct": chosen == q["answer"],
+        "correct_index": q["answer"],
+        "explanation": q["explanation"],
+        "trick": q.get("trick") or "",
+    }
+
+
+def mistakes_from_attempts(results_history):
+    """Latest state per question across a user's attempts.
+
+    results_history: list of per-attempt results lists, NEWEST first
+    (as produced by score_attempt). A question counts as a mistake
+    when its most recent appearance was answered wrong or skipped.
+    Returns (wrong_results, by_subcategory_counts).
+    """
+    latest = {}
+    for results in results_history:
+        for r in results or []:
+            if r["id"] not in latest:
+                latest[r["id"]] = r
+    wrong = [r for r in latest.values() if not r.get("correct")]
+    by_sub = {}
+    for r in wrong:
+        by_sub[r["subcategory"]] = by_sub.get(r["subcategory"], 0) + 1
+    return wrong, by_sub
+
+
+def mastery_from_attempts(results_history):
+    """Per-subcategory accuracy across attempts (all appearances)."""
+    agg = {}
+    for results in results_history:
+        for r in results or []:
+            b = agg.setdefault(r["subcategory"],
+                               {"total": 0, "correct": 0})
+            b["total"] += 1
+            if r.get("correct"):
+                b["correct"] += 1
+    for b in agg.values():
+        b["pct"] = round(b["correct"] / b["total"] * 100, 1) if b["total"] else 0.0
+    return agg
+
+
 def subcategories(category):
     counts = {}
     for q in _load():
@@ -67,40 +243,146 @@ def public_question(q):
         "difficulty": q["difficulty"],
         "statement": q["statement"],
         "options": q["options"],
+        "companies": q.get("companies") or [],
     }
 
 
-def pick_questions(category=None, n=10, seed=None):
+def pick_questions(category=None, n=10, seed=None, subcategory=None,
+                   track=None):
     """Pick n questions (shuffled). category=None/'mixed' draws evenly."""
     pool = _load()
-    if category and category != "mixed":
+    if track in TRACKS:
+        cats = TRACKS[track]["categories"]
+        pool = [q for q in pool if q["category"] in cats]
+    elif category and category != "mixed":
         pool = [q for q in pool if q["category"] == category]
+    if subcategory:
+        pool = [q for q in pool if q["subcategory"] == subcategory]
     rnd = random.Random(seed)
     picked = rnd.sample(pool, min(n, len(pool)))
     rnd.shuffle(picked)
     return [public_question(q) for q in picked]
 
 
-def validate_test_setup(payload):
-    """Return (cleaned, error). cleaned: {category, n, time_limit}."""
-    if not isinstance(payload, dict):
-        return None, "Invalid request."
-    category = str(payload.get("category") or "mixed").strip().lower()
-    if category not in CATEGORIES and category != "mixed":
-        return None, "Unknown category."
+def pick_for_setup(cleaned, seed=None):
+    """Materialize the public question list for a validated setup."""
+    mode = cleaned.get("mode", "category")
+    rnd = random.Random(seed)
+    if mode == "retest":
+        by_id = {q["id"]: q for q in _load()}
+        picked = [by_id[qid] for qid in cleaned["question_ids"]
+                  if qid in by_id]
+        rnd.shuffle(picked)
+        return [public_question(q) for q in picked]
+    if mode == "company":
+        preset = COMPANY_TESTS[cleaned["company"]]
+        picked = []
+        for cat, count in preset["blueprint"].items():
+            picked.extend(pick_questions(cat, n=count,
+                                         seed=rnd.randint(0, 2 ** 31 - 1)))
+        rnd.shuffle(picked)
+        return picked
+    if mode == "topic":
+        return pick_questions(cleaned["category"], n=cleaned["n"],
+                              seed=seed, subcategory=cleaned["subcategory"])
+    if mode == "track":
+        return pick_questions(n=cleaned["n"], seed=seed,
+                              track=cleaned["track"])
+    return pick_questions(cleaned["category"], n=cleaned["n"], seed=seed)
+
+
+def _setup_time_limit(payload, default):
+    try:
+        limit = int(payload.get("time_limit") or default)
+    except (TypeError, ValueError):
+        return None, "Time limit must be a number."
+    if not 60 <= limit <= 3600:
+        return None, "Time limit must be between 1 and 60 minutes."
+    return limit, None
+
+
+def _setup_n(payload):
     try:
         n = int(payload.get("num_questions") or 0)
     except (TypeError, ValueError):
         return None, "Question count must be a number."
     if not 5 <= n <= 50:
         return None, "Question count must be between 5 and 50."
-    try:
-        limit = int(payload.get("time_limit") or 0)
-    except (TypeError, ValueError):
-        return None, "Time limit must be a number."
-    if not 60 <= limit <= 3600:
-        return None, "Time limit must be between 1 and 60 minutes."
-    return {"category": category, "n": n, "time_limit": limit}, None
+    return n, None
+
+
+def validate_test_setup(payload):
+    """Return (cleaned, error).
+
+    Modes: legacy category test; track test; single-topic test;
+    company mock (blueprint); mistake retest (explicit question_ids).
+    """
+    if not isinstance(payload, dict):
+        return None, "Invalid request."
+
+    qids = payload.get("question_ids")
+    if qids:
+        if not isinstance(qids, list) or not 1 <= len(qids) <= 50:
+            return None, "Pick between 1 and 50 questions to retest."
+        _load()
+        unknown = [q for q in qids if q not in _by_id]
+        if unknown:
+            return None, "Some questions no longer exist."
+        limit, err = _setup_time_limit(payload, 60 * len(qids))
+        if err:
+            return None, err
+        return {"mode": "retest", "category": "mistakes",
+                "question_ids": list(qids), "n": len(qids),
+                "time_limit": limit}, None
+
+    company = str(payload.get("company") or "").strip()
+    if company:
+        if company not in COMPANY_TESTS:
+            return None, "Unknown company test."
+        preset = COMPANY_TESTS[company]
+        return {"mode": "company", "category": f"company:{company}",
+                "company": company,
+                "n": sum(preset["blueprint"].values()),
+                "time_limit": preset["time_limit"]}, None
+
+    topic = str(payload.get("topic") or "").strip().lower()
+    if topic:
+        cat = topic_category(topic)
+        if cat is None:
+            return None, "Unknown topic."
+        n, err = _setup_n(payload)
+        if err:
+            return None, err
+        limit, err = _setup_time_limit(payload, 60 * n)
+        if err:
+            return None, err
+        return {"mode": "topic", "category": cat, "subcategory": topic,
+                "n": n, "time_limit": limit}, None
+
+    track = str(payload.get("track") or "").strip().lower()
+    if track:
+        if track not in TRACKS:
+            return None, "Unknown track."
+        n, err = _setup_n(payload)
+        if err:
+            return None, err
+        limit, err = _setup_time_limit(payload, 60 * n)
+        if err:
+            return None, err
+        return {"mode": "track", "category": f"track:{track}",
+                "track": track, "n": n, "time_limit": limit}, None
+
+    category = str(payload.get("category") or "mixed").strip().lower()
+    if category not in CATEGORIES and category != "mixed":
+        return None, "Unknown category."
+    n, err = _setup_n(payload)
+    if err:
+        return None, err
+    limit, err = _setup_time_limit(payload, 600)
+    if err:
+        return None, err
+    return {"mode": "category", "category": category, "n": n,
+            "time_limit": limit}, None
 
 
 def score_attempt(question_ids, answers):
@@ -113,6 +395,7 @@ def score_attempt(question_ids, answers):
     correct = 0
     by_cat = {}
     by_diff = {}
+    by_sub = {}
     for qid in question_ids:
         q = get_question(qid)
         if q is None:
@@ -136,25 +419,33 @@ def score_attempt(question_ids, answers):
             "correct_index": q["answer"],
             "correct": ok,
             "explanation": q["explanation"],
+            "trick": q.get("trick") or "",
+            "companies": q.get("companies") or [],
         })
-        for key, bucket in (("category", by_cat), ("difficulty", by_diff)):
+        for key, bucket in (("category", by_cat), ("difficulty", by_diff),
+                            ("subcategory", by_sub)):
             k = q[key]
             b = bucket.setdefault(k, {"total": 0, "correct": 0})
             b["total"] += 1
             if ok:
                 b["correct"] += 1
+
+    def _pct(bucket):
+        return {k: {"total": v["total"], "correct": v["correct"],
+                    "pct": round(v["correct"] / v["total"] * 100, 1)}
+                for k, v in bucket.items()}
+
     total = len(results)
     summary = {
         "total": total,
         "correct": correct,
         "score_pct": round(correct / total * 100, 1) if total else 0.0,
-        "by_category": {k: {"total": v["total"], "correct": v["correct"],
-                            "pct": round(v["correct"] / v["total"] * 100, 1)}
-                        for k, v in by_cat.items()},
-        "by_difficulty": {k: {"total": v["total"], "correct": v["correct"],
-                              "pct": round(v["correct"] / v["total"] * 100, 1)}
-                          for k, v in by_diff.items()},
+        "by_category": _pct(by_cat),
+        "by_difficulty": _pct(by_diff),
+        "by_subcategory": _pct(by_sub),
     }
     weak = [k for k, v in summary["by_category"].items() if v["pct"] < 60]
     summary["weak_areas"] = weak
+    summary["weak_topics"] = [k for k, v in summary["by_subcategory"].items()
+                              if v["pct"] < 60]
     return results, summary

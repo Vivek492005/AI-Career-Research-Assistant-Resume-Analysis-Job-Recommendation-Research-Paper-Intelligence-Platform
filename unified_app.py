@@ -318,7 +318,17 @@ from recommendation.skill_gap_analysis import analyze_skill_gaps
 from studybuddy.aptitude_test import SUBMIT_GRACE_SEC, score_attempt, validate_test_setup
 from studybuddy.aptitude_test import all_questions as aptitude_all
 from studybuddy.aptitude_test import categories as aptitude_categories
+from studybuddy.aptitude_test import check_answer as aptitude_check
+from studybuddy.aptitude_test import concepts as aptitude_concepts
+from studybuddy.aptitude_test import get_concept as aptitude_concept
+from studybuddy.aptitude_test import mastery_from_attempts as aptitude_mastery
+from studybuddy.aptitude_test import mistakes_from_attempts as aptitude_mistakes_calc
+from studybuddy.aptitude_test import pick_for_setup as aptitude_pick_for_setup
 from studybuddy.aptitude_test import pick_questions as aptitude_pick
+from studybuddy.aptitude_test import topics as aptitude_topics
+from studybuddy.aptitude_test import track_counts as aptitude_track_counts
+from studybuddy.aptitude_test import COMPANY_TESTS as APTITUDE_COMPANY_TESTS
+from studybuddy.aptitude_test import TRACKS as APTITUDE_TRACKS
 from studybuddy.arxiv_import import download_pdf as arxiv_download_pdf
 from studybuddy.arxiv_import import (
     fetch_arxiv,
@@ -5091,13 +5101,49 @@ def register_routes(app):
         return jsonify({'success': True, 'status': row.status})
 
     # ---------- TIMED APTITUDE TESTS (Wave 2 #16) ----------
+    def _aptitude_user_stats(user_id):
+        """(mastery, mistake_count, recent_attempts) from submitted tests."""
+        rows = (AptitudeAttempt.query
+                .filter_by(user_id=user_id)
+                .filter(AptitudeAttempt.submitted_at.isnot(None))
+                .order_by(AptitudeAttempt.submitted_at.desc())
+                .limit(40).all())
+        history = [r.results_json or [] for r in rows]
+        mastery = aptitude_mastery(history)
+        wrong, _by_sub = aptitude_mistakes_calc(history)
+        recent = [{
+            'id': r.id, 'category': r.category,
+            'score_pct': (r.summary_json or {}).get('score_pct'),
+            'submitted_at': r.submitted_at,
+        } for r in rows[:5]]
+        return mastery, len(wrong), recent
+
     @app.route('/aptitude')
     def aptitude_home():
-        """Aptitude test setup: category, question count, time limit."""
-        return render_template('aptitude.html',
-                               categories=aptitude_categories(),
-                               total=len(aptitude_all()),
-                               is_authed=current_user.is_authenticated)
+        """Aptitude hub: two tracks, topic practice, company mocks,
+        custom timed tests, mistake book and personal mastery."""
+        mastery, mistake_count, recent = {}, 0, []
+        if current_user.is_authenticated:
+            mastery, mistake_count, recent = _aptitude_user_stats(
+                current_user.id)
+        topics_by_track = {}
+        for track in APTITUDE_TRACKS:
+            topics_by_track[track] = [
+                {'subcategory': sub, 'category': cat, 'count': n,
+                 'mastery': mastery.get(sub)}
+                for sub, cat, n in aptitude_topics(track)]
+        concept_topics = {c['topic'] for c in aptitude_concepts()}
+        return render_template(
+            'aptitude.html',
+            categories=aptitude_categories(),
+            total=len(aptitude_all()),
+            is_authed=current_user.is_authenticated,
+            tracks=aptitude_track_counts(),
+            track_meta=APTITUDE_TRACKS,
+            topics_by_track=topics_by_track,
+            concept_topics=concept_topics,
+            company_tests=APTITUDE_COMPANY_TESTS,
+            mastery=mastery, mistake_count=mistake_count, recent=recent)
 
     @app.route('/aptitude/start', methods=['POST'])
     @limiter.limit("10 per hour")
@@ -5115,7 +5161,7 @@ def register_routes(app):
         if error:
             return jsonify({'error': error}), 400
         seed = random.randint(0, 2 ** 31 - 1)
-        questions = aptitude_pick(cleaned["category"], n=cleaned["n"], seed=seed)
+        questions = aptitude_pick_for_setup(cleaned, seed=seed)
         if not questions:
             return jsonify({'error': 'No questions available for that selection.'}), 400
         try:
@@ -5203,6 +5249,59 @@ def register_routes(app):
         return render_template('aptitude_result.html', attempt=row,
                                results=row.results_json or [],
                                summary=row.summary_json or {})
+
+    @app.route('/aptitude/practice/<track>/<topic>')
+    def aptitude_practice(track, topic):
+        """Learn mode: concept primer + untimed topic practice with
+        instant feedback, worked explanations and shortcuts."""
+        if track not in APTITUDE_TRACKS:
+            abort(404)
+        from studybuddy.aptitude_test import topic_category
+        if topic_category(topic) is None or \
+                track != ('verbal' if topic_category(topic) == 'verbal'
+                          else 'logical'):
+            abort(404)
+        questions = aptitude_pick(topic_category(topic), n=20,
+                                  seed=random.randint(0, 2 ** 31 - 1),
+                                  subcategory=topic)
+        return render_template(
+            'aptitude_practice.html', track=track,
+            track_label=APTITUDE_TRACKS[track]['label'], topic=topic,
+            concept=aptitude_concept(topic), questions=questions,
+            is_authed=current_user.is_authenticated)
+
+    @app.route('/aptitude/practice/check', methods=['POST'])
+    @limiter.limit("120 per hour")
+    def aptitude_practice_check():
+        """Instant practice check: correctness + explanation + trick."""
+        if not current_user.is_authenticated:
+            return jsonify({'error': 'Please log in to practice.'}), 401
+        payload = request.get_json(silent=True) or {}
+        result = aptitude_check(payload.get('question_id'),
+                                payload.get('chosen'))
+        if result is None:
+            return jsonify({'error': 'Unknown question.'}), 400
+        return jsonify({'success': True, 'result': result})
+
+    @app.route('/aptitude/mistakes')
+    @login_required
+    def aptitude_mistakes():
+        """Mistake Book: the latest wrong/skipped state of every
+        question across the user's submitted tests, grouped by topic,
+        with full review and a one-click retest."""
+        rows = (AptitudeAttempt.query
+                .filter_by(user_id=current_user.id)
+                .filter(AptitudeAttempt.submitted_at.isnot(None))
+                .order_by(AptitudeAttempt.submitted_at.desc())
+                .limit(40).all())
+        history = [r.results_json or [] for r in rows]
+        wrong, by_sub = aptitude_mistakes_calc(history)
+        groups = {}
+        for r in wrong:
+            groups.setdefault(r['subcategory'], []).append(r)
+        return render_template('aptitude_mistakes.html', wrong=wrong,
+                               by_sub=by_sub, groups=groups,
+                               wrong_ids=[r['id'] for r in wrong][:50])
 
     # ---------- STAR ANSWER BUILDER (Wave 2 #17) ----------
     def _star_suggestions(scored, sections, competency):
