@@ -944,8 +944,10 @@ body.sb-workspace .hero h2.hero-h {
    so it melts into the page paper with no box or border — only the
    sheet, its shadow, notes and pen show. Its generation canvas uses
    the same multiply (full colour, no hero grayscale) to match. */
-.sb-work-intro--split .b-wrap {
-  max-width: 1280px; display: grid;
+.sb-work-intro--split { position: relative; }
+.sb-work-intro--split .b-wrap { max-width: 1280px; }
+.sb-intro-grid {
+  display: grid;
   grid-template-columns: 0.92fr 1.08fr; gap: 44px; align-items: center;
 }
 .sb-work-intro--split .sb-display { font-size: clamp(2.8rem, 5.8vw, 5.2rem); }
@@ -966,21 +968,29 @@ body.sb-workspace .hero h2.hero-h {
    element (white ground, multiply — invisible over the paper). It
    rests beside the slogan line, glides to the start and hand-writes
    the line in cursive while the text wipes in under its tip. */
-.sb-write { position: relative; padding: 16px 4px 4px; min-height: 88px; }
+/* The writing band: a full-width strip under the intro grid, filling
+   the blank under the headline. The pen writes the slogan across it
+   left to right, large, then flies back up to rest on the photo. */
+.sb-write { position: relative; padding: 30px 4px 6px; min-height: clamp(150px, 16vw, 228px); }
 .sb-write-text {
   display: inline-block; white-space: nowrap;
   font-family: "Caveat", cursive; font-weight: 600;
-  font-size: clamp(2.1rem, 3.6vw, 3rem); line-height: 1.15;
+  font-size: clamp(3.4rem, 8.8vw, 8rem); line-height: 1.15;
   color: var(--sb-blue); transform: rotate(-1.4deg);
   padding: 0 0.12em;
 }
-.sb-resume-visual.sb-write-live .sb-write-text { opacity: 0; }
+@media (max-width: 600px) {
+  .sb-write-text { font-size: 2.55rem; }
+  .sb-write { min-height: 96px; }
+}
+.sb-work-intro--split.sb-write-live .sb-write-text { opacity: 0; }
 .sb-pen-wrap {
-  position: absolute; left: 0; top: 0; width: 19%; z-index: 4;
+  position: absolute; left: 0; top: 0; width: clamp(96px, 8.5vw, 128px); z-index: 5;
   pointer-events: none; opacity: 0;
   mix-blend-mode: multiply;
+  transform-origin: 12% 97%;
 }
-.sb-resume-visual.sb-write-live .sb-pen-wrap { opacity: 1; transition: opacity 0.5s ease; }
+.sb-work-intro--split.sb-write-live .sb-pen-wrap { opacity: 1; transition: opacity 0.5s ease; }
 .sb-write-pen {
   display: block; width: 100%; height: auto;
   transform-origin: 12% 97%;
@@ -991,5 +1001,5 @@ body.sb-workspace .hero h2.hero-h {
   to { transform: rotate(1.8deg) translateY(1.5px); }
 }
 @media (max-width: 900px) {
-  .sb-work-intro--split .b-wrap { grid-template-columns: 1fr; gap: 28px; }
+  .sb-intro-grid { grid-template-columns: 1fr; gap: 28px; }
 }

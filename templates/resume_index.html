@@ -23,6 +23,7 @@
     <!-- Mode A intro, separated from the Mode B workspace below. -->
     <section class="sb-work-intro sb-work-intro--split" aria-label="Resume Studio introduction">
         <div class="b-wrap">
+            <div class="sb-intro-grid">
             <div class="sb-work-intro-text">
             <p class="sb-work-meta">Resume Studio — 01 / Upload · 02 / JD match · 03 / Rewrite · 04 / Versions · 05 / Cover · 06 / LinkedIn</p>
             <h1 class="sb-display" aria-label="Turn your resume into opportunities.">
@@ -34,12 +35,13 @@
             </div>
             <figure class="sb-resume-visual">
                 <img class="sb-resume-photo" src="{{ url_for('static', filename='img/resume-annotated.jpg') }}" alt="A printed student resume reviewed by hand — key skills highlighted in blue, experience ticked in green, with sticky-note reminders for an interview and a submission deadline" width="1580" height="1220">
-                <div class="sb-write" aria-hidden="true">
-                    <span class="sb-write-text">Make every line count.</span>
-                </div>
-                <span class="sb-pen-wrap" aria-hidden="true"><img class="sb-write-pen" src="{{ url_for('static', filename='img/resume-pen.jpg') }}" alt="" width="325" height="555"></span>
             </figure>
+            </div>
+            <div class="sb-write" aria-hidden="true">
+                <span class="sb-write-text">Make every line count.</span>
+            </div>
         </div>
+        <span class="sb-pen-wrap" aria-hidden="true"><img class="sb-write-pen" src="{{ url_for('static', filename='img/resume-pen.jpg') }}" alt="" width="325" height="555"></span>
     </section>
 
     <div class="sb-work">

@@ -220,20 +220,22 @@
   });
 
   /* Resume visual: no pixel reveal here — instead the photo's blue
-     pen comes alive. It rests at the end of the line under the photo,
-     glides to the start and hand-writes the cursive slogan while the
-     text wipes in under its tip, then settles back to rest. Loops
-     while the visual is in view; reduced-motion users simply see
+     pen comes alive. It rests at the top of the resume photo, glides
+     down to the wide band under the intro and hand-writes the
+     cursive slogan across it left to right while the text wipes in
+     under its tip, then flies back up to rest on the photo. Loops
+     while the intro is in view; reduced-motion users simply see
      the photo and the written line. */
-  var rVisual = document.querySelector('.sb-resume-visual');
-  var rPhoto = rVisual ? rVisual.querySelector('.sb-resume-photo') : null;
-  var rWrap = rVisual ? rVisual.querySelector('.sb-pen-wrap') : null;
-  var rText = rVisual ? rVisual.querySelector('.sb-write-text') : null;
+  var intro = document.querySelector('.sb-work-intro--split');
+  var rVisual = intro ? intro.querySelector('.sb-resume-visual') : null;
+  var rPhoto = intro ? intro.querySelector('.sb-resume-photo') : null;
+  var rWrap = intro ? intro.querySelector('.sb-pen-wrap') : null;
+  var rText = intro ? intro.querySelector('.sb-write-text') : null;
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (rVisual && rPhoto && rWrap && rText && !reduceMotion) {
+  if (intro && rVisual && rPhoto && rWrap && rText && !reduceMotion) {
     var penPos = null, writePlaying = false, writeInView = false;
     function wWait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
-    /* Move the pen so its TIP lands on figure-point (tx, ty). The
+    /* Move the pen so its TIP lands on section-point (tx, ty). The
        pen image's tip sits at (12%, 97%) of its box and the wrap's
        rotation origin is that same point, so rotation never moves
        the tip. */
@@ -248,14 +250,23 @@
       ], { duration: dur, easing: easing || 'ease-in-out', fill: 'forwards' });
       return a.finished.catch(function () {});
     }
+    function secRect() { return intro.getBoundingClientRect(); }
     function linePoints() {
-      var fr = rVisual.getBoundingClientRect(), tr = rText.getBoundingClientRect();
-      var baseY = tr.bottom - fr.top - tr.height * 0.16;
+      var sr = secRect(), tr = rText.getBoundingClientRect();
       return {
-        startX: tr.left - fr.left + 6,
-        endX: tr.right - fr.left - 6,
-        restX: Math.min(tr.right - fr.left + 34, fr.width - rWrap.offsetWidth * 0.85),
-        y: baseY
+        startX: tr.left - sr.left + 8,
+        endX: tr.right - sr.left - 8,
+        y: tr.bottom - sr.top - tr.height * 0.16
+      };
+    }
+    /* Resting point: the pen lies flat along the top of the resume
+       photo (rotated ~58deg from its natural diagonal, so it reads
+       as lying on the desk above the sheet), tip at the left. */
+    function restPoint() {
+      var sr = secRect(), pr = rPhoto.getBoundingClientRect();
+      return {
+        x: pr.left - sr.left + pr.width * 0.56,
+        y: pr.top - sr.top + pr.height * 0.14
       };
     }
     function wipeText(dur) {
@@ -271,18 +282,22 @@
       return a.finished.catch(function () {});
     }
     async function writeOnce() {
+      var rest = restPoint();
+      /* Start from rest on the photo, glide down to the line. */
+      await penTo(rest.x, rest.y, 58, 10, 'linear');
+      await wWait(400);
       var p = linePoints();
-      /* Rest at the line's end, then glide to the start. */
-      await penTo(p.restX, p.y, 20, 10, 'linear');
-      await wWait(350);
-      await penTo(p.startX, p.y, 8, 700);
-      /* Write: pen travels the line while the text wipes in. */
+      await penTo(p.startX, p.y, 8, 950);
+      /* Write across the whole band while the text wipes in. */
       rWrap.classList.add('is-writing');
-      var travel = penTo(p.endX, p.y, 8, 2600, 'linear');
-      var wipe = wipeText(2600);
+      var travel = penTo(p.endX, p.y, 8, 3300, 'linear');
+      var wipe = wipeText(3300);
       await Promise.all([travel, wipe]);
       rWrap.classList.remove('is-writing');
-      await penTo(p.restX, p.y, 20, 450);
+      await wWait(250);
+      /* Finished: fly back up to rest on the photo. */
+      var rest2 = restPoint();
+      await penTo(rest2.x, rest2.y, 58, 950);
       await wWait(3200);
       await fadeText(500);
       await wWait(450);
@@ -290,7 +305,7 @@
     async function writeLoop() {
       if (writePlaying) return;
       writePlaying = true;
-      rVisual.classList.add('sb-write-live');
+      intro.classList.add('sb-write-live');
       while (writeInView) { await writeOnce(); }
       writePlaying = false;
     }
@@ -301,7 +316,7 @@
           rVisual.classList.add('sb-photo-in');
           writeLoop();
         }
-      }, { threshold: 0.3 }).observe(rVisual);
+      }, { threshold: 0.25 }).observe(intro);
     } else {
       writeInView = true;
       rVisual.classList.add('sb-photo-in');
