@@ -33,57 +33,48 @@
                 <div>
                     <p class="sb-kicker">Progress tracker — built in</p>
                     <h2>Your A2Z progress</h2>
-                    <p class="dt-embed-note">The Striver A2Z tracker lives on this practice page itself — overall progress, difficulty split and module-by-module status, updated from the problems you mark.</p>
                 </div>
                 <a class="dt-embed-link" href="{{ url_for('dsa_a2z_page') }}">Open A2Z sheet →</a>
             </div>
 
-            <div class="dt-hero">
+            <div class="dt-embed-hero">
                 <div class="sb-liquid" data-pct="{{ a2z.pct }}" data-label="Solved"></div>
-                <div class="dt-stats">
-                    <div class="dt-stat"><b>{{ a2z.solved }}/{{ a2z.total }}</b><span>Problems solved</span></div>
-                    <div class="dt-stat"><b>{{ a2z.attempted + a2z.stuck }}</b><span>In progress</span></div>
-                    <div class="dt-stat"><b>{{ a2z.stuck }}</b><span>Marked stuck</span></div>
-                    <div class="dt-stat"><b>{{ a2z.total - a2z.tracked }}</b><span>Not started</span></div>
-                </div>
-            </div>
-
-            <p class="dt-classic-line">
-                Classic problem set: <strong>{{ classic.solved }}/{{ classic.total }} solved ({{ classic.pct }}%)</strong> —
-                <a href="{{ url_for('dsa_diagnosis') }}">weak-topic diagnosis</a> ·
-                <a href="{{ url_for('dsa_tracker_page') }}">full tracker page</a>
-            </p>
-            {% if not is_authed %}
-            <p class="dt-embed-note"><a href="{{ url_for('auth.login') }}">Log in</a> to save your progress — this tracker fills in as you mark problems solved.</p>
-            {% elif a2z.tracked == 0 %}
-            <p class="dt-embed-note">Nothing tracked yet — <a href="{{ url_for('dsa_a2z_page') }}">pick your first problem from the sheet</a> and mark it solved to see this tracker come alive.</p>
-            {% endif %}
-
-            <div class="dt-cols">
                 <div>
+                    <div class="dt-embed-stats">
+                        <div class="dt-stat"><b>{{ a2z.solved }}/{{ a2z.total }}</b><span>Problems solved</span></div>
+                        <div class="dt-stat"><b>{{ a2z.attempted + a2z.stuck }}</b><span>In progress</span></div>
+                        <div class="dt-stat"><b>{{ a2z.stuck }}</b><span>Marked stuck</span></div>
+                        <div class="dt-stat"><b>{{ a2z.total - a2z.tracked }}</b><span>Not started</span></div>
+                    </div>
                     <h3 class="dt-mini-h">By difficulty</h3>
                     {% for d in a2z.by_difficulty %}
-                    <div class="dt-row">
+                    <div class="dt-diff-row">
                         <span class="dt-name">{{ d.difficulty }}</span>
                         <span class="dt-track"><span class="dt-fill dt-fill--{{ d.difficulty | lower }}" style="display:block;width:{{ d.pct }}%"></span></span>
                         <span class="dt-num">{{ d.solved }}/{{ d.total }} · {{ d.pct }}%</span>
                     </div>
                     {% endfor %}
-                    <p class="dt-embed-note">Theory and lesson rows count towards module totals; they carry no difficulty.</p>
-                </div>
-                <div>
-                    <h3 class="dt-mini-h">By module</h3>
-                    <div class="dt-modules">
-                        {% for s in a2z.by_step %}
-                        <div class="dt-row">
-                            <span class="dt-name">{{ '%02d' % s.step }} · {{ s.step_name }}</span>
-                            <span class="dt-track"><span class="dt-fill" style="display:block;width:{{ s.pct }}%"></span></span>
-                            <span class="dt-num">{{ s.solved }}/{{ s.total }} · {{ s.pct }}%</span>
-                        </div>
-                        {% endfor %}
-                    </div>
                 </div>
             </div>
+
+            <h3 class="dt-mini-h dt-module-h">By module</h3>
+            <div class="dt-module-grid">
+                {% for s in a2z.by_step %}
+                <div class="dt-mod">
+                    <div class="dt-mod-top">
+                        <span class="dt-mod-name">{{ '%02d' % s.step }} · {{ s.step_name }}</span>
+                        <span class="dt-mod-num">{{ s.solved }}/{{ s.total }} · {{ s.pct }}%</span>
+                    </div>
+                    <span class="dt-track"><span class="dt-fill" style="display:block;width:{{ s.pct }}%"></span></span>
+                </div>
+                {% endfor %}
+            </div>
+
+            <p class="dt-classic-line">
+                Classic set: <strong>{{ classic.solved }}/{{ classic.total }} solved ({{ classic.pct }}%)</strong> ·
+                <a href="{{ url_for('dsa_diagnosis') }}">weak-topic diagnosis</a>
+                {%- if not is_authed %} · <a href="{{ url_for('auth.login') }}">Log in</a> to save your progress{% elif a2z.tracked == 0 %} · <a href="{{ url_for('dsa_a2z_page') }}">mark your first problem</a> to get started{% endif %}
+            </p>
         </section>
 
         <div class="dsa-card b-card b-reveal">

@@ -129,6 +129,9 @@ def test_dsa_home_embeds_built_in_progress_tracker(client):
     assert "0/495" in body
     assert "By difficulty" in body and "By module" in body
     assert "liquid_gauge.js" in body
+    # Clean layout: stats row + module grid, no scroll-box list.
+    assert "dt-embed-stats" in body and "dt-module-grid" in body
+    assert "dt-modules" not in body
 
 
 def test_dsa_home_tracker_reflects_saved_progress(authed_client):
