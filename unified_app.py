@@ -361,10 +361,10 @@ from studybuddy.cover_generator import (
     validate_cover_inputs,
 )
 from studybuddy.dsa_practice import (
-    a2z_tracker,
     all_problems,
     filter_problems,
     get_problem,
+    progress_summary,
     public_problem,
     reveal_approach,
     reveal_hint,
@@ -4791,11 +4791,23 @@ def register_routes(app):
     # ---------- DSA PRACTICE (Wave 2 #15) ----------
     @app.route('/dsa')
     def dsa_home():
-        """DSA practice: filter problems by topic/difficulty."""
+        """DSA practice: filter problems by topic/difficulty.
+
+        The progress tracker is built into this page (user request,
+        2026-10-23): the same summary the standalone tracker page uses,
+        rendered right under the intro instead of behind a link.
+        """
+        progress_rows = []
+        if current_user.is_authenticated:
+            rows = DSAProgress.query.filter_by(user_id=current_user.id).all()
+            progress_rows = [(r.problem_id, r.status) for r in rows]
+        progress = progress_summary(progress_rows)
         return render_template('dsa.html', topics=dsa_topics(),
                                difficulties=dsa_difficulties(),
                                total=len(all_problems()),
-                               is_authed=current_user.is_authenticated)
+                               is_authed=current_user.is_authenticated,
+                               a2z=progress['a2z'],
+                               classic=progress['classic'])
 
     @app.route('/api/dsa/problems')
     def dsa_problem_list():
@@ -4843,15 +4855,9 @@ def register_routes(app):
     def dsa_tracker_page():
         """Progress tracker: overall, per-module and per-difficulty."""
         rows = DSAProgress.query.filter_by(user_id=current_user.id).all()
-        a2z = a2z_tracker([(r.problem_id, r.status) for r in rows])
-        classic_ids = {p['id'] for p in all_problems()}
-        classic_solved = sum(1 for r in rows
-                             if r.problem_id in classic_ids
-                             and r.status == 'solved')
-        classic = {'total': len(classic_ids), 'solved': classic_solved,
-                   'pct': round(100 * classic_solved / len(classic_ids))
-                   if classic_ids else 0}
-        return render_template('dsa_tracker.html', a2z=a2z, classic=classic)
+        progress = progress_summary([(r.problem_id, r.status) for r in rows])
+        return render_template('dsa_tracker.html', a2z=progress['a2z'],
+                               classic=progress['classic'])
 
     @app.route('/dsa/<problem_id>/untrack', methods=['POST'])
     @limiter.limit("30 per hour")

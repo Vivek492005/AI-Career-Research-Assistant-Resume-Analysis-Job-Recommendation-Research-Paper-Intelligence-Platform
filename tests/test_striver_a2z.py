@@ -3,9 +3,11 @@
 import pytest
 
 from studybuddy.dsa_practice import (
+    all_problems,
     a2z_problems,
     a2z_tracker,
     get_problem,
+    progress_summary,
     sheet_structure,
 )
 
@@ -103,6 +105,42 @@ def test_sheet_page_renders_anonymously(client):
     assert "Striver" in body and "Kadane" in body
     assert "leetcode.com/problems/maximum-subarray/" in body
     assert "Mark as solved" not in body  # marking needs an account
+
+
+def test_progress_summary_combines_a2z_and_classic():
+    classic_id = all_problems()[0]["id"]
+    summary = progress_summary([
+        ("a2z-0001", "solved"),
+        ("a2z-0002", "attempted"),
+        (classic_id, "solved"),
+    ])
+    assert summary["a2z"]["total"] == 495
+    assert summary["a2z"]["solved"] == 1
+    assert summary["classic"]["total"] == len(all_problems())
+    assert summary["classic"]["solved"] == 1
+
+
+def test_dsa_home_embeds_built_in_progress_tracker(client):
+    r = client.get("/dsa")
+    assert r.status_code == 200
+    body = r.get_data(as_text=True)
+    assert 'id="progress-tracker"' in body
+    assert "Your A2Z progress" in body
+    assert "0/495" in body
+    assert "By difficulty" in body and "By module" in body
+    assert "liquid_gauge.js" in body
+
+
+def test_dsa_home_tracker_reflects_saved_progress(authed_client):
+    classic_id = all_problems()[0]["id"]
+    assert authed_client.post(
+        "/dsa/a2z-0100/status", json={"status": "solved"}).status_code == 200
+    assert authed_client.post(
+        f"/dsa/{classic_id}/status", json={"status": "solved"}).status_code == 200
+    body = authed_client.get("/dsa").get_data(as_text=True)
+    assert 'id="progress-tracker"' in body
+    assert "1/495" in body
+    assert f"1/{len(all_problems())} solved" in body
 
 
 def test_tracker_requires_login(client):

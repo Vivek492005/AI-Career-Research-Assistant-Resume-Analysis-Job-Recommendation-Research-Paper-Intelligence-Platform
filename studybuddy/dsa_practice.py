@@ -521,3 +521,26 @@ def a2z_tracker(progress_rows):
             for name, pair in difficulties.items()
         ],
     }
+
+
+def progress_summary(progress_rows):
+    """Full DSA progress summary for tracker surfaces.
+
+    Combines the Striver A2Z aggregate with the classic problem-set
+    aggregate so the DSA home page and the dedicated tracker page show
+    the same numbers from the same progress rows.
+    """
+    rows = list(progress_rows)
+    classic_ids = {p["id"] for p in all_problems()}
+    classic_solved = sum(1 for pid, status in rows
+                         if pid in classic_ids and status == "solved")
+    classic_total = len(classic_ids)
+    return {
+        "a2z": a2z_tracker(rows),
+        "classic": {
+            "total": classic_total,
+            "solved": classic_solved,
+            "pct": round(100 * classic_solved / classic_total)
+                   if classic_total else 0,
+        },
+    }

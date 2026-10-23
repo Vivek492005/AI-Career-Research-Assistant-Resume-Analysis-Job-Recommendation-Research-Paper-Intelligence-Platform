@@ -1612,6 +1612,21 @@ body.sb-research .b-card--stat:hover :is(b, strong) { color: var(--sb-blue) !imp
 .dt-fill--easy { background: #4ade80; }
 .dt-fill--medium { background: #fbbf24; }
 .dt-fill--hard { background: #f87171; }
+.dt-embed-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+.dt-embed-head h2 { font-family: var(--sb-display); font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 0.95; text-transform: uppercase; color: #fff; margin: 0.15rem 0 0.45rem; }
+.dt-embed-note { color: #a3a3a0; line-height: 1.55; max-width: 680px; }
+.dt-embed-note a, .dt-classic-line a { color: var(--accent-primary); font-weight: 700; }
+.dt-embed-link { font-family: var(--sb-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #0a0a0a; background: var(--sb-lime); padding: 0.65rem 0.85rem; text-decoration: none; font-weight: 800; white-space: nowrap; }
+.dt-classic-line { margin-top: 1.25rem; color: #a3a3a0; }
+.dt-classic-line strong { color: #fff; }
+.dt-cols { display: grid; grid-template-columns: minmax(250px, 0.8fr) minmax(340px, 1.25fr); gap: 2.2rem; margin-top: 1.7rem; }
+.dt-mini-h { font-family: var(--sb-display); font-size: 1.2rem; text-transform: uppercase; color: #fff; margin: 0 0 0.75rem; }
+.dt-cols .dt-row { grid-template-columns: minmax(118px, 180px) 1fr 104px; padding: 0.34rem 0; }
+.dt-modules { max-height: 342px; overflow: auto; padding-right: 0.35rem; }
+@media (max-width: 900px) {
+  .dt-cols { grid-template-columns: 1fr; }
+  .dt-modules { max-height: none; }
+}
 @media (max-width: 700px) {
   .sb-dsa .az-row { flex-wrap: wrap; }
   .dt-row { grid-template-columns: 120px 1fr 92px; }
