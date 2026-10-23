@@ -8,6 +8,9 @@ import os
 BANK_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                          "data", "dsa_problems.json")
 
+A2Z_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        "data", "striver_a2z.json")
+
 _bank = None
 _by_id = None
 
@@ -18,6 +21,10 @@ def _load():
         with open(BANK_PATH, encoding="utf-8") as f:
             _bank = json.load(f)
         _by_id = {p["id"]: p for p in _bank}
+        # A2Z sheet rows join the id lookup so the shared progress
+        # endpoints can track them; classic ids win any clash.
+        for entry in _load_a2z():
+            _by_id.setdefault(entry["id"], _a2z_public(entry))
     return _bank
 
 
@@ -380,3 +387,137 @@ def spaced_repetition_queue(mistakes, now=None):
             "guidance": (f"{len(due)} problem(s) due for review — spaced repetition "
                          "is how patterns stick." if due else
                          "Nothing due. Keep solving — mistakes will queue here.")}
+
+
+# ---------------------------------------------------------------------------
+# Striver A2Z sheet (data/striver_a2z.json)
+#
+# The sheet is deliberately simple (per product direction): every row
+# is a name, a module (the sheet's own category), an optional
+# difficulty and an external practice link. There are no in-house
+# statements or hints for these rows — students solve on the original
+# platform and mark progress here. Progress reuses the DSAProgress
+# table through the shared status endpoint.
+# ---------------------------------------------------------------------------
+
+_a2z = None
+
+
+def _load_a2z():
+    global _a2z
+    if _a2z is None:
+        try:
+            with open(A2Z_PATH, encoding="utf-8") as f:
+                _a2z = json.load(f)
+        except FileNotFoundError:
+            _a2z = []
+    return _a2z
+
+
+def _a2z_public(entry):
+    """The minimal problem-shaped view of a sheet row, so the shared
+    diagnosis machinery can read its category."""
+    return {
+        "id": entry["id"],
+        "title": entry["title"],
+        "difficulty": entry.get("difficulty"),
+        "topics": [entry["step_name"].lower()],
+        "leetcode_url": entry.get("url"),
+        "a2z": True,
+    }
+
+
+def a2z_problems():
+    return _load_a2z()
+
+
+def sheet_structure(statuses=None):
+    """Sheet rows grouped by module, in sheet order.
+
+    ``statuses`` maps problem_id -> status for the current user; each
+    item gains a ``status`` key (None when untracked) and each module
+    gains ``solved``/``total`` counts.
+    """
+    statuses = statuses or {}
+    steps = {}
+    order = []
+    for entry in _load_a2z():
+        key = entry["step"]
+        if key not in steps:
+            steps[key] = {"step": entry["step"],
+                          "step_name": entry["step_name"],
+                          "total": 0, "solved": 0, "rows": []}
+            order.append(key)
+        item = dict(entry)
+        item["status"] = statuses.get(entry["id"])
+        steps[key]["rows"].append(item)
+        steps[key]["total"] += 1
+        if item["status"] == "solved":
+            steps[key]["solved"] += 1
+    for step in steps.values():
+        # Subtopic groups in first-appearance (sheet) order — the
+        # sheet's sequence is the learning path, so never re-sort it.
+        groups = {}
+        for item in step["rows"]:
+            groups.setdefault(item["subtopic"], []).append(item)
+        step["groups"] = [{"subtopic": name, "rows": rows}
+                          for name, rows in groups.items()]
+    return [steps[key] for key in order]
+
+
+def a2z_tracker(progress_rows):
+    """Aggregate a user's progress over the A2Z sheet.
+
+    ``progress_rows`` is an iterable of (problem_id, status) pairs, as
+    stored by the shared DSA progress endpoint. Returns overall,
+    per-module and per-difficulty totals. Theory rows (no difficulty)
+    count towards module and overall totals but not the difficulty
+    breakdown.
+    """
+    status_by_id = {pid: status for pid, status in progress_rows}
+    by_id = {entry["id"]: entry for entry in _load_a2z()}
+    total = len(by_id)
+    solved = attempted = stuck = 0
+    steps = {}
+    step_order = []
+    difficulties = {"Easy": [0, 0], "Medium": [0, 0], "Hard": [0, 0]}
+    for pid, entry in by_id.items():
+        key = entry["step"]
+        if key not in steps:
+            steps[key] = {"step": entry["step"],
+                          "step_name": entry["step_name"],
+                          "total": 0, "solved": 0, "attempted": 0}
+            step_order.append(key)
+        steps[key]["total"] += 1
+        status = status_by_id.get(pid)
+        if status:
+            steps[key]["attempted"] += 1
+        if status == "solved":
+            solved += 1
+            steps[key]["solved"] += 1
+        elif status == "attempted":
+            attempted += 1
+        elif status == "stuck":
+            stuck += 1
+        diff = entry.get("difficulty")
+        if diff in difficulties:
+            difficulties[diff][1] += 1
+            if status == "solved":
+                difficulties[diff][0] += 1
+    tracked = sum(1 for pid in status_by_id if pid in by_id)
+    for step in steps.values():
+        step["pct"] = round(100 * step["solved"] / step["total"]) if step["total"] else 0
+    return {
+        "total": total,
+        "solved": solved,
+        "attempted": attempted,
+        "stuck": stuck,
+        "tracked": tracked,
+        "pct": round(100 * solved / total) if total else 0,
+        "by_step": [steps[key] for key in step_order],
+        "by_difficulty": [
+            {"difficulty": name, "solved": pair[0], "total": pair[1],
+             "pct": round(100 * pair[0] / pair[1]) if pair[1] else 0}
+            for name, pair in difficulties.items()
+        ],
+    }

@@ -21,7 +21,9 @@
     <div class="sb-dsa-wrap">
         <div class="dsa-head">
             <p class="sb-kicker">Practice — 01 / Problems</p><h1>Practice.<br>Solve.<br><span class="sb-accent">Improve.</span></h1>
-            <p>{{ total }} problems across {{ topics|length }} topics. Filter, solve, reveal hints progressively — and check your <a href="{{ url_for('dsa_diagnosis') }}" style="color:var(--accent-primary);font-weight:700;">weak-topic diagnosis</a>.</p>
+            <p>{{ total }} problems across {{ topics|length }} topics. Filter, solve, reveal hints progressively — and check your <a href="{{ url_for('dsa_diagnosis') }}" style="color:var(--accent-primary);font-weight:700;">weak-topic diagnosis</a>.
+            Working through Striver's sheet? Open the <a href="{{ url_for('dsa_a2z_page') }}" style="color:var(--accent-primary);font-weight:700;">A2Z sheet (495 problems)</a>
+            and watch the <a href="{{ url_for('dsa_tracker_page') }}" style="color:var(--accent-primary);font-weight:700;">progress tracker</a>.</p>
             <!-- DATA-05: honesty label — this is a practice tracker, not an auto-judge -->
             <p class="sb-card__meta"><span class="sb-badge sb-badge--rule">Practice tracker</span> Self-reported progress — not an auto-judge. Solve on the original platform; track here.</p>
         </div>

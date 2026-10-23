@@ -361,12 +361,14 @@ from studybuddy.cover_generator import (
     validate_cover_inputs,
 )
 from studybuddy.dsa_practice import (
+    a2z_tracker,
     all_problems,
     filter_problems,
     get_problem,
     public_problem,
     reveal_approach,
     reveal_hint,
+    sheet_structure,
     validate_status_payload,
     weak_topic_diagnosis,
 )
@@ -4727,6 +4729,50 @@ def register_routes(app):
                      "hints_used": r.hints_used} for r in rows]
         report = weak_topic_diagnosis(progress)
         return render_template('dsa_diagnosis.html', report=report)
+
+    @app.route('/dsa/a2z')
+    def dsa_a2z_page():
+        """Striver A2Z sheet — simple rows: solve on the original
+        platform, mark progress here."""
+        statuses = {}
+        if current_user.is_authenticated:
+            rows = DSAProgress.query.filter_by(user_id=current_user.id).all()
+            statuses = {r.problem_id: r.status for r in rows}
+        steps = sheet_structure(statuses)
+        return render_template('dsa_a2z.html', steps=steps,
+                               total=sum(s['total'] for s in steps),
+                               solved=sum(s['solved'] for s in steps))
+
+    @app.route('/dsa/tracker')
+    @login_required
+    def dsa_tracker_page():
+        """Progress tracker: overall, per-module and per-difficulty."""
+        rows = DSAProgress.query.filter_by(user_id=current_user.id).all()
+        a2z = a2z_tracker([(r.problem_id, r.status) for r in rows])
+        classic_ids = {p['id'] for p in all_problems()}
+        classic_solved = sum(1 for r in rows
+                             if r.problem_id in classic_ids
+                             and r.status == 'solved')
+        classic = {'total': len(classic_ids), 'solved': classic_solved,
+                   'pct': round(100 * classic_solved / len(classic_ids))
+                   if classic_ids else 0}
+        return render_template('dsa_tracker.html', a2z=a2z, classic=classic)
+
+    @app.route('/dsa/<problem_id>/untrack', methods=['POST'])
+    @limiter.limit("30 per hour")
+    def dsa_untrack(problem_id):
+        """Remove a progress mark (undo a 'Mark as solved')."""
+        if not current_user.is_authenticated:
+            return jsonify({'error': 'Please log in to save progress.'}), 401
+        problem_id = (problem_id or '').strip()[:50]
+        if not get_problem(problem_id):
+            return jsonify({'error': 'Unknown problem.'}), 404
+        row = DSAProgress.query.filter_by(user_id=current_user.id,
+                                          problem_id=problem_id).first()
+        if row:
+            db.session.delete(row)
+            db.session.commit()
+        return jsonify({'success': True, 'status': None})
 
     @app.route('/dsa/<problem_id>')
     def dsa_problem_page(problem_id):

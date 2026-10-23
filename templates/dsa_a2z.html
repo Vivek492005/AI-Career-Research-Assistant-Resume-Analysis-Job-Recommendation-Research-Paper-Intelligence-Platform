@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" data-theme="resume">
+<head>
+    <meta charset="UTF-8">
+    <script>document.documentElement.classList.replace('no-js', 'js');</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Striver A2Z Sheet | Study-Buddy</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon-32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/favicon-16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bento.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kinetic.css') }}">
+</head>
+<body class="sb-dsa">
+    {% set nav_active = 'practice' %}
+    {% include "_site_nav.html" %}
+    {% with sb_active="dsa", sb_title="Striver A2Z Sheet" %}{% include "_app_sidebar.html" %}{% endwith %}
+
+    <div class="sb-dsa-wrap">
+        <div class="dsa-head">
+            <p class="sb-kicker">Practice — 02 / Striver Sheet</p>
+            <h1>Striver<br>A2Z <span class="sb-accent">Sheet.</span></h1>
+            <p>{{ total }} problems across {{ steps|length }} modules — the sheet almost every
+               engineering student uses for placements. Keep it simple: solve each problem on its
+               original platform, then mark it here and watch your
+               <a href="{{ url_for('dsa_tracker_page') }}" style="color:var(--accent-primary);font-weight:700;">progress tracker</a> fill up.</p>
+            <p class="sb-card__meta"><span class="sb-badge sb-badge--rule">Practice tracker</span>
+               Self-reported progress — not an auto-judge. Sheet structure: Striver's A2Z DSA course (takeUforward).</p>
+            {% if current_user.is_authenticated %}
+            <p style="margin-top:0.8rem;">You have solved <strong id="az-solved-count">{{ solved }}</strong> of {{ total }}.
+               <a href="{{ url_for('dsa_tracker_page') }}" style="color:var(--accent-primary);font-weight:700;">See the full tracker →</a></p>
+            {% else %}
+            <p class="dsa-cta" style="margin-top:0.8rem;"><a href="{{ url_for('auth.login') }}">Log in</a> to mark problems solved and track your progress.</p>
+            {% endif %}
+            <div class="az-tools">
+                <input type="search" id="az-q" placeholder="Search 495 problems… (e.g. kadane, lca, knapsack)" aria-label="Search problems">
+            </div>
+            <nav class="az-nav" aria-label="Modules">
+                {% for s in steps %}<a href="#step-{{ s.step }}" data-step-link="{{ s.step }}">{{ '%02d' % s.step }} {{ s.step_name }}</a>{% endfor %}
+            </nav>
+        </div>
+
+        <p class="az-empty" id="az-empty">No problem matches that search.</p>
+
+        {% for s in steps %}
+        <details class="az-step" id="step-{{ s.step }}" data-step="{{ s.step }}" {% if loop.first %}open{% endif %}>
+            <summary>
+                <span class="az-stepno">STEP {{ '%02d' % s.step }}</span>
+                <h2>{{ s.step_name }}</h2>
+                <span class="az-count"><span class="az-step-solved">{{ s.solved }}</span>/{{ s.total }} solved</span>
+            </summary>
+            <div class="az-bar"><i style="width: {{ (100 * s.solved / s.total) if s.total else 0 }}%"></i></div>
+            <div class="az-body">
+                {% for g in s.groups %}
+                <p class="az-sub">{{ g.subtopic }}</p>
+                {% for it in g.rows %}
+                <div class="az-row" data-title="{{ it.title | lower }}">
+                    <span class="az-dot{% if it.status %} is-{{ it.status }}{% endif %}" aria-hidden="true"></span>
+                    <span class="az-title">{{ it.title }}</span>
+                    {% if it.kind == 'learn' %}<span class="az-theory">Theory</span>{% endif %}
+                    {% if it.difficulty %}<span class="az-diff az-diff--{{ it.difficulty | lower }}">{{ it.difficulty }}</span>{% endif %}
+                    {% if it.url %}<a class="az-solve" href="{{ it.url }}" target="_blank" rel="noopener">Solve &#8599;</a>{% endif %}
+                    {% if current_user.is_authenticated %}
+                    <button type="button" class="az-mark{% if it.status == 'solved' %} is-done{% endif %}"
+                            data-id="{{ it.id }}" data-step="{{ s.step }}" data-label="{% if it.kind == 'learn' %}Mark done{% else %}Mark as solved{% endif %}"
+                            aria-pressed="{{ 'true' if it.status == 'solved' else 'false' }}">{% if it.status == 'solved' %}&#10003; Solved{% elif it.kind == 'learn' %}Mark done{% else %}Mark as solved{% endif %}</button>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                {% endfor %}
+            </div>
+        </details>
+        {% endfor %}
+    </div>
+
+    <footer class="b-footer">
+        <div class="b-wrap b-foot-in">
+            <span>&copy; 2026 Study-Buddy</span>
+            <span>
+                <a href="{{ url_for('privacy') }}">Privacy</a>
+                <a href="{{ url_for('terms') }}">Terms</a>
+                <a href="{{ url_for('index') }}">Home</a>
+            </span>
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+      var csrf = document.querySelector('meta[name="csrf-token"]').content;
+      function post(url, body) {
+        return fetch(url, { method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrf },
+          body: body ? JSON.stringify(body) : '{}' });
+      }
+      function refreshStep(stepEl, delta) {
+        if (!stepEl) return;
+        var solvedEl = stepEl.querySelector('.az-step-solved');
+        var total = parseInt(stepEl.querySelector('.az-count').textContent.split('/')[1], 10);
+        var now = Math.max(0, parseInt(solvedEl.textContent, 10) + delta);
+        solvedEl.textContent = now;
+        var bar = stepEl.querySelector('.az-bar i');
+        if (bar && total) bar.style.width = (100 * now / total) + '%';
+        var head = document.getElementById('az-solved-count');
+        if (head) head.textContent = Math.max(0, parseInt(head.textContent, 10) + delta);
+      }
+      document.querySelectorAll('.az-mark').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var row = btn.closest('.az-row');
+          var dot = row.querySelector('.az-dot');
+          var id = btn.getAttribute('data-id');
+          var stepEl = btn.closest('.az-step');
+          var done = btn.classList.contains('is-done');
+          btn.disabled = true;
+          var req = done ? post('/dsa/' + id + '/untrack')
+                         : post('/dsa/' + id + '/status', { status: 'solved' });
+          req.then(function (r) { return r.json().then(function () { return r.ok; }); })
+             .then(function (ok) {
+               if (!ok) return;
+               if (done) {
+                 btn.classList.remove('is-done');
+                 btn.setAttribute('aria-pressed', 'false');
+                 btn.textContent = btn.getAttribute('data-label');
+                 dot.className = 'az-dot';
+                 refreshStep(stepEl, -1);
+               } else {
+                 btn.classList.add('is-done');
+                 btn.setAttribute('aria-pressed', 'true');
+                 btn.innerHTML = '&#10003; Solved';
+                 dot.className = 'az-dot is-solved';
+                 refreshStep(stepEl, 1);
+               }
+             })
+             .catch(function () {})
+             .finally(function () { btn.disabled = false; });
+        });
+      });
+      var q = document.getElementById('az-q');
+      var emptyMsg = document.getElementById('az-empty');
+      q.addEventListener('input', function () {
+        var needle = q.value.trim().toLowerCase();
+        var anyVisible = false;
+        document.querySelectorAll('.az-step').forEach(function (stepEl) {
+          var stepVisible = false;
+          stepEl.querySelectorAll('.az-row').forEach(function (row) {
+            var show = !needle || row.getAttribute('data-title').indexOf(needle) > -1;
+            row.style.display = show ? '' : 'none';
+            if (show) stepVisible = true;
+          });
+          stepEl.querySelectorAll('.az-sub').forEach(function (sub) {
+            var el = sub.nextElementSibling, subVisible = false;
+            while (el && !el.classList.contains('az-sub')) {
+              if (el.classList.contains('az-row') && el.style.display !== 'none') subVisible = true;
+              el = el.nextElementSibling;
+            }
+            sub.style.display = subVisible ? '' : 'none';
+          });
+          stepEl.style.display = stepVisible ? '' : 'none';
+          if (stepVisible) { anyVisible = true; if (needle) stepEl.open = true; }
+        });
+        emptyMsg.style.display = anyVisible ? 'none' : 'block';
+      });
+      document.querySelectorAll('[data-step-link]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          var el = document.getElementById('step-' + a.getAttribute('data-step-link'));
+          if (el) el.open = true;
+        });
+      });
+    })();
+    </script>
+    <script src="{{ url_for('static', filename='js/kinetic.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bento.js') }}" defer></script>
+    {% include "_csp_beacon.html" %}
+    <script src="{{ url_for('static', filename='js/cursor.js') }}" defer></script>
+</body>
+</html>

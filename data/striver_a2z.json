@@ -1,0 +1,4952 @@
+[
+ {
+  "id": "a2z-0001",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Fundamentals of Programming",
+  "title": "Breaking The Myth",
+  "difficulty": null,
+  "url": null,
+  "kind": "learn"
+ },
+ {
+  "id": "a2z-0002",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Fundamentals of Programming",
+  "title": "Programming and What Are Computers?",
+  "difficulty": null,
+  "url": null,
+  "kind": "learn"
+ },
+ {
+  "id": "a2z-0003",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Fundamentals of Programming",
+  "title": "How to Think Like a Programmer",
+  "difficulty": null,
+  "url": null,
+  "kind": "learn"
+ },
+ {
+  "id": "a2z-0004",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Fundamentals of Programming",
+  "title": "Flowcharts and Pseudocode",
+  "difficulty": null,
+  "url": null,
+  "kind": "learn"
+ },
+ {
+  "id": "a2z-0005",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Fundamentals of Programming",
+  "title": "Flowchart Problem-Solving",
+  "difficulty": null,
+  "url": null,
+  "kind": "learn"
+ },
+ {
+  "id": "a2z-0006",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Fundamentals of Programming",
+  "title": "Dry Runs, Edge Cases and Debugging",
+  "difficulty": null,
+  "url": null,
+  "kind": "learn"
+ },
+ {
+  "id": "a2z-0007",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Fundamentals of Programming",
+  "title": "Programming Languages and Choosing a Path",
+  "difficulty": null,
+  "url": null,
+  "kind": "learn"
+ },
+ {
+  "id": "a2z-0008",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Language Basics",
+  "title": "Learn C++",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0009",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Language Basics",
+  "title": "Learn Java",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0010",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Language Basics",
+  "title": "Learn Python",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0011",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Logic Building (Patterns)",
+  "title": "Easy and Medium",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0012",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Logic Building (Patterns)",
+  "title": "Hard",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0013",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 1",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0014",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 2",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0015",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 3",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0016",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 4",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0017",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 5",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0018",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 6",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0019",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 7",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0020",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 8",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0021",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 9",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0022",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 10",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0023",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 11",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0024",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 12",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0025",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 13",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0026",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 14",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0027",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 15",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0028",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 16",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0029",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 17",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0030",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 18",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0031",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 19",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0032",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 20",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0033",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 21",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0034",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Patterns",
+  "title": "Pattern 22",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0035",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Time Complexity",
+  "title": "Theory with examples",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0036",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Standard Libraries & Collections",
+  "title": "STL",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0037",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Standard Libraries & Collections",
+  "title": "Java Collections",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0038",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Standard Libraries & Collections",
+  "title": "Python Libraries Part 1",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0039",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Standard Libraries & Collections",
+  "title": "Python Libraries Part 2",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0040",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Concept Basics",
+  "title": "Basic Maths",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0041",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Concept Basics",
+  "title": "Basic Arrays",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0042",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Concept Basics",
+  "title": "Basic Hashing",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0043",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Concept Basics",
+  "title": "Basic String",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0044",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Maths",
+  "title": "Count all Digits of a Number",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0045",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Maths",
+  "title": "Count number of odd digits in a number",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0046",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Maths",
+  "title": "Reverse a number",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/reverse-integer/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0047",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Maths",
+  "title": "Palindrome Number",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/palindrome-number/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0048",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Maths",
+  "title": "Return the Largest Digit in a Number",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0049",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Maths",
+  "title": "Factorial of a given number",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0050",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Maths",
+  "title": "Check if the Number is Armstrong",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/armstrong-number/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0051",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Maths",
+  "title": "Check for Perfect Number",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/perfect-number/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0052",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Maths",
+  "title": "Check for Prime Number",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0053",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Maths",
+  "title": "Count of Prime Numbers till N",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/count-primes/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0054",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Maths",
+  "title": "GCD of Two Numbers",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0055",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Maths",
+  "title": "LCM of two numbers",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0056",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Maths",
+  "title": "Divisors of a Number",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0057",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Arrays",
+  "title": "Sum of Array Elements",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0058",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Arrays",
+  "title": "Count of odd numbers in Array",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0059",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Arrays",
+  "title": "Check if the Array is Sorted I",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0060",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Arrays",
+  "title": "Reverse an array",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0061",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Hashing",
+  "title": "Highest Occurring Element in an Array",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/frequency-of-the-most-frequent-element/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0062",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Hashing",
+  "title": "Second Highest Occurring Element",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0063",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Hashing",
+  "title": "Sum of Highest and Lowest Frequency",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0064",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Strings",
+  "title": "Reverse a String II",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/reverse-string/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0065",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Strings",
+  "title": "Palindrome Check",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/valid-palindrome/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0066",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Strings",
+  "title": "Largest Odd Number in a String",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/largest-odd-number-in-string/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0067",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Strings",
+  "title": "Longest Common Prefix",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/longest-common-prefix/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0068",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Strings",
+  "title": "Isomorphic Strings",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/isomorphic-strings/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0069",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Strings",
+  "title": "Rotate String",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/rotate-string/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0070",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Strings",
+  "title": "Valid Anagram",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/valid-anagram/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0071",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Strings",
+  "title": "Sort Characters by Frequency",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/sort-characters-by-frequency/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0072",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Recursion",
+  "title": "Recursion Theory",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0073",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Recursion",
+  "title": "Recursion Concepts with Parameters",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0074",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Recursion",
+  "title": "Sum of First N Numbers",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0075",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Recursion",
+  "title": "Factorial of a Given Number",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0076",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Recursion",
+  "title": "Sum of Array Elements II",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0077",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Recursion",
+  "title": "Reverse a String I",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/reverse-string/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0078",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Recursion",
+  "title": "Check if String is Palindrome or Not",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/valid-palindrome/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0079",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Recursion",
+  "title": "Check if a Number is Prime or Not",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0080",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Recursion",
+  "title": "Reverse an array 2",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0081",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Recursion",
+  "title": "Check if the Array is Sorted II",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0082",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Recursion",
+  "title": "Sum of Digits in a Given Number",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0083",
+  "step": 1,
+  "step_name": "Beginner Problems",
+  "subtopic": "Basic Recursion",
+  "title": "Fibonacci Number",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/fibonacci-number/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0084",
+  "step": 2,
+  "step_name": "Sorting",
+  "subtopic": "Algorithms",
+  "title": "Selection Sort",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0085",
+  "step": 2,
+  "step_name": "Sorting",
+  "subtopic": "Algorithms",
+  "title": "Bubble Sort",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0086",
+  "step": 2,
+  "step_name": "Sorting",
+  "subtopic": "Algorithms",
+  "title": "Insertion Sorting",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0087",
+  "step": 2,
+  "step_name": "Sorting",
+  "subtopic": "Algorithms",
+  "title": "Merge Sorting",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0088",
+  "step": 2,
+  "step_name": "Sorting",
+  "subtopic": "Algorithms",
+  "title": "Quick Sorting",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0089",
+  "step": 2,
+  "step_name": "Sorting",
+  "subtopic": "Algorithms",
+  "title": "Recursive Bubble Sort",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0090",
+  "step": 2,
+  "step_name": "Sorting",
+  "subtopic": "Algorithms",
+  "title": "Recursive Insertion Sort",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0091",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "Fundamentals",
+  "title": "Linear Search",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0092",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "Fundamentals",
+  "title": "Largest Element",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0093",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "Fundamentals",
+  "title": "Second Largest Element",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0094",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "Fundamentals",
+  "title": "Maximum Consecutive Ones",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/max-consecutive-ones/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0095",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "Fundamentals",
+  "title": "Left Rotate Array by One",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/rotate-array/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0096",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "Fundamentals",
+  "title": "Left Rotate Array by K Places",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/rotate-array/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0097",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "Logic Building",
+  "title": "Move Zeros to End",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/move-zeroes/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0098",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "Logic Building",
+  "title": "Remove duplicates from sorted array",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0099",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "Logic Building",
+  "title": "Find missing number",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/missing-number/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0100",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "Logic Building",
+  "title": "Union of two sorted arrays",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0101",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "Logic Building",
+  "title": "Intersection of two sorted arrays",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0102",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "Majority Element-I",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/majority-element/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0103",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "Leaders in an Array",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/buildings-with-an-ocean-view/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0104",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "Rearrange array elements by sign",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/rearrange-array-elements-by-sign/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0105",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "Print the matrix in spiral manner",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/spiral-matrix/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0106",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "Pascal's Triangle I",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/pascals-triangle/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0107",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "Pascal's Triangle II",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/pascals-triangle-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0108",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "Pascal's Triangle III",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0109",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "Rotate matrix by 90 degrees",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/rotate-image/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0110",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "Set Matrix Zeroes",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/set-matrix-zeroes/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0111",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "Two Sum",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/two-sum/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0112",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "3 Sum",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/3sum/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0113",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "4 Sum",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/4sum/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0114",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "Sort an array of 0's 1's and 2's",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/sort-colors/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0115",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "Kadane's Algorithm",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/maximum-subarray/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0116",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Medium)",
+  "title": "Next Permutation",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/next-permutation/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0117",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Hard)",
+  "title": "Majority Element-II",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/majority-element-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0118",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Hard)",
+  "title": "Find the repeating and missing number",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0119",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Hard)",
+  "title": "Count Inversions",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0120",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Hard)",
+  "title": "Reverse Pairs",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/reverse-pairs/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0121",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Hard)",
+  "title": "Maximum Product Subarray in an Array",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/maximum-product-subarray/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0122",
+  "step": 3,
+  "step_name": "Arrays",
+  "subtopic": "FAQs(Hard)",
+  "title": "Merge two sorted arrays without extra space",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/merge-sorted-array/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0123",
+  "step": 4,
+  "step_name": "Hashing",
+  "subtopic": "Theory",
+  "title": "Basic Hashing",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0124",
+  "step": 4,
+  "step_name": "Hashing",
+  "subtopic": "FAQs",
+  "title": "Longest Consecutive Sequence in an Array",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/longest-consecutive-sequence/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0125",
+  "step": 4,
+  "step_name": "Hashing",
+  "subtopic": "FAQs",
+  "title": "Longest subarray with sum K",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0126",
+  "step": 4,
+  "step_name": "Hashing",
+  "subtopic": "FAQs",
+  "title": "Largest Subarray with Sum 0",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0127",
+  "step": 4,
+  "step_name": "Hashing",
+  "subtopic": "FAQs",
+  "title": "Count subarrays with given sum",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/subarray-sum-equals-k/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0128",
+  "step": 4,
+  "step_name": "Hashing",
+  "subtopic": "FAQs",
+  "title": "Count subarrays with given xor K",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0129",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "Fundamentals",
+  "title": "Search X in sorted array",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/binary-search/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0130",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "Fundamentals",
+  "title": "Lower Bound",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0131",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "Fundamentals",
+  "title": "Upper Bound",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0132",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "Logic Building",
+  "title": "Search insert position",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/search-insert-position/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0133",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "Logic Building",
+  "title": "Floor and Ceil in Sorted Array",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0134",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "Logic Building",
+  "title": "First and last occurrence",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0135",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "Logic Building",
+  "title": "Search in rotated sorted array-I",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0136",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "Logic Building",
+  "title": "Search in rotated sorted array-II",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/search-in-rotated-sorted-array-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0137",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "Logic Building",
+  "title": "Find minimum in Rotated Sorted Array",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0138",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "Logic Building",
+  "title": "Find out how many times the array is rotated",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0139",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "Logic Building",
+  "title": "Single element in sorted array",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/single-element-in-a-sorted-array/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0140",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "Logic Building",
+  "title": "Count Occurrences in a Sorted Array",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0141",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "On answers",
+  "title": "Find square root of a number",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/sqrtx/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0142",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "On answers",
+  "title": "Find Nth root of a number",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0143",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "On answers",
+  "title": "Find the smallest divisor",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0144",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "On answers",
+  "title": "Koko eating bananas",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/koko-eating-bananas/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0145",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "On answers",
+  "title": "Minimum days to make M bouquets",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0146",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "On answers",
+  "title": "Capacity to Ship Packages Within D Days",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0147",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "On answers",
+  "title": "Kth Missing Positive Number",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/kth-missing-positive-number/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0148",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "On answers",
+  "title": "Painter's Partition",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/split-array-largest-sum/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0149",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "FAQs",
+  "title": "Aggressive Cows",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0150",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "FAQs",
+  "title": "Book Allocation Problem",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/split-array-largest-sum/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0151",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "FAQs",
+  "title": "Find peak element",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/find-peak-element/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0152",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "FAQs",
+  "title": "Median of 2 sorted arrays",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0153",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "FAQs",
+  "title": "Kth element of 2 sorted arrays",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0154",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "FAQs",
+  "title": "Minimize Max Distance to Gas Station",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/minimize-max-distance-to-gas-station/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0155",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "FAQs",
+  "title": "Split array - largest sum",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/split-array-largest-sum/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0156",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "2D Arrays",
+  "title": "Find row with maximum 1's",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0157",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "2D Arrays",
+  "title": "Search in a 2D Matrix",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/search-a-2d-matrix/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0158",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "2D Arrays",
+  "title": "Search in 2D matrix - II",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/search-a-2d-matrix-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0159",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "2D Arrays",
+  "title": "Find Peak Element - II",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/find-a-peak-element-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0160",
+  "step": 5,
+  "step_name": "Binary Search",
+  "subtopic": "2D Arrays",
+  "title": "Matrix Median",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/median-of-a-row-wise-sorted-matrix/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0161",
+  "step": 6,
+  "step_name": "Strings (Basic and Medium)",
+  "subtopic": "Parentheses",
+  "title": "Remove Outermost Parentheses",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/remove-outermost-parentheses/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0162",
+  "step": 6,
+  "step_name": "Strings (Basic and Medium)",
+  "subtopic": "Parentheses",
+  "title": "Maximum Nesting Depth of the Parentheses",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0163",
+  "step": 6,
+  "step_name": "Strings (Basic and Medium)",
+  "subtopic": "String Conversions",
+  "title": "Roman to Integer",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/roman-to-integer/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0164",
+  "step": 6,
+  "step_name": "Strings (Basic and Medium)",
+  "subtopic": "String Conversions",
+  "title": "String to Integer (atoi)",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/string-to-integer-atoi/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0165",
+  "step": 6,
+  "step_name": "Strings (Basic and Medium)",
+  "subtopic": "Substring Problems",
+  "title": "Count Number of Substrings",
+  "difficulty": null,
+  "url": null,
+  "kind": "learn"
+ },
+ {
+  "id": "a2z-0166",
+  "step": 6,
+  "step_name": "Strings (Basic and Medium)",
+  "subtopic": "Substring Problems",
+  "title": "Longest Palindromic Substring",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/longest-palindromic-substring/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0167",
+  "step": 6,
+  "step_name": "Strings (Basic and Medium)",
+  "subtopic": "Substring Problems",
+  "title": "Sum of Beauty of All Substrings",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/sum-of-beauty-of-all-substrings/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0168",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "Implementation Problems",
+  "title": "Pow(x,n)",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/powx-n/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0169",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "Implementation Problems",
+  "title": "Generate Parentheses",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/generate-parentheses/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0170",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "Implementation Problems",
+  "title": "Power Set",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/subsets/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0171",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "Implementation Problems",
+  "title": "Count Good Numbers",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/count-good-numbers/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0172",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "Implementation Problems",
+  "title": "Reverse a Stack",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0173",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "Subsequence Pattern Problems",
+  "title": "Learn All Patterns of Subsequences (Theory)",
+  "difficulty": null,
+  "url": null,
+  "kind": "learn"
+ },
+ {
+  "id": "a2z-0174",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "Subsequence Pattern Problems",
+  "title": "Check if there exists a subsequence with sum K",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0175",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "Subsequence Pattern Problems",
+  "title": "Count all subsequences with sum K",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0176",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "Subsequence Pattern Problems",
+  "title": "Generate Binary Strings Without Consecutive 1s",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0177",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "FAQs (Medium)",
+  "title": "Combination Sum",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/combination-sum/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0178",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "FAQs (Medium)",
+  "title": "Combination Sum II",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/combination-sum-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0179",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "FAQs (Medium)",
+  "title": "Subsets I",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/subsets/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0180",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "FAQs (Medium)",
+  "title": "Subsets II",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/subsets-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0181",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "FAQs (Medium)",
+  "title": "Combination Sum III",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/combination-sum-iii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0182",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "Hard",
+  "title": "Letter Combinations of a Phone Number",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0183",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "FAQs (Hard)",
+  "title": "Palindrome partitioning",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/palindrome-partitioning/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0184",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "FAQs (Hard)",
+  "title": "Word Search",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/word-search/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0185",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "FAQs (Hard)",
+  "title": "N Queen",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/n-queens/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0186",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "FAQs (Hard)",
+  "title": "Rat in a Maze",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0187",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "FAQs (Hard)",
+  "title": "M Coloring Problem",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0188",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "FAQs (Hard)",
+  "title": "Sudoku Solver",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/sudoku-solver/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0189",
+  "step": 7,
+  "step_name": "Recursion",
+  "subtopic": "FAQs (Hard)",
+  "title": "Expression Add Operators",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/expression-add-operators/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0190",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Single LL)",
+  "title": "Introduction to Singly LinkedList",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0191",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Single LL)",
+  "title": "Traversal in Linked List",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0192",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Single LL)",
+  "title": "Deletion in Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0193",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Single LL)",
+  "title": "Insertion in Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0194",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Single LL)",
+  "title": "Deletion of the head of LL",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/delete-node-in-a-linked-list/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0195",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Single LL)",
+  "title": "Deletion of the tail of Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0196",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Single LL)",
+  "title": "Deletion of the Kth element of Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0197",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Single LL)",
+  "title": "Delete the element with value X",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0198",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Single LL)",
+  "title": "Insertion at the head of Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0199",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Single LL)",
+  "title": "Insertion at the tail of Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0200",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Single LL)",
+  "title": "Insertion at the Kth position of Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0201",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Single LL)",
+  "title": "Insertion before the value X in Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0202",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Single LL)",
+  "title": "Find the length of the Linked List",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0203",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Single LL)",
+  "title": "Search in Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0204",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Doubly LL)",
+  "title": "Introduction to Doubly LL",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0205",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Doubly LL)",
+  "title": "Deletion in Doubly LL",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0206",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Doubly LL)",
+  "title": "Insertion in DLL",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0207",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Doubly LL)",
+  "title": "Convert Array to Doubly Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0208",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Doubly LL)",
+  "title": "Delete Tail of Doubly Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0209",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Doubly LL)",
+  "title": "Delete Kth Element of Doubly Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0210",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Doubly LL)",
+  "title": "Removing given node in Doubly Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0211",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Doubly LL)",
+  "title": "Insert node before head in Doubly Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0212",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Doubly LL)",
+  "title": "Insert node before tail in Doubly Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0213",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Doubly LL)",
+  "title": "Insert node before (kth node) in Doubly Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0214",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Doubly LL)",
+  "title": "Insert before given node in Doubly Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0215",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Doubly LL)",
+  "title": "Delete head of Doubly Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0216",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Fundamentals (Doubly LL)",
+  "title": "Reverse a Doubly Linked List",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/reverse-linked-list/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0217",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Logic Building",
+  "title": "Add two numbers in Linked List",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/add-two-numbers/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0218",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Logic Building",
+  "title": "Segregate odd and even nodes in Linked List",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/odd-even-linked-list/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0219",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Logic Building",
+  "title": "Sort a Linked List of 0's 1's and 2's",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0220",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Logic Building",
+  "title": "Remove Nth node from the back of the LL",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0221",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "Logic Building",
+  "title": "Reverse a LL",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/reverse-linked-list/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0222",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQs (Medium)",
+  "title": "Add one to a number represented by LL",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/plus-one-linked-list/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0223",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQs (Medium)",
+  "title": "Find Middle of Linked List",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/middle-of-the-linked-list/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0224",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQs (Medium)",
+  "title": "Delete the middle node in LL",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0225",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQs (Medium)",
+  "title": "Check if LL is palindrome or not",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/palindrome-linked-list/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0226",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQs (Medium)",
+  "title": "Find the intersection point of Y LL",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/intersection-of-two-linked-lists/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0227",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQs (Medium)",
+  "title": "Detect a loop in LL",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/linked-list-cycle/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0228",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQs (Medium)",
+  "title": "Find the starting point in LL",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/linked-list-cycle-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0229",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQs (Medium)",
+  "title": "Length of loop in LL",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0230",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQs (Hard)",
+  "title": "Reverse LL in group of given size K",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/reverse-nodes-in-k-group/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0231",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQs (Hard)",
+  "title": "Rotate a LL",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/rotate-list/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0232",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQs (Hard)",
+  "title": "Merge two Sorted Lists",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/merge-two-sorted-lists/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0233",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQs (Hard)",
+  "title": "Flattening of LL",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/merge-k-sorted-lists/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0234",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQs (Hard)",
+  "title": "Sort LL",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/sort-list/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0235",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQs (Hard)",
+  "title": "Clone a LL with random and next pointer",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/copy-list-with-random-pointer/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0236",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQS (DLL)",
+  "title": "Delete all occurrences of a key in DLL",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0237",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQS (DLL)",
+  "title": "Remove duplicates from sorted DLL",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0238",
+  "step": 8,
+  "step_name": "Linked-List",
+  "subtopic": "FAQS (DLL)",
+  "title": "Find Pairs with Given Sum in Doubly Linked List",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0239",
+  "step": 9,
+  "step_name": "Bit Manipulation",
+  "subtopic": "Theory",
+  "title": "Introduction to Bits and Tricks",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0240",
+  "step": 9,
+  "step_name": "Bit Manipulation",
+  "subtopic": "Bit Fundamentals",
+  "title": "Check if the i-th bit is Set or Not",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0241",
+  "step": 9,
+  "step_name": "Bit Manipulation",
+  "subtopic": "Bit Fundamentals",
+  "title": "Check if a Number is Odd or Not",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0242",
+  "step": 9,
+  "step_name": "Bit Manipulation",
+  "subtopic": "Bit Fundamentals",
+  "title": "Check if a Number is Power of 2 or Not",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/power-of-two/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0243",
+  "step": 9,
+  "step_name": "Bit Manipulation",
+  "subtopic": "Bit Fundamentals",
+  "title": "Count the Number of Set Bits",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/number-of-1-bits/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0244",
+  "step": 9,
+  "step_name": "Bit Manipulation",
+  "subtopic": "Bit Fundamentals",
+  "title": "Set the Rightmost Unset Bit",
+  "difficulty": null,
+  "url": null,
+  "kind": "learn"
+ },
+ {
+  "id": "a2z-0245",
+  "step": 9,
+  "step_name": "Bit Manipulation",
+  "subtopic": "Bit Fundamentals",
+  "title": "Swap Two Numbers",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0246",
+  "step": 9,
+  "step_name": "Bit Manipulation",
+  "subtopic": "Problems",
+  "title": "Minimum Bit Flips to Convert Number",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/minimum-bit-flips-to-convert-number/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0247",
+  "step": 9,
+  "step_name": "Bit Manipulation",
+  "subtopic": "Problems",
+  "title": "Single Number - I",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/single-number/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0248",
+  "step": 9,
+  "step_name": "Bit Manipulation",
+  "subtopic": "Problems",
+  "title": "Single Number - II",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/single-number-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0249",
+  "step": 9,
+  "step_name": "Bit Manipulation",
+  "subtopic": "Problems",
+  "title": "Single Number - III",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/single-number-iii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0250",
+  "step": 9,
+  "step_name": "Bit Manipulation",
+  "subtopic": "Problems",
+  "title": "Divide two numbers without multiplication and division",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/divide-two-integers/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0251",
+  "step": 9,
+  "step_name": "Bit Manipulation",
+  "subtopic": "Problems",
+  "title": "Power Set Bit Manipulation",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/subsets/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0252",
+  "step": 9,
+  "step_name": "Bit Manipulation",
+  "subtopic": "Problems",
+  "title": "XOR of numbers in a given range",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0253",
+  "step": 10,
+  "step_name": "Greedy Algorithms",
+  "subtopic": "Easy",
+  "title": "Assign Cookies",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/assign-cookies/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0254",
+  "step": 10,
+  "step_name": "Greedy Algorithms",
+  "subtopic": "Easy",
+  "title": "Lemonade Change",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/lemonade-change/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0255",
+  "step": 10,
+  "step_name": "Greedy Algorithms",
+  "subtopic": "Easy",
+  "title": "Fractional Knapsack",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0256",
+  "step": 10,
+  "step_name": "Greedy Algorithms",
+  "subtopic": "Easy",
+  "title": "Jump Game - I",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/jump-game/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0257",
+  "step": 10,
+  "step_name": "Greedy Algorithms",
+  "subtopic": "Scheduling and Interval Problems",
+  "title": "Shortest Job First",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0258",
+  "step": 10,
+  "step_name": "Greedy Algorithms",
+  "subtopic": "Scheduling and Interval Problems",
+  "title": "Job sequencing Problem",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0259",
+  "step": 10,
+  "step_name": "Greedy Algorithms",
+  "subtopic": "Scheduling and Interval Problems",
+  "title": "N meetings in one room",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0260",
+  "step": 10,
+  "step_name": "Greedy Algorithms",
+  "subtopic": "Scheduling and Interval Problems",
+  "title": "Non-overlapping Intervals",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/non-overlapping-intervals/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0261",
+  "step": 10,
+  "step_name": "Greedy Algorithms",
+  "subtopic": "Scheduling and Interval Problems",
+  "title": "Insert Interval",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/insert-interval/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0262",
+  "step": 10,
+  "step_name": "Greedy Algorithms",
+  "subtopic": "Scheduling and Interval Problems",
+  "title": "Merge Intervals",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/merge-intervals/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0263",
+  "step": 10,
+  "step_name": "Greedy Algorithms",
+  "subtopic": "Scheduling and Interval Problems",
+  "title": "Minimum number of platforms required for a railway",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0264",
+  "step": 10,
+  "step_name": "Greedy Algorithms",
+  "subtopic": "Hard",
+  "title": "Valid Paranthesis Checker",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/valid-parenthesis-string/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0265",
+  "step": 10,
+  "step_name": "Greedy Algorithms",
+  "subtopic": "Hard",
+  "title": "Candy",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/candy/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0266",
+  "step": 10,
+  "step_name": "Greedy Algorithms",
+  "subtopic": "Hard",
+  "title": "Jump Game II",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/jump-game-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0267",
+  "step": 11,
+  "step_name": "Sliding Window / 2 Pointer",
+  "subtopic": "Pattern and Template",
+  "title": "Theory",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0268",
+  "step": 11,
+  "step_name": "Sliding Window / 2 Pointer",
+  "subtopic": "Constant Window",
+  "title": "Maximum Points You Can Obtain from Cards",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0269",
+  "step": 11,
+  "step_name": "Sliding Window / 2 Pointer",
+  "subtopic": "Longest and Smallest Window Problems",
+  "title": "Longest Substring Without Repeating Characters",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0270",
+  "step": 11,
+  "step_name": "Sliding Window / 2 Pointer",
+  "subtopic": "Longest and Smallest Window Problems",
+  "title": "Max Consecutive Ones III",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/max-consecutive-ones-iii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0271",
+  "step": 11,
+  "step_name": "Sliding Window / 2 Pointer",
+  "subtopic": "Longest and Smallest Window Problems",
+  "title": "Fruit Into Baskets",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/fruit-into-baskets/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0272",
+  "step": 11,
+  "step_name": "Sliding Window / 2 Pointer",
+  "subtopic": "Longest and Smallest Window Problems",
+  "title": "Longest Substring With At Most K Distinct Characters",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0273",
+  "step": 11,
+  "step_name": "Sliding Window / 2 Pointer",
+  "subtopic": "Longest and Smallest Window Problems",
+  "title": "Longest Repeating Character Replacement",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/longest-repeating-character-replacement/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0274",
+  "step": 11,
+  "step_name": "Sliding Window / 2 Pointer",
+  "subtopic": "Longest and Smallest Window Problems",
+  "title": "Minimum Window Substring",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/minimum-window-substring/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0275",
+  "step": 11,
+  "step_name": "Sliding Window / 2 Pointer",
+  "subtopic": "Longest and Smallest Window Problems",
+  "title": "Minimum Window Subsequence",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/minimum-window-subsequence/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0276",
+  "step": 11,
+  "step_name": "Sliding Window / 2 Pointer",
+  "subtopic": "Counting Subarrays / Substrings Problems",
+  "title": "Number of Substrings Containing All Three Characters",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0277",
+  "step": 11,
+  "step_name": "Sliding Window / 2 Pointer",
+  "subtopic": "Counting Subarrays / Substrings Problems",
+  "title": "Binary Subarrays With Sum",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/binary-subarrays-with-sum/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0278",
+  "step": 11,
+  "step_name": "Sliding Window / 2 Pointer",
+  "subtopic": "Counting Subarrays / Substrings Problems",
+  "title": "Count number of Nice subarrays",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/count-number-of-nice-subarrays/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0279",
+  "step": 11,
+  "step_name": "Sliding Window / 2 Pointer",
+  "subtopic": "Counting Subarrays / Substrings Problems",
+  "title": "Subarrays with K Different Integers",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/subarrays-with-k-different-integers/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0280",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Implementation",
+  "title": "Implementation using different DS",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0281",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Implementation",
+  "title": "Implement Stack using Arrays",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0282",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Implementation",
+  "title": "Implement Queue using Arrays",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0283",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Implementation",
+  "title": "Implement Stack using Queue",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/implement-stack-using-queues/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0284",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Implementation",
+  "title": "Implement Queue using Stack",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/implement-queue-using-stacks/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0285",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Implementation",
+  "title": "Implement stack using Linkedlist",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0286",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Implementation",
+  "title": "Implement queue using Linkedlist",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0287",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Implementation",
+  "title": "Balanced Paranthesis",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/valid-parentheses/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0288",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Prefix, Infix and Postfix Conversions",
+  "title": "Infix to Postfix Conversion",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0289",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Prefix, Infix and Postfix Conversions",
+  "title": "Infix to Prefix Conversion",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0290",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Prefix, Infix and Postfix Conversions",
+  "title": "Prefix to Infix Conversion",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0291",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Prefix, Infix and Postfix Conversions",
+  "title": "Prefix to Postfix Conversion",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0292",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Prefix, Infix and Postfix Conversions",
+  "title": "Postfix to Infix Conversion",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0293",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Prefix, Infix and Postfix Conversions",
+  "title": "Postfix to Prefix Conversion",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0294",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Monotonic Stack",
+  "title": "Next Greater Element",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/next-greater-element-i/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0295",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Monotonic Stack",
+  "title": "Next Greater Element - 2",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/next-greater-element-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0296",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Monotonic Stack",
+  "title": "Asteroid Collision",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/asteroid-collision/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0297",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Monotonic Stack",
+  "title": "Sum of Subarray Minimums",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/sum-of-subarray-minimums/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0298",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Monotonic Stack",
+  "title": "Sum of Subarray Ranges",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/sum-of-subarray-ranges/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0299",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Monotonic Stack",
+  "title": "Remove K Digits",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/remove-k-digits/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0300",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "Monotonic Stack",
+  "title": "Next Smaller Element",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0301",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "FAQs",
+  "title": "Implement Min Stack",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/min-stack/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0302",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "FAQs",
+  "title": "Sliding Window Maximum",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/sliding-window-maximum/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0303",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "FAQs",
+  "title": "Trapping Rainwater",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/trapping-rain-water/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0304",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "FAQs",
+  "title": "Largest rectangle in a histogram",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0305",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "FAQs",
+  "title": "Maximum Rectangles",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/maximal-rectangle/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0306",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "FAQs",
+  "title": "Stock span problem",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/online-stock-span/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0307",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "FAQs",
+  "title": "Celebrity Problem",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/find-the-celebrity/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0308",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "FAQs",
+  "title": "LRU Cache",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/lru-cache/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0309",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "FAQs",
+  "title": "LFU Cache",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/lfu-cache/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0310",
+  "step": 12,
+  "step_name": "Stack / Queues",
+  "subtopic": "FAQs",
+  "title": "Number of Greater Elements to the Right",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0311",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Theory/Traversals",
+  "title": "Introduction",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0312",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Theory/Traversals",
+  "title": "Inorder Traversal",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0313",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Theory/Traversals",
+  "title": "Preorder Traversal",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/binary-tree-preorder-traversal/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0314",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Theory/Traversals",
+  "title": "Postorder Traversal",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/binary-tree-postorder-traversal/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0315",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Theory/Traversals",
+  "title": "Level Order Traversal",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0316",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Theory/Traversals",
+  "title": "Pre, Post, Inorder in one traversal",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0317",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Medium Problems",
+  "title": "Maximum Depth in BT",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0318",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Medium Problems",
+  "title": "Check if two trees are identical or not",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/same-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0319",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Medium Problems",
+  "title": "Check for balanced binary tree",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/balanced-binary-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0320",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Medium Problems",
+  "title": "Diameter of Binary Tree",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/diameter-of-binary-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0321",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Medium Problems",
+  "title": "Maximum path sum",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0322",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Medium Problems",
+  "title": "Check for symmetrical BTs",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/symmetric-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0323",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Medium Problems",
+  "title": "Children Sum Property in Binary Tree",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0324",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "FAQs",
+  "title": "Zig Zag or Spiral Traversal",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0325",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "FAQs",
+  "title": "Boundary Traversal",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/boundary-of-binary-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0326",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "FAQs",
+  "title": "Vertical Order Traversal",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0327",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "FAQs",
+  "title": "Top View of BT",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0328",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "FAQs",
+  "title": "Bottom view of BT",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0329",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "FAQs",
+  "title": "Right/Left View of BT",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/binary-tree-right-side-view/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0330",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "FAQs",
+  "title": "Print root to leaf path in BT",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0331",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "FAQs",
+  "title": "LCA in BT",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0332",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "FAQs",
+  "title": "Maximum Width of BT",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/maximum-width-of-binary-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0333",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "FAQs",
+  "title": "Print all nodes at a distance of K in BT",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0334",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "FAQs",
+  "title": "Minimum time taken to burn the BT from a given Node",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0335",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "FAQs",
+  "title": "Count total nodes in a complete BT",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/count-complete-tree-nodes/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0336",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "FAQs",
+  "title": "Flatten Binary Tree to Linked List",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0337",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Construction Problems",
+  "title": "Requirements needed to construct a unique BT",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0338",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Construction Problems",
+  "title": "Construct a BT from Preorder and Inorder",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0339",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Construction Problems",
+  "title": "Construct a BT from Postorder and Inorder",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0340",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Construction Problems",
+  "title": "Serialize and De-serialize BT",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0341",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Traversal in Constant Space",
+  "title": "Morris Inorder Traversal",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0342",
+  "step": 13,
+  "step_name": "Binary Trees",
+  "subtopic": "Traversal in Constant Space",
+  "title": "Morris Preorder Traversal",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/binary-tree-preorder-traversal/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0343",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "Theory and Basics",
+  "title": "Introduction to BST",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0344",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "Theory and Basics",
+  "title": "Search in BST",
+  "difficulty": "Easy",
+  "url": "https://leetcode.com/problems/search-in-a-binary-search-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0345",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "Theory and Basics",
+  "title": "Floor and Ceil in a BST",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0346",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "Theory and Basics",
+  "title": "Minimum and Maximum in BST",
+  "difficulty": null,
+  "url": null,
+  "kind": "learn"
+ },
+ {
+  "id": "a2z-0347",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "Medium",
+  "title": "Insert a given node in BST",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/insert-into-a-binary-search-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0348",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "Medium",
+  "title": "Delete a node in BST",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/delete-node-in-a-bst/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0349",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "Medium",
+  "title": "Kth Smallest and Largest element in BST",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0350",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "Medium",
+  "title": "Check if a tree is a BST or not",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/validate-binary-search-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0351",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "Medium",
+  "title": "LCA in BST",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0352",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "Medium",
+  "title": "Construct a BST from a preorder traversal",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0353",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "Medium",
+  "title": "Inorder successor and predecessor in BST",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/inorder-successor-in-bst/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0354",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "FAQs",
+  "title": "BST iterator",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/binary-search-tree-iterator/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0355",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "FAQs",
+  "title": "Two sum in BST",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/two-sum-iv-input-is-a-bst/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0356",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "FAQs",
+  "title": "Correct BST with two nodes swapped",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/recover-binary-search-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0357",
+  "step": 14,
+  "step_name": "Binary Search Trees",
+  "subtopic": "FAQs",
+  "title": "Largest BST in Binary Tree",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/largest-bst-subtree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0358",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "Theory and Implementation",
+  "title": "Heaps (Theory Video)",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0359",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "Theory and Implementation",
+  "title": "Heapify Algorithm",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0360",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "Theory and Implementation",
+  "title": "Build heap from a given Array",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0361",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "Theory and Implementation",
+  "title": "Implement Min Heap",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0362",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "Theory and Implementation",
+  "title": "Implement Max Heap",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0363",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "Theory and Implementation",
+  "title": "Check if an array represents a min heap",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0364",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "Theory and Implementation",
+  "title": "Convert Min Heap to Max Heap",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0365",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "Theory and Implementation",
+  "title": "Heap Sort",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0366",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "Theory and Implementation",
+  "title": "K-th Largest element in an array",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0367",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "FAQs",
+  "title": "Kth largest element in a stream of running integers",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0368",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "FAQs",
+  "title": "Sort a K-Sorted Array",
+  "difficulty": null,
+  "url": null,
+  "kind": "learn"
+ },
+ {
+  "id": "a2z-0369",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "FAQs",
+  "title": "Merge K sorted Lists",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/merge-k-sorted-lists/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0370",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "FAQs",
+  "title": "Replace Elements by Their Rank",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/rank-transform-of-an-array/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0371",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "FAQs",
+  "title": "Task Scheduler",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/task-scheduler/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0372",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "FAQs",
+  "title": "Hand of Straights",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/hand-of-straights/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0373",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "FAQs",
+  "title": "Design Twitter",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/design-twitter/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0374",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "FAQs",
+  "title": "Minimum Cost to Connect Sticks",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/minimum-cost-to-connect-sticks/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0375",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "FAQs",
+  "title": "Maximum Sum Combination",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0376",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "FAQs",
+  "title": "Find Median from Data Stream",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/find-median-from-data-stream/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0377",
+  "step": 15,
+  "step_name": "Heaps",
+  "subtopic": "FAQs",
+  "title": "Top K Frequent Elements",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/top-k-frequent-elements/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0378",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Theory and traversals",
+  "title": "Introduction to Graph",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0379",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Theory and traversals",
+  "title": "Traversal Techniques",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0380",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Theory and traversals",
+  "title": "Connected Components",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0381",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Traversal Problems",
+  "title": "Number of provinces",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/number-of-provinces/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0382",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Traversal Problems",
+  "title": "Number of islands",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/number-of-islands/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0383",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Traversal Problems",
+  "title": "Flood fill algorithm",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/flood-fill/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0384",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Traversal Problems",
+  "title": "Number of enclaves",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/number-of-enclaves/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0385",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Traversal Problems",
+  "title": "Rotten Oranges",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/rotting-oranges/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0386",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Traversal Problems",
+  "title": "Distance of nearest cell having one",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/01-matrix/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0387",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Traversal Problems",
+  "title": "Surrounded Regions",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/surrounded-regions/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0388",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Traversal Problems",
+  "title": "Number of distinct islands",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/number-of-distinct-islands/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0389",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Cycles",
+  "title": "Detect a cycle in an undirected graph",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/course-schedule/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0390",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Cycles",
+  "title": "Bipartite graph",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/is-graph-bipartite/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0391",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Cycles",
+  "title": "Topological sort or Kahn's algorithm",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0392",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Cycles",
+  "title": "Detect a cycle in a directed graph",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/course-schedule/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0393",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Hard Problems",
+  "title": "Find eventual safe states",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/find-eventual-safe-states/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0394",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Hard Problems",
+  "title": "Course Schedule I",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/course-schedule/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0395",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Hard Problems",
+  "title": "Course Schedule II",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/course-schedule-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0396",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Hard Problems",
+  "title": "Alien Dictionary",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/alien-dictionary/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0397",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Hard Problems",
+  "title": "Shortest path in DAG",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0398",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Hard Problems",
+  "title": "Shortest path in undirected graph with unit weights",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0399",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Hard Problems",
+  "title": "Word ladder I",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/word-ladder/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0400",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Hard Problems",
+  "title": "Word ladder II",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/word-ladder-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0401",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Shortest Path Algorithms",
+  "title": "Dijkstra's algorithm",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0402",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Shortest Path Algorithms",
+  "title": "Print Shortest Path",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0403",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Shortest Path Algorithms",
+  "title": "Shortest Distance in a Binary Maze",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/shortest-path-in-binary-matrix/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0404",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Shortest Path Algorithms",
+  "title": "Path with minimum effort",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/path-with-minimum-effort/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0405",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Shortest Path Algorithms",
+  "title": "Cheapest flight within K stops",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0406",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Shortest Path Algorithms",
+  "title": "Minimum multiplications to reach end",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0407",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Shortest Path Algorithms",
+  "title": "Number of ways to arrive at destination",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0408",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Shortest Path Algorithms",
+  "title": "Bellman ford algorithm",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0409",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Shortest Path Algorithms",
+  "title": "Floyd warshall algorithm",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0410",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Shortest Path Algorithms",
+  "title": "Find the city with the smallest number of neighbors",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0411",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Shortest Path Algorithms",
+  "title": "Network Delay Time",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/network-delay-time/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0412",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Shortest Path Algorithms",
+  "title": "Swim in Rising Water",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/swim-in-rising-water/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0413",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Minimum Spanning Tree",
+  "title": "MST theory",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0414",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Minimum Spanning Tree",
+  "title": "Disjoint Set",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0415",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Minimum Spanning Tree",
+  "title": "Find the MST weight",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/connecting-cities-with-minimum-cost/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0416",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Hard Problems II",
+  "title": "Number of operations to make network connected",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/number-of-operations-to-make-network-connected/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0417",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Hard Problems II",
+  "title": "Accounts merge",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/accounts-merge/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0418",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Hard Problems II",
+  "title": "Number of islands II",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/number-of-islands-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0419",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Hard Problems II",
+  "title": "Making a large island",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/making-a-large-island/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0420",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Hard Problems II",
+  "title": "Most stones removed with same row or column",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0421",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Additional Algorithms",
+  "title": "Kosaraju's algorithm",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/maximum-number-of-non-overlapping-substrings/discuss/766485/kosaraju-algorithm-on",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0422",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Additional Algorithms",
+  "title": "Bridges in graph",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/critical-connections-in-a-network/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0423",
+  "step": 16,
+  "step_name": "Graphs",
+  "subtopic": "Additional Algorithms",
+  "title": "Articulation point in graph",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0424",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "Introduction",
+  "title": "Introduction to DP",
+  "difficulty": "Easy",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0425",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "1D DP",
+  "title": "Climbing stairs",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/climbing-stairs/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0426",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "1D DP",
+  "title": "Frog Jump",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0427",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "1D DP",
+  "title": "Frog jump with K distances",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0428",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "1D DP",
+  "title": "Maximum sum of non adjacent elements",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/house-robber/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0429",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "1D DP",
+  "title": "House robber",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/house-robber/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0430",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "2D DP",
+  "title": "Ninja's training",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0431",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on grids",
+  "title": "Grid unique paths",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/unique-paths/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0432",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on grids",
+  "title": "Unique paths II",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/unique-paths-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0433",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on grids",
+  "title": "Minimum Falling Path Sum",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/minimum-falling-path-sum/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0434",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on grids",
+  "title": "Triangle",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/triangle/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0435",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on grids",
+  "title": "Cherry pickup II",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/cherry-pickup-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0436",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on grids",
+  "title": "Count Square Submatrices with All Ones",
+  "difficulty": null,
+  "url": "https://leetcode.com/problems/count-square-submatrices-with-all-ones/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0437",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on stocks",
+  "title": "Best time to buy and sell stock",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0438",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on stocks",
+  "title": "Best time to buy and sell stock II",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0439",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on stocks",
+  "title": "Best time to buy and sell stock III",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0440",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on stocks",
+  "title": "Best time to buy and sell stock IV",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0441",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on stocks",
+  "title": "Best time to buy and sell stock with transaction fees",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0442",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on stocks",
+  "title": "Best Time to Buy and Sell Stock with Cooldown",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0443",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on subsequences",
+  "title": "Subset sum equals to target",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0444",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on subsequences",
+  "title": "Partition equal subset sum",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/partition-equal-subset-sum/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0445",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on subsequences",
+  "title": "Partition a set into two subsets with minimum absolute sum difference",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/last-stone-weight-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0446",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on subsequences",
+  "title": "Count subsets with sum K",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0447",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on subsequences",
+  "title": "Count partitions with given difference",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0448",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on subsequences",
+  "title": "0 and 1 Knapsack",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0449",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on subsequences",
+  "title": "Minimum coins",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/coin-change/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0450",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on subsequences",
+  "title": "Target sum",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/target-sum/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0451",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on subsequences",
+  "title": "Coin change II",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/coin-change-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0452",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on subsequences",
+  "title": "Unbounded knapsack",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0453",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on subsequences",
+  "title": "Rod cutting problem",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0454",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "LIS",
+  "title": "Longest Increasing Subsequence",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/longest-increasing-subsequence/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0455",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "LIS",
+  "title": "Print Longest Increasing Subsequence",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0456",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "LIS",
+  "title": "Largest Divisible Subset",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/largest-divisible-subset/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0457",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "LIS",
+  "title": "Longest String Chain",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/longest-string-chain/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0458",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "LIS",
+  "title": "Longest Bitonic Subsequence",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0459",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "LIS",
+  "title": "Number of Longest Increasing Subsequences",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/number-of-longest-increasing-subsequence/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0460",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on strings",
+  "title": "Longest common subsequence",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/longest-common-subsequence/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0461",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on strings",
+  "title": "Longest common substring",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0462",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on strings",
+  "title": "Longest palindromic subsequence",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/longest-palindromic-subsequence/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0463",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on strings",
+  "title": "Minimum insertions to make string palindrome",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0464",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on strings",
+  "title": "Minimum insertions or deletions to convert string A to B",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/delete-operation-for-two-strings/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0465",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on strings",
+  "title": "Shortest common supersequence",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/shortest-common-supersequence/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0466",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on strings",
+  "title": "Distinct subsequences",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/distinct-subsequences/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0467",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on strings",
+  "title": "Edit distance",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/edit-distance/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0468",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on strings",
+  "title": "Wildcard matching",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/wildcard-matching/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0469",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on strings",
+  "title": "Word Break",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/word-break/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0470",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "DP on strings",
+  "title": "Count Palindromic Subsequences",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/count-palindromic-subsequences/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0471",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "MCM DP",
+  "title": "Matrix chain multiplication",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0472",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "MCM DP",
+  "title": "Burst balloons",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/burst-balloons/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0473",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "MCM DP",
+  "title": "Palindrome partitioning II",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/palindrome-partitioning-ii/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0474",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "MCM DP",
+  "title": "Partition Array for Maximum Sum",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/partition-array-for-maximum-sum/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0475",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "MCM DP",
+  "title": "Minimum cost to cut the stick",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/minimum-cost-to-cut-a-stick/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0476",
+  "step": 17,
+  "step_name": "Dynamic Programming",
+  "subtopic": "MCM DP",
+  "title": "Different Ways to Evaluate a Boolean Expression",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/parsing-a-boolean-expression/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0477",
+  "step": 18,
+  "step_name": "Tries",
+  "subtopic": "Theory",
+  "title": "Bit PreRequisites for TRIE Problems",
+  "difficulty": null,
+  "url": null,
+  "kind": "learn"
+ },
+ {
+  "id": "a2z-0478",
+  "step": 18,
+  "step_name": "Tries",
+  "subtopic": "Theory",
+  "title": "Trie Implementation and Operations",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/implement-trie-prefix-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0479",
+  "step": 18,
+  "step_name": "Tries",
+  "subtopic": "Theory",
+  "title": "Trie Implementation and Advanced Operations",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/implement-trie-ii-prefix-tree/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0480",
+  "step": 18,
+  "step_name": "Tries",
+  "subtopic": "Problems",
+  "title": "Longest Word with All Prefixes",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/longest-word-with-all-prefixes/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0481",
+  "step": 18,
+  "step_name": "Tries",
+  "subtopic": "Problems",
+  "title": "Number of distinct substrings in a string",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/number-of-distinct-substrings-in-a-string/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0482",
+  "step": 18,
+  "step_name": "Tries",
+  "subtopic": "Problems",
+  "title": "Maximum XOR of two numbers in an array",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0483",
+  "step": 18,
+  "step_name": "Tries",
+  "subtopic": "Problems",
+  "title": "Maximum Xor with an element from an array",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/maximum-xor-with-an-element-from-array/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0484",
+  "step": 19,
+  "step_name": "Strings (Advanced Algo)",
+  "subtopic": "Medium Problems",
+  "title": "Reverse every word in a string",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/reverse-words-in-a-string/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0485",
+  "step": 19,
+  "step_name": "Strings (Advanced Algo)",
+  "subtopic": "Medium Problems",
+  "title": "Minimum number of bracket reversals to make an expression balanced",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0486",
+  "step": 19,
+  "step_name": "Strings (Advanced Algo)",
+  "subtopic": "Medium Problems",
+  "title": "Count and say",
+  "difficulty": "Medium",
+  "url": "https://leetcode.com/problems/count-and-say/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0487",
+  "step": 19,
+  "step_name": "Strings (Advanced Algo)",
+  "subtopic": "Advanced Problems (Less asked)",
+  "title": "Hashing In Strings",
+  "difficulty": null,
+  "url": null,
+  "kind": "learn"
+ },
+ {
+  "id": "a2z-0488",
+  "step": 19,
+  "step_name": "Strings (Advanced Algo)",
+  "subtopic": "Advanced Problems (Less asked)",
+  "title": "Rabin Karp Algorithm",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/repeated-string-match/discuss/416144/Rabin-Karp-algorithm-C%2B%2B-implementation",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0489",
+  "step": 19,
+  "step_name": "Strings (Advanced Algo)",
+  "subtopic": "Advanced Problems (Less asked)",
+  "title": "Z function",
+  "difficulty": "Hard",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0490",
+  "step": 19,
+  "step_name": "Strings (Advanced Algo)",
+  "subtopic": "Advanced Problems (Less asked)",
+  "title": "KMP Algorithm or LPS array",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/implement-strstr/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0491",
+  "step": 19,
+  "step_name": "Strings (Advanced Algo)",
+  "subtopic": "Advanced Problems (Less asked)",
+  "title": "Shortest Palindrome",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/shortest-palindrome/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0492",
+  "step": 19,
+  "step_name": "Strings (Advanced Algo)",
+  "subtopic": "Advanced Problems (Less asked)",
+  "title": "Longest happy prefix",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/longest-happy-prefix/",
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0493",
+  "step": 20,
+  "step_name": "Maths",
+  "subtopic": "Sieve of Eratosthenes",
+  "title": "Print all primes till N",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0494",
+  "step": 20,
+  "step_name": "Maths",
+  "subtopic": "Sieve of Eratosthenes",
+  "title": "Prime factorisation of a Number",
+  "difficulty": "Medium",
+  "url": null,
+  "kind": "problem"
+ },
+ {
+  "id": "a2z-0495",
+  "step": 20,
+  "step_name": "Maths",
+  "subtopic": "Sieve of Eratosthenes",
+  "title": "Count primes in range L to R",
+  "difficulty": "Hard",
+  "url": "https://leetcode.com/problems/count-primes/",
+  "kind": "problem"
+ }
+]
