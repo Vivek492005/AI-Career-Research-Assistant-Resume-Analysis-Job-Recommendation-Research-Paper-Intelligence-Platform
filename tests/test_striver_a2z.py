@@ -108,7 +108,11 @@ def test_sheet_page_renders_anonymously(client):
 
 
 def test_progress_summary_combines_a2z_and_classic():
-    classic_id = all_problems()[0]["id"]
+    # A classic problem with no A2Z counterpart, so the two sets count
+    # independently here (shared problems are covered by the merge
+    # tests below).
+    classic_id = next(p["id"] for p in all_problems()
+                      if not counterpart_ids(p["id"]))
     summary = progress_summary([
         ("a2z-0001", "solved"),
         ("a2z-0002", "attempted"),
@@ -135,7 +139,8 @@ def test_dsa_home_embeds_built_in_progress_tracker(client):
 
 
 def test_dsa_home_tracker_reflects_saved_progress(authed_client):
-    classic_id = all_problems()[0]["id"]
+    classic_id = next(p["id"] for p in all_problems()
+                      if not counterpart_ids(p["id"]))
     assert authed_client.post(
         "/dsa/a2z-0100/status", json={"status": "solved"}).status_code == 200
     assert authed_client.post(
@@ -158,7 +163,8 @@ def test_progress_api_anonymous_gets_zeroed_summary(client):
 def test_progress_api_reflects_marks(authed_client):
     """Regression (2026-10-23): marks must show up in the data the
     embedded tracker refreshes from."""
-    classic_id = all_problems()[0]["id"]
+    classic_id = next(p["id"] for p in all_problems()
+                      if not counterpart_ids(p["id"]))
     authed_client.post("/dsa/a2z-0001/status", json={"status": "solved"})
     authed_client.post(f"/dsa/{classic_id}/status", json={"status": "solved"})
     d = authed_client.get("/api/dsa/progress").get_json()
@@ -223,3 +229,146 @@ def test_sheet_structure_preserves_sheet_order():
     assert subs[0] == "Fundamentals of Programming"
     assert subs.index("Patterns") < subs.index("Basic Maths")
     assert sum(len(g["rows"]) for g in first["groups"]) == first["total"] == 83
+
+
+# --- Cross-set progress merge (classic <-> A2Z share problems) ---
+
+from studybuddy.dsa_practice import counterpart_ids, expand_statuses  # noqa: E402
+
+
+def test_counterpart_two_sum_links_both_sets():
+    assert counterpart_ids("dsa-arrays-01") == ["a2z-0111"]
+    assert "dsa-arrays-01" in counterpart_ids("a2z-0111")
+
+
+def test_classic_solve_counts_in_a2z_tracker():
+    summary = progress_summary([("dsa-arrays-01", "solved")])
+    assert summary["classic"]["solved"] >= 1
+    assert summary["a2z"]["solved"] == 1
+    arrays = next(s for s in summary["a2z"]["by_step"] if s["step"] == 3)
+    assert arrays["solved"] == 1
+    easy = next(d for d in summary["a2z"]["by_difficulty"]
+                if d["difficulty"] == "Easy")
+    assert easy["solved"] == 1
+
+
+def test_a2z_solve_counts_in_classic_set():
+    summary = progress_summary([("a2z-0111", "solved")])
+    assert summary["a2z"]["solved"] == 1
+    assert summary["classic"]["solved"] == 2  # both classic Two Sum drills
+
+
+def test_merge_never_double_counts_or_downgrades():
+    both = progress_summary([("dsa-arrays-01", "solved"),
+                             ("a2z-0111", "solved")])
+    assert both["a2z"]["solved"] == 1
+    expanded = expand_statuses([("dsa-arrays-01", "stuck"),
+                                ("a2z-0111", "solved")])
+    assert expanded["dsa-arrays-01"] == "solved"
+    assert expanded["a2z-0111"] == "solved"
+
+
+# --- Every row has a destination; wrong-platform links removed ---
+
+def test_every_row_has_a_solve_or_learn_destination():
+    for e in a2z_problems():
+        assert e["url"] or e["tuf_url"], f"dead-end row: {e['id']} {e['title']}"
+        if e["tuf_url"]:
+            assert e["tuf_url"].startswith("https://takeuforward.org/")
+            assert e["tuf_kind"] in ("practice", "learning")
+
+
+# Rows whose sheet-supplied LeetCode link pointed at a DIFFERENT
+# problem (verified by title/slug audit, 2026-10-23). Their Solve
+# button must fall back to the row's own takeUforward practice page.
+MISLINKED_TITLES = (
+    "Highest Occurring Element in an Array",
+    "Leaders in an Array",
+    "Deletion of the head of LL",
+    "Flattening of LL",
+    "Minimum number of platforms required for a railway",
+    "Detect a cycle in an undirected graph",
+    "Kosaraju's algorithm",
+    "Minimum number of bracket reversals to make an expression balanced",
+)
+
+
+def test_known_wrong_leetcode_links_removed():
+    by_title = {e["title"]: e for e in a2z_problems()}
+    for title in MISLINKED_TITLES:
+        entry = by_title[title]
+        assert entry["url"] is None, f"{title} still mislinked: {entry['url']}"
+        assert entry["tuf_kind"] == "practice", title
+
+
+def test_patterns_have_descriptive_names():
+    pats = [e for e in a2z_problems() if e["subtopic"] == "Patterns"]
+    assert len(pats) == 22
+    for i, e in enumerate(pats, start=1):
+        assert e["title"].startswith(f"Pattern {i} — "), e["title"]
+    titles = {e["title"] for e in pats}
+    assert "Pattern 7 — Star Pyramid" in titles
+    assert "Pattern 12 — Number Crown Pattern" in titles
+    assert "Pattern 22 — Number Pattern" in titles
+
+
+def test_sheet_page_gives_every_row_a_button(client):
+    html = client.get("/dsa/a2z").get_data(as_text=True)
+    # Rows that used to be dead ends now carry links.
+    assert "sum-of-first-n-numbers" in html  # TUF practice fallback
+    assert "breaking-the-myth" in html or "/dsa/a2z/a2z-0001/learn" in html
+    assert "Pattern 7 — Star Pyramid" in html
+
+
+# --- In-app lessons (theory topics + patterns) ---
+
+from studybuddy.a2z_lessons import get_lesson, lesson_ids  # noqa: E402
+
+
+def test_lessons_cover_patterns_and_theory_rows():
+    entries = {e["id"]: e for e in a2z_problems()}
+    ids = lesson_ids()
+    pattern_ids = {e["id"] for e in entries.values()
+                   if e["subtopic"] == "Patterns"}
+    learning_ids = {e["id"] for e in entries.values()
+                    if e["tuf_kind"] == "learning"}
+    assert pattern_ids <= ids, "every pattern needs a lesson"
+    assert learning_ids <= ids, "every theory row needs a lesson"
+    for lid in ids:
+        lesson = get_lesson(lid)
+        assert lesson["intro"] and lesson["sections"] and lesson["key_points"]
+        for item in lesson["suggested"]:
+            target = item.get("a2z_id") or item.get("problem_id")
+            assert target and get_problem(target), f"{lid} -> {target}"
+
+
+def test_pattern_lesson_code_reproduces_diagram():
+    import contextlib
+    import io
+
+    for e in a2z_problems():
+        if e["subtopic"] != "Patterns":
+            continue
+        lesson = get_lesson(e["id"])
+        assert lesson and lesson.get("diagram"), e["id"]
+        code = next(s["code"] for s in lesson["sections"] if s.get("code"))
+        namespace = {}
+        exec(code, namespace)
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            namespace["pattern"](lesson["diagram_n"])
+        got = [line.rstrip() for line in buf.getvalue().strip("\n").split("\n")]
+        want = [line.rstrip() for line in lesson["diagram"].strip("\n").split("\n")]
+        assert got == want, e["id"]
+
+
+def test_lesson_page_renders_and_unknown_404(client):
+    pat = next(e for e in a2z_problems() if e["subtopic"] == "Patterns")
+    r = client.get(f"/dsa/a2z/{pat['id']}/learn")
+    assert r.status_code == 200
+    html = r.get_data(as_text=True)
+    assert pat["title"] in html and "Suggested questions" in html
+    assert client.get("/dsa/a2z/a2z-9999/learn").status_code == 404
+    plain = next(e for e in a2z_problems()
+                 if e["tuf_kind"] == "practice" and e["id"] not in lesson_ids())
+    assert client.get(f"/dsa/a2z/{plain['id']}/learn").status_code == 404

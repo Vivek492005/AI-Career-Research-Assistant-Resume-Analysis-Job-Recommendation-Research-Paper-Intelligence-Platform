@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" data-theme="resume">
+<head>
+    <meta charset="UTF-8">
+    <script>document.documentElement.classList.replace('no-js', 'js');</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ entry.title }} | Striver A2Z Lesson | Study-Buddy</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon-32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/favicon-16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bento.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kinetic.css') }}">
+</head>
+<body class="sb-dsa">
+    {% set nav_active = 'practice' %}
+    {% include "_site_nav.html" %}
+    {% with sb_active="dsa", sb_title="A2Z Lesson" %}{% include "_app_sidebar.html" %}{% endwith %}
+
+    <div class="sb-dsa-wrap">
+        <a class="azl-back" href="{{ url_for('dsa_a2z_page') }}#step-{{ entry.step }}">&larr; Back to the A2Z sheet</a>
+
+        <div class="azl-head">
+            <p class="sb-kicker">Step {{ '%02d' % entry.step }} {{ entry.step_name }} — {{ entry.subtopic }}</p>
+            <h1>{{ entry.title }}</h1>
+            <div class="azl-meta">
+                {% if entry.kind == 'learn' %}<span class="az-theory">Theory</span>{% endif %}
+                {% if entry.difficulty %}<span class="az-diff az-diff--{{ entry.difficulty | lower }}">{{ entry.difficulty }}</span>{% endif %}
+                {% if status == 'solved' %}<span class="az-theory" style="border-color:var(--sb-lime);color:var(--sb-lime);">&#10003; Solved</span>{% endif %}
+            </div>
+            {% for para in lesson.intro.split('\n\n') %}
+            <p class="azl-intro">{{ para }}</p>
+            {% endfor %}
+        </div>
+
+        {% if lesson.diagram %}
+        <figure class="azl-diagram" style="max-width:820px;">
+            <pre>{{ lesson.diagram }}</pre>
+            <figcaption>Output for n = {{ lesson.diagram_n }}</figcaption>
+        </figure>
+        {% endif %}
+
+        {% for section in lesson.sections %}
+        <section class="azl-sec">
+            <h2>{{ section.h }}</h2>
+            {% if section.body %}{% for para in section.body.split('\n\n') %}<p>{{ para }}</p>{% endfor %}{% endif %}
+            {% if section.code %}<div class="azl-code"><code>{{ section.code }}</code></div>{% endif %}
+        </section>
+        {% endfor %}
+
+        {% if lesson.key_points %}
+        <div class="azl-keys">
+            <h2>Key points</h2>
+            <ul>
+                {% for point in lesson.key_points %}<li>{{ point }}</li>{% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <div class="azl-actions">
+            {% if entry.url %}<a class="az-solve" href="{{ entry.url }}" target="_blank" rel="noopener">Solve on LeetCode &#8599;</a>{% endif %}
+            {% if entry.tuf_url and entry.tuf_kind == 'practice' %}<a class="az-solve" href="{{ entry.tuf_url }}" target="_blank" rel="noopener">Solve on takeUforward &#8599;</a>{% endif %}
+            {% if entry.tuf_url and entry.tuf_kind == 'learning' %}<a class="az-solve" href="{{ entry.tuf_url }}" target="_blank" rel="noopener">Video / notes on takeUforward &#8599;</a>{% endif %}
+            {% if is_authed %}
+            <button type="button" class="az-mark{% if status == 'solved' %} is-done{% endif %}" id="azl-mark"
+                    data-id="{{ entry.id }}" data-label="{% if entry.kind == 'learn' %}Mark done{% else %}Mark as solved{% endif %}"
+                    aria-pressed="{{ 'true' if status == 'solved' else 'false' }}">{% if status == 'solved' %}&#10003; Solved{% elif entry.kind == 'learn' %}Mark done{% else %}Mark as solved{% endif %}</button>
+            {% else %}
+            <a class="az-solve" href="{{ url_for('auth.login') }}">Log in to track progress</a>
+            {% endif %}
+            <span class="azl-msg" id="azl-msg" role="alert"></span>
+        </div>
+
+        {% if suggested %}
+        <div class="azl-sug">
+            <h2>Suggested questions</h2>
+            {% for s in suggested %}
+            <div class="azl-sugrow">
+                <a href="{{ s.href }}"{% if s.external %} target="_blank" rel="noopener"{% endif %}>{{ s.title }}{% if s.external %} &#8599;{% endif %}</a>
+                {% if s.note %}<span>{{ s.note }}</span>{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <footer class="b-footer">
+        <div class="b-wrap b-foot-in">
+            <span>&copy; 2026 Study-Buddy</span>
+            <span>
+                <a href="{{ url_for('privacy') }}">Privacy</a>
+                <a href="{{ url_for('terms') }}">Terms</a>
+                <a href="{{ url_for('index') }}">Home</a>
+            </span>
+        </div>
+    </footer>
+
+    {% if is_authed %}
+    <script>
+    (function () {
+      var csrf = document.querySelector('meta[name="csrf-token"]').content;
+      var btn = document.getElementById('azl-mark');
+      var msg = document.getElementById('azl-msg');
+      function post(url, body) {
+        return fetch(url, { method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrf },
+          body: body ? JSON.stringify(body) : '{}' });
+      }
+      btn.addEventListener('click', function () {
+        var id = btn.getAttribute('data-id');
+        var done = btn.classList.contains('is-done');
+        btn.disabled = true;
+        var req = done ? post('/dsa/' + id + '/untrack')
+                       : post('/dsa/' + id + '/status', { status: 'solved' });
+        req.then(function (r) { return r.json().then(function () { return { ok: r.ok, status: r.status }; }); })
+           .then(function (res) {
+             if (!res.ok) {
+               msg.style.display = 'inline';
+               msg.textContent = res.status === 401
+                 ? 'Your login session has ended, so that mark was NOT saved. Please log in again.'
+                 : 'That mark could NOT be saved (server error). Please reload and try again.';
+               return;
+             }
+             if (done) {
+               btn.classList.remove('is-done');
+               btn.setAttribute('aria-pressed', 'false');
+               btn.textContent = btn.getAttribute('data-label');
+             } else {
+               btn.classList.add('is-done');
+               btn.setAttribute('aria-pressed', 'true');
+               btn.innerHTML = '&#10003; Solved';
+             }
+           })
+           .catch(function () {
+             msg.style.display = 'inline';
+             msg.textContent = 'That mark could NOT be saved (network error). Please try again.';
+           })
+           .finally(function () { btn.disabled = false; });
+      });
+    })();
+    </script>
+    {% endif %}
+    <script src="{{ url_for('static', filename='js/kinetic.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bento.js') }}" defer></script>
+    {% include "_csp_beacon.html" %}
+    <script src="{{ url_for('static', filename='js/cursor.js') }}" defer></script>
+</body>
+</html>

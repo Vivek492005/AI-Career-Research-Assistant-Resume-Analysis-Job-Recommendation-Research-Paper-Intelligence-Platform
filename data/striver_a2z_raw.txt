@@ -59,7 +59,7 @@
 1 | Beginner Problems | Basic Arrays | Count of odd numbers in Array | Easy | -
 1 | Beginner Problems | Basic Arrays | Check if the Array is Sorted I | Easy | -
 1 | Beginner Problems | Basic Arrays | Reverse an array | Easy | -
-1 | Beginner Problems | Basic Hashing | Highest Occurring Element in an Array | Medium | https://leetcode.com/problems/frequency-of-the-most-frequent-element/
+1 | Beginner Problems | Basic Hashing | Highest Occurring Element in an Array | Medium | -
 1 | Beginner Problems | Basic Hashing | Second Highest Occurring Element | Medium | -
 1 | Beginner Problems | Basic Hashing | Sum of Highest and Lowest Frequency | Medium | -
 1 | Beginner Problems | Basic Strings | Reverse a String II | Easy | https://leetcode.com/problems/reverse-string/
@@ -103,7 +103,7 @@
 3 | Arrays | Logic Building | Union of two sorted arrays | Medium | -
 3 | Arrays | Logic Building | Intersection of two sorted arrays | Medium | -
 3 | Arrays | FAQs(Medium) | Majority Element-I | Medium | https://leetcode.com/problems/majority-element/
-3 | Arrays | FAQs(Medium) | Leaders in an Array | Medium | https://leetcode.com/problems/buildings-with-an-ocean-view/
+3 | Arrays | FAQs(Medium) | Leaders in an Array | Medium | -
 3 | Arrays | FAQs(Medium) | Rearrange array elements by sign | Medium | https://leetcode.com/problems/rearrange-array-elements-by-sign/
 3 | Arrays | FAQs(Medium) | Print the matrix in spiral manner | Medium | https://leetcode.com/problems/spiral-matrix/
 3 | Arrays | FAQs(Medium) | Pascal's Triangle I | Medium | https://leetcode.com/problems/pascals-triangle/
@@ -199,7 +199,7 @@
 8 | Linked-List | Fundamentals (Single LL) | Traversal in Linked List | Easy | -
 8 | Linked-List | Fundamentals (Single LL) | Deletion in Linked List | Medium | -
 8 | Linked-List | Fundamentals (Single LL) | Insertion in Linked List | Medium | -
-8 | Linked-List | Fundamentals (Single LL) | Deletion of the head of LL | Medium | https://leetcode.com/problems/delete-node-in-a-linked-list/
+8 | Linked-List | Fundamentals (Single LL) | Deletion of the head of LL | Medium | -
 8 | Linked-List | Fundamentals (Single LL) | Deletion of the tail of Linked List | Medium | -
 8 | Linked-List | Fundamentals (Single LL) | Deletion of the Kth element of Linked List | Medium | -
 8 | Linked-List | Fundamentals (Single LL) | Delete the element with value X | Medium | -
@@ -238,7 +238,7 @@
 8 | Linked-List | FAQs (Hard) | Reverse LL in group of given size K | Hard | https://leetcode.com/problems/reverse-nodes-in-k-group/
 8 | Linked-List | FAQs (Hard) | Rotate a LL | Medium | https://leetcode.com/problems/rotate-list/
 8 | Linked-List | FAQs (Hard) | Merge two Sorted Lists | Easy | https://leetcode.com/problems/merge-two-sorted-lists/
-8 | Linked-List | FAQs (Hard) | Flattening of LL | Hard | https://leetcode.com/problems/merge-k-sorted-lists/
+8 | Linked-List | FAQs (Hard) | Flattening of LL | Hard | -
 8 | Linked-List | FAQs (Hard) | Sort LL | Medium | https://leetcode.com/problems/sort-list/
 8 | Linked-List | FAQs (Hard) | Clone a LL with random and next pointer | Hard | https://leetcode.com/problems/copy-list-with-random-pointer/
 8 | Linked-List | FAQS (DLL) | Delete all occurrences of a key in DLL | Medium | -
@@ -270,7 +270,7 @@
 10 | Greedy Algorithms | Scheduling and Interval Problems | Non-overlapping Intervals | Medium | https://leetcode.com/problems/non-overlapping-intervals/
 10 | Greedy Algorithms | Scheduling and Interval Problems | Insert Interval | Medium | https://leetcode.com/problems/insert-interval/
 10 | Greedy Algorithms | Scheduling and Interval Problems | Merge Intervals | Medium | https://leetcode.com/problems/merge-intervals/
-10 | Greedy Algorithms | Scheduling and Interval Problems | Minimum number of platforms required for a railway | Medium | https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/
+10 | Greedy Algorithms | Scheduling and Interval Problems | Minimum number of platforms required for a railway | Medium | -
 10 | Greedy Algorithms | Hard | Valid Paranthesis Checker | Hard | https://leetcode.com/problems/valid-parenthesis-string/
 10 | Greedy Algorithms | Hard | Candy | Hard | https://leetcode.com/problems/candy/
 10 | Greedy Algorithms | Hard | Jump Game II | Hard | https://leetcode.com/problems/jump-game-ii/
@@ -402,7 +402,7 @@
 16 | Graphs | Traversal Problems | Distance of nearest cell having one | Medium | https://leetcode.com/problems/01-matrix/
 16 | Graphs | Traversal Problems | Surrounded Regions | Medium | https://leetcode.com/problems/surrounded-regions/
 16 | Graphs | Traversal Problems | Number of distinct islands | Medium | https://leetcode.com/problems/number-of-distinct-islands/
-16 | Graphs | Cycles | Detect a cycle in an undirected graph | Medium | https://leetcode.com/problems/course-schedule/
+16 | Graphs | Cycles | Detect a cycle in an undirected graph | Medium | -
 16 | Graphs | Cycles | Bipartite graph | Medium | https://leetcode.com/problems/is-graph-bipartite/
 16 | Graphs | Cycles | Topological sort or Kahn's algorithm | Medium | -
 16 | Graphs | Cycles | Detect a cycle in a directed graph | Medium | https://leetcode.com/problems/course-schedule/
@@ -434,7 +434,7 @@
 16 | Graphs | Hard Problems II | Number of islands II | Hard | https://leetcode.com/problems/number-of-islands-ii/
 16 | Graphs | Hard Problems II | Making a large island | Hard | https://leetcode.com/problems/making-a-large-island/
 16 | Graphs | Hard Problems II | Most stones removed with same row or column | Hard | https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
-16 | Graphs | Additional Algorithms | Kosaraju's algorithm | Hard | https://leetcode.com/problems/maximum-number-of-non-overlapping-substrings/discuss/766485/kosaraju-algorithm-on
+16 | Graphs | Additional Algorithms | Kosaraju's algorithm | Hard | -
 16 | Graphs | Additional Algorithms | Bridges in graph | Hard | https://leetcode.com/problems/critical-connections-in-a-network/
 16 | Graphs | Additional Algorithms | Articulation point in graph | Hard | -
 === STEP 17: Dynamic Programming ===
@@ -501,7 +501,7 @@
 18 | Tries | Problems | Maximum Xor with an element from an array | Hard | https://leetcode.com/problems/maximum-xor-with-an-element-from-array/
 === STEP 19: Strings (Advanced Algo) ===
 19 | Strings (Advanced Algo) | Medium Problems | Reverse every word in a string | Medium | https://leetcode.com/problems/reverse-words-in-a-string/
-19 | Strings (Advanced Algo) | Medium Problems | Minimum number of bracket reversals to make an expression balanced | Medium | https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/
+19 | Strings (Advanced Algo) | Medium Problems | Minimum number of bracket reversals to make an expression balanced | Medium | -
 19 | Strings (Advanced Algo) | Medium Problems | Count and say | Medium | https://leetcode.com/problems/count-and-say/
 19 | Strings (Advanced Algo) | Advanced Problems (Less asked) | Hashing In Strings | Theory | -
 19 | Strings (Advanced Algo) | Advanced Problems (Less asked) | Rabin Karp Algorithm | Hard | https://leetcode.com/problems/repeated-string-match/discuss/416144/Rabin-Karp-algorithm-C%2B%2B-implementation

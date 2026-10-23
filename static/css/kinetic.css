@@ -1599,6 +1599,44 @@ body.sb-research .b-card--stat:hover :is(b, strong) { color: var(--sb-blue) !imp
 .sb-dsa .az-mark.is-done { background: var(--sb-lime); border-color: var(--sb-lime); color: #0a0a0a; font-weight: 700; }
 .sb-dsa .az-mark.is-done:hover { color: #0a0a0a; }
 .sb-dsa .az-empty { display: none; color: #a3a3a0; font-family: var(--sb-mono); font-size: 0.85rem; padding: 1rem 0; }
+.sb-dsa a.az-title { text-decoration: none; }
+.sb-dsa a.az-title:hover { color: var(--sb-lime); }
+.sb-dsa .az-learn {
+  font-family: var(--sb-mono); font-size: 0.72rem; color: #0a0a0a; text-decoration: none;
+  background: var(--sb-lime); border: 1px solid var(--sb-lime); padding: 0.4rem 0.7rem;
+  white-space: nowrap; font-weight: 700;
+}
+.sb-dsa .az-learn:hover { background: transparent; color: var(--sb-lime); }
+/* --- A2Z lesson pages --- */
+.sb-dsa .azl-back { font-family: var(--sb-mono); font-size: 0.78rem; color: #a3a3a0; text-decoration: none; }
+.sb-dsa .azl-back:hover { color: var(--sb-lime); }
+.sb-dsa .azl-head h1 { font-family: var(--sb-display); font-size: clamp(2.2rem, 5.5vw, 3.8rem); text-transform: uppercase; line-height: 0.95; margin: 0.4rem 0 0.8rem; color: #fff; }
+.sb-dsa .azl-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 0.6rem 0 1.2rem; }
+.sb-dsa .azl-intro { color: #d8d8d2; font-size: 1.05rem; line-height: 1.7; max-width: 780px; }
+.sb-dsa .azl-sec { margin-top: 2.2rem; max-width: 820px; }
+.sb-dsa .azl-sec h2 { font-family: var(--sb-display); font-size: 1.45rem; text-transform: uppercase; color: #fff; margin: 0 0 0.7rem; }
+.sb-dsa .azl-sec p { color: #c9c9c2; line-height: 1.75; margin: 0 0 0.9rem; font-size: 0.98rem; }
+.sb-dsa .azl-code {
+  background: #0d0d0d; border: 1px solid #2c2c2c; border-left: 3px solid var(--sb-lime);
+  padding: 1rem 1.1rem; overflow-x: auto; margin: 0.4rem 0 1.1rem;
+}
+.sb-dsa .azl-code code { font-family: var(--sb-mono); font-size: 0.85rem; line-height: 1.6; color: #e8e8e2; white-space: pre; }
+.sb-dsa .azl-diagram {
+  background: #0d0d0d; border: 1px solid #2c2c2c; padding: 1.1rem 1.2rem; overflow-x: auto; margin-top: 1.4rem;
+}
+.sb-dsa .azl-diagram pre { font-family: var(--sb-mono); font-size: 0.95rem; line-height: 1.45; color: var(--sb-lime); margin: 0; white-space: pre; }
+.sb-dsa .azl-diagram figcaption { font-family: var(--sb-mono); font-size: 0.7rem; color: #a3a3a0; margin-top: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.sb-dsa .azl-keys { border: 1px solid #2c2c2c; background: #0d0d0d; padding: 1.2rem 1.4rem; margin-top: 2.4rem; max-width: 820px; }
+.sb-dsa .azl-keys h2 { font-family: var(--sb-display); font-size: 1.3rem; text-transform: uppercase; color: #fff; margin: 0 0 0.7rem; }
+.sb-dsa .azl-keys ul { margin: 0; padding-left: 1.2rem; color: #d8d8d2; line-height: 1.7; font-size: 0.95rem; }
+.sb-dsa .azl-sug { margin-top: 2.4rem; max-width: 820px; }
+.sb-dsa .azl-sug h2 { font-family: var(--sb-display); font-size: 1.3rem; text-transform: uppercase; color: #fff; margin: 0 0 0.8rem; }
+.sb-dsa .azl-sugrow { display: flex; gap: 0.8rem; align-items: baseline; border: 1px solid #262626; background: #0d0d0d; padding: 0.75rem 1rem; margin-bottom: 0.55rem; flex-wrap: wrap; }
+.sb-dsa .azl-sugrow a { color: #f2f1ea; font-weight: 600; text-decoration: none; }
+.sb-dsa .azl-sugrow a:hover { color: var(--sb-lime); }
+.sb-dsa .azl-sugrow span { color: #a3a3a0; font-size: 0.86rem; line-height: 1.5; }
+.sb-dsa .azl-actions { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 1.6rem; align-items: center; }
+.sb-dsa .azl-msg { font-family: var(--sb-mono); font-size: 0.8rem; color: #fca5a5; display: none; }
 .dt-hero { display: flex; gap: 2.6rem; align-items: center; flex-wrap: wrap; }
 .dt-stats { display: grid; grid-template-columns: repeat(2, minmax(120px, 1fr)); gap: 1.4rem 2.4rem; flex: 1; min-width: 260px; }
 .dt-stat b { display: block; font-family: var(--sb-display); font-size: 2.3rem; line-height: 1; color: #fff; }

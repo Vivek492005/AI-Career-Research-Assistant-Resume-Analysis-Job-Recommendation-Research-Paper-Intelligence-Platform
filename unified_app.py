@@ -360,8 +360,13 @@ from studybuddy.cover_generator import (
     rule_based_outreach,
     validate_cover_inputs,
 )
+from studybuddy.a2z_lessons import get_lesson as a2z_get_lesson
+from studybuddy.a2z_lessons import lesson_ids as a2z_lesson_ids
+from studybuddy.a2z_lessons import resolve_suggested as a2z_resolve_suggested
 from studybuddy.dsa_practice import (
     all_problems,
+    a2z_problems,
+    expand_statuses,
     filter_problems,
     get_problem,
     progress_summary,
@@ -4825,8 +4830,8 @@ def register_routes(app):
         problems = filter_problems(topic or None, difficulty or None)
         out = []
         if current_user.is_authenticated:
-            progress = {r.problem_id: r.status for r in
-                        DSAProgress.query.filter_by(user_id=current_user.id).all()}
+            rows = DSAProgress.query.filter_by(user_id=current_user.id).all()
+            progress = expand_statuses([(r.problem_id, r.status) for r in rows])
             for p in problems:
                 p = dict(p)
                 p['my_status'] = progress.get(p['id'])
@@ -4870,11 +4875,34 @@ def register_routes(app):
         statuses = {}
         if current_user.is_authenticated:
             rows = DSAProgress.query.filter_by(user_id=current_user.id).all()
-            statuses = {r.problem_id: r.status for r in rows}
+            statuses = expand_statuses([(r.problem_id, r.status) for r in rows])
         steps = sheet_structure(statuses)
         return render_template('dsa_a2z.html', steps=steps,
                                total=sum(s['total'] for s in steps),
-                               solved=sum(s['solved'] for s in steps))
+                               solved=sum(s['solved'] for s in steps),
+                               lesson_ids=a2z_lesson_ids())
+
+    @app.route('/dsa/a2z/<problem_id>/learn')
+    def dsa_a2z_learn(problem_id):
+        """In-app lesson for an A2Z theory topic or pattern problem:
+        full content, code, and suggested follow-up practice."""
+        problem_id = (problem_id or '').strip()[:50]
+        entries = {e['id']: e for e in a2z_problems()}
+        entry = entries.get(problem_id)
+        lesson = a2z_get_lesson(problem_id)
+        if entry is None or lesson is None:
+            abort(404)
+        status = None
+        if current_user.is_authenticated:
+            rows = DSAProgress.query.filter_by(user_id=current_user.id).all()
+            status = expand_statuses(
+                [(r.problem_id, r.status) for r in rows]).get(problem_id)
+        suggested = a2z_resolve_suggested(
+            lesson, {p['id']: p for p in all_problems()})
+        return render_template('dsa_a2z_learn.html', entry=entry,
+                               lesson=lesson, status=status,
+                               suggested=suggested,
+                               is_authed=current_user.is_authenticated)
 
     @app.route('/dsa/tracker')
     @login_required
@@ -4918,6 +4946,13 @@ def register_routes(app):
                 hints_revealed = row.hints_used
                 my_status = row.status
                 saved_code = row.code or ""
+            else:
+                # The same problem may have been marked in the other
+                # set (classic <-> A2Z share problems by LeetCode slug).
+                all_rows = DSAProgress.query.filter_by(
+                    user_id=current_user.id).all()
+                my_status = expand_statuses(
+                    [(r.problem_id, r.status) for r in all_rows]).get(problem_id)
         payload = public_problem(problem_id, hints_revealed)
         return render_template('dsa_problem.html', problem=payload,
                                my_status=my_status, saved_code=saved_code,

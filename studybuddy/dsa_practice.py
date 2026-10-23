@@ -523,20 +523,100 @@ def a2z_tracker(progress_rows):
     }
 
 
+import re as _re_slug_mod
+
+_SLUG_RE = _re_slug_mod.compile(r"leetcode\.com/problems/([a-z0-9-]+)")
+_STATUS_RANK = {"attempted": 1, "stuck": 2, "solved": 3}
+_counterparts_cache = None
+
+
+def _lc_slug(url):
+    if not url:
+        return None
+    m = _SLUG_RE.search(url)
+    return m.group(1) if m else None
+
+
+def _counterpart_map():
+    """problem_id -> ids of the SAME problem in the other set.
+
+    The classic bank and the A2Z sheet are independent lists, but many
+    entries are literally the same problem (e.g. classic Two Sum is
+    also an A2Z sheet row). They are matched by LeetCode slug, which
+    is unique per problem on the platform.
+    """
+    global _counterparts_cache
+    if _counterparts_cache is None:
+        classic_by_slug, a2z_by_slug = {}, {}
+        for p in all_problems():
+            slug = _lc_slug(p.get("leetcode_url"))
+            if slug:
+                classic_by_slug.setdefault(slug, []).append(p["id"])
+        for entry in _load_a2z():
+            slug = _lc_slug(entry.get("url"))
+            if slug:
+                a2z_by_slug.setdefault(slug, []).append(entry["id"])
+        mapping = {}
+        for slug, classic_ids in classic_by_slug.items():
+            for a2z_id in a2z_by_slug.get(slug, []):
+                for classic_id in classic_ids:
+                    mapping.setdefault(classic_id, set()).add(a2z_id)
+                    mapping.setdefault(a2z_id, set()).add(classic_id)
+        _counterparts_cache = mapping
+    return _counterparts_cache
+
+
+def counterpart_ids(problem_id):
+    """Ids of the same problem in the other set (may be empty)."""
+    return sorted(_counterpart_map().get(problem_id, ()))
+
+
+def expand_statuses(progress_rows):
+    """Best status per problem id, shared across both sets.
+
+    A status recorded against either copy of a problem counts for
+    both: marking Two Sum solved in the classic list also lights it
+    up in the A2Z tracker, and vice versa. The strongest status wins
+    (solved > stuck > attempted) so nothing ever downgrades.
+    """
+    pairs = list(progress_rows)
+    best = {}
+
+    def offer(pid, status):
+        if status not in _STATUS_RANK:
+            return
+        current = best.get(pid)
+        if current is None or _STATUS_RANK[status] > _STATUS_RANK[current]:
+            best[pid] = status
+
+    for pid, status in pairs:
+        offer(pid, status)
+    counterparts = _counterpart_map()
+    for pid, status in pairs:
+        for other in counterparts.get(pid, ()):
+            offer(other, status)
+    return best
+
+
 def progress_summary(progress_rows):
     """Full DSA progress summary for tracker surfaces.
 
     Combines the Striver A2Z aggregate with the classic problem-set
     aggregate so the DSA home page and the dedicated tracker page show
-    the same numbers from the same progress rows.
+    the same numbers from the same progress rows. Statuses are first
+    expanded across both sets (see expand_statuses), so a solve of a
+    problem that appears in both lists counts in both.
     """
     rows = list(progress_rows)
+    expanded = expand_statuses(rows)
+    a2z_pairs = [(pid, status) for pid, status in expanded.items()
+                 if pid.startswith("a2z-")]
     classic_ids = {p["id"] for p in all_problems()}
-    classic_solved = sum(1 for pid, status in rows
-                         if pid in classic_ids and status == "solved")
+    classic_solved = sum(1 for pid in classic_ids
+                         if expanded.get(pid) == "solved")
     classic_total = len(classic_ids)
     return {
-        "a2z": a2z_tracker(rows),
+        "a2z": a2z_tracker(a2z_pairs),
         "classic": {
             "total": classic_total,
             "solved": classic_solved,

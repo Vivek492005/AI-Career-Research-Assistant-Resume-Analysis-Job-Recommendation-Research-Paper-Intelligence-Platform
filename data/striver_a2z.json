@@ -7,6 +7,8 @@
   "title": "Breaking The Myth",
   "difficulty": null,
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/breaking-the-myth",
+  "tuf_kind": "learning",
   "kind": "learn"
  },
  {
@@ -17,6 +19,8 @@
   "title": "Programming and What Are Computers?",
   "difficulty": null,
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/programming-and-what-are-computers",
+  "tuf_kind": "learning",
   "kind": "learn"
  },
  {
@@ -27,6 +31,8 @@
   "title": "How to Think Like a Programmer",
   "difficulty": null,
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/how-to-think-like-a-programmer",
+  "tuf_kind": "learning",
   "kind": "learn"
  },
  {
@@ -37,6 +43,8 @@
   "title": "Flowcharts and Pseudocode",
   "difficulty": null,
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/flowcharts-and-pseudocode",
+  "tuf_kind": "learning",
   "kind": "learn"
  },
  {
@@ -47,6 +55,8 @@
   "title": "Flowchart Problem-Solving",
   "difficulty": null,
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/flowchart-problem-solving",
+  "tuf_kind": "learning",
   "kind": "learn"
  },
  {
@@ -57,6 +67,8 @@
   "title": "Dry Runs, Edge Cases and Debugging",
   "difficulty": null,
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/dry-runs-edge-cases-and-debugging",
+  "tuf_kind": "learning",
   "kind": "learn"
  },
  {
@@ -67,6 +79,8 @@
   "title": "Programming Languages and Choosing a Path",
   "difficulty": null,
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/programming-languages-and-choosing-a-path",
+  "tuf_kind": "learning",
   "kind": "learn"
  },
  {
@@ -77,6 +91,8 @@
   "title": "Learn C++",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/learn-cpp",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -87,6 +103,8 @@
   "title": "Learn Java",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/learn-java",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -97,6 +115,8 @@
   "title": "Learn Python",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/learn-python",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -107,6 +127,8 @@
   "title": "Easy and Medium",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/easy-and-medium",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -117,6 +139,8 @@
   "title": "Hard",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/hard",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -124,9 +148,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 1",
+  "title": "Pattern 1 — Rectangular Star Pattern",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-1",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -134,9 +160,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 2",
+  "title": "Pattern 2 — Right-Angled Triangle Pattern",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-2",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -144,9 +172,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 3",
+  "title": "Pattern 3 — Right-Angled Number Pyramid",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-3",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -154,9 +184,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 4",
+  "title": "Pattern 4 — Right-Angled Number Pyramid II",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-4",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -164,9 +196,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 5",
+  "title": "Pattern 5 — Inverted Right Pyramid",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-5",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -174,9 +208,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 6",
+  "title": "Pattern 6 — Inverted Numbered Right Pyramid",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-6",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -184,9 +220,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 7",
+  "title": "Pattern 7 — Star Pyramid",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-7",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -194,9 +232,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 8",
+  "title": "Pattern 8 — Inverted Star Pyramid",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-8",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -204,9 +244,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 9",
+  "title": "Pattern 9 — Diamond Star Pattern",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-9",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -214,9 +256,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 10",
+  "title": "Pattern 10 — Half Diamond Star Pattern",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-10",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -224,9 +268,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 11",
+  "title": "Pattern 11 — Binary Number Triangle Pattern",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-11",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -234,9 +280,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 12",
+  "title": "Pattern 12 — Number Crown Pattern",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-12",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -244,9 +292,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 13",
+  "title": "Pattern 13 — Increasing Number Triangle Pattern",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-13",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -254,9 +304,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 14",
+  "title": "Pattern 14 — Increasing Letter Triangle Pattern",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-14",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -264,9 +316,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 15",
+  "title": "Pattern 15 — Reverse Letter Triangle Pattern",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-15",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -274,9 +328,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 16",
+  "title": "Pattern 16 — Alpha-Ramp Pattern",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-16",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -284,9 +340,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 17",
+  "title": "Pattern 17 — Alpha-Hill Pattern",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-17",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -294,9 +352,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 18",
+  "title": "Pattern 18 — Alpha-Triangle Pattern",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-18",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -304,9 +364,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 19",
+  "title": "Pattern 19 — Symmetric-Void Pattern",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-19",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -314,9 +376,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 20",
+  "title": "Pattern 20 — Symmetry Pattern",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-20",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -324,9 +388,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 21",
+  "title": "Pattern 21 — Hollow Rectangle Pattern",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-21",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -334,9 +400,11 @@
   "step": 1,
   "step_name": "Beginner Problems",
   "subtopic": "Patterns",
-  "title": "Pattern 22",
+  "title": "Pattern 22 — Number Pattern",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pattern-22",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -347,6 +415,8 @@
   "title": "Theory with examples",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/theory-with-examples",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -357,6 +427,8 @@
   "title": "STL",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/stl",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -367,6 +439,8 @@
   "title": "Java Collections",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/java-collections",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -377,6 +451,8 @@
   "title": "Python Libraries Part 1",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/python-libraries-part-1",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -387,6 +463,8 @@
   "title": "Python Libraries Part 2",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/python-libraries-part-2",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -397,6 +475,8 @@
   "title": "Basic Maths",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/basic-maths",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -407,6 +487,8 @@
   "title": "Basic Arrays",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/basic-arrays-hashing-and-strings",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -417,6 +499,8 @@
   "title": "Basic Hashing",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/basic-hashing",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -427,6 +511,8 @@
   "title": "Basic String",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/basic-string",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -437,6 +523,8 @@
   "title": "Count all Digits of a Number",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-all-digits-of-a-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -447,6 +535,8 @@
   "title": "Count number of odd digits in a number",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-number-of-odd-digits-in-a-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -457,6 +547,8 @@
   "title": "Reverse a number",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/reverse-integer/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/reverse-a-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -467,6 +559,8 @@
   "title": "Palindrome Number",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/palindrome-number/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/palindrome-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -477,6 +571,8 @@
   "title": "Return the Largest Digit in a Number",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/return-the-largest-digit-in-a-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -487,6 +583,8 @@
   "title": "Factorial of a given number",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/factorial-of-a-given-number-i",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -497,6 +595,8 @@
   "title": "Check if the Number is Armstrong",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/armstrong-number/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-if-the-number-if-armstrong",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -507,6 +607,8 @@
   "title": "Check for Perfect Number",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/perfect-number/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-for-perfect-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -517,6 +619,8 @@
   "title": "Check for Prime Number",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-for-prime-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -527,6 +631,8 @@
   "title": "Count of Prime Numbers till N",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/count-primes/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-of-prime-numbers-till-n",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -537,6 +643,8 @@
   "title": "GCD of Two Numbers",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/gcd-of-two-numbers",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -547,6 +655,8 @@
   "title": "LCM of two numbers",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/lcm-of-two-numbers",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -557,6 +667,8 @@
   "title": "Divisors of a Number",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/divisors-of-a-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -567,6 +679,8 @@
   "title": "Sum of Array Elements",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/sum-of-array-elements",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -577,6 +691,8 @@
   "title": "Count of odd numbers in Array",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-of-odd-numbers-in-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -587,6 +703,8 @@
   "title": "Check if the Array is Sorted I",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-if-the-array-is-sorted-i",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -597,6 +715,8 @@
   "title": "Reverse an array",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/reverse-an-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -606,7 +726,9 @@
   "subtopic": "Basic Hashing",
   "title": "Highest Occurring Element in an Array",
   "difficulty": "Medium",
-  "url": "https://leetcode.com/problems/frequency-of-the-most-frequent-element/",
+  "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/highest-occurring-element-in-an-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -617,6 +739,8 @@
   "title": "Second Highest Occurring Element",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/second-highest-occurring-element",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -627,6 +751,8 @@
   "title": "Sum of Highest and Lowest Frequency",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/sum-of-highest-and-lowest-frequency",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -637,6 +763,8 @@
   "title": "Reverse a String II",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/reverse-string/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/reverse-a-string-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -647,6 +775,8 @@
   "title": "Palindrome Check",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/valid-palindrome/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/palindrome-check",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -657,6 +787,8 @@
   "title": "Largest Odd Number in a String",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/largest-odd-number-in-string/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/largest-odd-number-in-a-string",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -667,6 +799,8 @@
   "title": "Longest Common Prefix",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/longest-common-prefix/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-common-prefix",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -677,6 +811,8 @@
   "title": "Isomorphic Strings",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/isomorphic-strings/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/isomorphic-string",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -687,6 +823,8 @@
   "title": "Rotate String",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/rotate-string/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/rotate-string",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -697,6 +835,8 @@
   "title": "Valid Anagram",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/valid-anagram/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/valid-anagram",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -707,6 +847,8 @@
   "title": "Sort Characters by Frequency",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/sort-characters-by-frequency/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/sort-characters-by-frequency",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -717,6 +859,8 @@
   "title": "Recursion Theory",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/recursion-theory",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -727,6 +871,8 @@
   "title": "Recursion Concepts with Parameters",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/recursion-concepts-with-parameters",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -737,6 +883,8 @@
   "title": "Sum of First N Numbers",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/sum-of-first-n-numbers",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -747,6 +895,8 @@
   "title": "Factorial of a Given Number",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/factorial-of-a-given-number-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -757,6 +907,8 @@
   "title": "Sum of Array Elements II",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/sum-of-array-elements-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -767,6 +919,8 @@
   "title": "Reverse a String I",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/reverse-string/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/reverse-a-string-i",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -777,6 +931,8 @@
   "title": "Check if String is Palindrome or Not",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/valid-palindrome/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-if-string-is-palindrome-or-not-",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -787,6 +943,8 @@
   "title": "Check if a Number is Prime or Not",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-if-a-number-is-prime-or-not",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -797,6 +955,8 @@
   "title": "Reverse an array 2",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/reverse-an-array-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -807,6 +967,8 @@
   "title": "Check if the Array is Sorted II",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-if-the-array-is-sorted-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -817,6 +979,8 @@
   "title": "Sum of Digits in a Given Number",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/sum-of-digits-in-a-given-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -827,6 +991,8 @@
   "title": "Fibonacci Number",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/fibonacci-number/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/fibonacci-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -837,6 +1003,8 @@
   "title": "Selection Sort",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/selection-sort",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -847,6 +1015,8 @@
   "title": "Bubble Sort",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/bubble-sort",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -857,6 +1027,8 @@
   "title": "Insertion Sorting",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/insertion-sorting",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -867,6 +1039,8 @@
   "title": "Merge Sorting",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/merge-sorting",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -877,6 +1051,8 @@
   "title": "Quick Sorting",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/quick-sorting",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -887,6 +1063,8 @@
   "title": "Recursive Bubble Sort",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/recursive-bubble-sort",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -897,6 +1075,8 @@
   "title": "Recursive Insertion Sort",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/recursive-insertion-sort",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -907,6 +1087,8 @@
   "title": "Linear Search",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/linear-search",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -917,6 +1099,8 @@
   "title": "Largest Element",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/largest-element",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -927,6 +1111,8 @@
   "title": "Second Largest Element",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/second-largest-element",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -937,6 +1123,8 @@
   "title": "Maximum Consecutive Ones",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/max-consecutive-ones/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/maximum-consecutive-ones",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -947,6 +1135,8 @@
   "title": "Left Rotate Array by One",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/rotate-array/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/left-rotate-array-by-one",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -957,6 +1147,8 @@
   "title": "Left Rotate Array by K Places",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/rotate-array/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/left-rotate-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -967,6 +1159,8 @@
   "title": "Move Zeros to End",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/move-zeroes/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/move-zeros-to-end",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -977,6 +1171,8 @@
   "title": "Remove duplicates from sorted array",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/remove-duplicates-from-sorted-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -987,6 +1183,8 @@
   "title": "Find missing number",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/missing-number/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-missing-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -997,6 +1195,8 @@
   "title": "Union of two sorted arrays",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/union-of-two-sorted-arrays",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1007,6 +1207,8 @@
   "title": "Intersection of two sorted arrays",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/intersection-of-two-sorted-arrays",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1017,6 +1219,8 @@
   "title": "Majority Element-I",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/majority-element/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/majority-element-i",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1026,7 +1230,9 @@
   "subtopic": "FAQs(Medium)",
   "title": "Leaders in an Array",
   "difficulty": "Medium",
-  "url": "https://leetcode.com/problems/buildings-with-an-ocean-view/",
+  "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/leaders-in-an-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1037,6 +1243,8 @@
   "title": "Rearrange array elements by sign",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/rearrange-array-elements-by-sign/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/rearrange-array-elements-by-sign",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1047,6 +1255,8 @@
   "title": "Print the matrix in spiral manner",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/spiral-matrix/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/print-the-matrix-in-spiral-manner",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1057,6 +1267,8 @@
   "title": "Pascal's Triangle I",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/pascals-triangle/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/pascals-triangle-i",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1067,6 +1279,8 @@
   "title": "Pascal's Triangle II",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/pascals-triangle-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/pascals-triangle-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1077,6 +1291,8 @@
   "title": "Pascal's Triangle III",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pascals-triangle-iii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1087,6 +1303,8 @@
   "title": "Rotate matrix by 90 degrees",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/rotate-image/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/rotate-matrix-by-90-degrees",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1097,6 +1315,8 @@
   "title": "Set Matrix Zeroes",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/set-matrix-zeroes/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/set-matrix-zeroes",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1107,6 +1327,8 @@
   "title": "Two Sum",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/two-sum/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/two-sum",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1117,6 +1339,8 @@
   "title": "3 Sum",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/3sum/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/3-sum",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1127,6 +1351,8 @@
   "title": "4 Sum",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/4sum/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/4-sum",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1137,6 +1363,8 @@
   "title": "Sort an array of 0's 1's and 2's",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/sort-colors/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/sort-an-array-of-0's-1's-and-2's",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1147,6 +1375,8 @@
   "title": "Kadane's Algorithm",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/maximum-subarray/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/kadane's-algorithm",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1157,6 +1387,8 @@
   "title": "Next Permutation",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/next-permutation/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/next-permutation",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1167,6 +1399,8 @@
   "title": "Majority Element-II",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/majority-element-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/majority-element-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1177,6 +1411,8 @@
   "title": "Find the repeating and missing number",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-the-repeating-and-missing-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1187,6 +1423,8 @@
   "title": "Count Inversions",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-inversions",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1197,6 +1435,8 @@
   "title": "Reverse Pairs",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/reverse-pairs/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/reverse-pairs",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1207,6 +1447,8 @@
   "title": "Maximum Product Subarray in an Array",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/maximum-product-subarray/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/maximum-product-subarray-in-an-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1217,6 +1459,8 @@
   "title": "Merge two sorted arrays without extra space",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/merge-sorted-array/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/merge-two-sorted-arrays-without-extra-space",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1227,6 +1471,8 @@
   "title": "Basic Hashing",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/basic-hashing",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -1237,6 +1483,8 @@
   "title": "Longest Consecutive Sequence in an Array",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/longest-consecutive-sequence/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-consecutive-sequence-in-an-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1247,6 +1495,8 @@
   "title": "Longest subarray with sum K",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-subarray-with-sum-k",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1257,6 +1507,8 @@
   "title": "Largest Subarray with Sum 0",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/largest-subarray-with-sum-0",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1267,6 +1519,8 @@
   "title": "Count subarrays with given sum",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/subarray-sum-equals-k/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-subarrays-with-given-sum",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1277,6 +1531,8 @@
   "title": "Count subarrays with given xor K",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-subarrays-with-given-xor-k",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1287,6 +1543,8 @@
   "title": "Search X in sorted array",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/binary-search/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/search-x-in-sorted-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1297,6 +1555,8 @@
   "title": "Lower Bound",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/lower-bound-",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1307,6 +1567,8 @@
   "title": "Upper Bound",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/upper-bound",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1317,6 +1579,8 @@
   "title": "Search insert position",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/search-insert-position/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/search-insert-position",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1327,6 +1591,8 @@
   "title": "Floor and Ceil in Sorted Array",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/floor-and-ceil-in-sorted-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1337,6 +1603,8 @@
   "title": "First and last occurrence",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/first-and-last-occurrence",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1347,6 +1615,8 @@
   "title": "Search in rotated sorted array-I",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/search-in-rotated-sorted-array-i",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1357,6 +1627,8 @@
   "title": "Search in rotated sorted array-II",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/search-in-rotated-sorted-array-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/search-in-rotated-sorted-array-2",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1367,6 +1639,8 @@
   "title": "Find minimum in Rotated Sorted Array",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-minimum-in-rotated-sorted-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1377,6 +1651,8 @@
   "title": "Find out how many times the array is rotated",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-out-how-many-times-the-array-is-rotated",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1387,6 +1663,8 @@
   "title": "Single element in sorted array",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/single-element-in-a-sorted-array/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/single-element-in-sorted-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1397,6 +1675,8 @@
   "title": "Count Occurrences in a Sorted Array",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-occurrences-in-a-sorted-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1407,6 +1687,8 @@
   "title": "Find square root of a number",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/sqrtx/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-square-root-of-a-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1417,6 +1699,8 @@
   "title": "Find Nth root of a number",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-nth-root-of-a-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1427,6 +1711,8 @@
   "title": "Find the smallest divisor",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-the-smallest-divisor",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1437,6 +1723,8 @@
   "title": "Koko eating bananas",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/koko-eating-bananas/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/koko-eating-bananas",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1447,6 +1735,8 @@
   "title": "Minimum days to make M bouquets",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-days-to-make-m-bouquets",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1457,6 +1747,8 @@
   "title": "Capacity to Ship Packages Within D Days",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/capacity-to-ship-packages-within-d-days",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1467,6 +1759,8 @@
   "title": "Kth Missing Positive Number",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/kth-missing-positive-number/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/kth-missing-positive-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1477,6 +1771,8 @@
   "title": "Painter's Partition",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/split-array-largest-sum/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/painters-partition",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1487,6 +1783,8 @@
   "title": "Aggressive Cows",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/aggressive-cows",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1497,6 +1795,8 @@
   "title": "Book Allocation Problem",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/split-array-largest-sum/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/book-allocation-problem",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1507,6 +1807,8 @@
   "title": "Find peak element",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/find-peak-element/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-peak-element",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1517,6 +1819,8 @@
   "title": "Median of 2 sorted arrays",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/median-of-2-sorted-arrays",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1527,6 +1831,8 @@
   "title": "Kth element of 2 sorted arrays",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/kth-element-of-2-sorted-arrays",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1537,6 +1843,8 @@
   "title": "Minimize Max Distance to Gas Station",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/minimize-max-distance-to-gas-station/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimise-max-distance-to-gas-stations",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1547,6 +1855,8 @@
   "title": "Split array - largest sum",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/split-array-largest-sum/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/split-array---largest-sum",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1557,6 +1867,8 @@
   "title": "Find row with maximum 1's",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-row-with-maximum-1's",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1567,6 +1879,8 @@
   "title": "Search in a 2D Matrix",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/search-a-2d-matrix/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/search-in-a-2d-matrix",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1577,6 +1891,8 @@
   "title": "Search in 2D matrix - II",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/search-a-2d-matrix-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/search-in-2d-matrix-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1587,6 +1903,8 @@
   "title": "Find Peak Element - II",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/find-a-peak-element-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-peak-element-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1597,6 +1915,8 @@
   "title": "Matrix Median",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/median-of-a-row-wise-sorted-matrix/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/matrix-median",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1607,6 +1927,8 @@
   "title": "Remove Outermost Parentheses",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/remove-outermost-parentheses/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/remove-outermost-parentheses",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1617,6 +1939,8 @@
   "title": "Maximum Nesting Depth of the Parentheses",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/maximum-nesting-depth-of-the-parentheses",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1627,6 +1951,8 @@
   "title": "Roman to Integer",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/roman-to-integer/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/roman-to-integer",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1637,6 +1963,8 @@
   "title": "String to Integer (atoi)",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/string-to-integer-atoi/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/string-to-integer-atoi",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1647,6 +1975,8 @@
   "title": "Count Number of Substrings",
   "difficulty": null,
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-number-of-substring",
+  "tuf_kind": "practice",
   "kind": "learn"
  },
  {
@@ -1657,6 +1987,8 @@
   "title": "Longest Palindromic Substring",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/longest-palindromic-substring/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-palindromic-substring",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1667,6 +1999,8 @@
   "title": "Sum of Beauty of All Substrings",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/sum-of-beauty-of-all-substrings/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/sum-of-beauty-of-all-substrings",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1677,6 +2011,8 @@
   "title": "Pow(x,n)",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/powx-n/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/pow(x%2Cn)",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1687,6 +2023,8 @@
   "title": "Generate Parentheses",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/generate-parentheses/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/generate-parentheses",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1697,6 +2035,8 @@
   "title": "Power Set",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/subsets/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/power-set",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1707,6 +2047,8 @@
   "title": "Count Good Numbers",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/count-good-numbers/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-good-numbers",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1717,6 +2059,8 @@
   "title": "Reverse a Stack",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/reverse-a-stack",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1727,6 +2071,8 @@
   "title": "Learn All Patterns of Subsequences (Theory)",
   "difficulty": null,
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/learn-all-patterns-of-subsequences",
+  "tuf_kind": "learning",
   "kind": "learn"
  },
  {
@@ -1737,6 +2083,8 @@
   "title": "Check if there exists a subsequence with sum K",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-if-there-exists-a-subsequence-with-sum-k",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1747,6 +2095,8 @@
   "title": "Count all subsequences with sum K",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-all-subsequences-with-sum-k",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1757,6 +2107,8 @@
   "title": "Generate Binary Strings Without Consecutive 1s",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/generate-binary-strings-without-consecutive-1s",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1767,6 +2119,8 @@
   "title": "Combination Sum",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/combination-sum/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/combination-sum",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1777,6 +2131,8 @@
   "title": "Combination Sum II",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/combination-sum-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/combination-sum-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1787,6 +2143,8 @@
   "title": "Subsets I",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/subsets/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/subsets-i",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1797,6 +2155,8 @@
   "title": "Subsets II",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/subsets-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/subsets-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1807,6 +2167,8 @@
   "title": "Combination Sum III",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/combination-sum-iii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/combination-sum-iii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1817,6 +2179,8 @@
   "title": "Letter Combinations of a Phone Number",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/letter-combinations-of-a-phone-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1827,6 +2191,8 @@
   "title": "Palindrome partitioning",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/palindrome-partitioning/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/palindrome-partitioning",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1837,6 +2203,8 @@
   "title": "Word Search",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/word-search/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/word-search",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1847,6 +2215,8 @@
   "title": "N Queen",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/n-queens/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/n-queen",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1857,6 +2227,8 @@
   "title": "Rat in a Maze",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/rat-in-a-maze",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1867,6 +2239,8 @@
   "title": "M Coloring Problem",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/m-coloring-problem",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1877,6 +2251,8 @@
   "title": "Sudoku Solver",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/sudoku-solver/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/sudoko-solver",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1887,6 +2263,8 @@
   "title": "Expression Add Operators",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/expression-add-operators/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/expression-add-operators",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1897,6 +2275,8 @@
   "title": "Introduction to Singly LinkedList",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/introduction-to-singly-linkedlist",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -1907,6 +2287,8 @@
   "title": "Traversal in Linked List",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/traversal-in-linked-list",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1917,6 +2299,8 @@
   "title": "Deletion in Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/deletion-in-linked-list",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -1927,6 +2311,8 @@
   "title": "Insertion in Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/insertion-in-linked-list",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -1936,7 +2322,9 @@
   "subtopic": "Fundamentals (Single LL)",
   "title": "Deletion of the head of LL",
   "difficulty": "Medium",
-  "url": "https://leetcode.com/problems/delete-node-in-a-linked-list/",
+  "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/deletion-of-the-head-of-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1947,6 +2335,8 @@
   "title": "Deletion of the tail of Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/deletion-of-the-tail-of-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1957,6 +2347,8 @@
   "title": "Deletion of the Kth element of Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/deletion-of-the-kth-element-of-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1967,6 +2359,8 @@
   "title": "Delete the element with value X",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/delete-the-element-with-value-x",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1977,6 +2371,8 @@
   "title": "Insertion at the head of Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/insertion-at-the-head-of-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1987,6 +2383,8 @@
   "title": "Insertion at the tail of Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/insertion-at-the-tail-of-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -1997,6 +2395,8 @@
   "title": "Insertion at the Kth position of Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/insertion-at-the-kth-position-of-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2007,6 +2407,8 @@
   "title": "Insertion before the value X in Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/insertion-before-the-value-x-in-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2017,6 +2419,8 @@
   "title": "Find the length of the Linked List",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-the-length-of-the-linked-list",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2027,6 +2431,8 @@
   "title": "Search in Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/search-in-linked-list",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2037,6 +2443,8 @@
   "title": "Introduction to Doubly LL",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/introduction-to-doubly-ll",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -2047,6 +2455,8 @@
   "title": "Deletion in Doubly LL",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/deletion-in-doubly-ll",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -2057,6 +2467,8 @@
   "title": "Insertion in DLL",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/insertion-in-dll",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -2067,6 +2479,8 @@
   "title": "Convert Array to Doubly Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/convert-array-to-dll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2077,6 +2491,8 @@
   "title": "Delete Tail of Doubly Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/delete-tail-of-dll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2087,6 +2503,8 @@
   "title": "Delete Kth Element of Doubly Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/delete-kth-element-of-dll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2097,6 +2515,8 @@
   "title": "Removing given node in Doubly Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/removing-given-node-in-dll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2107,6 +2527,8 @@
   "title": "Insert node before head in Doubly Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/insert-node-before-head-in-dll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2117,6 +2539,8 @@
   "title": "Insert node before tail in Doubly Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/insert-node-before-tail-in-dll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2127,6 +2551,8 @@
   "title": "Insert node before (kth node) in Doubly Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/insert-node-before-kth-node-in-dll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2137,6 +2563,8 @@
   "title": "Insert before given node in Doubly Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/insert-before-given-node-in-dll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2147,6 +2575,8 @@
   "title": "Delete head of Doubly Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/delete-head-of-dll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2157,6 +2587,8 @@
   "title": "Reverse a Doubly Linked List",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/reverse-linked-list/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/reverse-a-doubly-linked-list",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2167,6 +2599,8 @@
   "title": "Add two numbers in Linked List",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/add-two-numbers/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/add-two-numbers-in-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2177,6 +2611,8 @@
   "title": "Segregate odd and even nodes in Linked List",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/odd-even-linked-list/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/segregate-odd-and-even-nodes-in-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2187,6 +2623,8 @@
   "title": "Sort a Linked List of 0's 1's and 2's",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/sort-a-ll-of-0's-1's-and-2's",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2197,6 +2635,8 @@
   "title": "Remove Nth node from the back of the LL",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/remove-nth-node-from-the-back-of-the-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2207,6 +2647,8 @@
   "title": "Reverse a LL",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/reverse-linked-list/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/reverse-a-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2217,6 +2659,8 @@
   "title": "Add one to a number represented by LL",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/plus-one-linked-list/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/add-one-to-a-number-represented-by-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2227,6 +2671,8 @@
   "title": "Find Middle of Linked List",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/middle-of-the-linked-list/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-middle-of-linked-list",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2237,6 +2683,8 @@
   "title": "Delete the middle node in LL",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/delete-the-middle-node-in-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2247,6 +2695,8 @@
   "title": "Check if LL is palindrome or not",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/palindrome-linked-list/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-if-ll-is-palindrome-or-not",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2257,6 +2707,8 @@
   "title": "Find the intersection point of Y LL",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/intersection-of-two-linked-lists/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-the-intersection-point-of-y-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2267,6 +2719,8 @@
   "title": "Detect a loop in LL",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/linked-list-cycle/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/detect-a-loop-in-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2277,6 +2731,8 @@
   "title": "Find the starting point in LL",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/linked-list-cycle-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-the-starting-point-in-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2287,6 +2743,8 @@
   "title": "Length of loop in LL",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/length-of-loop-in-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2297,6 +2755,8 @@
   "title": "Reverse LL in group of given size K",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/reverse-nodes-in-k-group/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/reverse-ll-in-group-of-given-size-k",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2307,6 +2767,8 @@
   "title": "Rotate a LL",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/rotate-list/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/rotate-a-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2317,6 +2779,8 @@
   "title": "Merge two Sorted Lists",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/merge-two-sorted-lists/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/merge-sorted-lists-",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2326,7 +2790,9 @@
   "subtopic": "FAQs (Hard)",
   "title": "Flattening of LL",
   "difficulty": "Hard",
-  "url": "https://leetcode.com/problems/merge-k-sorted-lists/",
+  "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/flattening-of-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2337,6 +2803,8 @@
   "title": "Sort LL",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/sort-list/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/sort-ll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2347,6 +2815,8 @@
   "title": "Clone a LL with random and next pointer",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/copy-list-with-random-pointer/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/clone-a-ll-with-random-and-next-pointer",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2357,6 +2827,8 @@
   "title": "Delete all occurrences of a key in DLL",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/delete-all-occurrences-of-a-key-in-dll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2367,6 +2839,8 @@
   "title": "Remove duplicates from sorted DLL",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/remove-duplicated-from-sorted-dll",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2377,6 +2851,8 @@
   "title": "Find Pairs with Given Sum in Doubly Linked List",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-pairs-with-given-sum-in-doubly-linked-list",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2387,6 +2863,8 @@
   "title": "Introduction to Bits and Tricks",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/introduction-to-bits-and-tricks",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -2397,6 +2875,8 @@
   "title": "Check if the i-th bit is Set or Not",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-if-the-i-th-bit-is-set-or-not",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2407,6 +2887,8 @@
   "title": "Check if a Number is Odd or Not",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-if-a-number-is-odd-or-not",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2417,6 +2899,8 @@
   "title": "Check if a Number is Power of 2 or Not",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/power-of-two/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-if-a-number-is-power-of-2-or-not",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2427,6 +2911,8 @@
   "title": "Count the Number of Set Bits",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/number-of-1-bits/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-the-number-of-set-bits",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2437,6 +2923,8 @@
   "title": "Set the Rightmost Unset Bit",
   "difficulty": null,
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/set-the-rightmost-unset-bit",
+  "tuf_kind": "practice",
   "kind": "learn"
  },
  {
@@ -2447,6 +2935,8 @@
   "title": "Swap Two Numbers",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/swap-two-numbers",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2457,6 +2947,8 @@
   "title": "Minimum Bit Flips to Convert Number",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/minimum-bit-flips-to-convert-number/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-bit-flips-to-convert-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2467,6 +2959,8 @@
   "title": "Single Number - I",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/single-number/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/single-number---i",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2477,6 +2971,8 @@
   "title": "Single Number - II",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/single-number-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/single-number---ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2487,6 +2983,8 @@
   "title": "Single Number - III",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/single-number-iii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/single-number---iii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2497,6 +2995,8 @@
   "title": "Divide two numbers without multiplication and division",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/divide-two-integers/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/divide-two-numbers-without-multiplication-and-division",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2507,6 +3007,8 @@
   "title": "Power Set Bit Manipulation",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/subsets/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/power-set-bit-manipulation",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2517,6 +3019,8 @@
   "title": "XOR of numbers in a given range",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/xor-of-numbers-in-a-given-range",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2527,6 +3031,8 @@
   "title": "Assign Cookies",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/assign-cookies/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/assign-cookies",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2537,6 +3043,8 @@
   "title": "Lemonade Change",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/lemonade-change/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/lemonade-change",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2547,6 +3055,8 @@
   "title": "Fractional Knapsack",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/fractional-knapsack",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2557,6 +3067,8 @@
   "title": "Jump Game - I",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/jump-game/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/jump-game---i",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2567,6 +3079,8 @@
   "title": "Shortest Job First",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/shortest-job-first",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2577,6 +3091,8 @@
   "title": "Job sequencing Problem",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/job-sequencing-problem",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2587,6 +3103,8 @@
   "title": "N meetings in one room",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/n-meetings-in-one-room",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2597,6 +3115,8 @@
   "title": "Non-overlapping Intervals",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/non-overlapping-intervals/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/non-overlapping-intervals",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2607,6 +3127,8 @@
   "title": "Insert Interval",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/insert-interval/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/insert-interval",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2617,6 +3139,8 @@
   "title": "Merge Intervals",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/merge-intervals/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/merge-intervals",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2626,7 +3150,9 @@
   "subtopic": "Scheduling and Interval Problems",
   "title": "Minimum number of platforms required for a railway",
   "difficulty": "Medium",
-  "url": "https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/",
+  "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-number-of-platforms-required-for-a-railway",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2637,6 +3163,8 @@
   "title": "Valid Paranthesis Checker",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/valid-parenthesis-string/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/valid-paranthesis-checker",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2647,6 +3175,8 @@
   "title": "Candy",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/candy/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/candy",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2657,6 +3187,8 @@
   "title": "Jump Game II",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/jump-game-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/jump-game-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2667,6 +3199,8 @@
   "title": "Theory",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/theory",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -2677,6 +3211,8 @@
   "title": "Maximum Points You Can Obtain from Cards",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/maximum-points-you-can-obtain-from-cards-",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2687,6 +3223,8 @@
   "title": "Longest Substring Without Repeating Characters",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-substring-without-repeating-characters",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2697,6 +3235,8 @@
   "title": "Max Consecutive Ones III",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/max-consecutive-ones-iii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/max-consecutive-ones-iii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2707,6 +3247,8 @@
   "title": "Fruit Into Baskets",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/fruit-into-baskets/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/fruit-into-baskets",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2717,6 +3259,8 @@
   "title": "Longest Substring With At Most K Distinct Characters",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-substring-with-at-most-k-distinct-characters",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2727,6 +3271,8 @@
   "title": "Longest Repeating Character Replacement",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/longest-repeating-character-replacement/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-repeating-character-replacement",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2737,6 +3283,8 @@
   "title": "Minimum Window Substring",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/minimum-window-substring/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-window-substring-",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2747,6 +3295,8 @@
   "title": "Minimum Window Subsequence",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/minimum-window-subsequence/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-window-subsequence",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2757,6 +3307,8 @@
   "title": "Number of Substrings Containing All Three Characters",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/number-of-substrings-containing-all-three-characters",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2767,6 +3319,8 @@
   "title": "Binary Subarrays With Sum",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/binary-subarrays-with-sum/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/binary-subarrays-with-sum",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2777,6 +3331,8 @@
   "title": "Count number of Nice subarrays",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/count-number-of-nice-subarrays/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-number-of-nice-subarrays",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2787,6 +3343,8 @@
   "title": "Subarrays with K Different Integers",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/subarrays-with-k-different-integers/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/subarrays-with-k-different-integers",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2797,6 +3355,8 @@
   "title": "Implementation using different DS",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/implementation-using-different-ds",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -2807,6 +3367,8 @@
   "title": "Implement Stack using Arrays",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/implement-stack-using-arrays",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2817,6 +3379,8 @@
   "title": "Implement Queue using Arrays",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/implement-queue-using-arrays",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2827,6 +3391,8 @@
   "title": "Implement Stack using Queue",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/implement-stack-using-queues/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/implement-stack-using-queue",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2837,6 +3403,8 @@
   "title": "Implement Queue using Stack",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/implement-queue-using-stacks/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/implement-queue-using-stack",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2847,6 +3415,8 @@
   "title": "Implement stack using Linkedlist",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/implement-stack-using-linkedlist",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2857,6 +3427,8 @@
   "title": "Implement queue using Linkedlist",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/implement-queue-using-linkedlist",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2867,6 +3439,8 @@
   "title": "Balanced Paranthesis",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/valid-parentheses/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/balanced-paranthesis",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2877,6 +3451,8 @@
   "title": "Infix to Postfix Conversion",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/infix-to-postfix-conversion",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2887,6 +3463,8 @@
   "title": "Infix to Prefix Conversion",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/infix-to-prefix-conversion",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2897,6 +3475,8 @@
   "title": "Prefix to Infix Conversion",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/prefix-to-infix-conversion",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2907,6 +3487,8 @@
   "title": "Prefix to Postfix Conversion",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/prefix-to-postfix-conversion",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2917,6 +3499,8 @@
   "title": "Postfix to Infix Conversion",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/postfix-to-infix-conversion",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2927,6 +3511,8 @@
   "title": "Postfix to Prefix Conversion",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/postfix-to-prefix-conversion",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2937,6 +3523,8 @@
   "title": "Next Greater Element",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/next-greater-element-i/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/next-greater-element",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2947,6 +3535,8 @@
   "title": "Next Greater Element - 2",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/next-greater-element-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/next-greater-element---2",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2957,6 +3547,8 @@
   "title": "Asteroid Collision",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/asteroid-collision/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/asteroid-collision",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2967,6 +3559,8 @@
   "title": "Sum of Subarray Minimums",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/sum-of-subarray-minimums/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/sum-of-subarray-minimums",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2977,6 +3571,8 @@
   "title": "Sum of Subarray Ranges",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/sum-of-subarray-ranges/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/sum-of-subarray-ranges",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2987,6 +3583,8 @@
   "title": "Remove K Digits",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/remove-k-digits/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/remove-k-digits",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -2997,6 +3595,8 @@
   "title": "Next Smaller Element",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/next-smaller-element",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3007,6 +3607,8 @@
   "title": "Implement Min Stack",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/min-stack/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/implement-min-stack",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3017,6 +3619,8 @@
   "title": "Sliding Window Maximum",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/sliding-window-maximum/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/sliding-window-maximum",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3027,6 +3631,8 @@
   "title": "Trapping Rainwater",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/trapping-rain-water/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/trapping-rainwater",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3037,6 +3643,8 @@
   "title": "Largest rectangle in a histogram",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/largest-rectangle-in-a-histogram",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3047,6 +3655,8 @@
   "title": "Maximum Rectangles",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/maximal-rectangle/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/maximum-rectangles",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3057,6 +3667,8 @@
   "title": "Stock span problem",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/online-stock-span/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/stock-span-problem",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3067,6 +3679,8 @@
   "title": "Celebrity Problem",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/find-the-celebrity/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/celebrity-problem",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3077,6 +3691,8 @@
   "title": "LRU Cache",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/lru-cache/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/lru-cache",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3087,6 +3703,8 @@
   "title": "LFU Cache",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/lfu-cache/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/lfu-cache",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3097,6 +3715,8 @@
   "title": "Number of Greater Elements to the Right",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/number-of-greater-elements-to-the-right",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3107,6 +3727,8 @@
   "title": "Introduction",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/introduction-",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -3117,6 +3739,8 @@
   "title": "Inorder Traversal",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/inorder-traversal",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3127,6 +3751,8 @@
   "title": "Preorder Traversal",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/binary-tree-preorder-traversal/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/preorder-traversal",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3137,6 +3763,8 @@
   "title": "Postorder Traversal",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/binary-tree-postorder-traversal/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/postorder-traversal",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3147,6 +3775,8 @@
   "title": "Level Order Traversal",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/level-order-traversal",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3157,6 +3787,8 @@
   "title": "Pre, Post, Inorder in one traversal",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/pre%2C-post%2C-inorder-in-one-traversal",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3167,6 +3799,8 @@
   "title": "Maximum Depth in BT",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/maximum-depth-in-bt",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3177,6 +3811,8 @@
   "title": "Check if two trees are identical or not",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/same-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-if-two-trees-are-identical-or-not",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3187,6 +3823,8 @@
   "title": "Check for balanced binary tree",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/balanced-binary-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-for-balanced-binary-tree",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3197,6 +3835,8 @@
   "title": "Diameter of Binary Tree",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/diameter-of-binary-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/diameter-of-binary-tree",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3207,6 +3847,8 @@
   "title": "Maximum path sum",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/maximum-path-sum-",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3217,6 +3859,8 @@
   "title": "Check for symmetrical BTs",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/symmetric-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-for-symmetrical-bts",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3227,6 +3871,8 @@
   "title": "Children Sum Property in Binary Tree",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/children-sum-property-in-binary-tree",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3237,6 +3883,8 @@
   "title": "Zig Zag or Spiral Traversal",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/zig-zag-or-spiral-traversal",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3247,6 +3895,8 @@
   "title": "Boundary Traversal",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/boundary-of-binary-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/boundary-traversal",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3257,6 +3907,8 @@
   "title": "Vertical Order Traversal",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/vertical-order-traversal",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3267,6 +3919,8 @@
   "title": "Top View of BT",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/top-view-of-bt",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3277,6 +3931,8 @@
   "title": "Bottom view of BT",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/bottom-view-of-bt",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3287,6 +3943,8 @@
   "title": "Right/Left View of BT",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/binary-tree-right-side-view/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/right-left-view-of-bt",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3297,6 +3955,8 @@
   "title": "Print root to leaf path in BT",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/print-root-to-leaf-path-in-bt",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3307,6 +3967,8 @@
   "title": "LCA in BT",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/lca-in-bt",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3317,6 +3979,8 @@
   "title": "Maximum Width of BT",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/maximum-width-of-binary-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/maximum-width-of-bt",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3327,6 +3991,8 @@
   "title": "Print all nodes at a distance of K in BT",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/print-all-nodes-at-a-distance-of-k-in-bt",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3337,6 +4003,8 @@
   "title": "Minimum time taken to burn the BT from a given Node",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-time-taken-to-burn-the-bt-from-a-given-node",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3347,6 +4015,8 @@
   "title": "Count total nodes in a complete BT",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/count-complete-tree-nodes/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-total-nodes-in-a-complete-bt",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3357,6 +4027,8 @@
   "title": "Flatten Binary Tree to Linked List",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/flatten-binary-tree-to-linked-list",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3367,6 +4039,8 @@
   "title": "Requirements needed to construct a unique BT",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/requirements-needed-to-construct-a-unique-bt",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3377,6 +4051,8 @@
   "title": "Construct a BT from Preorder and Inorder",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/construct-a-bt-from-preorder-and-inorder",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3387,6 +4063,8 @@
   "title": "Construct a BT from Postorder and Inorder",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/construct-a-bt-from-postorder-and-inorder",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3397,6 +4075,8 @@
   "title": "Serialize and De-serialize BT",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/serialize-and-de-serialize-bt",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3407,6 +4087,8 @@
   "title": "Morris Inorder Traversal",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/morris-inorder-traversal-",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3417,6 +4099,8 @@
   "title": "Morris Preorder Traversal",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/binary-tree-preorder-traversal/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/morris-preorder-traversal-",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3427,6 +4111,8 @@
   "title": "Introduction to BST",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/introduction-to-bst",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -3437,6 +4123,8 @@
   "title": "Search in BST",
   "difficulty": "Easy",
   "url": "https://leetcode.com/problems/search-in-a-binary-search-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/search-in-bst",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3447,6 +4135,8 @@
   "title": "Floor and Ceil in a BST",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/floor-and-ceil-in-a-bst",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3457,6 +4147,8 @@
   "title": "Minimum and Maximum in BST",
   "difficulty": null,
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-and-maximum-in-bst",
+  "tuf_kind": "practice",
   "kind": "learn"
  },
  {
@@ -3467,6 +4159,8 @@
   "title": "Insert a given node in BST",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/insert-into-a-binary-search-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/insert-a-given-node-in-bst",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3477,6 +4171,8 @@
   "title": "Delete a node in BST",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/delete-node-in-a-bst/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/delete-a-node-in-bst",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3487,6 +4183,8 @@
   "title": "Kth Smallest and Largest element in BST",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/kth-smallest-and-largest-element-in-bst",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3497,6 +4195,8 @@
   "title": "Check if a tree is a BST or not",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/validate-binary-search-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-if-a-tree-is-a-bst-or-not",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3507,6 +4207,8 @@
   "title": "LCA in BST",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/lca-in-bst",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3517,6 +4219,8 @@
   "title": "Construct a BST from a preorder traversal",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/construct-a-bst-from-a-preorder-traversal",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3527,6 +4231,8 @@
   "title": "Inorder successor and predecessor in BST",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/inorder-successor-in-bst/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/inorder-successor-and-predecessor-in-bst",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3537,6 +4243,8 @@
   "title": "BST iterator",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/binary-search-tree-iterator/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/bst-iterator",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3547,6 +4255,8 @@
   "title": "Two sum in BST",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/two-sum-iv-input-is-a-bst/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/two-sum-in-bst",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3557,6 +4267,8 @@
   "title": "Correct BST with two nodes swapped",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/recover-binary-search-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/correct-bst-with-two-nodes-swapped",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3567,6 +4279,8 @@
   "title": "Largest BST in Binary Tree",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/largest-bst-subtree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/largest-bst-in-binary-tree",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3577,6 +4291,8 @@
   "title": "Heaps (Theory Video)",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/heaps-theory",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -3587,6 +4303,8 @@
   "title": "Heapify Algorithm",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/heapify-algorithm",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3597,6 +4315,8 @@
   "title": "Build heap from a given Array",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/build-heap-from-a-given-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3607,6 +4327,8 @@
   "title": "Implement Min Heap",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/implement-min-heap",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3617,6 +4339,8 @@
   "title": "Implement Max Heap",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/implement-max-heap",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3627,6 +4351,8 @@
   "title": "Check if an array represents a min heap",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/check-if-an-array-represents-a-min-heap-",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3637,6 +4363,8 @@
   "title": "Convert Min Heap to Max Heap",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/convert-min-heap-to-max-heap",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3647,6 +4375,8 @@
   "title": "Heap Sort",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/heap-sort",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3657,6 +4387,8 @@
   "title": "K-th Largest element in an array",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/k-th-largest-element-in-an-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3667,6 +4399,8 @@
   "title": "Kth largest element in a stream of running integers",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/kth-largest-element-in-a-stream-of-running-integers",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3677,6 +4411,8 @@
   "title": "Sort a K-Sorted Array",
   "difficulty": null,
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/sort-a-k-sorted-array",
+  "tuf_kind": "practice",
   "kind": "learn"
  },
  {
@@ -3687,6 +4423,8 @@
   "title": "Merge K sorted Lists",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/merge-k-sorted-lists/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/merge-k-sorted-lists",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3697,6 +4435,8 @@
   "title": "Replace Elements by Their Rank",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/rank-transform-of-an-array/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/replace-elements-by-their-rank",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3707,6 +4447,8 @@
   "title": "Task Scheduler",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/task-scheduler/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/task-scheduler",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3717,6 +4459,8 @@
   "title": "Hand of Straights",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/hand-of-straights/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/hand-of-straights",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3727,6 +4471,8 @@
   "title": "Design Twitter",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/design-twitter/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/design-twitter",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3737,6 +4483,8 @@
   "title": "Minimum Cost to Connect Sticks",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/minimum-cost-to-connect-sticks/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-cost-to-connect-sticks",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3747,6 +4495,8 @@
   "title": "Maximum Sum Combination",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/maximum-sum-combination",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3757,6 +4507,8 @@
   "title": "Find Median from Data Stream",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/find-median-from-data-stream/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-median-from-data-stream",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3767,6 +4519,8 @@
   "title": "Top K Frequent Elements",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/top-k-frequent-elements/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/top-k-frequent-elements",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3777,6 +4531,8 @@
   "title": "Introduction to Graph",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/introduction-to-graph",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -3787,6 +4543,8 @@
   "title": "Traversal Techniques",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/traversal-techniques",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3797,6 +4555,8 @@
   "title": "Connected Components",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/connected-components",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3807,6 +4567,8 @@
   "title": "Number of provinces",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/number-of-provinces/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/number-of-provinces",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3817,6 +4579,8 @@
   "title": "Number of islands",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/number-of-islands/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/number-of-islands",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3827,6 +4591,8 @@
   "title": "Flood fill algorithm",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/flood-fill/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/flood-fill-algorithm",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3837,6 +4603,8 @@
   "title": "Number of enclaves",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/number-of-enclaves/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/number-of-enclaves",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3847,6 +4615,8 @@
   "title": "Rotten Oranges",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/rotting-oranges/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/rotten-oranges",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3857,6 +4627,8 @@
   "title": "Distance of nearest cell having one",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/01-matrix/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/distance-of-nearest-cell-having-one",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3867,6 +4639,8 @@
   "title": "Surrounded Regions",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/surrounded-regions/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/surrounded-regions",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3877,6 +4651,8 @@
   "title": "Number of distinct islands",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/number-of-distinct-islands/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/number-of-distinct-islands",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3886,7 +4662,9 @@
   "subtopic": "Cycles",
   "title": "Detect a cycle in an undirected graph",
   "difficulty": "Medium",
-  "url": "https://leetcode.com/problems/course-schedule/",
+  "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/detect-a-cycle-in-an-undirected-graph",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3897,6 +4675,8 @@
   "title": "Bipartite graph",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/is-graph-bipartite/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/bipartite-graph",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3907,6 +4687,8 @@
   "title": "Topological sort or Kahn's algorithm",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/topological-sort-or-kahns-algorithm",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3917,6 +4699,8 @@
   "title": "Detect a cycle in a directed graph",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/course-schedule/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/detect-a-cycle-in-a-directed-graph",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3927,6 +4711,8 @@
   "title": "Find eventual safe states",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/find-eventual-safe-states/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-eventual-safe-states",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3937,6 +4723,8 @@
   "title": "Course Schedule I",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/course-schedule/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/course-schedule-i",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3947,6 +4735,8 @@
   "title": "Course Schedule II",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/course-schedule-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/course-schedule-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3957,6 +4747,8 @@
   "title": "Alien Dictionary",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/alien-dictionary/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/alient-dictionary",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3967,6 +4759,8 @@
   "title": "Shortest path in DAG",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/shortest-path-in-dag",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3977,6 +4771,8 @@
   "title": "Shortest path in undirected graph with unit weights",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/shortest-path-in-undirected-graph-with-unit-weights",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3987,6 +4783,8 @@
   "title": "Word ladder I",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/word-ladder/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/word-ladder-i",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -3997,6 +4795,8 @@
   "title": "Word ladder II",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/word-ladder-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/word-ladder-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4007,6 +4807,8 @@
   "title": "Dijkstra's algorithm",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/dijkstra's-algorithm",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4017,6 +4819,8 @@
   "title": "Print Shortest Path",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/print-shortest-path-",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4027,6 +4831,8 @@
   "title": "Shortest Distance in a Binary Maze",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/shortest-path-in-binary-matrix/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/shortest-path-with-minimum-effort",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4037,6 +4843,8 @@
   "title": "Path with minimum effort",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/path-with-minimum-effort/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/path-with-minimum-effort",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4047,6 +4855,8 @@
   "title": "Cheapest flight within K stops",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/cheapest-flight-within-k-stops",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4057,6 +4867,8 @@
   "title": "Minimum multiplications to reach end",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-multiplications-to-reach-end",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4067,6 +4879,8 @@
   "title": "Number of ways to arrive at destination",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/number-of-ways-to-arrive-at-destination",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4077,6 +4891,8 @@
   "title": "Bellman ford algorithm",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/bellman-ford-algorithm",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4087,6 +4903,8 @@
   "title": "Floyd warshall algorithm",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/floyd-warshall-algorithm",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4097,6 +4915,8 @@
   "title": "Find the city with the smallest number of neighbors",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-the-city-with-the-smallest-number-of-neighbors",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4107,6 +4927,8 @@
   "title": "Network Delay Time",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/network-delay-time/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/network-delay-time",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4117,6 +4939,8 @@
   "title": "Swim in Rising Water",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/swim-in-rising-water/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/swim-in-rising-water",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4127,6 +4951,8 @@
   "title": "MST theory",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/mst-theory",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -4137,6 +4963,8 @@
   "title": "Disjoint Set",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/disjoint-set-",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4147,6 +4975,8 @@
   "title": "Find the MST weight",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/connecting-cities-with-minimum-cost/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/find-the-mst-weight",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4157,6 +4987,8 @@
   "title": "Number of operations to make network connected",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/number-of-operations-to-make-network-connected/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/number-of-operations-to-make-network-connected",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4167,6 +4999,8 @@
   "title": "Accounts merge",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/accounts-merge/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/accounts-merge",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4177,6 +5011,8 @@
   "title": "Number of islands II",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/number-of-islands-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/number-of-islands-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4187,6 +5023,8 @@
   "title": "Making a large island",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/making-a-large-island/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/making-a-large-island",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4197,6 +5035,8 @@
   "title": "Most stones removed with same row or column",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/most-stones-removed-with-same-row-or-column",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4206,7 +5046,9 @@
   "subtopic": "Additional Algorithms",
   "title": "Kosaraju's algorithm",
   "difficulty": "Hard",
-  "url": "https://leetcode.com/problems/maximum-number-of-non-overlapping-substrings/discuss/766485/kosaraju-algorithm-on",
+  "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/kosaraju's-algorithm",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4217,6 +5059,8 @@
   "title": "Bridges in graph",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/critical-connections-in-a-network/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/bridges-in-graph",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4227,6 +5071,8 @@
   "title": "Articulation point in graph",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/articulation-point-in-graph",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4237,6 +5083,8 @@
   "title": "Introduction to DP",
   "difficulty": "Easy",
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/introduction-to-dp",
+  "tuf_kind": "learning",
   "kind": "problem"
  },
  {
@@ -4247,6 +5095,8 @@
   "title": "Climbing stairs",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/climbing-stairs/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/climbing-stairs",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4257,6 +5107,8 @@
   "title": "Frog Jump",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/frog-jump",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4267,6 +5119,8 @@
   "title": "Frog jump with K distances",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/frog-jump-with-k-distances",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4277,6 +5131,8 @@
   "title": "Maximum sum of non adjacent elements",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/house-robber/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/maximum-sum-of-non-adjacent-elements",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4287,6 +5143,8 @@
   "title": "House robber",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/house-robber/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/house-robber",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4297,6 +5155,8 @@
   "title": "Ninja's training",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/ninja's-training",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4307,6 +5167,8 @@
   "title": "Grid unique paths",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/unique-paths/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/grid-unique-paths",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4317,6 +5179,8 @@
   "title": "Unique paths II",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/unique-paths-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/unique-paths-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4327,6 +5191,8 @@
   "title": "Minimum Falling Path Sum",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/minimum-falling-path-sum/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-falling-path-sum",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4337,6 +5203,8 @@
   "title": "Triangle",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/triangle/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/triangle",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4347,6 +5215,8 @@
   "title": "Cherry pickup II",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/cherry-pickup-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/cherry-pickup-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4357,6 +5227,8 @@
   "title": "Count Square Submatrices with All Ones",
   "difficulty": null,
   "url": "https://leetcode.com/problems/count-square-submatrices-with-all-ones/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-square-submatrices-with-all-one",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4367,6 +5239,8 @@
   "title": "Best time to buy and sell stock",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/best-time-to-buy-and-sell-stock",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4377,6 +5251,8 @@
   "title": "Best time to buy and sell stock II",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/best-time-to-buy-and-sell-stock-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4387,6 +5263,8 @@
   "title": "Best time to buy and sell stock III",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/best-time-to-buy-and-sell-stock-iii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4397,6 +5275,8 @@
   "title": "Best time to buy and sell stock IV",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/best-time-to-buy-and-sell-stock-iv",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4407,6 +5287,8 @@
   "title": "Best time to buy and sell stock with transaction fees",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/best-time-to-buy-and-sell-stock-with-cooldown-and-transaction-fees",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4417,6 +5299,8 @@
   "title": "Best Time to Buy and Sell Stock with Cooldown",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/best-time-to-buy-and-sell-stock-with-cooldown",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4427,6 +5311,8 @@
   "title": "Subset sum equals to target",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/subset-sum-equals-to-target",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4437,6 +5323,8 @@
   "title": "Partition equal subset sum",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/partition-equal-subset-sum/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/partition-equal-subset-sum",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4447,6 +5335,8 @@
   "title": "Partition a set into two subsets with minimum absolute sum difference",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/last-stone-weight-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/partition-a-set-into-two-subsets-with-minimum-absolute-sum-difference",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4457,6 +5347,8 @@
   "title": "Count subsets with sum K",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-subsets-with-sum-k",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4467,6 +5359,8 @@
   "title": "Count partitions with given difference",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-partitions-with-given-difference",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4477,6 +5371,8 @@
   "title": "0 and 1 Knapsack",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/0-and-1-knapsack",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4487,6 +5383,8 @@
   "title": "Minimum coins",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/coin-change/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-coins",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4497,6 +5395,8 @@
   "title": "Target sum",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/target-sum/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/target-sum",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4507,6 +5407,8 @@
   "title": "Coin change II",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/coin-change-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/coin-change-ii",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4517,6 +5419,8 @@
   "title": "Unbounded knapsack",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/unbounded-knapsack",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4527,6 +5431,8 @@
   "title": "Rod cutting problem",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/rod-cutting-problem",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4537,6 +5443,8 @@
   "title": "Longest Increasing Subsequence",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/longest-increasing-subsequence/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-increasing-subsequence",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4547,6 +5455,8 @@
   "title": "Print Longest Increasing Subsequence",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/print-longest-increasing-subsequence",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4557,6 +5467,8 @@
   "title": "Largest Divisible Subset",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/largest-divisible-subset/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/largest-divisible-subset",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4567,6 +5479,8 @@
   "title": "Longest String Chain",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/longest-string-chain/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-string-chain",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4577,6 +5491,8 @@
   "title": "Longest Bitonic Subsequence",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-bitonic-subsequence",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4587,6 +5503,8 @@
   "title": "Number of Longest Increasing Subsequences",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/number-of-longest-increasing-subsequence/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/number-of-longest-increasing-subsequences",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4597,6 +5515,8 @@
   "title": "Longest common subsequence",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/longest-common-subsequence/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-common-subsequence",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4607,6 +5527,8 @@
   "title": "Longest common substring",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-common-substring",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4617,6 +5539,8 @@
   "title": "Longest palindromic subsequence",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/longest-palindromic-subsequence/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-palindromic-subsequence",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4627,6 +5551,8 @@
   "title": "Minimum insertions to make string palindrome",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-insertions-to-make-string-palindrome",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4637,6 +5563,8 @@
   "title": "Minimum insertions or deletions to convert string A to B",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/delete-operation-for-two-strings/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-insertions-or-deletions-to-convert-string-a-to-b",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4647,6 +5575,8 @@
   "title": "Shortest common supersequence",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/shortest-common-supersequence/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/shortest-common-supersequence",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4657,6 +5587,8 @@
   "title": "Distinct subsequences",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/distinct-subsequences/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/distinct-subsequences",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4667,6 +5599,8 @@
   "title": "Edit distance",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/edit-distance/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/edit-distance",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4677,6 +5611,8 @@
   "title": "Wildcard matching",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/wildcard-matching/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/wildcard-matching",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4687,6 +5623,8 @@
   "title": "Word Break",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/word-break/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/word-break",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4697,6 +5635,8 @@
   "title": "Count Palindromic Subsequences",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/count-palindromic-subsequences/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-palindromic-subsequences",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4707,6 +5647,8 @@
   "title": "Matrix chain multiplication",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/matrix-chain-multiplication",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4717,6 +5659,8 @@
   "title": "Burst balloons",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/burst-balloons/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/burst-balloons",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4727,6 +5671,8 @@
   "title": "Palindrome partitioning II",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/palindrome-partitioning-ii/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/palindrome-partitioning-ii-",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4737,6 +5683,8 @@
   "title": "Partition Array for Maximum Sum",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/partition-array-for-maximum-sum/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/partition-array-for-maximum-sum",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4747,6 +5695,8 @@
   "title": "Minimum cost to cut the stick",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/minimum-cost-to-cut-a-stick/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-cost-to-cut-the-stick",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4757,6 +5707,8 @@
   "title": "Different Ways to Evaluate a Boolean Expression",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/parsing-a-boolean-expression/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/different-ways-to-evaluate-a-boolean-expression",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4767,6 +5719,8 @@
   "title": "Bit PreRequisites for TRIE Problems",
   "difficulty": null,
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/bit-prerequisites-for-trie-problems",
+  "tuf_kind": "learning",
   "kind": "learn"
  },
  {
@@ -4777,6 +5731,8 @@
   "title": "Trie Implementation and Operations",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/implement-trie-prefix-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/trie-implementation-and-operations",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4787,6 +5743,8 @@
   "title": "Trie Implementation and Advanced Operations",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/implement-trie-ii-prefix-tree/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/trie-implementation-and-advanced-operations",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4797,6 +5755,8 @@
   "title": "Longest Word with All Prefixes",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/longest-word-with-all-prefixes/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-word-with-all-prefixes",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4807,6 +5767,8 @@
   "title": "Number of distinct substrings in a string",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/number-of-distinct-substrings-in-a-string/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/number-of-distinct-substrings-in-a-string",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4817,6 +5779,8 @@
   "title": "Maximum XOR of two numbers in an array",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/maximum-xor-of-two-numbers-in-an-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4827,6 +5791,8 @@
   "title": "Maximum Xor with an element from an array",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/maximum-xor-with-an-element-from-array/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/maximum-xor-with-an-element-from-an-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4837,6 +5803,8 @@
   "title": "Reverse every word in a string",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/reverse-words-in-a-string/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/reverse-every-word-in-a-string",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4846,7 +5814,9 @@
   "subtopic": "Medium Problems",
   "title": "Minimum number of bracket reversals to make an expression balanced",
   "difficulty": "Medium",
-  "url": "https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/",
+  "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/minimum-number-of-bracket-reversals-to-make-an-expression-balanced",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4857,6 +5827,8 @@
   "title": "Count and say",
   "difficulty": "Medium",
   "url": "https://leetcode.com/problems/count-and-say/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-and-say",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4867,6 +5839,8 @@
   "title": "Hashing In Strings",
   "difficulty": null,
   "url": null,
+  "tuf_url": "https://takeuforward.org/learning/dsa/hashing-in-strings-theory",
+  "tuf_kind": "learning",
   "kind": "learn"
  },
  {
@@ -4877,6 +5851,8 @@
   "title": "Rabin Karp Algorithm",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/repeated-string-match/discuss/416144/Rabin-Karp-algorithm-C%2B%2B-implementation",
+  "tuf_url": "https://takeuforward.org/practice/dsa/rabin-karp-algorithm",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4887,6 +5863,8 @@
   "title": "Z function",
   "difficulty": "Hard",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/z-function",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4897,6 +5875,8 @@
   "title": "KMP Algorithm or LPS array",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/implement-strstr/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/kmp-algorithm-or-lps-array",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4907,6 +5887,8 @@
   "title": "Shortest Palindrome",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/shortest-palindrome/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/shortest-palindrome",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4917,6 +5899,8 @@
   "title": "Longest happy prefix",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/longest-happy-prefix/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/longest-happy-prefix",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4927,6 +5911,8 @@
   "title": "Print all primes till N",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/print-all-primes-till-n",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4937,6 +5923,8 @@
   "title": "Prime factorisation of a Number",
   "difficulty": "Medium",
   "url": null,
+  "tuf_url": "https://takeuforward.org/practice/dsa/prime-factorisation-of-a-number",
+  "tuf_kind": "practice",
   "kind": "problem"
  },
  {
@@ -4947,6 +5935,8 @@
   "title": "Count primes in range L to R",
   "difficulty": "Hard",
   "url": "https://leetcode.com/problems/count-primes/",
+  "tuf_url": "https://takeuforward.org/practice/dsa/count-primes-in-range-l-to-r",
+  "tuf_kind": "practice",
   "kind": "problem"
  }
 ]

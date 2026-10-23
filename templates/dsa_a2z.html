@@ -58,10 +58,11 @@
                 {% for it in g.rows %}
                 <div class="az-row" data-title="{{ it.title | lower }}">
                     <span class="az-dot{% if it.status %} is-{{ it.status }}{% endif %}" aria-hidden="true"></span>
-                    <span class="az-title">{{ it.title }}</span>
+                    {% if it.id in lesson_ids %}<a class="az-title" href="{{ url_for('dsa_a2z_learn', problem_id=it.id) }}">{{ it.title }}</a>{% else %}<span class="az-title">{{ it.title }}</span>{% endif %}
                     {% if it.kind == 'learn' %}<span class="az-theory">Theory</span>{% endif %}
                     {% if it.difficulty %}<span class="az-diff az-diff--{{ it.difficulty | lower }}">{{ it.difficulty }}</span>{% endif %}
-                    {% if it.url %}<a class="az-solve" href="{{ it.url }}" target="_blank" rel="noopener">Solve &#8599;</a>{% endif %}
+                    {% if it.id in lesson_ids %}<a class="az-learn" href="{{ url_for('dsa_a2z_learn', problem_id=it.id) }}">Learn &rarr;</a>{% endif %}
+                    {% if it.url %}<a class="az-solve" href="{{ it.url }}" target="_blank" rel="noopener">Solve &#8599;</a>{% elif it.tuf_kind == 'practice' and it.tuf_url %}<a class="az-solve" href="{{ it.tuf_url }}" target="_blank" rel="noopener">Solve &#8599;</a>{% elif it.id not in lesson_ids and it.tuf_kind == 'learning' and it.tuf_url %}<a class="az-solve" href="{{ it.tuf_url }}" target="_blank" rel="noopener">Learn &#8599;</a>{% endif %}
                     {% if current_user.is_authenticated %}
                     <button type="button" class="az-mark{% if it.status == 'solved' %} is-done{% endif %}"
                             data-id="{{ it.id }}" data-step="{{ s.step }}" data-label="{% if it.kind == 'learn' %}Mark done{% else %}Mark as solved{% endif %}"
