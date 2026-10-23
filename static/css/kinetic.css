@@ -1264,3 +1264,102 @@ body.sb-workspace .hero h2.hero-h {
 @media (prefers-reduced-motion: reduce) {
   .sb-work .upload-card::before, .sb-work .upload-card::after { animation: none; }
 }
+
+/* ---------- Opposite-sweep card transitions (site-wide) ----------
+   Tile cards flood with the OPPOSITE colour on hover: light cards
+   flood ink (text turns paper, accents go lime), and the same
+   cards on dark surfaces (DSA, research theme) flood paper (text
+   turns ink). Form cards and data panels are deliberately not
+   tiles and keep their calm hover states. */
+.b-card--feature, .b-card--lite, .b-card--stat, .b-card--cta,
+.dsa-card, .dg-card, .dp-card {
+  position: relative; z-index: 0; overflow: hidden;
+  transition: color 0.35s ease, border-color 0.35s ease;
+}
+.b-card--feature::before, .b-card--lite::before, .b-card--stat::before,
+.b-card--cta::before, .dsa-card::before, .dg-card::before, .dp-card::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--sb-ink); transform: translateY(101%);
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.b-card--feature:hover::before, .b-card--feature:focus-visible::before,
+.b-card--lite:hover::before, .b-card--lite:focus-visible::before,
+.b-card--stat:hover::before, .b-card--stat:focus-visible::before,
+.b-card--cta:hover::before, .b-card--cta:focus-visible::before,
+.dsa-card:hover::before, .dsa-card:focus-visible::before,
+.dg-card:hover::before, .dg-card:focus-visible::before,
+.dp-card:hover::before, .dp-card:focus-visible::before { transform: translateY(0); }
+.b-card--feature:hover, .b-card--lite:hover, .b-card--stat:hover,
+.b-card--cta:hover, .dsa-card:hover, .dg-card:hover, .dp-card:hover { border-color: var(--sb-ink); }
+.b-card--feature :is(h2, h3, h4, p), .b-card--lite :is(h2, h3, h4, p),
+.b-card--stat :is(h2, h3, h4, p), .b-card--cta :is(h2, h3, h4, p),
+.dsa-card :is(h2, h3, h4, p), .dg-card :is(h2, h3, h4, p), .dp-card :is(h2, h3, h4, p) {
+  transition: color 0.3s ease;
+}
+.b-card--feature:hover :is(h2, h3, h4), .b-card--lite:hover :is(h2, h3, h4),
+.b-card--stat:hover :is(h2, h3, h4), .b-card--cta:hover :is(h2, h3, h4),
+.dsa-card:hover :is(h2, h3, h4), .dg-card:hover :is(h2, h3, h4), .dp-card:hover :is(h2, h3, h4) { color: #fff !important; }
+.b-card--feature:hover p, .b-card--lite:hover p, .b-card--stat:hover p,
+.b-card--cta:hover p, .dsa-card:hover p, .dg-card:hover p, .dp-card:hover p { color: #d7d7d0 !important; }
+.b-card--feature:hover .b-icon, .b-card--lite:hover .b-icon,
+.dsa-card:hover .b-icon, .dg-card:hover .b-icon, .dp-card:hover .b-icon {
+  background: var(--sb-lime) !important; color: var(--sb-ink) !important; border-color: var(--sb-lime) !important;
+}
+.b-card--stat:hover :is(b, strong) { color: var(--sb-lime) !important; }
+/* Dark surfaces: the flood reverses to paper. */
+body.sb-dsa .b-card--feature::before, body.sb-dsa .b-card--lite::before,
+body.sb-dsa .b-card--stat::before, body.sb-dsa .b-card--cta::before,
+body.sb-dsa .dsa-card::before, body.sb-dsa .dg-card::before, body.sb-dsa .dp-card::before,
+[data-theme="research"] .b-card--feature::before, [data-theme="research"] .b-card--lite::before,
+[data-theme="research"] .b-card--stat::before, [data-theme="research"] .b-card--cta::before {
+  background: var(--sb-paper);
+}
+body.sb-dsa .b-card--feature:hover, body.sb-dsa .b-card--lite:hover,
+body.sb-dsa .b-card--stat:hover, body.sb-dsa .b-card--cta:hover,
+body.sb-dsa .dsa-card:hover, body.sb-dsa .dg-card:hover, body.sb-dsa .dp-card:hover,
+[data-theme="research"] .b-card--feature:hover, [data-theme="research"] .b-card--lite:hover,
+[data-theme="research"] .b-card--stat:hover, [data-theme="research"] .b-card--cta:hover { border-color: var(--sb-paper); }
+body.sb-dsa .b-card--feature:hover :is(h2, h3, h4), body.sb-dsa .b-card--lite:hover :is(h2, h3, h4),
+body.sb-dsa .b-card--stat:hover :is(h2, h3, h4), body.sb-dsa .b-card--cta:hover :is(h2, h3, h4),
+body.sb-dsa .dsa-card:hover :is(h2, h3, h4), body.sb-dsa .dg-card:hover :is(h2, h3, h4),
+body.sb-dsa .dp-card:hover :is(h2, h3, h4),
+[data-theme="research"] .b-card--feature:hover :is(h2, h3, h4),
+[data-theme="research"] .b-card--lite:hover :is(h2, h3, h4),
+[data-theme="research"] .b-card--stat:hover :is(h2, h3, h4),
+[data-theme="research"] .b-card--cta:hover :is(h2, h3, h4) { color: var(--sb-ink) !important; }
+body.sb-dsa .b-card--feature:hover p, body.sb-dsa .b-card--lite:hover p,
+body.sb-dsa .b-card--stat:hover p, body.sb-dsa .b-card--cta:hover p,
+body.sb-dsa .dsa-card:hover p, body.sb-dsa .dg-card:hover p, body.sb-dsa .dp-card:hover p,
+[data-theme="research"] .b-card--feature:hover p, [data-theme="research"] .b-card--lite:hover p,
+[data-theme="research"] .b-card--stat:hover p, [data-theme="research"] .b-card--cta:hover p { color: #4c4c46 !important; }
+body.sb-dsa .b-card--feature:hover .b-icon, body.sb-dsa .b-card--lite:hover .b-icon,
+body.sb-dsa .dsa-card:hover .b-icon, body.sb-dsa .dg-card:hover .b-icon, body.sb-dsa .dp-card:hover .b-icon,
+[data-theme="research"] .b-card--feature:hover .b-icon, [data-theme="research"] .b-card--lite:hover .b-icon {
+  background: var(--sb-ink) !important; color: var(--sb-paper) !important; border-color: var(--sb-ink) !important;
+}
+body.sb-dsa .b-card--stat:hover :is(b, strong),
+[data-theme="research"] .b-card--stat:hover :is(b, strong) { color: var(--sb-blue) !important; }
+
+/* Sweep corrections: .dsa-card is the DSA filter FORM (not a tile)
+   — unsweep it. The real DSA tiles are .dsa-prob rows, and the
+   diagnosis/problem cards (.dg-card/.dp-card) live on dark glass
+   pages, so their flood is paper, with their own inner accents. */
+.sb-dsa .dsa-card { overflow: visible; }
+.sb-dsa .dsa-card::before { display: none; }
+.sb-dsa .dsa-card:hover { border-color: var(--b-border); }
+.dsa-prob { position: relative; z-index: 0; overflow: hidden; }
+.dsa-prob::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--sb-paper); transform: translateY(101%);
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.dsa-prob:hover::before, .dsa-prob:focus-visible::before { transform: translateY(0); }
+.dsa-prob:hover .t { color: var(--sb-ink) !important; }
+.dsa-prob:hover .tags { color: #4c4c46 !important; }
+.dg-card::before, .dp-card::before { background: var(--sb-paper); }
+body .dg-card:hover :is(h2, h3, h4), body .dp-card:hover :is(h2, h3, h4) { color: var(--sb-ink) !important; }
+body .dg-card:hover p, body .dp-card:hover p { color: #4c4c46 !important; }
+.dg-card:hover, .dp-card:hover { border-color: var(--sb-paper); }
+.dg-card:hover .dg-h3 { color: var(--sb-ink) !important; }
+.dg-card:hover .dg-stat .v { color: var(--sb-blue) !important; }
+.dg-card:hover .dg-stat .l { color: #4c4c46 !important; }
