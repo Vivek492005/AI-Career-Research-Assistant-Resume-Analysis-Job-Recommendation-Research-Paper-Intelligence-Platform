@@ -16,12 +16,15 @@
         </defs>
     </svg>
     <div class="roadmap-glow" aria-hidden="true"></div>
-    <figure class="roadmap-hero-side roadmap-hero-side--left" aria-hidden="true">
-        <img src="{{ url_for('static', filename='img/roadmap-hero-left.jpg') }}" alt="" loading="eager">
-    </figure>
-    <figure class="roadmap-hero-side roadmap-hero-side--right" aria-hidden="true">
-        <img src="{{ url_for('static', filename='img/roadmap-hero-right.jpg') }}" alt="" loading="eager">
-    </figure>
+    <div class="roadmap-beams" aria-hidden="true">
+        <div class="roadmap-beam roadmap-beam--left" style="--beam-top:22%;--beam-tilt:-9deg;--beam-delay:0s;"><span>Python</span></div>
+        <div class="roadmap-beam roadmap-beam--left" style="--beam-top:48%;--beam-tilt:0deg;--beam-delay:.5s;"><span>Machine Learning</span></div>
+        <div class="roadmap-beam roadmap-beam--left" style="--beam-top:74%;--beam-tilt:9deg;--beam-delay:1s;"><span>JavaScript</span></div>
+        <div class="roadmap-beam roadmap-beam--right" style="--beam-top:16%;--beam-tilt:10deg;--beam-delay:.3s;"><span>NLP</span></div>
+        <div class="roadmap-beam roadmap-beam--right" style="--beam-top:38%;--beam-tilt:4deg;--beam-delay:.8s;"><span>MLOps</span></div>
+        <div class="roadmap-beam roadmap-beam--right" style="--beam-top:60%;--beam-tilt:-4deg;--beam-delay:.2s;"><span>Docker</span></div>
+        <div class="roadmap-beam roadmap-beam--right" style="--beam-top:82%;--beam-tilt:-10deg;--beam-delay:1.2s;"><span>SQL</span></div>
+    </div>
     <div class="roadmap-hero-text b-reveal" id="roadmap-hero-text">
         <span class="b-pill"><span class="b-pulse"></span>Feature 18 &mdash; Roadmaps</span>
         <h1>Skill-gap <span class="b-grad">learning roadmaps</span></h1>
