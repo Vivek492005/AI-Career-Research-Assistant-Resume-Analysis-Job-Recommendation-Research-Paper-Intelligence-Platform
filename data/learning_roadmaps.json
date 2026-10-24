@@ -2944,11 +2944,11 @@
       },
       {
        "free": true,
-       "note": "Complete beginner tutorial article.",
-       "provider": "freeCodeCamp",
-       "title": "Excel Full Tutorial",
+       "note": "Complete beginner tutorial, free.",
+       "provider": "GCFGlobal",
+       "title": "Excel Tutorial",
        "type": "course",
-       "url": "https://www.freecodecamp.org/news/excel-tutorial/"
+       "url": "https://edu.gcfglobal.org/en/excel/"
       },
       {
        "free": true,
@@ -3080,11 +3080,11 @@
       },
       {
        "free": true,
-       "note": "Tutorials on automating spreadsheet tasks.",
-       "provider": "freeCodeCamp",
-       "title": "Excel Automation Articles",
+       "note": "Reference for advanced formulas and shortcuts.",
+       "provider": "ExcelJet",
+       "title": "ExcelJet: Excel Functions and Formulas",
        "type": "article",
-       "url": "https://www.freecodecamp.org/news/excel-tutorial/"
+       "url": "https://exceljet.net/"
       }
      ],
      "stage": "advanced",
@@ -3143,12 +3143,12 @@
        "note": "Short video lessons with exercises from Google engineers."
       },
       {
-       "title": "scikit-learn Tutorials",
+       "title": "scikit-learn Getting Started",
        "type": "docs",
-       "url": "https://scikit-learn.org/stable/tutorial/",
+       "url": "https://scikit-learn.org/stable/getting_started.html",
        "provider": "scikit-learn",
        "free": true,
-       "note": "Official tutorials covering every core estimator."
+       "note": "Official quick-start guide for core estimators."
       },
       {
        "title": "Andrew Ng YouTube Lectures",
@@ -4719,6 +4719,1212 @@
      "checkpoint": "You can manage infrastructure as code, run GitOps delivery on Kubernetes, and operate services against SLOs with real observability."
     }
    ]
+  },
+  {
+   "demand": "Very High",
+   "domain": "AI/ML",
+   "id": "nlp",
+   "name": "Natural Language Processing",
+   "stages": [
+    {
+     "checkpoint": "You can build a working text classifier from raw text: the sentiment model trains, its F1 is reported honestly, and you can explain TF-IDF, tokenization choices, and where the model fails.",
+     "practice_tasks": [
+      "Build a movie-review sentiment classifier with TF-IDF and report precision, recall, and F1",
+      "Write an NER extractor that pulls people, organizations, and dates from news articles",
+      "Build a spam-vs-ham classifier and show its 10 most confused examples",
+      "Write a script that cleans and tokenizes a 10,000-document corpus into a reusable dataset"
+     ],
+     "resources": [
+      {
+       "free": true,
+       "note": "Free course from text basics to transformers, with code.",
+       "provider": "Hugging Face",
+       "title": "Hugging Face NLP Course",
+       "type": "course",
+       "url": "https://huggingface.co/learn/nlp-course"
+      },
+      {
+       "free": true,
+       "note": "Free micro-courses with exercises; search the catalog for NLP.",
+       "provider": "Kaggle Learn",
+       "title": "Kaggle Learn",
+       "type": "practice",
+       "url": "https://www.kaggle.com/learn"
+      },
+      {
+       "free": true,
+       "note": "Best practical reference for tokenization, NER, and pipelines.",
+       "provider": "spaCy",
+       "title": "spaCy Usage Documentation",
+       "type": "docs",
+       "url": "https://spacy.io/usage"
+      },
+      {
+       "free": true,
+       "note": "Classic library for teaching tokenization and tagging.",
+       "provider": "NLTK",
+       "title": "Natural Language Toolkit Documentation",
+       "type": "docs",
+       "url": "https://www.nltk.org/"
+      },
+      {
+       "free": true,
+       "note": "TF-IDF, classifiers, and evaluation metrics done properly.",
+       "provider": "scikit-learn",
+       "title": "scikit-learn User Guide",
+       "type": "docs",
+       "url": "https://scikit-learn.org/stable/"
+      }
+     ],
+     "stage": "beginner",
+     "title": "Text Basics and Classical NLP",
+     "topics": [
+      "Cleaning text with regex, lowercasing, and tokenization",
+      "Stopwords, stemming, and lemmatization — and when each hurts",
+      "Bag of Words and TF-IDF representations",
+      "N-grams and simple language model intuition",
+      "Sentiment analysis with scikit-learn classifiers",
+      "Named entity recognition basics",
+      "Building a text classification pipeline end to end",
+      "Evaluating with precision, recall, and F1"
+     ],
+     "weeks": 5
+    },
+    {
+     "checkpoint": "You can fine-tune a transformer for a real task: the model beats the classical baseline, you can explain tokenization and truncation choices, and your error analysis names the top failure causes.",
+     "practice_tasks": [
+      "Fine-tune a transformer for sentiment classification and beat your TF-IDF baseline measurably",
+      "Fine-tune a token-classification model for NER on a small labeled set",
+      "Build a question-answering demo over your own documents with chunking",
+      "Write an error-analysis report: 20 failures grouped by cause, with one fix applied"
+     ],
+     "resources": [
+      {
+       "free": true,
+       "note": "Official docs for pipelines, models, and Trainer.",
+       "provider": "Hugging Face",
+       "title": "Transformers Documentation",
+       "type": "docs",
+       "url": "https://huggingface.co/docs"
+      },
+      {
+       "free": true,
+       "note": "Fine-tuning chapters with runnable notebooks.",
+       "provider": "Hugging Face",
+       "title": "Hugging Face NLP Course",
+       "type": "course",
+       "url": "https://huggingface.co/learn/nlp-course"
+      },
+      {
+       "free": true,
+       "note": "Top-down deep learning course, free with video lessons.",
+       "provider": "fast.ai",
+       "title": "Practical Deep Learning for Coders",
+       "type": "course",
+       "url": "https://course.fast.ai/"
+      },
+      {
+       "free": true,
+       "note": "Clearest visual explanation of BERT internals.",
+       "provider": "Jay Alammar",
+       "title": "The Illustrated BERT",
+       "type": "article",
+       "url": "https://jalammar.github.io/illustrated-bert/"
+      },
+      {
+       "free": true,
+       "note": "Visual intuition for attention and neural networks.",
+       "provider": "3Blue1Brown",
+       "title": "3Blue1Brown",
+       "type": "video",
+       "url": "https://www.youtube.com/@3blue1brown"
+      }
+     ],
+     "stage": "intermediate",
+     "title": "Transformers and Fine-Tuning",
+     "topics": [
+      "Attention intuition: why transformers replaced RNNs for text",
+      "BERT-style encoders and what pretraining actually teaches",
+      "Hugging Face Transformers pipelines for real tasks",
+      "Tokenizers: WordPiece and BPE, and truncation trade-offs",
+      "Fine-tuning for classification, NER, and question answering",
+      "Sequence classification vs token classification",
+      "Handling long documents with chunking and sliding windows",
+      "Error analysis: reading confusion cases instead of just accuracy"
+     ],
+     "weeks": 6
+    },
+    {
+     "checkpoint": "You can ship a document Q&A product: retrieval works over thousands of documents, answers carry citations, you measured the serving trade-offs, and you can explain how you evaluate faithfulness.",
+     "practice_tasks": [
+      "Build a semantic search engine over 5,000+ documents with a vector database",
+      "Ship a RAG document Q&A app with cited answers and a faithfulness check",
+      "Quantize a fine-tuned model and measure the size, speed, and accuracy trade-off",
+      "Add logging and a feedback loop to your Q&A app, then fix its worst failure class"
+     ],
+     "resources": [
+      {
+       "free": true,
+       "note": "Graduate-level course; lectures free online.",
+       "provider": "Stanford",
+       "title": "CS224N: NLP with Deep Learning",
+       "type": "course",
+       "url": "https://web.stanford.edu/class/cs224n/"
+      },
+      {
+       "free": true,
+       "note": "Authoritative textbook, draft freely available online.",
+       "provider": "Jurafsky and Martin",
+       "title": "Speech and Language Processing (3rd edition draft)",
+       "type": "book",
+       "url": "https://web.stanford.edu/~jurafsky/slp3/"
+      },
+      {
+       "free": true,
+       "note": "Vector database concepts: indexes, metadata filtering, hybrid search.",
+       "provider": "Pinecone",
+       "title": "Pinecone Documentation",
+       "type": "docs",
+       "url": "https://docs.pinecone.io/"
+      },
+      {
+       "free": true,
+       "note": "Open-source vector search you can self-host.",
+       "provider": "Qdrant",
+       "title": "Qdrant Documentation",
+       "type": "docs",
+       "url": "https://qdrant.tech/documentation/"
+      },
+      {
+       "free": true,
+       "note": "Worked examples for embeddings, RAG, and structured outputs.",
+       "provider": "OpenAI",
+       "title": "OpenAI Cookbook",
+       "type": "docs",
+       "url": "https://cookbook.openai.com/"
+      }
+     ],
+     "stage": "advanced",
+     "title": "Production NLP and LLM-Era NLP",
+     "topics": [
+      "Multilingual NLP and practical issues with Indic languages",
+      "Embeddings and semantic search over large document sets",
+      "Retrieval-augmented generation over private documents",
+      "LLM-based extraction and structuring of messy text",
+      "Evaluating retrieval and generation: faithfulness checks",
+      "Distillation and quantization for cheaper serving",
+      "Monitoring drift and collecting user feedback loops",
+      "Shipping a document Q&A product end to end"
+     ],
+     "weeks": 7
+    }
+   ],
+   "summary": "NLP is how machines read, understand, and generate human language — it powers search, chatbots, translation, and document analysis. It builds on Python and basic machine learning, and it is the foundation under modern LLM applications. This roadmap takes you from classical text methods to transformers and production NLP systems."
+  },
+  {
+   "demand": "Very High",
+   "domain": "AI/ML",
+   "id": "generative-ai",
+   "name": "Generative AI",
+   "stages": [
+    {
+     "checkpoint": "You can build a useful LLM app from scratch: the chatbot answers from provided context, outputs valid structured JSON, and you can explain tokens, context limits, and how you check outputs.",
+     "practice_tasks": [
+      "Build a chatbot that answers from a fixed FAQ using structured outputs",
+      "Write a prompt-evaluation notebook comparing zero-shot vs few-shot on 20 examples",
+      "Build a semantic search demo over your own notes with embeddings",
+      "Add a verification step that catches and flags one hallucination pattern"
+     ],
+     "resources": [
+      {
+       "free": true,
+       "note": "Practical prompting patterns with examples.",
+       "provider": "Prompt Engineering Guide",
+       "title": "Prompt Engineering Guide",
+       "type": "docs",
+       "url": "https://www.promptingguide.ai/"
+      },
+      {
+       "free": true,
+       "note": "API reference, guides, and model capabilities.",
+       "provider": "OpenAI",
+       "title": "OpenAI Platform Documentation",
+       "type": "docs",
+       "url": "https://platform.openai.com/docs"
+      },
+      {
+       "free": true,
+       "note": "Free short courses on prompting and LLM use.",
+       "provider": "DeepLearning.AI",
+       "title": "DeepLearning.AI Short Courses",
+       "type": "course",
+       "url": "https://www.deeplearning.ai/short-courses/"
+      },
+      {
+       "free": true,
+       "note": "Gemini API docs, cookbooks, and quickstarts.",
+       "provider": "Google",
+       "title": "Google AI for Developers",
+       "type": "docs",
+       "url": "https://ai.google.dev/"
+      },
+      {
+       "free": true,
+       "note": "Long-form free video courses on LLMs and APIs.",
+       "provider": "freeCodeCamp",
+       "title": "freeCodeCamp",
+       "type": "video",
+       "url": "https://www.youtube.com/@freecodecamp"
+      }
+     ],
+     "stage": "beginner",
+     "title": "Prompting and LLM Fundamentals",
+     "topics": [
+      "How LLMs work: tokens, context windows, and sampling",
+      "Prompt engineering patterns: role, format, constraints, examples",
+      "Few-shot prompting and when it beats fine-tuning",
+      "Structured outputs with JSON schemas",
+      "Using chat APIs from OpenAI, Anthropic, and Google",
+      "Embeddings and semantic search in one afternoon",
+      "Hallucinations: why they happen and how to verify outputs",
+      "Cost and latency basics: model choice and token budgets"
+     ],
+     "weeks": 4
+    },
+    {
+     "checkpoint": "You can build and measure a RAG system: retrieval quality is evaluated on real questions, you can explain chunking and embedding choices, and you know when fine-tuning beats prompting.",
+     "practice_tasks": [
+      "Build a RAG app over 200+ pages of docs with chunking you tuned by measurement",
+      "Run a retrieval evaluation: compare two chunking strategies on 30 questions",
+      "Fine-tune a small model with LoRA for one narrow task and compare it to prompting",
+      "Add guardrails (input filtering + output checks) to your RAG app"
+     ],
+     "resources": [
+      {
+       "free": true,
+       "note": "Chains, retrievers, and production patterns.",
+       "provider": "LangChain",
+       "title": "LangChain Documentation",
+       "type": "docs",
+       "url": "https://docs.langchain.com/"
+      },
+      {
+       "free": true,
+       "note": "Data framework for RAG: ingestion, indexes, query engines.",
+       "provider": "LlamaIndex",
+       "title": "LlamaIndex Documentation",
+       "type": "docs",
+       "url": "https://docs.llamaindex.ai/"
+      },
+      {
+       "free": true,
+       "note": "Models, datasets, and fine-tuning libraries.",
+       "provider": "Hugging Face",
+       "title": "Hugging Face Documentation",
+       "type": "docs",
+       "url": "https://huggingface.co/docs"
+      },
+      {
+       "free": true,
+       "note": "Free short courses on RAG and fine-tuning workflows.",
+       "provider": "DeepLearning.AI",
+       "title": "DeepLearning.AI Short Courses",
+       "type": "course",
+       "url": "https://www.deeplearning.ai/short-courses/"
+      },
+      {
+       "free": true,
+       "note": "Worked examples for RAG, evals, and fine-tuning.",
+       "provider": "OpenAI",
+       "title": "OpenAI Cookbook",
+       "type": "docs",
+       "url": "https://cookbook.openai.com/"
+      }
+     ],
+     "stage": "intermediate",
+     "title": "RAG and Fine-Tuning",
+     "topics": [
+      "RAG architecture end to end: ingest, retrieve, generate",
+      "Chunking strategies and their effect on retrieval quality",
+      "Embedding model choices and vector database options",
+      "Retrieval evaluation: hit rate and context precision",
+      "Prompt caching, routing, and structured output pipelines",
+      "LoRA and QLoRA fine-tuning concepts",
+      "Evaluation harnesses and LLM-as-judge pitfalls",
+      "Guardrails and safety filters for user-facing apps"
+     ],
+     "weeks": 6
+    },
+    {
+     "checkpoint": "You can ship a multimodal GenAI product: it handles text plus at least one other modality, has a golden-set eval suite that runs on every change, and you can show measured cost and latency numbers.",
+     "practice_tasks": [
+      "Build a multimodal demo: image understanding plus text answers in one app",
+      "Build a voice agent prototype with transcription, an LLM, and speech output",
+      "Create a golden-set evaluation suite (50 cases) and run it in CI for your app",
+      "Cut your app's per-query cost by at least 30% with caching or routing, measured"
+     ],
+     "resources": [
+      {
+       "free": true,
+       "note": "Claude API docs, prompt library, and cookbook.",
+       "provider": "Anthropic",
+       "title": "Anthropic Documentation",
+       "type": "docs",
+       "url": "https://docs.anthropic.com/"
+      },
+      {
+       "free": true,
+       "note": "Multimodal Gemini APIs, image and audio generation.",
+       "provider": "Google",
+       "title": "Google AI for Developers",
+       "type": "docs",
+       "url": "https://ai.google.dev/"
+      },
+      {
+       "free": true,
+       "note": "Browse and try open image, audio, and video models.",
+       "provider": "Hugging Face",
+       "title": "Hugging Face Models",
+       "type": "practice",
+       "url": "https://huggingface.co/models"
+      },
+      {
+       "free": true,
+       "note": "Free course including image generation lessons.",
+       "provider": "fast.ai",
+       "title": "Practical Deep Learning for Coders",
+       "type": "course",
+       "url": "https://course.fast.ai/"
+      },
+      {
+       "free": true,
+       "note": "Talks and demos on open models and multimodal work.",
+       "provider": "Hugging Face",
+       "title": "Hugging Face",
+       "type": "video",
+       "url": "https://www.youtube.com/@HuggingFace"
+      }
+     ],
+     "stage": "advanced",
+     "title": "Multimodal and Production GenAI",
+     "topics": [
+      "Image generation APIs and diffusion intuition",
+      "Speech: transcription, text-to-speech, and voice agents",
+      "Video generation tools and their current limits",
+      "Multimodal models: images plus text in one workflow",
+      "Evaluation at scale: golden sets and regression suites",
+      "Cost optimization: caching, routing, and smaller models",
+      "Observability: tracing, logging, and latency breakdowns",
+      "Shipping a GenAI product with evals and safety in place"
+     ],
+     "weeks": 8
+    }
+   ],
+   "summary": "Generative AI covers models that create text, images, audio, and video — and the engineering around them: prompting, retrieval, fine-tuning, and evaluation. It moves fast, so this roadmap focuses on durable skills (APIs, RAG, evals, shipping) rather than any single model. It assumes basic Python; no prior ML research background is needed."
+  },
+  {
+   "demand": "Very High",
+   "domain": "AI/ML",
+   "id": "agentic-ai",
+   "name": "Agentic AI",
+   "stages": [
+    {
+     "checkpoint": "You can build a working tool-using agent: it completes multi-step tasks with search and calculation tools, recovers from tool errors, and you can report its success rate on your own evaluation set.",
+     "practice_tasks": [
+      "Build a ReAct agent that answers questions using web search and a calculator tool",
+      "Give your agent structured-output tools and make it recover from 3 bad tool arguments",
+      "Add short-term memory so the agent handles a 5-step multi-turn task",
+      "Write a 10-task evaluation set and score your agent's success rate honestly"
+     ],
+     "resources": [
+      {
+       "free": true,
+       "note": "Function calling and structured outputs reference.",
+       "provider": "OpenAI",
+       "title": "OpenAI Platform Documentation",
+       "type": "docs",
+       "url": "https://platform.openai.com/docs"
+      },
+      {
+       "free": true,
+       "note": "Tool use guides and agent cookbook patterns.",
+       "provider": "Anthropic",
+       "title": "Anthropic Documentation",
+       "type": "docs",
+       "url": "https://docs.anthropic.com/"
+      },
+      {
+       "free": true,
+       "note": "Agent building blocks and tool integrations.",
+       "provider": "LangChain",
+       "title": "LangChain Documentation",
+       "type": "docs",
+       "url": "https://docs.langchain.com/"
+      },
+      {
+       "free": true,
+       "note": "Free short courses on agentic workflows.",
+       "provider": "DeepLearning.AI",
+       "title": "DeepLearning.AI Short Courses",
+       "type": "course",
+       "url": "https://www.deeplearning.ai/short-courses/"
+      },
+      {
+       "free": true,
+       "note": "Agent prompting patterns and ReAct examples.",
+       "provider": "Prompt Engineering Guide",
+       "title": "Prompt Engineering Guide",
+       "type": "docs",
+       "url": "https://www.promptingguide.ai/"
+      }
+     ],
+     "stage": "beginner",
+     "title": "Tool Use and Your First Agents",
+     "topics": [
+      "Function and tool calling with JSON schemas",
+      "Structured outputs that tools can trust",
+      "The ReAct pattern: reason, act, observe, repeat",
+      "A single-agent loop with short-term memory",
+      "System prompts that keep agents on task",
+      "Handling tool errors, retries, and bad arguments",
+      "Building a simple agent with web search and a calculator",
+      "Evaluating task success instead of vibes"
+     ],
+     "weeks": 4
+    },
+    {
+     "checkpoint": "You can build a controllable agent: it runs as a state machine with checkpoints, asks a human before risky actions, and you can read its traces to explain why a run failed.",
+     "practice_tasks": [
+      "Rebuild your beginner agent as a LangGraph state machine with a checkpoint",
+      "Build a RAG agent that routes queries and retries retrieval when answers are weak",
+      "Add a human-approval step before any irreversible tool action",
+      "Trace 10 agent runs and fix the most common failure trajectory"
+     ],
+     "resources": [
+      {
+       "free": true,
+       "note": "State-machine agent framework with checkpoints and human review.",
+       "provider": "LangChain",
+       "title": "LangGraph Documentation",
+       "type": "docs",
+       "url": "https://langchain-ai.github.io/langgraph/"
+      },
+      {
+       "free": true,
+       "note": "Agents, query engines, and memory over documents.",
+       "provider": "LlamaIndex",
+       "title": "LlamaIndex Documentation",
+       "type": "docs",
+       "url": "https://docs.llamaindex.ai/"
+      },
+      {
+       "free": true,
+       "note": "Role-based multi-agent crews with tasks and tools.",
+       "provider": "CrewAI",
+       "title": "CrewAI Documentation",
+       "type": "docs",
+       "url": "https://docs.crewai.com/"
+      },
+      {
+       "free": true,
+       "note": "Agent patterns, evals, and orchestration examples.",
+       "provider": "OpenAI",
+       "title": "OpenAI Cookbook",
+       "type": "docs",
+       "url": "https://cookbook.openai.com/"
+      },
+      {
+       "free": true,
+       "note": "Free short courses on multi-agent and agentic patterns.",
+       "provider": "DeepLearning.AI",
+       "title": "DeepLearning.AI Short Courses",
+       "type": "course",
+       "url": "https://www.deeplearning.ai/short-courses/"
+      }
+     ],
+     "stage": "intermediate",
+     "title": "Frameworks, Memory, and RAG Agents",
+     "topics": [
+      "LangGraph state machines for controllable agents",
+      "LlamaIndex agents over your own documents",
+      "Short-term vs long-term memory design",
+      "RAG agents: query routing and self-correction",
+      "Human-in-the-loop approvals for risky actions",
+      "Parallel tool calls and fan-out patterns",
+      "Observability and tracing for agent runs",
+      "Trajectory evaluations: judging the path, not just the answer"
+     ],
+     "weeks": 6
+    },
+    {
+     "checkpoint": "You can ship a multi-agent system safely: agents divide work, risky actions need approval, unsafe tool use is sandboxed, and a regression eval suite guards every change.",
+     "practice_tasks": [
+      "Build a two-agent system (researcher plus writer) that produces a cited report",
+      "Sandbox your agents' code-execution tool and demonstrate a blocked unsafe action",
+      "Write a prompt-injection test set and harden your agent against it",
+      "Ship an agent feature with approval flows, audit logs, and a regression eval suite"
+     ],
+     "resources": [
+      {
+       "free": true,
+       "note": "Multi-agent graphs, supervisor patterns, and deployment.",
+       "provider": "LangChain",
+       "title": "LangGraph Documentation",
+       "type": "docs",
+       "url": "https://langchain-ai.github.io/langgraph/"
+      },
+      {
+       "free": true,
+       "note": "Agent design guidance and computer-use safety notes.",
+       "provider": "Anthropic",
+       "title": "Anthropic Documentation",
+       "type": "docs",
+       "url": "https://docs.anthropic.com/"
+      },
+      {
+       "free": true,
+       "note": "Agent Development Kit concepts and Gemini tooling.",
+       "provider": "Google",
+       "title": "Google AI for Developers",
+       "type": "docs",
+       "url": "https://ai.google.dev/"
+      },
+      {
+       "free": true,
+       "note": "Community roadmaps; cross-check steps against official docs.",
+       "provider": "roadmap.sh",
+       "title": "AI Engineer Roadmap",
+       "type": "article",
+       "url": "https://roadmap.sh/"
+      },
+      {
+       "free": true,
+       "note": "Talks on open agent frameworks and smolagents.",
+       "provider": "Hugging Face",
+       "title": "Hugging Face",
+       "type": "video",
+       "url": "https://www.youtube.com/@HuggingFace"
+      }
+     ],
+     "stage": "advanced",
+     "title": "Multi-Agent Systems and Production Agents",
+     "topics": [
+      "Multi-agent patterns: supervisor, swarm, and debate",
+      "Planning and task decomposition for long jobs",
+      "Guardrails and sandboxing for tool execution",
+      "Cost and latency optimization for agent fleets",
+      "Failure modes: loops, drift, and cascading errors",
+      "Security: prompt injection defenses for agents",
+      "Evaluation suites and regression testing for agents",
+      "Shipping an agent product with approvals and audit logs"
+     ],
+     "weeks": 6
+    }
+   ],
+   "summary": "Agentic AI is about LLM systems that plan, use tools, and take actions — from a single assistant that calls APIs to teams of agents working together. The hard parts are reliability, evaluation, and oversight, not just chaining prompts. This roadmap builds from tool calling to multi-agent systems you can safely put in front of users."
+  },
+  {
+   "id": "computer-vision",
+   "name": "Computer Vision",
+   "domain": "AI/ML",
+   "summary": "Computer vision teaches machines to understand images and video, from classification to detection and segmentation. It powers cameras, medical imaging, robotics and autonomous systems, and it builds directly on deep learning fundamentals.",
+   "demand": "Very High",
+   "stages": [
+    {
+     "stage": "beginner",
+     "title": "Images, OpenCV and Your First CNN",
+     "weeks": 5,
+     "topics": [
+      "How digital images work: pixels, channels and color spaces",
+      "OpenCV basics: reading, resizing, cropping and drawing",
+      "Image filtering: blur, edges and thresholds",
+      "Histograms and morphological operations",
+      "Data augmentation for vision tasks",
+      "CNN fundamentals: convolution and pooling",
+      "Transfer learning with pretrained backbones",
+      "Building an image classifier end-to-end"
+     ],
+     "resources": [
+      {
+       "title": "OpenCV Documentation",
+       "type": "docs",
+       "url": "https://docs.opencv.org/",
+       "provider": "OpenCV",
+       "free": true,
+       "note": "Official OpenCV docs with tutorials for every core operation."
+      },
+      {
+       "title": "PyTorch Tutorials",
+       "type": "docs",
+       "url": "https://pytorch.org/tutorials/",
+       "provider": "PyTorch",
+       "free": true,
+       "note": "Official tutorials covering tensors, CNNs and transfer learning."
+      },
+      {
+       "title": "fast.ai Practical Deep Learning",
+       "type": "course",
+       "url": "https://course.fast.ai/",
+       "provider": "fast.ai",
+       "free": true,
+       "note": "Free top-down course with a strong vision-first approach."
+      },
+      {
+       "title": "CS231n Course Notes: Convolutional Networks for Visual Recognition",
+       "type": "course",
+       "url": "https://cs231n.github.io/",
+       "provider": "Stanford",
+       "free": true,
+       "note": "Stanford CS231n course notes, freely readable online."
+      },
+      {
+       "title": "Kaggle Learn",
+       "type": "course",
+       "url": "https://www.kaggle.com/learn",
+       "provider": "Kaggle",
+       "free": true,
+       "note": "Free micro-courses including computer vision with in-browser notebooks."
+      }
+     ],
+     "practice_tasks": [
+      "Build an image classifier with transfer learning on your own photos",
+      "Write an OpenCV pipeline that counts objects using edges and contours",
+      "Augment a small dataset and measure how much accuracy improves",
+      "Ship your classifier as a simple web demo"
+     ],
+     "checkpoint": "You can build, train and evaluate an image classifier in PyTorch, explain how a CNN works, and use OpenCV for basic image processing."
+    },
+    {
+     "stage": "intermediate",
+     "title": "Detection, Segmentation and Tracking",
+     "weeks": 6,
+     "topics": [
+      "Object detection: two-stage vs one-stage detectors",
+      "The YOLO family and the Ultralytics workflow",
+      "Semantic and instance segmentation with U-Net and Mask R-CNN",
+      "Keypoint detection and pose estimation",
+      "Object tracking with SORT-style trackers",
+      "Video processing and optical flow",
+      "Evaluation: IoU, mAP and detection failure modes",
+      "Serving a vision model behind an API"
+     ],
+     "resources": [
+      {
+       "title": "Ultralytics Documentation",
+       "type": "docs",
+       "url": "https://docs.ultralytics.com/",
+       "provider": "Ultralytics",
+       "free": true,
+       "note": "Official YOLO docs: training, validation, prediction and export."
+      },
+      {
+       "title": "TensorFlow Tutorials",
+       "type": "docs",
+       "url": "https://www.tensorflow.org/tutorials",
+       "provider": "Google",
+       "free": true,
+       "note": "Official guides including object detection and segmentation."
+      },
+      {
+       "title": "CS231n Course Notes: Convolutional Networks for Visual Recognition",
+       "type": "course",
+       "url": "https://cs231n.github.io/",
+       "provider": "Stanford",
+       "free": true,
+       "note": "Stanford CS231n course notes, freely readable online."
+      },
+      {
+       "title": "Kaggle Competitions",
+       "type": "practice",
+       "url": "https://www.kaggle.com/competitions",
+       "provider": "Kaggle",
+       "free": true,
+       "note": "Real vision competitions to practice detection and segmentation."
+      },
+      {
+       "title": "Andrew Ng",
+       "type": "video",
+       "url": "https://www.youtube.com/@AndrewYNg",
+       "provider": "YouTube",
+       "free": true,
+       "note": "Free lectures covering deep learning and vision fundamentals."
+      }
+     ],
+     "practice_tasks": [
+      "Train a YOLO detector on a custom object dataset you label yourself",
+      "Build a U-Net segmentation model for a satellite or medical-style task",
+      "Implement a simple multi-object tracker on a video clip",
+      "Serve a detection model behind a FastAPI endpoint"
+     ],
+     "checkpoint": "You can train and evaluate detection and segmentation models, explain mAP and IoU, and serve a working vision model over an API."
+    },
+    {
+     "stage": "advanced",
+     "title": "Production Vision: Optimization, Edge and Multimodal",
+     "weeks": 7,
+     "topics": [
+      "Model optimization: quantization, pruning and distillation",
+      "ONNX export and fast runtime inference",
+      "Edge deployment: mobile, Jetson-style devices and the browser",
+      "Vision transformers: ViT and DETR",
+      "Self-supervised vision: DINO and CLIP-style models",
+      "Multimodal basics: image-text models and visual question answering",
+      "Monitoring vision models in production",
+      "Building a full vision product demo"
+     ],
+     "resources": [
+      {
+       "title": "PyTorch Documentation",
+       "type": "docs",
+       "url": "https://pytorch.org/docs/",
+       "provider": "PyTorch",
+       "free": true,
+       "note": "Official docs for quantization, export and mobile deployment."
+      },
+      {
+       "title": "Ultralytics Documentation",
+       "type": "docs",
+       "url": "https://docs.ultralytics.com/",
+       "provider": "Ultralytics",
+       "free": true,
+       "note": "Model export, edge deployment and optimization guides."
+      },
+      {
+       "title": "Hugging Face Models",
+       "type": "practice",
+       "url": "https://huggingface.co/models",
+       "provider": "Hugging Face",
+       "free": true,
+       "note": "Thousands of pretrained vision models to fine-tune and compare."
+      },
+      {
+       "title": "Papers With Code",
+       "type": "article",
+       "url": "https://paperswithcode.com/",
+       "provider": "Papers With Code",
+       "free": true,
+       "note": "Vision papers with code and state-of-the-art benchmark tables."
+      },
+      {
+       "title": "fast.ai",
+       "type": "course",
+       "url": "https://www.fast.ai/",
+       "provider": "fast.ai",
+       "free": true,
+       "note": "Advanced practical deep learning including deployment and cutting-edge papers."
+      }
+     ],
+     "practice_tasks": [
+      "Quantize a vision model and measure the speed versus accuracy trade-off",
+      "Deploy a model to run on a phone, edge device or in the browser",
+      "Fine-tune a vision transformer on a custom classification task",
+      "Build a CLIP-style image search demo over your own photo collection"
+     ],
+     "checkpoint": "You can optimize, export and deploy a vision model under real constraints, work with transformer-based vision models, and demo a multimodal vision feature."
+    }
+   ]
+  },
+  {
+   "id": "mlops",
+   "name": "MLOps",
+   "domain": "AI/ML",
+   "summary": "MLOps covers taking machine learning models from notebooks into reliable production systems. It includes experiment tracking, pipelines, deployment, monitoring and retraining, the skills that decide whether a model survives contact with real users.",
+   "demand": "Very High",
+   "stages": [
+    {
+     "stage": "beginner",
+     "title": "From Notebook to Reproducible Pipeline",
+     "weeks": 4,
+     "topics": [
+      "Why ML systems fail in production",
+      "Git and data versioning for datasets and models",
+      "Experiment tracking fundamentals",
+      "Packaging code: environments, requirements and Docker basics",
+      "Reproducible training runs",
+      "Model registries: what they store and why",
+      "Basic tests for ML code and data",
+      "Logging and configuration management"
+     ],
+     "resources": [
+      {
+       "title": "MLflow Documentation",
+       "type": "docs",
+       "url": "https://mlflow.org/docs/latest/",
+       "provider": "MLflow",
+       "free": true,
+       "note": "Official docs for experiment tracking, packaging and the model registry."
+      },
+      {
+       "title": "Docker Documentation",
+       "type": "docs",
+       "url": "https://docs.docker.com/",
+       "provider": "Docker",
+       "free": true,
+       "note": "Official Docker guides for containerizing any application."
+      },
+      {
+       "title": "Machine Learning Crash Course",
+       "type": "course",
+       "url": "https://developers.google.com/machine-learning/crash-course",
+       "provider": "Google",
+       "free": true,
+       "note": "Google's free course including production ML concepts."
+      },
+      {
+       "title": "freeCodeCamp",
+       "type": "course",
+       "url": "https://www.freecodecamp.org/",
+       "provider": "freeCodeCamp",
+       "free": true,
+       "note": "Free tutorials on Git, Docker and CI basics."
+      },
+      {
+       "title": "NPTEL Courses",
+       "type": "course",
+       "url": "https://nptel.ac.in/",
+       "provider": "NPTEL/SWAYAM",
+       "free": true,
+       "note": "IIT courses on software engineering and ML-adjacent topics."
+      }
+     ],
+     "practice_tasks": [
+      "Track twenty or more experiments for one model with MLflow",
+      "Dockerize a training script so it runs identically anywhere",
+      "Version a dataset and reproduce an earlier training run from it",
+      "Write tests for a data preprocessing pipeline"
+     ],
+     "checkpoint": "You can reproduce any training run from code, data and config, track experiments properly, and package a model in a container."
+    },
+    {
+     "stage": "intermediate",
+     "title": "Pipelines, Serving and CI/CD for ML",
+     "weeks": 6,
+     "topics": [
+      "Orchestration with Airflow-style DAGs",
+      "Feature stores: concepts and options",
+      "CI/CD for ML: test, train and validate gates",
+      "Model serving: REST, batch and streaming",
+      "Container orchestration with Kubernetes basics",
+      "A/B testing and shadow deployments",
+      "Scaling inference: batching, caching and autoscaling",
+      "Security and access control for models"
+     ],
+     "resources": [
+      {
+       "title": "Kubernetes Documentation",
+       "type": "docs",
+       "url": "https://kubernetes.io/docs/",
+       "provider": "CNCF",
+       "free": true,
+       "note": "Official Kubernetes docs for deploying and scaling services."
+      },
+      {
+       "title": "Apache Airflow Documentation",
+       "type": "docs",
+       "url": "https://airflow.apache.org/",
+       "provider": "Apache",
+       "free": true,
+       "note": "Official Airflow docs for building scheduled training pipelines."
+      },
+      {
+       "title": "Ray Documentation",
+       "type": "docs",
+       "url": "https://docs.ray.io/",
+       "provider": "Anyscale",
+       "free": true,
+       "note": "Ray Serve and Ray Train for distributed serving and training."
+      },
+      {
+       "title": "DeepLearning.AI",
+       "type": "course",
+       "url": "https://www.deeplearning.ai/",
+       "provider": "DeepLearning.AI",
+       "free": true,
+       "note": "Courses and specializations on MLOps and production ML."
+      },
+      {
+       "title": "Andrew Ng",
+       "type": "video",
+       "url": "https://www.youtube.com/@AndrewYNg",
+       "provider": "YouTube",
+       "free": true,
+       "note": "Free lectures covering machine learning in production."
+      }
+     ],
+     "practice_tasks": [
+      "Build an Airflow DAG that trains, validates and registers a model",
+      "Serve a model with FastAPI inside Docker",
+      "Set up a CI check that validates a model before it can be promoted",
+      "Run a shadow deployment and compare a new model against the live one"
+     ],
+     "checkpoint": "You can build a scheduled training pipeline, serve a model in a container, and gate promotions with automated checks."
+    },
+    {
+     "stage": "advanced",
+     "title": "Monitoring, Drift and Reliable ML Systems",
+     "weeks": 8,
+     "topics": [
+      "Monitoring: latency, throughput and error rates",
+      "Data drift and concept drift detection",
+      "Model retraining triggers and policies",
+      "Drift reports and monitoring dashboards",
+      "Incident response for ML systems",
+      "Cost optimization for inference",
+      "Governance: audit trails, model cards and compliance",
+      "Capstone: an end-to-end production ML system"
+     ],
+     "resources": [
+      {
+       "title": "Evidently AI",
+       "type": "docs",
+       "url": "https://www.evidentlyai.com/",
+       "provider": "Evidently AI",
+       "free": true,
+       "note": "Open-source ML monitoring with drift reports and dashboards."
+      },
+      {
+       "title": "Kubernetes Documentation",
+       "type": "docs",
+       "url": "https://kubernetes.io/docs/",
+       "provider": "CNCF",
+       "free": true,
+       "note": "Production operations: rollouts, rollbacks and autoscaling."
+      },
+      {
+       "title": "MLflow Documentation",
+       "type": "docs",
+       "url": "https://mlflow.org/docs/latest/",
+       "provider": "MLflow",
+       "free": true,
+       "note": "Model registry, staging and lifecycle management."
+      },
+      {
+       "title": "DeepLearning.AI",
+       "type": "course",
+       "url": "https://www.deeplearning.ai/",
+       "provider": "DeepLearning.AI",
+       "free": true,
+       "note": "Advanced production ML courses including monitoring and deployment."
+      },
+      {
+       "title": "Hugging Face Spaces",
+       "type": "practice",
+       "url": "https://huggingface.co/spaces",
+       "provider": "Hugging Face",
+       "free": true,
+       "note": "Deploy and share ML demos for free."
+      }
+     ],
+     "practice_tasks": [
+      "Add drift monitoring to a served model and alert on a shift",
+      "Define a retraining policy triggered by drift metrics",
+      "Write a model card with an audit trail for a model release",
+      "Capstone: ship a full pipeline from data to monitored deployment"
+     ],
+     "checkpoint": "You can keep a production ML system healthy with monitoring, drift detection and retraining policies, and document a release to a governance standard."
+    }
+   ]
+  },
+  {
+   "id": "reinforcement-learning",
+   "name": "Reinforcement Learning",
+   "domain": "AI/ML",
+   "summary": "Reinforcement learning trains agents to make sequences of decisions by learning from rewards. It powers game-playing systems, robotics and the RLHF step behind modern chat models, and it demands a different debugging mindset than supervised learning.",
+   "demand": "Very High",
+   "stages": [
+    {
+     "stage": "beginner",
+     "title": "Agents, Rewards and Tabular Methods",
+     "weeks": 5,
+     "topics": [
+      "MDPs: states, actions, rewards and discounting",
+      "Exploration versus exploitation",
+      "Q-learning and SARSA",
+      "Epsilon-greedy strategies and bandits",
+      "Value iteration and policy iteration",
+      "Gymnasium environments",
+      "Debugging reward design",
+      "Evaluating a learned policy"
+     ],
+     "resources": [
+      {
+       "title": "Gymnasium Documentation",
+       "type": "docs",
+       "url": "https://gymnasium.farama.org/",
+       "provider": "Farama",
+       "free": true,
+       "note": "Official docs for the standard RL environment library."
+      },
+      {
+       "title": "Stable Baselines3 Documentation",
+       "type": "docs",
+       "url": "https://stable-baselines3.readthedocs.io/",
+       "provider": "Stable Baselines3",
+       "free": true,
+       "note": "Clean implementations of standard RL algorithms with docs and examples."
+      },
+      {
+       "title": "NPTEL Courses",
+       "type": "course",
+       "url": "https://nptel.ac.in/",
+       "provider": "NPTEL/SWAYAM",
+       "free": true,
+       "note": "IIT reinforcement learning courses."
+      },
+      {
+       "title": "Andrew Ng",
+       "type": "video",
+       "url": "https://www.youtube.com/@AndrewYNg",
+       "provider": "YouTube",
+       "free": true,
+       "note": "Free lectures covering machine learning fundamentals."
+      },
+      {
+       "title": "OpenAI Spinning Up",
+       "type": "docs",
+       "url": "https://spinningup.openai.com/",
+       "provider": "OpenAI",
+       "free": true,
+       "note": "OpenAI's free educational resource on deep RL algorithms."
+      }
+     ],
+     "practice_tasks": [
+      "Solve CartPole with tabular Q-learning",
+      "Compare epsilon-greedy bandit strategies on a simulated problem",
+      "Build a custom Gymnasium environment for a simple game",
+      "Tune the discount factor and show how it changes learned behavior"
+     ],
+     "checkpoint": "You can formalize a problem as an MDP, implement Q-learning from scratch, and train an agent in a Gymnasium environment."
+    },
+    {
+     "stage": "intermediate",
+     "title": "Deep RL: Policy Gradients and Actor-Critic",
+     "weeks": 6,
+     "topics": [
+      "Policy gradients and REINFORCE",
+      "Actor-critic methods: A2C and A3C",
+      "PPO in depth",
+      "DQN and experience replay",
+      "Continuous control: DDPG, SAC and TD3",
+      "Reward shaping and curriculum learning",
+      "Multi-agent basics",
+      "Hyperparameter tuning for RL"
+     ],
+     "resources": [
+      {
+       "title": "Stable Baselines3 Documentation",
+       "type": "docs",
+       "url": "https://stable-baselines3.readthedocs.io/",
+       "provider": "Stable Baselines3",
+       "free": true,
+       "note": "PPO, SAC and DQN implementations with tuning guides."
+      },
+      {
+       "title": "Gymnasium Documentation",
+       "type": "docs",
+       "url": "https://gymnasium.farama.org/",
+       "provider": "Farama",
+       "free": true,
+       "note": "Custom environments and vectorized training."
+      },
+      {
+       "title": "CS234: Reinforcement Learning",
+       "type": "course",
+       "url": "https://web.stanford.edu/class/cs234/",
+       "provider": "Stanford",
+       "free": true,
+       "note": "Stanford's RL course page with lectures on deep RL."
+      },
+      {
+       "title": "PyTorch Tutorials",
+       "type": "docs",
+       "url": "https://pytorch.org/tutorials/",
+       "provider": "PyTorch",
+       "free": true,
+       "note": "Policy gradient and reinforcement learning tutorials."
+      },
+      {
+       "title": "Papers With Code",
+       "type": "article",
+       "url": "https://paperswithcode.com/",
+       "provider": "Papers With Code",
+       "free": true,
+       "note": "RL papers with code and benchmark tables."
+      }
+     ],
+     "practice_tasks": [
+      "Train PPO on a continuous-control task",
+      "Implement DQN with experience replay on LunarLander",
+      "Compare A2C and PPO on the same environment and explain the gap",
+      "Turn a sparse reward into a learnable shaped reward"
+     ],
+     "checkpoint": "You can train deep RL agents with PPO and DQN, explain policy gradients and actor-critic methods, and debug unstable training runs."
+    },
+    {
+     "stage": "advanced",
+     "title": "Advanced RL: RLHF, Planning and Real Systems",
+     "weeks": 6,
+     "topics": [
+      "RLHF: reward models and PPO fine-tuning",
+      "Offline RL and its pitfalls",
+      "Model-based RL and planning",
+      "Hierarchical RL",
+      "Sim-to-real transfer",
+      "RL in robotics and games",
+      "Safety and alignment in RL systems",
+      "Capstone: an agent for a hard environment"
+     ],
+     "resources": [
+      {
+       "title": "Hugging Face Documentation",
+       "type": "docs",
+       "url": "https://huggingface.co/docs",
+       "provider": "Hugging Face",
+       "free": true,
+       "note": "TRL and transformer RL tools behind the modern RLHF stack."
+      },
+      {
+       "title": "OpenAI Platform Documentation",
+       "type": "docs",
+       "url": "https://platform.openai.com/docs/",
+       "provider": "OpenAI",
+       "free": true,
+       "note": "Fine-tuning and RLHF-adjacent API documentation."
+      },
+      {
+       "title": "Ray Documentation",
+       "type": "docs",
+       "url": "https://docs.ray.io/",
+       "provider": "Anyscale",
+       "free": true,
+       "note": "RLlib for large-scale reinforcement learning training."
+      },
+      {
+       "title": "Dive into Deep Learning",
+       "type": "book",
+       "url": "https://d2l.ai/",
+       "provider": "D2L.ai",
+       "free": true,
+       "note": "Free interactive book with reinforcement learning chapters."
+      },
+      {
+       "title": "NPTEL Courses",
+       "type": "course",
+       "url": "https://nptel.ac.in/",
+       "provider": "NPTEL/SWAYAM",
+       "free": true,
+       "note": "Advanced IIT courses on RL and related topics."
+      }
+     ],
+     "practice_tasks": [
+      "Fine-tune a small language model with a reward model and preference data",
+      "Train an agent from offline data and analyze where it fails",
+      "Build a planning agent for a board game",
+      "Capstone: a documented agent for a hard environment with evaluation"
+     ],
+     "checkpoint": "You can explain and apply RLHF, offline RL and planning methods, and ship an evaluated RL agent for a non-trivial environment."
+    }
+   ]
   }
  ],
  "roles": [
@@ -5243,6 +6449,412 @@
     }
    ],
    "short": "Full-Stack"
+  },
+  {
+   "id": "ai-engineer",
+   "name": "AI Engineer",
+   "short": "AI Eng",
+   "description": "Ships LLM-powered product features: APIs, retrieval-augmented generation, evaluation harnesses, and the latency and cost trade-offs that come with serving models in production. The role sits between product engineering and ML, so it needs both solid software design and a working grasp of how language models behave.",
+   "required_skills": [
+    {
+     "skill_id": "python",
+     "min_stage": "advanced",
+     "priority": 5,
+     "reason": "AI features are built, served and evaluated almost entirely in Python."
+    },
+    {
+     "skill_id": "generative-ai",
+     "min_stage": "advanced",
+     "priority": 5,
+     "reason": "Prompting, RAG and model selection are the core deliverables of the role."
+    },
+    {
+     "skill_id": "machine-learning",
+     "min_stage": "intermediate",
+     "priority": 5,
+     "reason": "Embeddings, ranking and evaluation all rest on ML fundamentals."
+    },
+    {
+     "skill_id": "system-design",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Model APIs, caching and fallbacks must be designed for real traffic."
+    },
+    {
+     "skill_id": "deep-learning",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Understanding transformer behaviour helps debug bad outputs and latency."
+    },
+    {
+     "skill_id": "docker",
+     "min_stage": "beginner",
+     "priority": 3,
+     "reason": "AI services ship inside containers with pinned runtimes and dependencies."
+    },
+    {
+     "skill_id": "sql",
+     "min_stage": "beginner",
+     "priority": 2,
+     "reason": "Retrieval stores and eval logs live in databases."
+    }
+   ]
+  },
+  {
+   "id": "genai-engineer",
+   "name": "Generative AI Engineer",
+   "short": "GenAI Eng",
+   "description": "Builds applications on top of large language models: LLM apps, fine-tuning jobs, RAG pipelines and the eval harnesses that prove a change actually improved output quality. Success is measured by grounded, reproducible generations, not by demos that work once.",
+   "required_skills": [
+    {
+     "skill_id": "generative-ai",
+     "min_stage": "advanced",
+     "priority": 5,
+     "reason": "LLM orchestration, fine-tuning and eval design are the job itself."
+    },
+    {
+     "skill_id": "python",
+     "min_stage": "advanced",
+     "priority": 5,
+     "reason": "LLM frameworks, data prep and eval tooling are Python-first."
+    },
+    {
+     "skill_id": "nlp",
+     "min_stage": "intermediate",
+     "priority": 5,
+     "reason": "Tokenization, chunking and retrieval quality decide RAG outcomes."
+    },
+    {
+     "skill_id": "machine-learning",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Training curves, overfitting and metrics guide fine-tuning decisions."
+    },
+    {
+     "skill_id": "deep-learning",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Transformer architecture knowledge explains context limits and failures."
+    },
+    {
+     "skill_id": "system-design",
+     "min_stage": "intermediate",
+     "priority": 3,
+     "reason": "RAG pipelines need retrieval, caching and rate-limit design."
+    },
+    {
+     "skill_id": "docker",
+     "min_stage": "beginner",
+     "priority": 2,
+     "reason": "Inference services and eval jobs run in containers."
+    }
+   ]
+  },
+  {
+   "id": "agentic-ai-engineer",
+   "name": "Agentic AI Engineer",
+   "short": "Agent Eng",
+   "description": "Builds autonomous agents that plan, call tools and complete multi-step tasks, including multi-agent orchestration and the guardrails that keep agents from taking unsafe or irreversible actions. The hard part is not the single agent demo but reliable behaviour over long, branching runs.",
+   "required_skills": [
+    {
+     "skill_id": "agentic-ai",
+     "min_stage": "advanced",
+     "priority": 5,
+     "reason": "Tool use, planning loops and orchestration patterns are the core craft."
+    },
+    {
+     "skill_id": "generative-ai",
+     "min_stage": "advanced",
+     "priority": 5,
+     "reason": "Agents reason through LLMs, so model strengths and failure modes matter."
+    },
+    {
+     "skill_id": "python",
+     "min_stage": "intermediate",
+     "priority": 5,
+     "reason": "Agent frameworks, tool servers and state machines are built in Python."
+    },
+    {
+     "skill_id": "system-design",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Agent state, memory and retries need careful distributed design."
+    },
+    {
+     "skill_id": "machine-learning",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Routing, ranking and reward signals shape agent decisions."
+    },
+    {
+     "skill_id": "docker",
+     "min_stage": "beginner",
+     "priority": 3,
+     "reason": "Tool sandboxes run isolated in containers for safety."
+    },
+    {
+     "skill_id": "cybersecurity-basics",
+     "min_stage": "beginner",
+     "priority": 2,
+     "reason": "Prompt injection and unsafe tool calls are security problems first."
+    }
+   ]
+  },
+  {
+   "id": "nlp-engineer",
+   "name": "NLP Engineer",
+   "short": "NLP Eng",
+   "description": "Builds text systems: classification, search, chat and multilingual understanding, from data preparation through to a served model. The work spans classic text processing and modern transformer models, chosen by what the data and latency budget actually allow.",
+   "required_skills": [
+    {
+     "skill_id": "nlp",
+     "min_stage": "advanced",
+     "priority": 5,
+     "reason": "Tokenization, embeddings and text pipelines are the daily work."
+    },
+    {
+     "skill_id": "python",
+     "min_stage": "advanced",
+     "priority": 5,
+     "reason": "NLP libraries, data prep and serving are Python-first."
+    },
+    {
+     "skill_id": "machine-learning",
+     "min_stage": "intermediate",
+     "priority": 5,
+     "reason": "Classifiers, rankers and sequence models are ML models."
+    },
+    {
+     "skill_id": "deep-learning",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Transformer models power most modern text systems."
+    },
+    {
+     "skill_id": "statistics",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Evaluation, significance and error analysis keep text models honest."
+    },
+    {
+     "skill_id": "sql",
+     "min_stage": "intermediate",
+     "priority": 3,
+     "reason": "Text corpora and labels are stored in and queried from databases."
+    },
+    {
+     "skill_id": "dsa",
+     "min_stage": "beginner",
+     "priority": 2,
+     "reason": "Efficient token and index handling needs basic algorithmic skill."
+    }
+   ]
+  },
+  {
+   "id": "cv-engineer",
+   "name": "Computer Vision Engineer",
+   "short": "CV Eng",
+   "description": "Builds systems that see: detection, segmentation and tracking, from dataset curation and training through to deployment on servers or edge devices. Accuracy on a benchmark means little until the model survives real lighting, cameras and frame-rate budgets.",
+   "required_skills": [
+    {
+     "skill_id": "computer-vision",
+     "min_stage": "advanced",
+     "priority": 5,
+     "reason": "Detection, segmentation and tracking are the role's deliverables."
+    },
+    {
+     "skill_id": "deep-learning",
+     "min_stage": "advanced",
+     "priority": 5,
+     "reason": "Modern vision systems are deep networks end to end."
+    },
+    {
+     "skill_id": "python",
+     "min_stage": "intermediate",
+     "priority": 5,
+     "reason": "Training, annotation tooling and inference code are Python-first."
+    },
+    {
+     "skill_id": "machine-learning",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Data splits, augmentation and metrics decide vision quality."
+    },
+    {
+     "skill_id": "dsa",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Real-time video pipelines need efficient data structures."
+    },
+    {
+     "skill_id": "docker",
+     "min_stage": "beginner",
+     "priority": 3,
+     "reason": "Inference services ship in containers with GPU runtimes."
+    },
+    {
+     "skill_id": "linux",
+     "min_stage": "beginner",
+     "priority": 2,
+     "reason": "Edge and server deployment runs on Linux."
+    }
+   ]
+  },
+  {
+   "id": "mlops-engineer",
+   "name": "MLOps Engineer",
+   "short": "MLOps Eng",
+   "description": "Owns the path from a trained model to a reliable production service: training pipelines, model serving, monitoring for drift, and CI/CD for ML artifacts. When a model silently degrades in production, this is the engineer who notices first and fixes the pipeline, not just the model.",
+   "required_skills": [
+    {
+     "skill_id": "mlops",
+     "min_stage": "advanced",
+     "priority": 5,
+     "reason": "Pipelines, registries, serving and monitoring are the job itself."
+    },
+    {
+     "skill_id": "machine-learning",
+     "min_stage": "intermediate",
+     "priority": 5,
+     "reason": "You cannot operate models you do not understand."
+    },
+    {
+     "skill_id": "python",
+     "min_stage": "intermediate",
+     "priority": 5,
+     "reason": "Pipelines, packaging and serving code are written in Python."
+    },
+    {
+     "skill_id": "docker",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Reproducible model environments depend on containers."
+    },
+    {
+     "skill_id": "cloud-aws",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Training and serving infrastructure runs on cloud platforms."
+    },
+    {
+     "skill_id": "devops-cicd",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Model deployment is a CI/CD problem with extra artifacts."
+    },
+    {
+     "skill_id": "linux",
+     "min_stage": "intermediate",
+     "priority": 3,
+     "reason": "Servers, GPUs and job runners are administered on Linux."
+    },
+    {
+     "skill_id": "system-design",
+     "min_stage": "beginner",
+     "priority": 2,
+     "reason": "Serving topology and fallback design affect reliability."
+    }
+   ]
+  },
+  {
+   "id": "cloud-engineer",
+   "name": "Cloud Engineer",
+   "short": "Cloud Eng",
+   "description": "Designs and runs cloud infrastructure: networks, compute, storage and identity, managed as code and watched for cost and security. The job is equal parts architecture and operations, since every design choice becomes a bill and an on-call page.",
+   "required_skills": [
+    {
+     "skill_id": "cloud-aws",
+     "min_stage": "advanced",
+     "priority": 5,
+     "reason": "AWS services, networking and IAM are the platform itself."
+    },
+    {
+     "skill_id": "linux",
+     "min_stage": "intermediate",
+     "priority": 5,
+     "reason": "Cloud workloads run on Linux and are debugged from its shell."
+    },
+    {
+     "skill_id": "docker",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Container images are the standard unit of deployment."
+    },
+    {
+     "skill_id": "devops-cicd",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Infrastructure is delivered through automated pipelines."
+    },
+    {
+     "skill_id": "system-design",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Availability zones, load balancing and scaling are design work."
+    },
+    {
+     "skill_id": "python",
+     "min_stage": "intermediate",
+     "priority": 3,
+     "reason": "Automation, IaC glue and runbooks are scripted in Python."
+    },
+    {
+     "skill_id": "cybersecurity-basics",
+     "min_stage": "beginner",
+     "priority": 3,
+     "reason": "Open buckets and loose IAM roles are the classic cloud breaches."
+    }
+   ]
+  },
+  {
+   "id": "sre-engineer",
+   "name": "Site Reliability Engineer",
+   "short": "SRE",
+   "description": "Keeps production systems reliable through SLIs and SLOs, incident response, observability and automation that removes toil. SRE work is measured by user-facing reliability, not by how many alerts were answered, so it favours fixing root causes over heroics.",
+   "required_skills": [
+    {
+     "skill_id": "linux",
+     "min_stage": "advanced",
+     "priority": 5,
+     "reason": "Production debugging happens on Linux systems."
+    },
+    {
+     "skill_id": "devops-cicd",
+     "min_stage": "intermediate",
+     "priority": 5,
+     "reason": "Safe deploys, rollbacks and automation are SRE fundamentals."
+    },
+    {
+     "skill_id": "docker",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Services under SRE care run in containers."
+    },
+    {
+     "skill_id": "cloud-aws",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Reliability targets are set on cloud infrastructure."
+    },
+    {
+     "skill_id": "python",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "Runbooks, auto-remediation and tooling are scripted in Python."
+    },
+    {
+     "skill_id": "system-design",
+     "min_stage": "intermediate",
+     "priority": 4,
+     "reason": "SLO design and failure-mode analysis are architecture work."
+    },
+    {
+     "skill_id": "cybersecurity-basics",
+     "min_stage": "beginner",
+     "priority": 2,
+     "reason": "Incident response includes recognising security incidents."
+    }
+   ]
   }
  ]
 }

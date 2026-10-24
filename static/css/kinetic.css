@@ -1419,6 +1419,24 @@ body.sb-app .b-card--stat:hover :is(b, strong) { color: var(--sb-blue) !importan
 .company-grid .company-card:hover .company-count { color: #4c4c46 !important; }
 .company-grid .company-card:hover .company-focus { color: #4c4c46 !important; }
 .company-grid .company-card:hover .company-mock-link { color: var(--sb-blue) !important; }
+
+/* Roadmaps gap analyzer: steps, toolbar, priority bars, result entrance. */
+.gap-steps { display: flex; flex-wrap: wrap; gap: .6rem; list-style: none; margin: 0 0 1.4rem; padding: 0; }
+.gap-step { display: flex; align-items: center; gap: .5rem; padding: .45rem .9rem .45rem .5rem; border: 1px solid var(--b-line, rgba(255,255,255,.12)); border-radius: 999px; font-size: .88rem; color: var(--b-muted); }
+.gap-step-n { display: inline-flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: rgba(255,255,255,.08); font-weight: 700; color: inherit; }
+.gap-step.is-active .gap-step-n { background: var(--sb-blue); color: #fff; }
+.gap-step.is-done { color: inherit; border-color: var(--sb-lime); }
+.gap-step.is-done .gap-step-n { background: var(--sb-lime); color: var(--sb-ink); }
+.gap-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem; margin-bottom: 1rem; }
+.gap-search { flex: 1 1 260px; max-width: 420px; }
+.gap-domain-count { color: var(--sb-lime); font-size: .85rem; font-weight: 600; }
+.gap-prio-bar { height: 6px; border-radius: 999px; background: rgba(255,255,255,.1); overflow: hidden; margin: .6rem 0 .2rem; }
+.gap-prio-bar span { display: block; height: 100%; background: var(--sb-lime); border-radius: 999px; }
+.gap-result-card { animation: gapFadeUp .45s ease both; }
+@keyframes gapFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.stage-rail { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.2rem; }
+.stage-rail a { padding: .4rem .9rem; border: 1px solid var(--b-line, rgba(255,255,255,.12)); border-radius: 999px; font-size: .88rem; text-decoration: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
 .company-grid .company-card:hover .company-logo { background: rgba(10, 10, 10, 0.06); border-color: rgba(10, 10, 10, 0.14); }
 .company-grid .company-card:hover .company-logo img { filter: brightness(0); opacity: 1; }
 

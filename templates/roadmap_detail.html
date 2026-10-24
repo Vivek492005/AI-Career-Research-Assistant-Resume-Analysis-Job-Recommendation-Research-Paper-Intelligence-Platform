@@ -13,12 +13,17 @@
             <span class="b-pill">{{ skill.domain }} &middot; {{ skill.demand }} demand</span>
             <h1>{{ skill.name }} <span class="b-grad">roadmap</span></h1>
             <p class="b-lede">{{ skill.summary }}</p>
+            <nav class="stage-rail" aria-label="Jump to a stage">
+                {% for st in skill.stages %}
+                <a href="#stage-{{ st.stage }}">{{ st.stage|capitalize }} &middot; {{ st.weeks }} weeks</a>
+                {% endfor %}
+            </nav>
         </div>
     </div>
 </section>
 
 {% for st in skill.stages %}
-<section class="b-section" style="padding-top:0;" aria-label="{{ st.stage }} stage">
+<section class="b-section" style="padding-top:0;" aria-label="{{ st.stage }} stage" id="stage-{{ st.stage }}">
     <div class="b-card b-reveal">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
             <div>

@@ -17,23 +17,36 @@
 <section class="b-section" aria-label="Skill gap analyzer" style="padding-top:0;">
     <div class="b-card b-reveal">
         <h2 style="margin-top:0;">Find your gaps</h2>
-        <div class="b-field" style="max-width:420px;">
-            <label class="b-label" for="gap-role">Target role</label>
+        <ol class="gap-steps" aria-label="How this works">
+            <li class="gap-step is-active" id="gap-step-1"><span class="gap-step-n">1</span> Pick a target role</li>
+            <li class="gap-step" id="gap-step-2"><span class="gap-step-n">2</span> Tick what you already know</li>
+            <li class="gap-step" id="gap-step-3"><span class="gap-step-n">3</span> Get your ranked plan</li>
+        </ol>
+        <div class="b-field" style="max-width:520px;">
+            <label class="b-label" for="gap-role">Step 1 &mdash; Target role</label>
             <select class="b-select" id="gap-role">
                 <option value="">Choose a role&hellip;</option>
                 {% for r in roles %}
-                <option value="{{ r.id }}">{{ r.name }}{% if r.short %} ({{ r.short }}){% endif %}</option>
+                <option value="{{ r.id }}" data-desc="{{ r.description }}">{{ r.name }}{% if r.short %} ({{ r.short }}){% endif %}</option>
                 {% endfor %}
             </select>
+            <p id="gap-role-desc" style="color:var(--b-muted);font-size:.9rem;margin:.5rem 0 0;min-height:1.2em;"></p>
         </div>
         <div class="b-field">
-            <span class="b-label">What do you already know? <span style="color:var(--b-muted);font-weight:400;">(tick + set your level)</span></span>
+            <span class="b-label">Step 2 &mdash; What do you already know? <span style="color:var(--b-muted);font-weight:400;">(tick + set your level)</span></span>
+            <div class="gap-toolbar">
+                <label class="sr-only" for="gap-skill-search">Search skills</label>
+                <input type="search" id="gap-skill-search" class="b-input gap-search" placeholder="Search skills… (try Python, NLP, Docker)" autocomplete="off">
+                <span id="gap-selected-count" role="status" style="color:var(--b-muted);font-size:.9rem;">0 skills selected</span>
+                <button type="button" class="b-btn b-btn--ghost b-btn--sm" id="gap-expand-all">Expand all</button>
+                <button type="button" class="b-btn b-btn--ghost b-btn--sm" id="gap-clear">Clear selection</button>
+            </div>
             {% for domain, _ in domains %}
-            <details style="margin-bottom:.6rem;" {% if loop.first %}open{% endif %}>
-                <summary style="cursor:pointer;font-weight:600;margin-bottom:.5rem;">{{ domain }}</summary>
+            <details class="gap-domain" style="margin-bottom:.6rem;" {% if loop.first %}open{% endif %}>
+                <summary style="cursor:pointer;font-weight:600;margin-bottom:.5rem;">{{ domain }} <span class="gap-domain-count" data-domain="{{ domain }}"></span></summary>
                 <div class="b-bento" style="grid-template-columns:repeat(3,1fr);">
                     {% for s in skills if s.domain == domain %}
-                    <label class="b-card b-card--lite" style="display:flex;gap:.6rem;align-items:center;cursor:pointer;padding:.8rem 1rem;">
+                    <label class="b-card b-card--lite gap-skill-card" style="display:flex;gap:.6rem;align-items:center;cursor:pointer;padding:.8rem 1rem;" data-domain="{{ domain }}">
                         <input type="checkbox" class="b-check gap-skill" value="{{ s.id }}" data-name="{{ s.name }}">
                         <span style="flex:1;font-size:.9rem;">{{ s.name }}</span>
                         <select class="b-select gap-stage" style="width:auto;padding:.35rem .5rem;font-size:.8rem;" aria-label="Your level in {{ s.name }}">
@@ -58,7 +71,7 @@
         <h2>Browse <span class="b-grad">{{ skills|length }} skill roadmaps</span></h2>
         <p>Every skill has beginner, intermediate, and advanced stages — topics, free resources, hands-on tasks, and a milestone checkpoint per stage.</p>
     </div>
-    <div class="b-field" style="max-width:420px;">
+    <div class="b-field" style="max-width:520px;">
         <label class="b-label" for="skill-filter">Filter by domain</label>
         <select class="b-select" id="skill-filter">
             <option value="">All domains</option>
@@ -66,6 +79,8 @@
             <option value="{{ domain }}">{{ domain }} ({{ count }})</option>
             {% endfor %}
         </select>
+        <label class="b-label" for="skill-search" style="margin-top:1rem;">Or search skills</label>
+        <input type="search" id="skill-search" class="b-input" placeholder="Search roadmaps… (try NLP, MLOps, SQL)" autocomplete="off">
     </div>
     <div class="b-bento" id="skill-grid">
         {% for s in skills %}

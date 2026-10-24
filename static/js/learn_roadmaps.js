@@ -14,16 +14,82 @@
             .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    /* ---- skill domain filter (roadmaps home) ---- */
+    /* ---- skill domain filter + name search (roadmaps home) ---- */
     var filter = document.getElementById('skill-filter');
-    if (filter) {
-        filter.addEventListener('change', function () {
-            var want = filter.value;
-            document.querySelectorAll('.skill-card').forEach(function (card) {
-                card.style.display = (!want || card.dataset.domain === want) ? '' : 'none';
+    var skillSearch = document.getElementById('skill-search');
+    function applySkillFilters() {
+        var want = filter ? filter.value : '';
+        var q = skillSearch ? skillSearch.value.trim().toLowerCase() : '';
+        document.querySelectorAll('.skill-card').forEach(function (card) {
+            var name = (card.querySelector('h3') || {}).textContent || '';
+            var okDomain = !want || card.dataset.domain === want;
+            var okName = !q || name.toLowerCase().indexOf(q) !== -1;
+            card.style.display = (okDomain && okName) ? '' : 'none';
+        });
+    }
+    if (filter) filter.addEventListener('change', applySkillFilters);
+    if (skillSearch) skillSearch.addEventListener('input', applySkillFilters);
+
+    /* ---- gap form helpers: role preview, skill search, counters ---- */
+    var roleSel = document.getElementById('gap-role');
+    var roleDesc = document.getElementById('gap-role-desc');
+    if (roleSel && roleDesc) {
+        roleSel.addEventListener('change', function () {
+            var opt = roleSel.options[roleSel.selectedIndex];
+            roleDesc.textContent = (opt && opt.dataset.desc) || '';
+            document.getElementById('gap-step-1').classList.toggle('is-done', !!roleSel.value);
+        });
+    }
+    function updateGapCounts() {
+        var boxes = document.querySelectorAll('.gap-skill');
+        var checked = document.querySelectorAll('.gap-skill:checked');
+        var countEl = document.getElementById('gap-selected-count');
+        if (countEl) countEl.textContent = checked.length + (checked.length === 1 ? ' skill selected' : ' skills selected');
+        document.querySelectorAll('.gap-domain').forEach(function (details) {
+            var badge = details.querySelector('.gap-domain-count');
+            if (!badge) return;
+            var n = details.querySelectorAll('.gap-skill:checked').length;
+            badge.textContent = n ? '(' + n + ' selected)' : '';
+        });
+        var step2 = document.getElementById('gap-step-2');
+        if (step2) step2.classList.toggle('is-done', checked.length > 0);
+    }
+    document.querySelectorAll('.gap-skill').forEach(function (cb) {
+        cb.addEventListener('change', updateGapCounts);
+    });
+    var gapSearch = document.getElementById('gap-skill-search');
+    if (gapSearch) {
+        gapSearch.addEventListener('input', function () {
+            var q = gapSearch.value.trim().toLowerCase();
+            document.querySelectorAll('.gap-domain').forEach(function (details) {
+                var anyVisible = false;
+                details.querySelectorAll('.gap-skill-card').forEach(function (label) {
+                    var name = (label.textContent || '').toLowerCase();
+                    var show = !q || name.indexOf(q) !== -1;
+                    label.style.display = show ? '' : 'none';
+                    if (show) anyVisible = true;
+                });
+                if (q) details.open = anyVisible;
+                details.style.display = (!q || anyVisible) ? '' : 'none';
             });
         });
     }
+    var expandBtn = document.getElementById('gap-expand-all');
+    if (expandBtn) {
+        expandBtn.addEventListener('click', function () {
+            var allOpen = Array.from(document.querySelectorAll('.gap-domain')).every(function (d) { return d.open; });
+            document.querySelectorAll('.gap-domain').forEach(function (d) { d.open = !allOpen; });
+            expandBtn.textContent = allOpen ? 'Expand all' : 'Collapse all';
+        });
+    }
+    var clearBtn = document.getElementById('gap-clear');
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function () {
+            document.querySelectorAll('.gap-skill:checked').forEach(function (cb) { cb.checked = false; });
+            updateGapCounts();
+        });
+    }
+    updateGapCounts();
 
     /* ---- gap analyzer ---- */
     var runBtn = document.getElementById('gap-run');
@@ -72,16 +138,21 @@
             html += '<div class="b-flash b-flash--success"><strong>No gaps found</strong> — you already meet every required skill for this role. Consider a harder target role.</div>';
         } else {
             html += '<div class="b-bento">';
+            var weekCursor = 0;
             data.gaps.forEach(function (g, i) {
-                html += '<div class="b-card b-card--lite">'
+                var wStart = weekCursor + 1;
+                weekCursor += (g.weeks_needed || 0);
+                var pct = Math.round((g.priority / 5) * 100);
+                html += '<div class="b-card b-card--lite gap-result-card" style="animation-delay:' + (i * 0.06) + 's;">'
                     + '<div style="display:flex;justify-content:space-between;gap:.6rem;align-items:baseline;">'
                     + '<h3 style="margin:0;">' + (i + 1) + '. ' + esc(g.skill_name) + '</h3>'
                     + '<span class="b-tag">priority ' + g.priority + '/5</span></div>'
+                    + '<div class="gap-prio-bar" aria-hidden="true"><span style="width:' + pct + '%;"></span></div>'
                     + '<p style="color:var(--b-muted);font-size:.9rem;">' + esc(g.reason) + '</p>'
                     + '<div class="b-kv">'
                     + '<div class="b-kv-row"><span class="b-kv-label">You are at</span><span class="b-kv-val">' + esc(g.current_stage || 'not started') + '</span></div>'
                     + '<div class="b-kv-row"><span class="b-kv-label">Need</span><span class="b-kv-val">' + esc(g.min_stage) + '</span></div>'
-                    + '<div class="b-kv-row"><span class="b-kv-label">Effort</span><span class="b-kv-val">' + g.weeks_needed + ' weeks</span></div>'
+                    + '<div class="b-kv-row"><span class="b-kv-label">Plan slot</span><span class="b-kv-val">weeks ' + wStart + '–' + weekCursor + ' (' + g.weeks_needed + ' weeks)</span></div>'
                     + '</div>'
                     + '<a class="b-btn b-btn--ghost b-btn--sm" style="margin-top:.8rem;" href="/learn/roadmaps/' + encodeURIComponent(g.skill_id) + '">Open roadmap</a>'
                     + '</div>';
@@ -89,6 +160,8 @@
             html += '</div>';
         }
         root.innerHTML = html;
+        var step3 = document.getElementById('gap-step-3');
+        if (step3) step3.classList.add('is-done');
         root.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
