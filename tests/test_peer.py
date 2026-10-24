@@ -918,7 +918,7 @@ def test_csrf_rejected_on_peer_posts(csrf_app):
 
 
 # ---------------------------------------------------------------------------
-# Bank alignment: full 1,050-question bank, company/difficulty targeting
+# Bank alignment: full 1,455-question bank, company/difficulty targeting
 # ---------------------------------------------------------------------------
 
 def test_peer_questions_technical_includes_bank_technical():

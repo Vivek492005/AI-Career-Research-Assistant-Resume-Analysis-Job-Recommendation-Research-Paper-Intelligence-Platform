@@ -1,6 +1,6 @@
 """Company-specific AI mock interviews with rubric scoring (Wave 2 feature #13).
 
-Question bank: data/interview_questions.json (339 questions, tagged by
+Question bank: data/interview_questions.json (tagged by
 company/role/category/difficulty, each with ideal-answer key points).
 
 Rubric (per answer, 0-100, deterministic and server-side):
@@ -18,6 +18,7 @@ import json
 import os
 import random
 import re
+from collections import Counter, defaultdict
 
 BANK_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                          "data", "interview_questions.json")
@@ -60,6 +61,86 @@ def interview_options():
     roles = sorted({r for q in bank for r in q["roles"]})
     categories = sorted({q["category"] for q in bank})
     return {"companies": companies, "roles": roles, "categories": categories}
+
+
+# Bank category -> display label used on the /practice hub.
+CATEGORY_DISPLAY = {
+    "behavioral": "Behavioral",
+    "technical": "Technical",
+    "dsa": "DSA",
+    "system_design": "System Design",
+    "hr": "HR",
+    "puzzles": "Puzzles",
+}
+_DISPLAY_TO_BANK = {v.lower(): k for k, v in CATEGORY_DISPLAY.items()}
+
+
+def category_from_display(value):
+    """Accept a hub filter value (display label or bank value) and return
+    the bank category, or None when it matches nothing."""
+    if not value:
+        return None
+    key = value.strip().lower()
+    if key in CATEGORY_DISPLAY:
+        return key
+    return _DISPLAY_TO_BANK.get(key)
+
+
+def interview_hub_data():
+    """Aggregates for the /practice hub, computed from the JSON bank
+    (single source of truth — the legacy CSV is no longer served here).
+
+    Returns companies sorted by question count (desc, then name),
+    per-company stats with top categories, and hub totals.
+    """
+    bank = _load_bank()
+    counts = Counter()
+    cats = defaultdict(Counter)
+    for q in bank:
+        for comp in q.get("companies", []):
+            counts[comp] += 1
+            cats[comp][q.get("category", "")] += 1
+    companies = sorted(counts, key=lambda c: (-counts[c], c.lower()))
+    stats = {}
+    for comp in companies:
+        stats[comp] = {
+            "total": counts[comp],
+            "top_categories": [CATEGORY_DISPLAY.get(cat, cat)
+                               for cat, _ in cats[comp].most_common(2)],
+        }
+    return {
+        "companies": companies,
+        "stats": stats,
+        "total_questions": len(bank),
+        "total_companies": len(companies),
+        "total_categories": len({q.get("category") for q in bank}),
+    }
+
+
+def hub_company_questions(company, category=None, difficulty=None):
+    """Bank rows for one company, shaped for the /practice question cards
+    (display category, time estimate, rubric key points included)."""
+    bank = _load_bank()
+    cat_bank = category_from_display(category) if category else None
+    out = []
+    for q in bank:
+        if not any(company.lower() == c.lower()
+                   for c in q.get("companies", [])):
+            continue
+        if cat_bank and q.get("category") != cat_bank:
+            continue
+        if difficulty and q.get("difficulty", "").lower() != difficulty.lower():
+            continue
+        out.append({
+            "question": q.get("question", ""),
+            "category": CATEGORY_DISPLAY.get(q.get("category"),
+                                            q.get("category", "")),
+            "difficulty": q.get("difficulty", ""),
+            "company": company,
+            "time_minutes": q.get("time_minutes"),
+            "key_points": q.get("key_points", []),
+        })
+    return out
 
 
 def _content_words(text):

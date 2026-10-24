@@ -308,9 +308,8 @@ from preparation.coding_practice import (
     get_coding_questions,
     get_company_coding_stats,
 )
-from preparation.company_questions import get_available_companies as get_interview_companies
-from preparation.company_questions import get_company_questions, get_company_stats
 from preparation.interview_questions import generate_interview_questions
+from studybuddy.mock_interview import hub_company_questions, interview_hub_data
 from recommendation.career_guidance import suggest_career_paths
 from recommendation.job_recommender import get_recommendations
 from recommendation.learning_roadmap import estimate_total_time, generate_roadmap
@@ -6452,12 +6451,19 @@ def register_routes(app):
 
     @app.route('/practice')
     def practice():
-        """Interview and coding practice page."""
+        """Interview and coding practice page.
+
+        The interview tab is served from the JSON mock-interview bank
+        (single source of truth); the legacy company_questions CSV is
+        no longer used here.
+        """
+        hub = interview_hub_data()
         return render_template('practice.html',
-                               companies_interview=get_interview_companies(),
+                               companies_interview=hub["companies"],
                                companies_coding=get_coding_companies(),
                                topics=get_available_topics(),
-                               company_stats=get_company_stats(),
+                               company_stats=hub["stats"],
+                               hub_stats=hub,
                                coding_stats=get_company_coding_stats())
 
     # ---------- RESEARCH ASSISTANT ----------
@@ -8273,9 +8279,10 @@ def register_routes(app):
     # ---------- API ENDPOINTS (Shared) ----------
     @app.route('/api/interview-questions/<company>')
     def api_interview_questions(company):
-        questions = get_company_questions(company=company,
-                                          category=request.args.get('category'),
-                                          difficulty=request.args.get('difficulty'))
+        questions = hub_company_questions(
+            company=company,
+            category=request.args.get('category'),
+            difficulty=request.args.get('difficulty'))
         return jsonify(questions)
 
     @app.route('/api/coding-practice')
@@ -8288,7 +8295,8 @@ def register_routes(app):
 
     @app.route('/api/companies')
     def api_companies():
-        return jsonify({'interview': get_interview_companies(), 'coding': get_coding_companies()})
+        return jsonify({'interview': interview_hub_data()["companies"],
+                        'coding': get_coding_companies()})
 
     @app.route('/api/topics')
     def api_topics():

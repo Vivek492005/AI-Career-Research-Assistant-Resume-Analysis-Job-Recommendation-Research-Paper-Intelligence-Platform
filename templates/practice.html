@@ -36,6 +36,17 @@
             <div class="dashboard-header b-reveal">
                 <h1>Interview <span class="b-grad">Practice Hub</span></h1>
                 <p class="summary-text">Prepare for your dream job with company-specific interview questions and curated coding challenges from top tech companies.</p>
+                {% if hub_stats %}
+                <p class="practice-stat-strip" aria-label="Interview bank size">
+                    <strong>{{ hub_stats.total_questions }}</strong> questions
+                    <span aria-hidden="true">·</span>
+                    <strong>{{ hub_stats.total_companies }}</strong> companies
+                    <span aria-hidden="true">·</span>
+                    <strong>{{ hub_stats.total_categories }}</strong> categories
+                    <span aria-hidden="true">·</span>
+                    every question ships with a rubric of what a strong answer covers
+                </p>
+                {% endif %}
             </div>
 
             <!-- Tabs -->
@@ -52,20 +63,49 @@
             <div class="tab-content active" id="content-interview">
                 <!-- Company Grid -->
                 {% set logo_map = {
+                    'Accenture': 'accenture',
                     'Adobe': 'adobe',
                     'Amazon': 'amazon',
                     'Apple': 'apple',
+                    'Atlassian': 'atlassian',
+                    'Cisco': 'cisco',
+                    'Cognizant': 'cognizant',
+                    'Dropbox': 'dropbox',
+                    'Flipkart': 'flipkart',
                     'Goldman Sachs': 'goldmansachs',
                     'Google': 'google',
-                    'IBM': 'ibm',
+                    'HCLTech': 'hcl',
+                    'Infosys': 'infosys',
+                    'Intuit': 'intuit',
                     'LinkedIn': 'linkedin',
+                    'Mastercard': 'mastercard',
                     'Meta': 'meta',
                     'Microsoft': 'microsoft',
                     'Netflix': 'netflix',
+                    'NVIDIA': 'nvidia',
                     'Oracle': 'oracle',
+                    'PayPal': 'paypal',
+                    'Paytm': 'paytm',
+                    'PhonePe': 'phonepe',
+                    'Razorpay': 'razorpay',
                     'Salesforce': 'salesforce',
-                    'Uber': 'uber'
+                    'Samsung': 'samsung',
+                    'Stripe': 'stripe',
+                    'Swiggy': 'swiggy',
+                    'TCS': 'tcs',
+                    'Uber': 'uber',
+                    'Visa': 'visa',
+                    'Walmart': 'walmart',
+                    'Wipro': 'wipro',
+                    'Zerodha': 'zerodha',
+                    'Zomato': 'zomato',
+                    'Zoho': 'zoho'
                 } %}
+                <div class="practice-search">
+                    <label class="sr-only" for="interviewCompanySearch">Search companies</label>
+                    <input type="search" id="interviewCompanySearch" placeholder="Search companies… (try Google, Flipkart, Paytm)"
+                           oninput="filterInterviewCompanies(this.value)" autocomplete="off">
+                </div>
                 <div class="company-grid" id="interviewCompanyGrid">
                     {% for company in companies_interview %}
                     <div class="company-card b-card b-card--lite" data-company="{{ company }}" onclick="selectInterviewCompany('{{ company }}')">
@@ -83,6 +123,10 @@
                                 {{ company_stats[company].total }} questions
                             {% endif %}
                         </div>
+                        {% if company_stats.get(company) and company_stats[company].top_categories %}
+                        <div class="company-focus">{{ company_stats[company].top_categories|join(' · ') }}</div>
+                        {% endif %}
+                        <a class="company-mock-link" href="{{ url_for('interview_home') }}" onclick="event.stopPropagation()">Start mock →</a>
                     </div>
                     {% endfor %}
                 </div>
@@ -93,7 +137,10 @@
                         <option value="">All Categories</option>
                         <option value="Behavioral">Behavioral</option>
                         <option value="Technical">Technical</option>
+                        <option value="DSA">DSA</option>
                         <option value="System Design">System Design</option>
+                        <option value="HR">HR</option>
+                        <option value="Puzzles">Puzzles</option>
                     </select>
                     <select class="filter-select" id="interviewDifficultyFilter" onchange="filterInterviewQuestions()">
                         <option value="">All Difficulties</option>
@@ -186,6 +233,13 @@
         });
 
         // ---- Interview Questions ----
+        function filterInterviewCompanies(query) {
+            const q = (query || '').trim().toLowerCase();
+            document.querySelectorAll('#interviewCompanyGrid .company-card').forEach(card => {
+                card.style.display = (!q || (card.dataset.company || '').toLowerCase().includes(q)) ? '' : 'none';
+            });
+        }
+
         async function selectInterviewCompany(company) {
             currentInterviewCompany = company;
             
@@ -238,7 +292,13 @@
                         <div class="question-meta">
                             <span>${q.category}</span>
                             <span>${q.company}</span>
+                            ${q.time_minutes ? `<span>~${q.time_minutes} min</span>` : ''}
                         </div>
+                        ${(q.key_points || []).length ? `
+                        <details class="question-rubric">
+                            <summary>What a strong answer covers</summary>
+                            <ul>${q.key_points.map(kp => `<li>${kp}</li>`).join('')}</ul>
+                        </details>` : ''}
                     </div>
                 </div>
             `).join('');

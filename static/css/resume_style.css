@@ -1577,6 +1577,79 @@ body {
     box-shadow: var(--shadow-glow-lg);
 }
 
+.practice-stat-strip {
+    margin-top: var(--space-md);
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+.practice-search {
+    margin-bottom: var(--space-lg);
+}
+
+.practice-search input {
+    width: 100%;
+    max-width: 480px;
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.05);
+    color: inherit;
+    font-size: 1rem;
+}
+
+.company-focus {
+    position: relative;
+    z-index: 1;
+    margin-top: 0.35rem;
+    font-size: 0.82rem;
+    opacity: 0.65;
+}
+
+.company-mock-link {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+.company-mock-link:hover {
+    text-decoration: underline;
+}
+
+.question-rubric {
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.question-rubric summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.question-rubric ul {
+    margin: 0.4rem 0 0 1.1rem;
+    padding: 0;
+}
+
+.question-rubric li {
+    margin-bottom: 0.25rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
 .company-logo {
     position: relative;
     z-index: 1;

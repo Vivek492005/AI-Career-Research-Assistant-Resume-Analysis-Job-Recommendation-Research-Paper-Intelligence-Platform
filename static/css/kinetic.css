@@ -1417,6 +1417,8 @@ body.sb-app .b-card--stat:hover :is(b, strong) { color: var(--sb-blue) !importan
    or the logo would vanish on paper. */
 .company-grid .company-card:hover .company-name { color: var(--sb-ink) !important; }
 .company-grid .company-card:hover .company-count { color: #4c4c46 !important; }
+.company-grid .company-card:hover .company-focus { color: #4c4c46 !important; }
+.company-grid .company-card:hover .company-mock-link { color: var(--sb-blue) !important; }
 .company-grid .company-card:hover .company-logo { background: rgba(10, 10, 10, 0.06); border-color: rgba(10, 10, 10, 0.14); }
 .company-grid .company-card:hover .company-logo img { filter: brightness(0); opacity: 1; }
 
