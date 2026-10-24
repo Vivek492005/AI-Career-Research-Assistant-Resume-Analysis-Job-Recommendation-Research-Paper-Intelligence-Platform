@@ -481,11 +481,11 @@ class TestMasteryStats:
     def test_empty_progress(self):
         stats = mastery_stats({"cards": [], "progress": {}})
         assert stats == {"total": 0, "reviewed": 0, "known": 0,
-                         "unknown": 0, "mastery_pct": 0}
+                         "unknown": 0, "mastery_pct": 0, "due": 0}
 
     def test_none_and_garbage_input(self):
         empty = {"total": 0, "reviewed": 0, "known": 0,
-                 "unknown": 0, "mastery_pct": 0}
+                 "unknown": 0, "mastery_pct": 0, "due": 0}
         assert mastery_stats(None) == empty
         assert mastery_stats({}) == empty
         assert mastery_stats("nope") == empty

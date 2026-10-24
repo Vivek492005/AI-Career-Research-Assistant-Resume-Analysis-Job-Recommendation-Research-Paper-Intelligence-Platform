@@ -20,6 +20,11 @@
     try { cards = JSON.parse(dataEl.textContent || '[]'); } catch (e) { cards = []; }
     var setId = window.location.pathname.split('/').filter(Boolean).pop();
     var idx = 0, flipped = false;
+    /* SRS queue: order[] holds indices into cards[] for the active view
+       (all cards, or only new+due cards in due-only mode). */
+    var order = cards.map(function (_, i) { return i; });
+    var dueOnly = false;
+    function current() { return cards[order[idx]]; }
 
     function showError(msg) {
         var e = $('fc-error');
@@ -28,14 +33,20 @@
 
     /* ---------- flashcard mode ---------- */
     function renderCard() {
-        var c = cards[idx];
+        var c = current();
         if (!c) {
-            $('fc-q').textContent = 'No cards in this deck.';
+            $('fc-q').textContent = dueOnly ? 'Nothing due — this deck is fully scheduled. 🎉' : 'No cards in this deck.';
+            $('fc-progress').textContent = '';
+            $('fc-kind').textContent = '';
             return;
         }
         flipped = false;
-        $('fc-progress').textContent = 'Card ' + (idx + 1) + ' of ' + cards.length;
-        $('fc-kind').textContent = c.kind === 'mcq' ? 'Multiple choice' : (c.kind === 'cloze' ? 'Fill in the blank' : 'Q & A');
+        $('fc-progress').textContent = 'Card ' + (idx + 1) + ' of ' + order.length + (dueOnly ? ' due' : '');
+        var kindLabel = c.kind === 'mcq' ? 'Multiple choice' : (c.kind === 'cloze' ? 'Fill in the blank' : 'Q & A');
+        if (c.srs_state === 'new') kindLabel += ' · new';
+        else if (c.srs_state === 'due') kindLabel += ' · due';
+        else if (c.srs_due) kindLabel += ' · due ' + c.srs_due;
+        $('fc-kind').textContent = kindLabel;
         $('fc-q').textContent = c.question;
         $('fc-a').style.display = 'none';
         $('fc-src').style.display = 'none';
@@ -50,7 +61,7 @@
         $('fc-src').innerHTML = src.length ? 'Source: ' + src.join(', ') : '';
     }
     function flip() {
-        if (!cards[idx]) return;
+        if (!current()) return;
         flipped = !flipped;
         $('fc-a').style.display = flipped ? 'block' : 'none';
         $('fc-src').style.display = flipped ? 'block' : 'none';
@@ -61,7 +72,25 @@
     });
     $('fc-flip').addEventListener('click', flip);
     function prev() { if (idx > 0) { idx--; renderCard(); } }
-    function next() { if (idx < cards.length - 1) { idx++; renderCard(); } }
+    function next() { if (idx < order.length - 1) { idx++; renderCard(); } }
+
+    var dueToggle = $('fc-due-toggle');
+    if (dueToggle) {
+        dueToggle.addEventListener('click', function () {
+            dueOnly = !dueOnly;
+            dueToggle.setAttribute('aria-pressed', dueOnly ? 'true' : 'false');
+            if (dueOnly) {
+                order = [];
+                cards.forEach(function (c, i) {
+                    if (c.srs_state === 'new' || c.srs_state === 'due') order.push(i);
+                });
+            } else {
+                order = cards.map(function (_, i) { return i; });
+            }
+            idx = 0;
+            renderCard();
+        });
+    }
     $('fc-prev').addEventListener('click', prev);
     $('fc-next').addEventListener('click', next);
 
@@ -85,7 +114,7 @@
     });
 
     function mark(known) {
-        var c = cards[idx];
+        var c = current();
         if (!c) return;
         fetch('/research/api/flashcards/' + setId + '/progress', {
             method: 'POST',
@@ -96,9 +125,17 @@
         .then(function (data) {
             if (data.stats) {
                 $('fc-stats-line').textContent = 'Mastery: ' + data.stats.mastery_pct +
-                    '% · ' + data.stats.known + '/' + data.stats.total + ' known';
+                    '% · ' + data.stats.known + '/' + data.stats.total + ' known' +
+                    (typeof data.stats.due === 'number' ? ' · ' + data.stats.due + ' due' : '');
             }
-            if (idx < cards.length - 1) { idx++; renderCard(); }
+            c.srs_state = 'scheduled'; /* rescheduled by this review */
+            /* The card just got scheduled into the future; in due-only
+               mode it leaves the queue, otherwise advance. */
+            if (dueOnly) {
+                order.splice(idx, 1);
+                if (idx >= order.length) idx = Math.max(0, order.length - 1);
+                renderCard();
+            } else if (idx < order.length - 1) { idx++; renderCard(); }
         })
         .catch(function () { showError('Could not save progress.'); });
     }

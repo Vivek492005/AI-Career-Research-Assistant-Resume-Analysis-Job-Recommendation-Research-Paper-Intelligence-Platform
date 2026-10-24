@@ -402,6 +402,11 @@ from studybuddy.dsa_practice import topics as dsa_topics
 from studybuddy.flashcards import generate_deck as fc_generate_deck
 from studybuddy.flashcards import grade_mcq as fc_grade_mcq
 from studybuddy.flashcards import mastery_stats as fc_mastery_stats
+from studybuddy.flashcards import (
+    card_due_state as fc_card_due_state,
+    due_count as fc_due_count,
+    srs_update as fc_srs_update,
+)
 from studybuddy.gap_finder import generate_gap_report as gf_generate_report
 from studybuddy.health_review import DIMENSIONS as HR_DIMENSIONS
 from studybuddy.health_review import current_month_key as hr_current_month_key
@@ -6423,8 +6428,25 @@ def register_routes(app):
     # ---------- RESEARCH ASSISTANT ----------
     @app.route('/research')
     def research_home():
-        """Research Paper Assistant Page."""
-        return render_template('research.html')
+        """Research hub. Signed-in users also get their personal
+        research strip (library size, decks due, reviews, reports)."""
+        stats = None
+        if current_user.is_authenticated:
+            decks = FlashcardSet.query.filter_by(
+                user_id=current_user.id).all()
+            stats = {
+                "docs": StudyDoc.query.filter_by(
+                    user_id=current_user.id).count(),
+                "imports": PaperImport.query.filter_by(
+                    user_id=current_user.id).count(),
+                "decks": len(decks),
+                "due": sum(fc_due_count(s.data or {}) for s in decks),
+                "reviews": LitReview.query.filter_by(
+                    user_id=current_user.id).count(),
+                "gap_reports": GapReport.query.filter_by(
+                    user_id=current_user.id).count(),
+            }
+        return render_template('research.html', research_stats=stats)
 
     # ---------- STUDY INTELLIGENCE (Wave 4 batch 1) ----------
     # Feature #21: source-grounded PDF Q&A with citations (NotebookLM-style)
@@ -6966,8 +6988,11 @@ def register_routes(app):
                                            'chunks': d.num_chunks} for d in docs],
                                sets=[{'id': s.id, 'doc_id': s.doc_id,
                                       'cards': s.card_count,
+                                      'due': fc_due_count(s.data or {}),
                                       'created': s.created_at.strftime('%Y-%m-%d')}
-                                     for s in sets])
+                                     for s in sets],
+                               total_due=sum(fc_due_count(s.data or {})
+                                             for s in sets))
 
     @app.route('/research/api/flashcards/generate', methods=['POST'])
     @limiter.limit("10 per hour")
@@ -7009,12 +7034,22 @@ def register_routes(app):
                                           user_id=current_user.id).first_or_404()
         doc = StudyDoc.query.filter_by(id=fs.doc_id).first()
         cards = (fs.data or {}).get('cards') or []
+        progress = (fs.data or {}).get('progress') or {}
+        # Enrich each card with its SRS state so the UI can offer a
+        # due-only review queue and show the next due date per card.
+        enriched = []
+        for c in cards:
+            c = dict(c)
+            entry = progress.get(c.get('id')) or {}
+            c['srs_state'] = fc_card_due_state(entry)
+            c['srs_due'] = entry.get('due')
+            enriched.append(c)
         # Strip nothing: the UI needs questions/options; answers stay in the
         # payload but quiz grading is server-side, so no leak concern here.
         return render_template('flashcards_review.html', set_id=fs.id,
                                doc_title=doc.title if doc else 'Document',
                                stats=fc_mastery_stats(fs.data or {}),
-                               cards=cards)
+                               cards=enriched)
 
     @app.route('/research/api/flashcards/<int:sid>/progress', methods=['POST'])
     @limiter.limit("60 per hour")
@@ -7040,6 +7075,8 @@ def register_routes(app):
             entry = progress.setdefault(card_id, {'known': False, 'reviews': 0})
             entry['known'] = known
             entry['reviews'] = int(entry.get('reviews') or 0) + 1
+            # SM-2-lite: schedule the next review (ease/interval/due).
+            fc_srs_update(entry, known)
             from sqlalchemy.orm.attributes import flag_modified
             flag_modified(fs, 'data')
             db.session.commit()

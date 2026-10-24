@@ -941,7 +941,88 @@ def mastery_stats(set_data) -> dict:
         return _mastery_stats(set_data)
     except Exception:
         return {"total": 0, "reviewed": 0, "known": 0,
-                "unknown": 0, "mastery_pct": 0}
+                "unknown": 0, "mastery_pct": 0, "due": 0}
+
+
+# ---------------------------------------------------------------------------
+# 8. Spaced-repetition scheduling (SM-2-lite)
+# ---------------------------------------------------------------------------
+# Until 2026-10-24 progress was only {known, reviews} — nothing was
+# actually *spaced*. Each progress entry now also carries:
+#   ease     float, starts 2.5, floor 1.3, +0.05 per success (cap 2.8),
+#            -0.2 per lapse
+#   interval int days until the card is due again
+#   due      ISO date (YYYY-MM-DD) the card becomes due
+#   lapses   count of "still learning" marks after first success
+# Legacy entries without these fields behave as brand-new cards.
+
+from datetime import date as _date
+from datetime import timedelta as _timedelta
+
+SRS_DEFAULT_EASE = 2.5
+SRS_MIN_EASE = 1.3
+SRS_MAX_EASE = 2.8
+
+
+def _today_str(today=None):
+    return (today or _date.today()).isoformat()
+
+
+def srs_update(entry, known, today=None):
+    """Advance one card's schedule after a review. Mutates and returns
+    the entry. ``today`` is a datetime.date (defaults to today)."""
+    today = today or _date.today()
+    entry = entry if isinstance(entry, dict) else {}
+    try:
+        ease = float(entry.get("ease") or SRS_DEFAULT_EASE)
+    except (TypeError, ValueError):
+        ease = SRS_DEFAULT_EASE
+    try:
+        interval = int(entry.get("interval") or 0)
+    except (TypeError, ValueError):
+        interval = 0
+    lapses = entry.get("lapses") or 0
+    if known:
+        if interval <= 0:
+            interval = 1
+        elif interval == 1:
+            interval = 3
+        else:
+            interval = max(2, round(interval * ease))
+        ease = min(SRS_MAX_EASE, ease + 0.05)
+    else:
+        if interval > 0:
+            lapses = int(lapses) + 1
+        interval = 1
+        ease = max(SRS_MIN_EASE, ease - 0.2)
+    entry["ease"] = round(ease, 2)
+    entry["interval"] = interval
+    entry["lapses"] = int(lapses)
+    entry["due"] = (today + _timedelta(days=interval)).isoformat()
+    return entry
+
+
+def card_due_state(entry, today=None):
+    """'new' (never reviewed), 'due' (due today or overdue), or
+    'scheduled' (due in the future) for one progress entry."""
+    if not isinstance(entry, dict) or not entry.get("reviews"):
+        return "new"
+    due = entry.get("due")
+    if not due:
+        return "due"  # legacy reviewed card without a schedule
+    return "due" if str(due) <= _today_str(today) else "scheduled"
+
+
+def due_count(set_data, today=None) -> int:
+    """Cards in a deck that are new or due today."""
+    data = set_data if isinstance(set_data, dict) else {}
+    cards = data.get("cards") if isinstance(data.get("cards"), list) else []
+    progress = data.get("progress") if isinstance(data.get("progress"), dict) else {}
+    n = 0
+    for c in cards:
+        if isinstance(c, dict) and card_due_state(progress.get(c.get("id")), today) in ("new", "due"):
+            n += 1
+    return n
 
 
 def _mastery_stats(set_data) -> dict:
@@ -970,6 +1051,7 @@ def _mastery_stats(set_data) -> dict:
         "known": known,
         "unknown": unknown,
         "mastery_pct": mastery_pct,
+        "due": due_count(set_data),
     }
 
 
