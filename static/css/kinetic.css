@@ -1446,42 +1446,50 @@ body.sb-app .b-card--stat:hover :is(b, strong) { color: var(--sb-blue) !importan
    no-JS keep the still, blended composition. */
 .roadmap-hero { position: relative; overflow: hidden; padding: 3.4rem 1rem 2.6rem; display: flex; justify-content: center; }
 .roadmap-glow { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%); width: min(820px, 95vw); height: 420px; pointer-events: none; z-index: 0;
-    background: radial-gradient(ellipse at center, rgba(255,255,255,.20) 0%, rgba(255,255,255,.08) 42%, transparent 70%); }
-/* Skill beams (2026-10-24, user steer): exactly 7 beams of smoky
-   white light — 3 from the left, 4 from the right — each one a skill
-   streaming into the centred heading. A beam is wide at its edge and
-   tapers to a point at the heading; a blurred copy underneath gives
-   the smoke, and a slow pulse makes the light feel alive. No images:
-   pure CSS, so the count, angles and blend are exact on every screen. */
-.roadmap-beams { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-.roadmap-beam { position: absolute; top: var(--beam-top); height: 72px; width: 38%; animation: roadmapBeamPulse 4.5s ease-in-out infinite; animation-delay: var(--beam-delay); }
-.roadmap-beam--left { left: 0; transform: rotate(var(--beam-tilt)); transform-origin: left center; }
-.roadmap-beam--right { right: 0; transform: rotate(var(--beam-tilt)); transform-origin: right center; }
-.roadmap-beam::before { content: ""; position: absolute; inset: 0;
-    background: linear-gradient(to right, rgba(255,255,255,.8), rgba(255,255,255,.3) 55%, transparent 95%); }
-.roadmap-beam--right::before { background: linear-gradient(to left, rgba(255,255,255,.8), rgba(255,255,255,.3) 55%, transparent 95%); }
-.roadmap-beam--left::before { -webkit-clip-path: polygon(0 0, 100% 36%, 100% 64%, 0 100%); clip-path: polygon(0 0, 100% 36%, 100% 64%, 0 100%); }
-.roadmap-beam--right::before { -webkit-clip-path: polygon(0 36%, 100% 0, 100% 100%, 0 64%); clip-path: polygon(0 36%, 100% 0, 100% 100%, 0 64%); }
-/* Smoke: same gradient, heavily blurred, NOT clipped, so the light
-   bleeds softly around the beam instead of stopping at its edge. */
-.roadmap-beam::after { content: ""; position: absolute; inset: -26px 0;
-    background: linear-gradient(to right, rgba(255,255,255,.45), rgba(255,255,255,.14) 55%, transparent 95%);
-    filter: blur(20px); opacity: .6; }
-.roadmap-beam--right::after { background: linear-gradient(to left, rgba(255,255,255,.45), rgba(255,255,255,.14) 55%, transparent 95%); }
-.roadmap-beam span { position: absolute; top: 50%; transform: translateY(-50%); font-family: var(--b-mono, monospace); font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.6); white-space: nowrap; }
-.roadmap-beam--left span { left: 14px; }
-.roadmap-beam--right span { right: 14px; }
-@keyframes roadmapBeamPulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+    background: radial-gradient(ellipse at center, rgba(255,255,255,.10) 0%, rgba(255,255,255,.04) 42%, transparent 70%); }
+/* Skill bombardment (2026-10-24, user steer): the heading is the
+   source — 7 skill nodes (3 left, 4 right) BURST OUT of it toward
+   both edges on load, each a different shape, each dragging a faint
+   light trail that fades with distance (bright at the heading,
+   gone by the far edge). The background smoke stays DIM on purpose:
+   a soft haze, never a bright wash. Pure CSS, so the count and
+   direction are exact on every screen. */
+.roadmap-burst { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.roadmap-node { position: absolute; top: var(--node-top); display: flex; align-items: center; gap: .55rem;
+    animation: roadmapBurst .9s cubic-bezier(.2,.7,.2,1) both; animation-delay: var(--node-delay); }
+.roadmap-node--left { left: 2%; }
+.roadmap-node--right { right: 2%; }
+@keyframes roadmapBurst { from { opacity: 0; transform: translate(var(--bx), var(--by)) scale(.35); } to { opacity: 1; transform: translate(0, 0) scale(1); } }
+.roadmap-node span { font-family: var(--b-mono, monospace); font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.65); white-space: nowrap; }
+.roadmap-shape { display: block; width: 34px; height: 34px; flex: none; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.4); }
+.roadmap-shape--hex { -webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%); clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%); }
+.roadmap-shape--diamond { -webkit-clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.roadmap-shape--circle { border-radius: 50%; }
+.roadmap-shape--square { border-radius: 6px; }
+.roadmap-shape--pent { -webkit-clip-path: polygon(50% 0, 100% 38%, 81% 100%, 19% 100%, 0 38%); clip-path: polygon(50% 0, 100% 38%, 81% 100%, 19% 100%, 0 38%); }
+.roadmap-shape--pill { border-radius: 999px; width: 44px; }
+.roadmap-shape--tri { -webkit-clip-path: polygon(50% 0, 100% 100%, 0 100%); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+/* Trail: a thin light streak from the node back toward the heading,
+   brightest at the heading end, faded out by the node — light that
+   dies with distance. It draws itself after its node lands. */
+.roadmap-trail { display: block; height: 2px; width: min(200px, 16vw); flex: none;
+    animation: roadmapTrail .8s ease-out both; animation-delay: calc(var(--node-delay) + .25s); }
+.roadmap-node--left .roadmap-trail { transform-origin: right center;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,.35)); }
+.roadmap-node--right .roadmap-trail { transform-origin: left center;
+    background: linear-gradient(to left, transparent, rgba(255,255,255,.35)); }
+@keyframes roadmapTrail { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
 .roadmap-hero-text { position: relative; z-index: 1; text-align: center; max-width: 780px; }
 .roadmap-hero-text h1 { font-size: clamp(2.75rem, 6vw, 4.6rem); line-height: 1.02; }
 .roadmap-hero-text .b-lede { margin-left: auto; margin-right: auto; font-size: 1.14rem; }
 .roadmap-hero-text.sb-rippling { will-change: filter, opacity; }
 @media (max-width: 900px) {
-    .roadmap-beams { opacity: .35; }
-    .roadmap-beam span { display: none; }
+    .roadmap-burst { opacity: .35; }
+    .roadmap-node span { display: none; }
+    .roadmap-trail { width: 90px; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .roadmap-beam { animation: none; }
+    .roadmap-node, .roadmap-trail { animation: none; }
 }
 /* Centred section heads (roadmaps browse) + calm gap-form rows: the
    per-skill labels stop behaving like tiles — flat rows with a
