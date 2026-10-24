@@ -1,6 +1,6 @@
 """Certification guidance engine (Wave 3 feature #20).
 
-Backed by the committed bank data/certifications.json: 44 real
+Backed by the committed bank data/certifications.json: 110 real
 certifications across Cloud, Data, Programming, Cybersecurity, Project
 Management, Networking, DevOps, and AI/ML. Costs are approximate INR.
 

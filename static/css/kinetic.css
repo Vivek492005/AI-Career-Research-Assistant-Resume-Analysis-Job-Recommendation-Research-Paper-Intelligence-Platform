@@ -1461,6 +1461,31 @@ body.sb-app .b-card--stat:hover :is(b, strong) { color: var(--sb-blue) !importan
 .quiz-hero-text h1 { font-size: clamp(2.75rem, 6vw, 4.6rem); line-height: 1.02; }
 .quiz-hero-text .b-lede { margin-left: auto; margin-right: auto; font-size: 1.14rem; }
 .quiz-hero-text.sb-rippling { will-change: filter, opacity; }
+/* Certs hero: headline left, graduation-cap + diplomas photo on the
+   right, melting into the ink ground via screen blending (pure-black
+   photo ground, same rule as the Learn hero). The photo's own left
+   side is empty black space, so the headline sits over darkness and
+   stays readable. Heading is slightly larger than the roadmaps hero
+   and enters through the same Ripple Dissolve filter (JS-driven);
+   without JS it simply shows, blended. */
+.sb-cert-hero { position: relative; min-height: 430px; display: flex; align-items: center; padding-top: 2.6rem; }
+.sb-cert-hero-text { position: relative; z-index: 1; max-width: 640px; }
+.sb-cert-hero-text h1 { font-size: clamp(2.9rem, 6.5vw, 5rem); line-height: 1.02; }
+.sb-cert-hero-text.sb-rippling { will-change: filter, opacity; }
+.sb-cert-stats { display: flex; gap: 1.6rem; border-top: 1px solid #26262e; margin-top: 1.4rem; padding-top: 1rem; }
+.sb-cert-stat b { font-family: var(--sb-display); font-weight: 700; font-size: 1.9rem; line-height: 1; color: #fff; display: block; }
+.sb-cert-stat span { color: #a3a3a0; font-size: 0.85rem; }
+.sb-cert-desk { margin: 0; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: min(52%, 680px); z-index: 0; pointer-events: none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 13%), linear-gradient(to bottom, transparent 0, #000 9%, #000 91%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent 0, #000 13%), linear-gradient(to bottom, transparent 0, #000 9%, #000 91%, transparent 100%);
+    mask-composite: intersect; }
+@media (max-width: 900px) {
+    .sb-cert-hero { min-height: 0; display: block; }
+    .sb-cert-desk { position: static; transform: none; width: 100%; margin-top: 1.4rem; }
+}
+.sb-cert-desk img { width: 100%; height: auto; display: block; mix-blend-mode: screen; filter: grayscale(1) contrast(1.04); }
+.sb-cert-desk img.sb-rippling { will-change: filter, opacity; }
 /* Centred section heads (roadmaps browse) + calm gap-form rows: the
    per-skill labels stop behaving like tiles — flat rows with a
    hairline, no opposite-sweep flood — so the 30-checkbox form reads

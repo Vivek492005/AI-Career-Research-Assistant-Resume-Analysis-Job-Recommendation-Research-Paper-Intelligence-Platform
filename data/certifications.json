@@ -1545,5 +1545,2312 @@
    "ml-engineer",
    "data-scientist"
   ]
+ },
+ {
+  "id": "ai-900",
+  "name": "Microsoft Certified: Azure AI Fundamentals",
+  "provider": "Microsoft",
+  "domain": "AI/ML",
+  "cost_inr": 8200,
+  "cost_note": "Approximate; exam priced at USD 99",
+  "validity_years": 1,
+  "difficulty": "Beginner",
+  "prerequisites": "No prerequisites. Basic familiarity with Azure and ML concepts helps.",
+  "exam_format": "45–60 questions, 45 minutes, online or test center.",
+  "official_url": "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/",
+  "prep_resources": [
+   {
+    "title": "Azure AI services product overview",
+    "kind": "free",
+    "url": "https://azure.microsoft.com/en-us/products/ai-services"
+   },
+   {
+    "title": "Azure AI services documentation",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/azure/ai-services/"
+   },
+   {
+    "title": "Microsoft Learn training catalog",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/training/"
+   }
+  ],
+  "career_value": "Entry ticket into AI roles on Azure; pairs with the AI-102 associate cert for a full junior AI-engineer story.",
+  "roles": [
+   "ai-engineer",
+   "ml-engineer",
+   "data-scientist"
+  ]
+ },
+ {
+  "id": "ai-102",
+  "name": "Microsoft Certified: Azure AI Engineer Associate",
+  "provider": "Microsoft",
+  "domain": "AI/ML",
+  "cost_inr": 13700,
+  "cost_note": "Approximate; exam priced at USD 165",
+  "validity_years": 1,
+  "difficulty": "Intermediate",
+  "prerequisites": "Working knowledge of Azure AI services; programming in Python or C# recommended.",
+  "exam_format": "40–60 questions, 120 minutes, online or test center.",
+  "official_url": "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/",
+  "prep_resources": [
+   {
+    "title": "Azure AI services documentation",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/azure/ai-services/"
+   },
+   {
+    "title": "Azure OpenAI Service documentation",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/"
+   },
+   {
+    "title": "Microsoft Learn training catalog",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/training/"
+   }
+  ],
+  "career_value": "The associate-level Azure AI cert employers ask for in AI-engineer job posts; proves you can ship AI solutions, not just describe them.",
+  "roles": [
+   "ai-engineer",
+   "ml-engineer"
+  ]
+ },
+ {
+  "id": "aws-aif",
+  "name": "AWS Certified AI Practitioner",
+  "provider": "Amazon Web Services",
+  "domain": "AI/ML",
+  "cost_inr": 8300,
+  "cost_note": "Approximate; exam priced at USD 100",
+  "validity_years": 3,
+  "difficulty": "Beginner",
+  "prerequisites": "No prerequisites. General familiarity with AI/ML concepts and AWS services helps.",
+  "exam_format": "65 questions, 90 minutes, online or test center.",
+  "official_url": "https://aws.amazon.com/certification/certified-ai-practitioner/",
+  "prep_resources": [
+   {
+    "title": "AWS Skill Builder learning plans",
+    "kind": "free",
+    "url": "https://skillbuilder.aws/"
+   },
+   {
+    "title": "AWS AI/ML services overview",
+    "kind": "free",
+    "url": "https://aws.amazon.com/machine-learning/"
+   },
+   {
+    "title": "Amazon Bedrock user guide",
+    "kind": "free",
+    "url": "https://docs.aws.amazon.com/bedrock/"
+   }
+  ],
+  "career_value": "AWS's 2024 foundational AI cert — the fastest way to signal AI fluency on the cloud most Indian IT-services firms run on.",
+  "roles": [
+   "ai-engineer",
+   "ml-engineer"
+  ]
+ },
+ {
+  "id": "gcp-genai-leader",
+  "name": "Google Cloud Certified: Generative AI Leader",
+  "provider": "Google Cloud",
+  "domain": "AI/ML",
+  "cost_inr": 8200,
+  "cost_note": "Approximate; exam priced at USD 99",
+  "validity_years": 3,
+  "difficulty": "Beginner",
+  "prerequisites": "No technical prerequisites. Business familiarity with generative AI concepts helps.",
+  "exam_format": "50–60 questions, 90 minutes, online.",
+  "official_url": "https://cloud.google.com/learn/certification/generative-ai-leader",
+  "prep_resources": [
+   {
+    "title": "Google Cloud Skills Boost",
+    "kind": "free",
+    "url": "https://www.cloudskillsboost.google/"
+   },
+   {
+    "title": "Google Cloud generative AI documentation",
+    "kind": "free",
+    "url": "https://cloud.google.com/ai/generative-ai"
+   },
+   {
+    "title": "Google Cloud AI overview",
+    "kind": "free",
+    "url": "https://cloud.google.com/ai/"
+   }
+  ],
+  "career_value": "Google's non-technical GenAI cert — built for product, sales and ops roles that need credible GenAI literacy, not code.",
+  "roles": [
+   "genai-engineer",
+   "ai-engineer"
+  ]
+ },
+ {
+  "id": "databricks-ml-assoc",
+  "name": "Databricks Certified Machine Learning Associate",
+  "provider": "Databricks",
+  "domain": "AI/ML",
+  "cost_inr": 16600,
+  "cost_note": "Approximate; exam priced at USD 200",
+  "validity_years": 2,
+  "difficulty": "Intermediate",
+  "prerequisites": "Familiarity with Databricks, MLflow and basic ML workflows recommended.",
+  "exam_format": "45 questions, 90 minutes, online proctored.",
+  "official_url": "https://www.databricks.com/learn/certification/machine-learning-associate",
+  "prep_resources": [
+   {
+    "title": "Databricks Academy",
+    "kind": "free",
+    "url": "https://www.databricks.com/learn"
+   },
+   {
+    "title": "Databricks ML documentation",
+    "kind": "free",
+    "url": "https://docs.databricks.com/en/machine-learning/"
+   },
+   {
+    "title": "MLflow documentation",
+    "kind": "free",
+    "url": "https://mlflow.org/docs/latest/index.html"
+   }
+  ],
+  "career_value": "Databricks runs the lakehouse behind many enterprise ML platforms; this associate cert is the standard proof you can build on it.",
+  "roles": [
+   "ml-engineer",
+   "mlops-engineer"
+  ]
+ },
+ {
+  "id": "databricks-genai-assoc",
+  "name": "Databricks Certified Generative AI Engineer Associate",
+  "provider": "Databricks",
+  "domain": "AI/ML",
+  "cost_inr": 16600,
+  "cost_note": "Approximate; exam priced at USD 200",
+  "validity_years": 2,
+  "difficulty": "Intermediate",
+  "prerequisites": "Familiarity with LLMs, RAG and Databricks workflows recommended.",
+  "exam_format": "45 questions, 90 minutes, online proctored.",
+  "official_url": "https://www.databricks.com/learn/certification/genai-engineer-associate",
+  "prep_resources": [
+   {
+    "title": "Databricks Academy",
+    "kind": "free",
+    "url": "https://www.databricks.com/learn"
+   },
+   {
+    "title": "Databricks documentation",
+    "kind": "free",
+    "url": "https://docs.databricks.com/"
+   },
+   {
+    "title": "MLflow documentation",
+    "kind": "free",
+    "url": "https://mlflow.org/docs/latest/index.html"
+   }
+  ],
+  "career_value": "GenAI-engineer hiring now asks for RAG and agent deployment proof; this is the vendor cert that matches that job description.",
+  "roles": [
+   "genai-engineer",
+   "ai-engineer"
+  ]
+ },
+ {
+  "id": "google-ai-essentials",
+  "name": "Google AI Essentials",
+  "provider": "Google (via Coursera)",
+  "domain": "AI/ML",
+  "cost_inr": 4100,
+  "cost_note": "Approximate; Coursera course ~USD 49 (financial aid available)",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "None. No programming experience needed.",
+  "exam_format": "No proctored exam — certificate on course completion (graded assignments/projects).",
+  "official_url": "https://www.coursera.org/learn/google-ai-essentials",
+  "prep_resources": [
+   {
+    "title": "Google AI resources",
+    "kind": "free",
+    "url": "https://ai.google/"
+   },
+   {
+    "title": "Gemini API prompting guide",
+    "kind": "free",
+    "url": "https://ai.google.dev/gemini-api/docs/prompting-intro"
+   },
+   {
+    "title": "Kaggle Learn micro-courses",
+    "kind": "free",
+    "url": "https://www.kaggle.com/learn"
+   }
+  ],
+  "career_value": "Google's flagship AI-literacy course — one of the fastest-enrolled AI courses ever; the credible 'I can actually use AI at work' line on a fresher resume.",
+  "roles": [
+   "ai-engineer",
+   "genai-engineer",
+   "sde"
+  ]
+ },
+ {
+  "id": "ibm-ai-engineering",
+  "name": "IBM AI Engineering Professional Certificate",
+  "provider": "IBM (via Coursera)",
+  "domain": "AI/ML",
+  "cost_inr": 24400,
+  "cost_note": "Approximate; Coursera subscription ~USD 49/month for ~6 months (financial aid available)",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "Python and basic ML knowledge recommended; the program starts with ML fundamentals.",
+  "exam_format": "No proctored exam — certificate on course completion (graded assignments/projects).",
+  "official_url": "https://www.coursera.org/professional-certificates/ai-engineer",
+  "prep_resources": [
+   {
+    "title": "IBM SkillsBuild",
+    "kind": "free",
+    "url": "https://skillsbuild.org/"
+   },
+   {
+    "title": "TensorFlow documentation",
+    "kind": "free",
+    "url": "https://www.tensorflow.org/learn"
+   },
+   {
+    "title": "Keras documentation",
+    "kind": "free",
+    "url": "https://keras.io/"
+   }
+  ],
+  "career_value": "IBM's end-to-end AI engineering path (ML, deep learning, deployment) with a portfolio of graded projects — strong for AI-engineer roles.",
+  "roles": [
+   "ai-engineer",
+   "ml-engineer"
+  ]
+ },
+ {
+  "id": "dlai-ml-spec",
+  "name": "Machine Learning Specialization (DeepLearning.AI + Stanford)",
+  "provider": "DeepLearning.AI (via Coursera)",
+  "domain": "AI/ML",
+  "cost_inr": 12200,
+  "cost_note": "Approximate; Coursera subscription ~USD 49/month for ~3 months (financial aid available)",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "Basic Python and high-school maths; no ML background needed.",
+  "exam_format": "No proctored exam — certificate on course completion (graded assignments/projects).",
+  "official_url": "https://www.coursera.org/specializations/machine-learning-introduction",
+  "prep_resources": [
+   {
+    "title": "An Introduction to Statistical Learning (free book)",
+    "kind": "free",
+    "url": "https://www.statlearning.com/"
+   },
+   {
+    "title": "scikit-learn documentation",
+    "kind": "free",
+    "url": "https://scikit-learn.org/stable/"
+   },
+   {
+    "title": "Kaggle Learn micro-courses",
+    "kind": "free",
+    "url": "https://www.kaggle.com/learn"
+   }
+  ],
+  "career_value": "Andrew Ng's rebuilt ML Specialization — the most-enrolled ML course in the world, and still the default first ML credential recruiters recognise.",
+  "roles": [
+   "ml-engineer",
+   "data-scientist"
+  ]
+ },
+ {
+  "id": "dlai-dl-spec",
+  "name": "Deep Learning Specialization (DeepLearning.AI)",
+  "provider": "DeepLearning.AI (via Coursera)",
+  "domain": "AI/ML",
+  "cost_inr": 16300,
+  "cost_note": "Approximate; Coursera subscription ~USD 49/month for ~4 months (financial aid available)",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "ML Specialization or equivalent; Python and linear algebra.",
+  "exam_format": "No proctored exam — certificate on course completion (graded assignments/projects).",
+  "official_url": "https://www.coursera.org/specializations/deep-learning",
+  "prep_resources": [
+   {
+    "title": "DeepLearning.AI",
+    "kind": "free",
+    "url": "https://www.deeplearning.ai/"
+   },
+   {
+    "title": "TensorFlow documentation",
+    "kind": "free",
+    "url": "https://www.tensorflow.org/learn"
+   },
+   {
+    "title": "PyTorch tutorials",
+    "kind": "free",
+    "url": "https://pytorch.org/tutorials/"
+   }
+  ],
+  "career_value": "The canonical deep-learning credential: neural nets, CNNs, sequences and transformers, with labs that become portfolio projects.",
+  "roles": [
+   "ml-engineer",
+   "ai-engineer"
+  ]
+ },
+ {
+  "id": "dlai-genai-llms",
+  "name": "Generative AI with Large Language Models",
+  "provider": "DeepLearning.AI (via Coursera)",
+  "domain": "AI/ML",
+  "cost_inr": 8100,
+  "cost_note": "Approximate; Coursera course ~USD 49/month for ~2 months (financial aid available)",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "Basic Python and familiarity with ML concepts.",
+  "exam_format": "No proctored exam — certificate on course completion (graded assignments/projects).",
+  "official_url": "https://www.coursera.org/learn/generative-ai-with-llms",
+  "prep_resources": [
+   {
+    "title": "DeepLearning.AI",
+    "kind": "free",
+    "url": "https://www.deeplearning.ai/"
+   },
+   {
+    "title": "Hugging Face documentation",
+    "kind": "free",
+    "url": "https://huggingface.co/docs"
+   },
+   {
+    "title": "LangChain documentation",
+    "kind": "free",
+    "url": "https://python.langchain.com/docs/introduction/"
+   }
+  ],
+  "career_value": "The LLM lifecycle end-to-end — fine-tuning, RLHF and deployment — taught by the team that defined the modern GenAI curriculum.",
+  "roles": [
+   "genai-engineer",
+   "ai-engineer"
+  ]
+ },
+ {
+  "id": "ibm-ai-developer",
+  "name": "IBM AI Developer Professional Certificate (formerly IBM Applied AI)",
+  "provider": "IBM (via Coursera)",
+  "domain": "AI/ML",
+  "cost_inr": 24400,
+  "cost_note": "Approximate; Coursera subscription ~USD 49/month for ~6 months (financial aid available)",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "No prior AI experience needed; basic Python helps.",
+  "exam_format": "No proctored exam — certificate on course completion (graded assignments/projects).",
+  "official_url": "https://www.coursera.org/professional-certificates/applied-artifical-intelligence-ibm-watson-ai",
+  "prep_resources": [
+   {
+    "title": "IBM Watson documentation",
+    "kind": "free",
+    "url": "https://www.ibm.com/docs/en/watsonx"
+   },
+   {
+    "title": "IBM SkillsBuild",
+    "kind": "free",
+    "url": "https://skillsbuild.org/"
+   },
+   {
+    "title": "Python documentation",
+    "kind": "free",
+    "url": "https://docs.python.org/3/"
+   }
+  ],
+  "career_value": "Build chatbots, GenAI apps and Flask web apps with a portfolio — the renamed Applied AI program, now IBM's AI Developer path.",
+  "roles": [
+   "ai-engineer",
+   "ml-engineer"
+  ]
+ },
+ {
+  "id": "kaggle-ml",
+  "name": "Kaggle: Intro to Machine Learning",
+  "provider": "Kaggle",
+  "domain": "AI/ML",
+  "cost_inr": 0,
+  "cost_note": "Free — no exam fee; certificate of completion included",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "Python basics and pandas familiarity recommended.",
+  "exam_format": "No proctored exam — certificate on micro-course completion (hands-on exercises).",
+  "official_url": "https://www.kaggle.com/learn/intro-to-machine-learning",
+  "prep_resources": [
+   {
+    "title": "Kaggle Learn",
+    "kind": "free",
+    "url": "https://www.kaggle.com/learn"
+   },
+   {
+    "title": "Kaggle competitions",
+    "kind": "free",
+    "url": "https://www.kaggle.com/competitions"
+   },
+   {
+    "title": "scikit-learn documentation",
+    "kind": "free",
+    "url": "https://scikit-learn.org/stable/"
+   }
+  ],
+  "career_value": "Free, hands-on and finished in an afternoon — the most-started ML course on Kaggle and a genuine first ML line on a student resume.",
+  "roles": [
+   "ml-engineer",
+   "data-scientist"
+  ]
+ },
+ {
+  "id": "nptel-intro-ml",
+  "name": "NPTEL: Introduction to Machine Learning",
+  "provider": "NPTEL",
+  "domain": "AI/ML",
+  "cost_inr": 1000,
+  "cost_note": "Approximate; proctored exam fee ₹1,000, course content free",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "Probability, linear algebra and Python basics recommended.",
+  "exam_format": "Proctored exam at a centre, 3 hours; weekly assignments count toward the final score.",
+  "official_url": "https://nptel.ac.in/courses",
+  "prep_resources": [
+   {
+    "title": "NPTEL course portal",
+    "kind": "free",
+    "url": "https://nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM NPTEL exam registration",
+    "kind": "free",
+    "url": "https://onlinecourses.nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM platform",
+    "kind": "free",
+    "url": "https://swayam.gov.in/"
+   }
+  ],
+  "career_value": "IIT-taught ML with a proctored exam — the certificate Indian recruiters and professors actually recognise from NPTEL.",
+  "roles": [
+   "ml-engineer",
+   "data-scientist"
+  ]
+ },
+ {
+  "id": "nptel-deep-learning",
+  "name": "NPTEL: Deep Learning",
+  "provider": "NPTEL",
+  "domain": "AI/ML",
+  "cost_inr": 1000,
+  "cost_note": "Approximate; proctored exam fee ₹1,000, course content free",
+  "validity_years": null,
+  "difficulty": "Advanced",
+  "prerequisites": "ML fundamentals, Python and calculus recommended.",
+  "exam_format": "Proctored exam at a centre, 3 hours; weekly assignments count toward the final score.",
+  "official_url": "https://nptel.ac.in/courses",
+  "prep_resources": [
+   {
+    "title": "NPTEL course portal",
+    "kind": "free",
+    "url": "https://nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM NPTEL exam registration",
+    "kind": "free",
+    "url": "https://onlinecourses.nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM platform",
+    "kind": "free",
+    "url": "https://swayam.gov.in/"
+   }
+  ],
+  "career_value": "IIT Madras's deep-learning course with a proctored certificate — the serious follow-up after an intro ML course.",
+  "roles": [
+   "ml-engineer",
+   "ai-engineer"
+  ]
+ },
+ {
+  "id": "udemy-ml-az",
+  "name": "Machine Learning A-Z (Udemy)",
+  "provider": "Udemy",
+  "domain": "AI/ML",
+  "cost_inr": 549,
+  "cost_note": "Approximate; Udemy sale price in India (list price is higher)",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "Basic Python and high-school maths.",
+  "exam_format": "No proctored exam — certificate of completion on finishing the course.",
+  "official_url": "https://www.udemy.com/course/machinelearning/",
+  "prep_resources": [
+   {
+    "title": "Python documentation",
+    "kind": "free",
+    "url": "https://docs.python.org/3/"
+   },
+   {
+    "title": "scikit-learn user guide",
+    "kind": "free",
+    "url": "https://scikit-learn.org/stable/user_guide.html"
+   },
+   {
+    "title": "Kaggle Learn",
+    "kind": "free",
+    "url": "https://www.kaggle.com/learn"
+   }
+  ],
+  "career_value": "One of Udemy's best-selling ML courses of all time — Python and R side by side, with real datasets in every section.",
+  "roles": [
+   "ml-engineer",
+   "data-scientist"
+  ]
+ },
+ {
+  "id": "oci-ai-foundations",
+  "name": "Oracle Cloud Infrastructure AI Foundations Associate",
+  "provider": "Oracle",
+  "domain": "AI/ML",
+  "cost_inr": 7900,
+  "cost_note": "Approximate; exam priced at USD 95",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "Basic cloud and AI concepts recommended.",
+  "exam_format": "40 questions, 90 minutes, online.",
+  "official_url": "https://education.oracle.com/oracle-cloud-infrastructure-ai-foundations",
+  "prep_resources": [
+   {
+    "title": "Oracle Cloud documentation",
+    "kind": "free",
+    "url": "https://docs.oracle.com/en-us/iaas/Content/home.htm"
+   },
+   {
+    "title": "Oracle University",
+    "kind": "free",
+    "url": "https://education.oracle.com/"
+   },
+   {
+    "title": "Oracle AI solutions",
+    "kind": "free",
+    "url": "https://docs.oracle.com/en/solutions/"
+   }
+  ],
+  "career_value": "Oracle's AI foundations cert — cheap, quick, and a useful second AI line beside an AWS or Azure cert.",
+  "roles": [
+   "ai-engineer",
+   "ml-engineer"
+  ]
+ },
+ {
+  "id": "aws-cloudops",
+  "name": "AWS Certified CloudOps Engineer – Associate (formerly SysOps Administrator – Associate)",
+  "provider": "Amazon Web Services",
+  "domain": "Cloud",
+  "cost_inr": 12500,
+  "cost_note": "Approximate; exam priced at USD 150",
+  "validity_years": 3,
+  "difficulty": "Intermediate",
+  "prerequisites": "1+ year hands-on AWS operations experience recommended.",
+  "exam_format": "65 questions, 130 minutes, online or test center.",
+  "official_url": "https://aws.amazon.com/certification/certified-sysops-admin-associate/",
+  "prep_resources": [
+   {
+    "title": "AWS Skill Builder learning plans",
+    "kind": "free",
+    "url": "https://skillbuilder.aws/"
+   },
+   {
+    "title": "AWS documentation",
+    "kind": "free",
+    "url": "https://docs.aws.amazon.com/"
+   },
+   {
+    "title": "AWS Well-Architected Framework",
+    "kind": "free",
+    "url": "https://aws.amazon.com/architecture/well-architected/"
+   }
+  ],
+  "career_value": "The renamed SysOps cert (SOA-C03) — monitoring, deployment and cost control on AWS, the daily work of cloud support and SRE teams.",
+  "roles": [
+   "devops-engineer",
+   "cloud-engineer",
+   "sre-engineer"
+  ]
+ },
+ {
+  "id": "aws-devops-pro",
+  "name": "AWS Certified DevOps Engineer – Professional",
+  "provider": "Amazon Web Services",
+  "domain": "Cloud",
+  "cost_inr": 24900,
+  "cost_note": "Approximate; exam priced at USD 300",
+  "validity_years": 3,
+  "difficulty": "Advanced",
+  "prerequisites": "2+ years provisioning and managing AWS environments recommended.",
+  "exam_format": "75 questions, 180 minutes, online or test center.",
+  "official_url": "https://aws.amazon.com/certification/certified-devops-engineer-professional/",
+  "prep_resources": [
+   {
+    "title": "AWS Skill Builder learning plans",
+    "kind": "free",
+    "url": "https://skillbuilder.aws/"
+   },
+   {
+    "title": "AWS documentation",
+    "kind": "free",
+    "url": "https://docs.aws.amazon.com/"
+   },
+   {
+    "title": "AWS DevOps blog",
+    "kind": "free",
+    "url": "https://aws.amazon.com/blogs/devops/"
+   }
+  ],
+  "career_value": "AWS's professional DevOps cert — CI/CD, automation and resilience at scale; the top of the AWS DevOps ladder.",
+  "roles": [
+   "devops-engineer",
+   "sre-engineer"
+  ]
+ },
+ {
+  "id": "az-305",
+  "name": "Microsoft Certified: Azure Solutions Architect Expert",
+  "provider": "Microsoft",
+  "domain": "Cloud",
+  "cost_inr": 13700,
+  "cost_note": "Approximate; exam priced at USD 165",
+  "validity_years": 1,
+  "difficulty": "Advanced",
+  "prerequisites": "Azure Administrator Associate (AZ-104) required to earn the Expert credential; advanced Azure experience recommended.",
+  "exam_format": "40–60 questions, 100 minutes, online or test center.",
+  "official_url": "https://learn.microsoft.com/en-us/credentials/certifications/azure-solutions-architect/",
+  "prep_resources": [
+   {
+    "title": "Microsoft Learn training catalog",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/training/"
+   },
+   {
+    "title": "Azure Architecture Center",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/azure/architecture/"
+   },
+   {
+    "title": "Azure Well-Architected Framework",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/azure/well-architected/"
+   }
+  ],
+  "career_value": "The expert-level Azure architecture cert — the credential behind solutions-architect and senior cloud-engineer roles.",
+  "roles": [
+   "cloud-engineer",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "gcp-pca",
+  "name": "Google Cloud Professional Cloud Architect",
+  "provider": "Google Cloud",
+  "domain": "Cloud",
+  "cost_inr": 16600,
+  "cost_note": "Approximate; exam priced at USD 200",
+  "validity_years": 2,
+  "difficulty": "Advanced",
+  "prerequisites": "3+ years industry experience including 1+ year designing on Google Cloud recommended.",
+  "exam_format": "50–60 questions, 120 minutes, online or test center.",
+  "official_url": "https://cloud.google.com/learn/certification/cloud-architect",
+  "prep_resources": [
+   {
+    "title": "Google Cloud Skills Boost",
+    "kind": "free",
+    "url": "https://www.cloudskillsboost.google/"
+   },
+   {
+    "title": "Google Cloud documentation",
+    "kind": "free",
+    "url": "https://cloud.google.com/docs"
+   },
+   {
+    "title": "Google Cloud Architecture Framework",
+    "kind": "free",
+    "url": "https://cloud.google.com/architecture/framework"
+   }
+  ],
+  "career_value": "Google's flagship architect cert — design, security and cost on GCP, and a strong salary signal for cloud roles.",
+  "roles": [
+   "cloud-engineer",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "gcp-devops",
+  "name": "Google Cloud Professional Cloud DevOps Engineer",
+  "provider": "Google Cloud",
+  "domain": "Cloud",
+  "cost_inr": 16600,
+  "cost_note": "Approximate; exam priced at USD 200",
+  "validity_years": 2,
+  "difficulty": "Intermediate",
+  "prerequisites": "3+ years industry experience including 1+ year managing Google Cloud environments recommended.",
+  "exam_format": "50–60 questions, 120 minutes, online or test center.",
+  "official_url": "https://cloud.google.com/learn/certification/cloud-devops-engineer",
+  "prep_resources": [
+   {
+    "title": "Google Cloud Skills Boost",
+    "kind": "free",
+    "url": "https://www.cloudskillsboost.google/"
+   },
+   {
+    "title": "Google Cloud documentation",
+    "kind": "free",
+    "url": "https://cloud.google.com/docs"
+   },
+   {
+    "title": "Google SRE books (free)",
+    "kind": "free",
+    "url": "https://sre.google/books/"
+   }
+  ],
+  "career_value": "SRE-flavoured DevOps on GCP — pipelines, observability and reliability engineering, straight from Google's own playbook.",
+  "roles": [
+   "devops-engineer",
+   "sre-engineer"
+  ]
+ },
+ {
+  "id": "nptel-cloud",
+  "name": "NPTEL: Cloud Computing",
+  "provider": "NPTEL",
+  "domain": "Cloud",
+  "cost_inr": 1000,
+  "cost_note": "Approximate; proctored exam fee ₹1,000, course content free",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "Operating systems and computer networks basics recommended.",
+  "exam_format": "Proctored exam at a centre, 3 hours; weekly assignments count toward the final score.",
+  "official_url": "https://nptel.ac.in/courses",
+  "prep_resources": [
+   {
+    "title": "NPTEL course portal",
+    "kind": "free",
+    "url": "https://nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM NPTEL exam registration",
+    "kind": "free",
+    "url": "https://onlinecourses.nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM platform",
+    "kind": "free",
+    "url": "https://swayam.gov.in/"
+   }
+  ],
+  "career_value": "IIT Kharagpur's cloud course with a proctored certificate — the theory (virtualization, scheduling, security) behind the vendor certs.",
+  "roles": [
+   "cloud-engineer",
+   "devops-engineer"
+  ]
+ },
+ {
+  "id": "salesforce-admin",
+  "name": "Salesforce Certified Administrator",
+  "provider": "Salesforce",
+  "domain": "Cloud",
+  "cost_inr": 16600,
+  "cost_note": "Approximate; exam priced at USD 200",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "6+ months experience as a Salesforce administrator recommended; no coding needed.",
+  "exam_format": "60 questions, 105 minutes, online proctored or test center.",
+  "official_url": "https://trailhead.salesforce.com/en/credentials/administrator",
+  "prep_resources": [
+   {
+    "title": "Trailhead learning platform",
+    "kind": "free",
+    "url": "https://trailhead.salesforce.com/"
+   },
+   {
+    "title": "Salesforce Help",
+    "kind": "free",
+    "url": "https://help.salesforce.com/"
+   },
+   {
+    "title": "Trailblazer Community",
+    "kind": "free",
+    "url": "https://trailhead.salesforce.com/trailblazer-community"
+   }
+  ],
+  "career_value": "The most-held Salesforce credential in the world — the entry point to the huge Salesforce admin/consultant job market.",
+  "roles": [
+   "sde",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "az-204",
+  "name": "Microsoft Certified: Azure Developer Associate",
+  "provider": "Microsoft",
+  "domain": "Cloud",
+  "cost_inr": 13700,
+  "cost_note": "Approximate; exam priced at USD 165",
+  "validity_years": 1,
+  "difficulty": "Intermediate",
+  "prerequisites": "1–2 years Azure development experience recommended.",
+  "exam_format": "40–60 questions, 100 minutes, online or test center.",
+  "official_url": "https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/",
+  "prep_resources": [
+   {
+    "title": "Microsoft Learn training catalog",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/training/"
+   },
+   {
+    "title": "Azure developer documentation",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/azure/developer/"
+   },
+   {
+    "title": "Azure Functions documentation",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/azure/azure-functions/"
+   }
+  ],
+  "career_value": "The working Azure developer cert — APIs, Functions, storage and identity, exactly what backend roles on Azure ask for.",
+  "roles": [
+   "backend-dev",
+   "cloud-engineer"
+  ]
+ },
+ {
+  "id": "udemy-aws-saa",
+  "name": "Ultimate AWS Certified Solutions Architect Associate (Udemy)",
+  "provider": "Udemy",
+  "domain": "Cloud",
+  "cost_inr": 549,
+  "cost_note": "Approximate; Udemy sale price in India (list price is higher)",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "Basic AWS familiarity recommended.",
+  "exam_format": "No proctored exam — certificate of completion on finishing the course.",
+  "official_url": "https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/",
+  "prep_resources": [
+   {
+    "title": "AWS documentation",
+    "kind": "free",
+    "url": "https://docs.aws.amazon.com/"
+   },
+   {
+    "title": "AWS Skill Builder learning plans",
+    "kind": "free",
+    "url": "https://skillbuilder.aws/"
+   },
+   {
+    "title": "AWS Well-Architected Framework",
+    "kind": "free",
+    "url": "https://aws.amazon.com/architecture/well-architected/"
+   }
+  ],
+  "career_value": "Stephane Maarek's SAA course — the single most-enrolled AWS certification course on Udemy, and the standard SAA prep.",
+  "roles": [
+   "cloud-engineer",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "google-adv-data-analytics",
+  "name": "Google Advanced Data Analytics Professional Certificate",
+  "provider": "Google (via Coursera)",
+  "domain": "Data",
+  "cost_inr": 24400,
+  "cost_note": "Approximate; Coursera subscription ~USD 49/month for ~6 months (financial aid available)",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "Google Data Analytics Certificate or equivalent experience recommended.",
+  "exam_format": "No proctored exam — certificate on course completion (graded assignments/projects).",
+  "official_url": "https://www.coursera.org/professional-certificates/google-advanced-data-analytics",
+  "prep_resources": [
+   {
+    "title": "Kaggle Learn",
+    "kind": "free",
+    "url": "https://www.kaggle.com/learn"
+   },
+   {
+    "title": "BigQuery documentation",
+    "kind": "free",
+    "url": "https://cloud.google.com/bigquery/docs"
+   },
+   {
+    "title": "Python documentation",
+    "kind": "free",
+    "url": "https://docs.python.org/3/"
+   }
+  ],
+  "career_value": "The sequel to Google's famous data-analytics cert — regression, ML and dashboards, aimed at analyst-to-data-scientist moves.",
+  "roles": [
+   "data-analyst",
+   "data-scientist"
+  ]
+ },
+ {
+  "id": "ibm-data-analyst",
+  "name": "IBM Data Analyst Professional Certificate",
+  "provider": "IBM (via Coursera)",
+  "domain": "Data",
+  "cost_inr": 16300,
+  "cost_note": "Approximate; Coursera subscription ~USD 49/month for ~4 months (financial aid available)",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "No prerequisites; basic maths helps.",
+  "exam_format": "No proctored exam — certificate on course completion (graded assignments/projects).",
+  "official_url": "https://www.coursera.org/professional-certificates/ibm-data-analyst",
+  "prep_resources": [
+   {
+    "title": "IBM SkillsBuild",
+    "kind": "free",
+    "url": "https://skillsbuild.org/"
+   },
+   {
+    "title": "pandas documentation",
+    "kind": "free",
+    "url": "https://pandas.pydata.org/docs/"
+   },
+   {
+    "title": "W3Schools SQL tutorial",
+    "kind": "free",
+    "url": "https://www.w3schools.com/sql/"
+   }
+  ],
+  "career_value": "IBM's analyst path — Excel, SQL, Python and dashboards with a capstone project, built for career switchers.",
+  "roles": [
+   "data-analyst"
+  ]
+ },
+ {
+  "id": "ms-dp-100",
+  "name": "Microsoft Certified: Azure Data Scientist Associate",
+  "provider": "Microsoft",
+  "domain": "Data",
+  "cost_inr": 13700,
+  "cost_note": "Approximate; exam priced at USD 165",
+  "validity_years": 1,
+  "difficulty": "Intermediate",
+  "prerequisites": "Applied ML and Azure Machine Learning workspace experience recommended.",
+  "exam_format": "40–60 questions, 100 minutes, online or test center.",
+  "official_url": "https://learn.microsoft.com/en-us/credentials/certifications/azure-data-scientist/",
+  "prep_resources": [
+   {
+    "title": "Microsoft Learn training catalog",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/training/"
+   },
+   {
+    "title": "Azure Machine Learning documentation",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/azure/machine-learning/"
+   },
+   {
+    "title": "scikit-learn documentation",
+    "kind": "free",
+    "url": "https://scikit-learn.org/stable/"
+   }
+  ],
+  "career_value": "The Azure data-science associate cert — train and deploy models on Azure ML, the enterprise data-science workflow.",
+  "roles": [
+   "data-scientist",
+   "ml-engineer"
+  ]
+ },
+ {
+  "id": "databricks-de-assoc",
+  "name": "Databricks Certified Data Engineer Associate",
+  "provider": "Databricks",
+  "domain": "Data",
+  "cost_inr": 16600,
+  "cost_note": "Approximate; exam priced at USD 200",
+  "validity_years": 2,
+  "difficulty": "Intermediate",
+  "prerequisites": "6+ months hands-on Databricks and Spark experience recommended.",
+  "exam_format": "45 questions, 90 minutes, online proctored.",
+  "official_url": "https://www.databricks.com/learn/certification/data-engineer-associate",
+  "prep_resources": [
+   {
+    "title": "Databricks Academy",
+    "kind": "free",
+    "url": "https://www.databricks.com/learn"
+   },
+   {
+    "title": "Apache Spark documentation",
+    "kind": "free",
+    "url": "https://spark.apache.org/docs/latest/"
+   },
+   {
+    "title": "Delta Lake documentation",
+    "kind": "free",
+    "url": "https://docs.delta.io/latest/"
+   }
+  ],
+  "career_value": "The lakehouse data-engineer cert — Spark, Delta Lake and workflows on the platform most modern data teams standardise on.",
+  "roles": [
+   "data-engineer"
+  ]
+ },
+ {
+  "id": "dbt-analytics-eng",
+  "name": "dbt Analytics Engineering Certification",
+  "provider": "dbt Labs",
+  "domain": "Data",
+  "cost_inr": 16600,
+  "cost_note": "Approximate; exam priced at USD 200",
+  "validity_years": 2,
+  "difficulty": "Intermediate",
+  "prerequisites": "6+ months hands-on dbt experience recommended.",
+  "exam_format": "65 questions, 120 minutes, online proctored.",
+  "official_url": "https://www.getdbt.com/dbt-certification",
+  "prep_resources": [
+   {
+    "title": "dbt documentation",
+    "kind": "free",
+    "url": "https://docs.getdbt.com/"
+   },
+   {
+    "title": "dbt Learn courses",
+    "kind": "free",
+    "url": "https://courses.getdbt.com/"
+   },
+   {
+    "title": "dbt Community",
+    "kind": "free",
+    "url": "https://community.getdbt.com/"
+   }
+  ],
+  "career_value": "dbt is the standard for analytics engineering; this cert is how analysts prove they can own the transformation layer.",
+  "roles": [
+   "data-engineer",
+   "data-analyst"
+  ]
+ },
+ {
+  "id": "udemy-sql-bootcamp",
+  "name": "The Complete SQL Bootcamp (Udemy)",
+  "provider": "Udemy",
+  "domain": "Data",
+  "cost_inr": 549,
+  "cost_note": "Approximate; Udemy sale price in India (list price is higher)",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "None.",
+  "exam_format": "No proctored exam — certificate of completion on finishing the course.",
+  "official_url": "https://www.udemy.com/course/the-complete-sql-bootcamp/",
+  "prep_resources": [
+   {
+    "title": "PostgreSQL documentation",
+    "kind": "free",
+    "url": "https://www.postgresql.org/docs/"
+   },
+   {
+    "title": "W3Schools SQL tutorial",
+    "kind": "free",
+    "url": "https://www.w3schools.com/sql/"
+   },
+   {
+    "title": "SQLZoo interactive tutorials",
+    "kind": "free",
+    "url": "https://sqlzoo.net/"
+   }
+  ],
+  "career_value": "Udemy's best-selling SQL course — the fastest route to the SQL fluency every analyst and backend interview tests.",
+  "roles": [
+   "data-analyst",
+   "data-engineer",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "nptel-ds-engineers",
+  "name": "NPTEL: Data Science for Engineers",
+  "provider": "NPTEL",
+  "domain": "Data",
+  "cost_inr": 1000,
+  "cost_note": "Approximate; proctored exam fee ₹1,000, course content free",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "Python and basic statistics recommended.",
+  "exam_format": "Proctored exam at a centre, 3 hours; weekly assignments count toward the final score.",
+  "official_url": "https://nptel.ac.in/courses",
+  "prep_resources": [
+   {
+    "title": "NPTEL course portal",
+    "kind": "free",
+    "url": "https://nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM NPTEL exam registration",
+    "kind": "free",
+    "url": "https://onlinecourses.nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM platform",
+    "kind": "free",
+    "url": "https://swayam.gov.in/"
+   }
+  ],
+  "career_value": "IIT Madras's data-science course with a proctored certificate — statistics, regression and case studies, taught properly.",
+  "roles": [
+   "data-scientist",
+   "data-analyst"
+  ]
+ },
+ {
+  "id": "ms-pl-900",
+  "name": "Microsoft Certified: Power Platform Fundamentals",
+  "provider": "Microsoft",
+  "domain": "Data",
+  "cost_inr": 8200,
+  "cost_note": "Approximate; exam priced at USD 99",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "None.",
+  "exam_format": "40–60 questions, 45 minutes, online or test center.",
+  "official_url": "https://learn.microsoft.com/en-us/credentials/certifications/power-platform-fundamentals/",
+  "prep_resources": [
+   {
+    "title": "Microsoft Learn training catalog",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/training/"
+   },
+   {
+    "title": "Power Platform documentation",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/power-platform/"
+   },
+   {
+    "title": "Power BI documentation",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/power-bi/"
+   }
+  ],
+  "career_value": "Microsoft's low-code fundamentals cert — Power BI, Power Apps and automation, a cheap first Microsoft credential.",
+  "roles": [
+   "data-analyst"
+  ]
+ },
+ {
+  "id": "google-it-support",
+  "name": "Google IT Support Professional Certificate",
+  "provider": "Google (via Coursera)",
+  "domain": "Programming",
+  "cost_inr": 24400,
+  "cost_note": "Approximate; Coursera subscription ~USD 49/month for ~6 months (financial aid available)",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "None.",
+  "exam_format": "No proctored exam — certificate on course completion (graded assignments/projects).",
+  "official_url": "https://www.coursera.org/professional-certificates/google-it-support",
+  "prep_resources": [
+   {
+    "title": "Google IT Support certificates (Grow with Google)",
+    "kind": "free",
+    "url": "https://grow.google/certificates/it-support/"
+   },
+   {
+    "title": "Khan Academy computing courses",
+    "kind": "free",
+    "url": "https://www.khanacademy.org/computing/computer-science"
+   },
+   {
+    "title": "freeCodeCamp",
+    "kind": "free",
+    "url": "https://www.freecodecamp.org/"
+   }
+  ],
+  "career_value": "The most-enrolled IT certificate on Coursera — the classic first credential for breaking into tech support and IT roles.",
+  "roles": [
+   "sde",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "google-ux-design",
+  "name": "Google UX Design Professional Certificate",
+  "provider": "Google (via Coursera)",
+  "domain": "Programming",
+  "cost_inr": 24400,
+  "cost_note": "Approximate; Coursera subscription ~USD 49/month for ~6 months (financial aid available)",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "None.",
+  "exam_format": "No proctored exam — certificate on course completion (graded assignments/projects).",
+  "official_url": "https://www.coursera.org/professional-certificates/google-ux-design",
+  "prep_resources": [
+   {
+    "title": "Figma resource library",
+    "kind": "free",
+    "url": "https://www.figma.com/resource-library/"
+   },
+   {
+    "title": "Material Design guidelines",
+    "kind": "free",
+    "url": "https://m3.material.io/"
+   },
+   {
+    "title": "Nielsen Norman Group articles",
+    "kind": "free",
+    "url": "https://www.nngroup.com/articles/"
+   }
+  ],
+  "career_value": "Google's UX path with a full portfolio — the most-enrolled UX certificate anywhere, and the standard entry into UX roles.",
+  "roles": [
+   "frontend-dev"
+  ]
+ },
+ {
+  "id": "cs50x",
+  "name": "CS50's Introduction to Computer Science (Harvard)",
+  "provider": "Harvard (via edX)",
+  "domain": "Programming",
+  "cost_inr": 16500,
+  "cost_note": "Approximate; verified certificate USD 199, audit free",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "None; comfortable with basic maths.",
+  "exam_format": "No proctored exam — certificate on completing all problem sets and the final project.",
+  "official_url": "https://cs50.harvard.edu/x/",
+  "prep_resources": [
+   {
+    "title": "CS50 manual",
+    "kind": "free",
+    "url": "https://manual.cs50.io/"
+   },
+   {
+    "title": "freeCodeCamp",
+    "kind": "free",
+    "url": "https://www.freecodecamp.org/"
+   },
+   {
+    "title": "Python documentation",
+    "kind": "free",
+    "url": "https://docs.python.org/3/"
+   }
+  ],
+  "career_value": "Harvard's legendary intro CS course — millions enrolled, and the one certificate that signals real CS fundamentals to any recruiter.",
+  "roles": [
+   "sde",
+   "backend-dev",
+   "fullstack-dev"
+  ]
+ },
+ {
+  "id": "freecodecamp-rwd",
+  "name": "freeCodeCamp Responsive Web Design Certification",
+  "provider": "freeCodeCamp",
+  "domain": "Programming",
+  "cost_inr": 0,
+  "cost_note": "Free — no exam fee; certificate of completion included",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "None.",
+  "exam_format": "No proctored exam — certification on completing all 5 required projects.",
+  "official_url": "https://www.freecodecamp.org/learn/2022/responsive-web-design/",
+  "prep_resources": [
+   {
+    "title": "MDN CSS documentation",
+    "kind": "free",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+   },
+   {
+    "title": "freeCodeCamp forum",
+    "kind": "free",
+    "url": "https://forum.freecodecamp.org/"
+   },
+   {
+    "title": "CSS-Tricks",
+    "kind": "free",
+    "url": "https://css-tricks.com/"
+   }
+  ],
+  "career_value": "Free, project-based and completed by millions — the most accessible front-end credential for self-taught developers.",
+  "roles": [
+   "frontend-dev",
+   "fullstack-dev"
+  ]
+ },
+ {
+  "id": "freecodecamp-js",
+  "name": "freeCodeCamp JavaScript Algorithms and Data Structures Certification",
+  "provider": "freeCodeCamp",
+  "domain": "Programming",
+  "cost_inr": 0,
+  "cost_note": "Free — no exam fee; certificate of completion included",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "Basic HTML/CSS and programming logic recommended.",
+  "exam_format": "No proctored exam — certification on completing all 5 required projects.",
+  "official_url": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/",
+  "prep_resources": [
+   {
+    "title": "MDN JavaScript documentation",
+    "kind": "free",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+   },
+   {
+    "title": "JavaScript.info tutorial",
+    "kind": "free",
+    "url": "https://javascript.info/"
+   },
+   {
+    "title": "freeCodeCamp forum",
+    "kind": "free",
+    "url": "https://forum.freecodecamp.org/"
+   }
+  ],
+  "career_value": "JavaScript + algorithms through projects, free — the credential that turns a front-end learner into a hireable JavaScript developer.",
+  "roles": [
+   "frontend-dev",
+   "fullstack-dev"
+  ]
+ },
+ {
+  "id": "udemy-python-bootcamp",
+  "name": "Complete Python Bootcamp (Udemy)",
+  "provider": "Udemy",
+  "domain": "Programming",
+  "cost_inr": 549,
+  "cost_note": "Approximate; Udemy sale price in India (list price is higher)",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "None.",
+  "exam_format": "No proctored exam — certificate of completion on finishing the course.",
+  "official_url": "https://www.udemy.com/course/complete-python-bootcamp/",
+  "prep_resources": [
+   {
+    "title": "Python documentation",
+    "kind": "free",
+    "url": "https://docs.python.org/3/"
+   },
+   {
+    "title": "Python Tutor visualiser",
+    "kind": "free",
+    "url": "https://pythontutor.com/"
+   },
+   {
+    "title": "Real Python tutorials",
+    "kind": "free",
+    "url": "https://realpython.com/"
+   }
+  ],
+  "career_value": "Udemy's best-selling Python course ever — the default first Python course for millions of learners worldwide.",
+  "roles": [
+   "sde",
+   "backend-dev",
+   "data-analyst"
+  ]
+ },
+ {
+  "id": "udemy-100-days-python",
+  "name": "100 Days of Code: The Complete Python Pro Bootcamp (Udemy)",
+  "provider": "Udemy",
+  "domain": "Programming",
+  "cost_inr": 549,
+  "cost_note": "Approximate; Udemy sale price in India (list price is higher)",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "None.",
+  "exam_format": "No proctored exam — certificate of completion on finishing the course.",
+  "official_url": "https://www.udemy.com/course/100-days-of-code/",
+  "prep_resources": [
+   {
+    "title": "Python documentation",
+    "kind": "free",
+    "url": "https://docs.python.org/3/"
+   },
+   {
+    "title": "Replit online IDE",
+    "kind": "free",
+    "url": "https://replit.com/"
+   },
+   {
+    "title": "Real Python tutorials",
+    "kind": "free",
+    "url": "https://realpython.com/"
+   }
+  ],
+  "career_value": "Angela Yu's 100-day Python challenge — one project a day, and one of the most-loved programming courses on the internet.",
+  "roles": [
+   "sde",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "udemy-webdev-bootcamp",
+  "name": "The Web Developer Bootcamp (Udemy)",
+  "provider": "Udemy",
+  "domain": "Programming",
+  "cost_inr": 549,
+  "cost_note": "Approximate; Udemy sale price in India (list price is higher)",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "None.",
+  "exam_format": "No proctored exam — certificate of completion on finishing the course.",
+  "official_url": "https://www.udemy.com/course/the-web-developer-bootcamp/",
+  "prep_resources": [
+   {
+    "title": "MDN Web Docs",
+    "kind": "free",
+    "url": "https://developer.mozilla.org/"
+   },
+   {
+    "title": "freeCodeCamp",
+    "kind": "free",
+    "url": "https://www.freecodecamp.org/"
+   },
+   {
+    "title": "CSS-Tricks",
+    "kind": "free",
+    "url": "https://css-tricks.com/"
+   }
+  ],
+  "career_value": "Colt Steele's web-dev bootcamp — HTML to Node.js in one course, and a long-time best-seller for full-stack beginners.",
+  "roles": [
+   "frontend-dev",
+   "fullstack-dev"
+  ]
+ },
+ {
+  "id": "kaggle-python",
+  "name": "Kaggle: Python",
+  "provider": "Kaggle",
+  "domain": "Programming",
+  "cost_inr": 0,
+  "cost_note": "Free — no exam fee; certificate of completion included",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "None.",
+  "exam_format": "No proctored exam — certificate on micro-course completion (hands-on exercises).",
+  "official_url": "https://www.kaggle.com/learn/python",
+  "prep_resources": [
+   {
+    "title": "Kaggle Learn",
+    "kind": "free",
+    "url": "https://www.kaggle.com/learn"
+   },
+   {
+    "title": "Python documentation",
+    "kind": "free",
+    "url": "https://docs.python.org/3/"
+   },
+   {
+    "title": "Real Python tutorials",
+    "kind": "free",
+    "url": "https://realpython.com/"
+   }
+  ],
+  "career_value": "Free, interactive Python in the browser — the quickest credible first Python certificate for data learners.",
+  "roles": [
+   "sde",
+   "data-analyst"
+  ]
+ },
+ {
+  "id": "nptel-python",
+  "name": "NPTEL: Programming in Python",
+  "provider": "NPTEL",
+  "domain": "Programming",
+  "cost_inr": 1000,
+  "cost_note": "Approximate; proctored exam fee ₹1,000, course content free",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "None.",
+  "exam_format": "Proctored exam at a centre, 3 hours; weekly assignments count toward the final score.",
+  "official_url": "https://nptel.ac.in/courses",
+  "prep_resources": [
+   {
+    "title": "NPTEL course portal",
+    "kind": "free",
+    "url": "https://nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM NPTEL exam registration",
+    "kind": "free",
+    "url": "https://onlinecourses.nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM platform",
+    "kind": "free",
+    "url": "https://swayam.gov.in/"
+   }
+  ],
+  "career_value": "IIT Madras's Python course — among NPTEL's highest-enrolled courses ever, with a proctored certificate.",
+  "roles": [
+   "sde",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "nptel-pdsa",
+  "name": "NPTEL: Programming, Data Structures and Algorithms using Python",
+  "provider": "NPTEL",
+  "domain": "Programming",
+  "cost_inr": 1000,
+  "cost_note": "Approximate; proctored exam fee ₹1,000, course content free",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "Programming in Python or equivalent recommended.",
+  "exam_format": "Proctored exam at a centre, 3 hours; weekly assignments count toward the final score.",
+  "official_url": "https://nptel.ac.in/courses",
+  "prep_resources": [
+   {
+    "title": "NPTEL course portal",
+    "kind": "free",
+    "url": "https://nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM NPTEL exam registration",
+    "kind": "free",
+    "url": "https://onlinecourses.nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM platform",
+    "kind": "free",
+    "url": "https://swayam.gov.in/"
+   }
+  ],
+  "career_value": "IIT Madras's DSA-in-Python course — the NPTEL certificate that maps most directly onto coding interviews.",
+  "roles": [
+   "sde",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "nptel-java",
+  "name": "NPTEL: Programming in Java",
+  "provider": "NPTEL",
+  "domain": "Programming",
+  "cost_inr": 1000,
+  "cost_note": "Approximate; proctored exam fee ₹1,000, course content free",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "Basic programming concepts recommended.",
+  "exam_format": "Proctored exam at a centre, 3 hours; weekly assignments count toward the final score.",
+  "official_url": "https://nptel.ac.in/courses",
+  "prep_resources": [
+   {
+    "title": "NPTEL course portal",
+    "kind": "free",
+    "url": "https://nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM NPTEL exam registration",
+    "kind": "free",
+    "url": "https://onlinecourses.nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM platform",
+    "kind": "free",
+    "url": "https://swayam.gov.in/"
+   }
+  ],
+  "career_value": "One of NPTEL's most-enrolled courses — Java from scratch with a proctored certificate Indian colleges recognise.",
+  "roles": [
+   "sde",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "nptel-dbms",
+  "name": "NPTEL: Database Management System",
+  "provider": "NPTEL",
+  "domain": "Programming",
+  "cost_inr": 1000,
+  "cost_note": "Approximate; proctored exam fee ₹1,000, course content free",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "Data structures basics recommended.",
+  "exam_format": "Proctored exam at a centre, 3 hours; weekly assignments count toward the final score.",
+  "official_url": "https://nptel.ac.in/courses",
+  "prep_resources": [
+   {
+    "title": "NPTEL course portal",
+    "kind": "free",
+    "url": "https://nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM NPTEL exam registration",
+    "kind": "free",
+    "url": "https://onlinecourses.nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM platform",
+    "kind": "free",
+    "url": "https://swayam.gov.in/"
+   }
+  ],
+  "career_value": "IIT-taught DBMS with a proctored certificate — SQL, normalisation and transactions, the theory behind every backend interview.",
+  "roles": [
+   "backend-dev",
+   "data-engineer"
+  ]
+ },
+ {
+  "id": "oracle-java-ocp",
+  "name": "Oracle Certified Professional: Java SE 17 Developer",
+  "provider": "Oracle",
+  "domain": "Programming",
+  "cost_inr": 20300,
+  "cost_note": "Approximate; exam priced at USD 245",
+  "validity_years": null,
+  "difficulty": "Advanced",
+  "prerequisites": "Java SE 17 fundamentals; OCA-level knowledge recommended.",
+  "exam_format": "50 questions, 90 minutes, online or test center.",
+  "official_url": "https://education.oracle.com/java-se-17-developer",
+  "prep_resources": [
+   {
+    "title": "Oracle Java documentation",
+    "kind": "free",
+    "url": "https://docs.oracle.com/en/java/"
+   },
+   {
+    "title": "Oracle Java Tutorials",
+    "kind": "free",
+    "url": "https://docs.oracle.com/javase/tutorial/"
+   },
+   {
+    "title": "Oracle University",
+    "kind": "free",
+    "url": "https://education.oracle.com/"
+   }
+  ],
+  "career_value": "Oracle's professional Java cert — the long-standing proof of serious Java skill for enterprise backend roles.",
+  "roles": [
+   "backend-dev",
+   "sde"
+  ]
+ },
+ {
+  "id": "nptel-iot",
+  "name": "NPTEL: Introduction to Internet of Things",
+  "provider": "NPTEL",
+  "domain": "Programming",
+  "cost_inr": 1000,
+  "cost_note": "Approximate; proctored exam fee ₹1,000, course content free",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "Basic programming and electronics concepts recommended.",
+  "exam_format": "Proctored exam at a centre, 3 hours; weekly assignments count toward the final score.",
+  "official_url": "https://nptel.ac.in/courses",
+  "prep_resources": [
+   {
+    "title": "NPTEL course portal",
+    "kind": "free",
+    "url": "https://nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM NPTEL exam registration",
+    "kind": "free",
+    "url": "https://onlinecourses.nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM platform",
+    "kind": "free",
+    "url": "https://swayam.gov.in/"
+   }
+  ],
+  "career_value": "One of NPTEL's highest-enrolled courses — IoT architecture, sensors and cloud, with a proctored certificate.",
+  "roles": [
+   "sde",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "comptia-pentest-plus",
+  "name": "CompTIA PenTest+",
+  "provider": "CompTIA",
+  "domain": "Cybersecurity",
+  "cost_inr": 33500,
+  "cost_note": "Approximate; exam priced at USD 404",
+  "validity_years": 3,
+  "difficulty": "Intermediate",
+  "prerequisites": "Network+ and 3–4 years hands-on pentesting experience recommended.",
+  "exam_format": "85 questions, 165 minutes, online or test center.",
+  "official_url": "https://www.comptia.org/certifications/pentest",
+  "prep_resources": [
+   {
+    "title": "CompTIA PenTest+ exam objectives",
+    "kind": "free",
+    "url": "https://www.comptia.org/certifications/pentest"
+   },
+   {
+    "title": "Hack The Box Academy",
+    "kind": "free",
+    "url": "https://academy.hackthebox.com/"
+   },
+   {
+    "title": "TryHackMe",
+    "kind": "free",
+    "url": "https://tryhackme.com/"
+   }
+  ],
+  "career_value": "The intermediate pentesting cert — planning, exploiting and reporting, and the usual step after Security+ toward red-team roles.",
+  "roles": [
+   "cybersecurity-analyst"
+  ]
+ },
+ {
+  "id": "comptia-linux-plus",
+  "name": "CompTIA Linux+",
+  "provider": "CompTIA",
+  "domain": "Cybersecurity",
+  "cost_inr": 33500,
+  "cost_note": "Approximate; exam priced at USD 404",
+  "validity_years": 3,
+  "difficulty": "Intermediate",
+  "prerequisites": "CompTIA A+ and Network+ recommended.",
+  "exam_format": "90 questions, 90 minutes, online or test center.",
+  "official_url": "https://www.comptia.org/certifications/linux",
+  "prep_resources": [
+   {
+    "title": "Linux Journey",
+    "kind": "free",
+    "url": "https://linuxjourney.com/"
+   },
+   {
+    "title": "Ubuntu tutorials",
+    "kind": "free",
+    "url": "https://ubuntu.com/tutorials"
+   },
+   {
+    "title": "OverTheWire wargames",
+    "kind": "free",
+    "url": "https://overthewire.org/"
+   }
+  ],
+  "career_value": "Linux administration certified — the cert that underpins both security and DevOps work on the OS that runs the cloud.",
+  "roles": [
+   "devops-engineer",
+   "cybersecurity-analyst"
+  ]
+ },
+ {
+  "id": "isc2-cc",
+  "name": "ISC2 Certified in Cybersecurity (CC)",
+  "provider": "ISC2",
+  "domain": "Cybersecurity",
+  "cost_inr": 4200,
+  "cost_note": "Approximate; exam priced at USD 50",
+  "validity_years": 3,
+  "difficulty": "Beginner",
+  "prerequisites": "None.",
+  "exam_format": "100 questions, 120 minutes, online or test center.",
+  "official_url": "https://www.isc2.org/certifications/cc",
+  "prep_resources": [
+   {
+    "title": "ISC2 candidate resources",
+    "kind": "free",
+    "url": "https://www.isc2.org/"
+   },
+   {
+    "title": "Professor Messer videos",
+    "kind": "free",
+    "url": "https://www.professormesser.com/"
+   },
+   {
+    "title": "Cybrary free courses",
+    "kind": "free",
+    "url": "https://www.cybrary.it/"
+   }
+  ],
+  "career_value": "ISC2's entry-level cert from the body behind CISSP — the cheapest credible first security credential, with free training.",
+  "roles": [
+   "cybersecurity-analyst"
+  ]
+ },
+ {
+  "id": "cism",
+  "name": "ISACA Certified Information Security Manager (CISM)",
+  "provider": "ISACA",
+  "domain": "Cybersecurity",
+  "cost_inr": 47700,
+  "cost_note": "Approximate; exam priced at USD 575 for ISACA members",
+  "validity_years": 3,
+  "difficulty": "Advanced",
+  "prerequisites": "5 years information security management experience (waivers available).",
+  "exam_format": "150 questions, 240 minutes, test center or online proctored.",
+  "official_url": "https://www.isaca.org/credentialing/cism",
+  "prep_resources": [
+   {
+    "title": "ISACA resources",
+    "kind": "free",
+    "url": "https://www.isaca.org/"
+   },
+   {
+    "title": "NIST Cybersecurity Framework",
+    "kind": "free",
+    "url": "https://www.nist.gov/cyberframework"
+   },
+   {
+    "title": "OWASP Top 10",
+    "kind": "free",
+    "url": "https://owasp.org/www-project-top-ten/"
+   }
+  ],
+  "career_value": "The management-level security cert — governance, risk and incident response, for security-leadership roles.",
+  "roles": [
+   "cybersecurity-analyst"
+  ]
+ },
+ {
+  "id": "ibm-cybersecurity-analyst",
+  "name": "IBM Cybersecurity Analyst Professional Certificate",
+  "provider": "IBM (via Coursera)",
+  "domain": "Cybersecurity",
+  "cost_inr": 16300,
+  "cost_note": "Approximate; Coursera subscription ~USD 49/month for ~4 months (financial aid available)",
+  "validity_years": null,
+  "difficulty": "Beginner",
+  "prerequisites": "None; basic IT literacy helps.",
+  "exam_format": "No proctored exam — certificate on course completion (graded assignments/projects).",
+  "official_url": "https://www.coursera.org/professional-certificates/ibm-cybersecurity-analyst",
+  "prep_resources": [
+   {
+    "title": "IBM SkillsBuild",
+    "kind": "free",
+    "url": "https://skillsbuild.org/"
+   },
+   {
+    "title": "TryHackMe",
+    "kind": "free",
+    "url": "https://tryhackme.com/"
+   },
+   {
+    "title": "NIST Cybersecurity Framework",
+    "kind": "free",
+    "url": "https://www.nist.gov/cyberframework"
+   }
+  ],
+  "career_value": "IBM's analyst path — networks, threats and SIEM tools with hands-on labs, built for security career switchers.",
+  "roles": [
+   "cybersecurity-analyst"
+  ]
+ },
+ {
+  "id": "ms-sc-100",
+  "name": "Microsoft Certified: Cybersecurity Architect Expert",
+  "provider": "Microsoft",
+  "domain": "Cybersecurity",
+  "cost_inr": 13700,
+  "cost_note": "Approximate; exam priced at USD 165",
+  "validity_years": 1,
+  "difficulty": "Advanced",
+  "prerequisites": "SC-200/SC-300 level expertise recommended.",
+  "exam_format": "40–60 questions, 120 minutes, online or test center.",
+  "official_url": "https://learn.microsoft.com/en-us/credentials/certifications/cybersecurity-architect-expert/",
+  "prep_resources": [
+   {
+    "title": "Microsoft Learn training catalog",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/training/"
+   },
+   {
+    "title": "Microsoft Security documentation",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/security/"
+   },
+   {
+    "title": "Microsoft Zero Trust guidance",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/security/zero-trust/"
+   }
+  ],
+  "career_value": "Microsoft's expert security-architecture cert — Zero Trust design across identity, infrastructure and data.",
+  "roles": [
+   "cybersecurity-analyst"
+  ]
+ },
+ {
+  "id": "pmi-acp",
+  "name": "PMI Agile Certified Practitioner (PMI-ACP)",
+  "provider": "PMI",
+  "domain": "Project Management",
+  "cost_inr": 41100,
+  "cost_note": "Approximate; exam priced at USD 495 for PMI members",
+  "validity_years": 3,
+  "difficulty": "Intermediate",
+  "prerequisites": "2,000 hours general project experience + 1,500 hours agile work recommended.",
+  "exam_format": "120 questions, 180 minutes, test center or online proctored.",
+  "official_url": "https://www.pmi.org/certifications/agile-acp",
+  "prep_resources": [
+   {
+    "title": "PMI resources",
+    "kind": "free",
+    "url": "https://www.pmi.org/"
+   },
+   {
+    "title": "The Scrum Guide",
+    "kind": "free",
+    "url": "https://scrumguides.org/"
+   },
+   {
+    "title": "Agile Alliance",
+    "kind": "free",
+    "url": "https://www.agilealliance.org/"
+   }
+  ],
+  "career_value": "PMI's agile cert — Scrum, Kanban, Lean and XP in one credential, the agile counterpart to the PMP.",
+  "roles": [
+   "fullstack-dev",
+   "sde",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "psm-1",
+  "name": "Professional Scrum Master I (PSM I)",
+  "provider": "Scrum.org",
+  "domain": "Project Management",
+  "cost_inr": 16600,
+  "cost_note": "Approximate; exam priced at USD 200, no renewal fee",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "Scrum knowledge; the official guide is the main source.",
+  "exam_format": "80 questions, 60 minutes, online.",
+  "official_url": "https://www.scrum.org/professional-scrum-master-i-certification",
+  "prep_resources": [
+   {
+    "title": "The Scrum Guide",
+    "kind": "free",
+    "url": "https://scrumguides.org/scrum-guide.html"
+   },
+   {
+    "title": "Scrum.org learning paths",
+    "kind": "free",
+    "url": "https://www.scrum.org/learning-series"
+   },
+   {
+    "title": "Agile Alliance",
+    "kind": "free",
+    "url": "https://www.agilealliance.org/"
+   }
+  ],
+  "career_value": "The most-recognised Scrum Master cert — lifetime validity, no renewal, and the standard proof you can run Scrum properly.",
+  "roles": [
+   "fullstack-dev",
+   "sde"
+  ]
+ },
+ {
+  "id": "itil-4",
+  "name": "ITIL 4 Foundation",
+  "provider": "PeopleCert (AXELOS)",
+  "domain": "Project Management",
+  "cost_inr": 41100,
+  "cost_note": "Approximate; exam priced at USD 495",
+  "validity_years": 3,
+  "difficulty": "Beginner",
+  "prerequisites": "None.",
+  "exam_format": "40 questions, 60 minutes, online proctored.",
+  "official_url": "https://www.peoplecert.org/ITIL-4-Foundation",
+  "prep_resources": [
+   {
+    "title": "AXELOS ITIL 4 Foundation",
+    "kind": "free",
+    "url": "https://www.axelos.com/certifications/itil-service-management/itil-4-foundation"
+   },
+   {
+    "title": "PeopleCert",
+    "kind": "free",
+    "url": "https://www.peoplecert.org/"
+   },
+   {
+    "title": "ITIL 4 Foundation syllabus (PeopleCert)",
+    "kind": "free",
+    "url": "https://www.peoplecert.org/"
+   }
+  ],
+  "career_value": "The world's most-held service-management cert — ITIL is asked for across IT support, operations and SRE-adjacent roles.",
+  "roles": [
+   "devops-engineer",
+   "sre-engineer"
+  ]
+ },
+ {
+  "id": "ccnp-encor",
+  "name": "Cisco CCNP Enterprise (350-401 ENCOR)",
+  "provider": "Cisco",
+  "domain": "Networking",
+  "cost_inr": 33200,
+  "cost_note": "Approximate; exam priced at USD 400",
+  "validity_years": 3,
+  "difficulty": "Advanced",
+  "prerequisites": "CCNA-level knowledge and 3–5 years enterprise networking experience recommended.",
+  "exam_format": "90–110 questions, 120 minutes, test center or online.",
+  "official_url": "https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/professional/ccnp-enterprise.html",
+  "prep_resources": [
+   {
+    "title": "Cisco U.",
+    "kind": "free",
+    "url": "https://u.cisco.com/"
+   },
+   {
+    "title": "Cisco support documentation",
+    "kind": "free",
+    "url": "https://www.cisco.com/c/en/us/support/index.html"
+   },
+   {
+    "title": "Cisco Packet Tracer",
+    "kind": "free",
+    "url": "https://www.netacad.com/courses/packet-tracer"
+   }
+  ],
+  "career_value": "The professional Cisco cert — enterprise routing, switching and automation, the step from CCNA to network-engineer roles.",
+  "roles": [
+   "devops-engineer",
+   "cybersecurity-analyst",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "comptia-a-plus",
+  "name": "CompTIA A+",
+  "provider": "CompTIA",
+  "domain": "Networking",
+  "cost_inr": 42000,
+  "cost_note": "Approximate; two exams priced at USD 253 each",
+  "validity_years": 3,
+  "difficulty": "Beginner",
+  "prerequisites": "None; 9–12 months hands-on IT experience recommended.",
+  "exam_format": "Two exams (Core 1 + Core 2), 90 questions each, 90 minutes each.",
+  "official_url": "https://www.comptia.org/certifications/a",
+  "prep_resources": [
+   {
+    "title": "Professor Messer videos",
+    "kind": "free",
+    "url": "https://www.professormesser.com/"
+   },
+   {
+    "title": "CompTIA A+ exam objectives",
+    "kind": "free",
+    "url": "https://www.comptia.org/certifications/a"
+   },
+   {
+    "title": "CrucialExams practice tests",
+    "kind": "free",
+    "url": "https://crucialexams.com/"
+   }
+  ],
+  "career_value": "The industry-standard entry IT cert — hardware, networks and troubleshooting, held by over a million IT professionals.",
+  "roles": [
+   "devops-engineer",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "nptel-cn",
+  "name": "NPTEL: Computer Networks and Internet Protocol",
+  "provider": "NPTEL",
+  "domain": "Networking",
+  "cost_inr": 1000,
+  "cost_note": "Approximate; proctored exam fee ₹1,000, course content free",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "Operating systems basics recommended.",
+  "exam_format": "Proctored exam at a centre, 3 hours; weekly assignments count toward the final score.",
+  "official_url": "https://nptel.ac.in/courses",
+  "prep_resources": [
+   {
+    "title": "NPTEL course portal",
+    "kind": "free",
+    "url": "https://nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM NPTEL exam registration",
+    "kind": "free",
+    "url": "https://onlinecourses.nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM platform",
+    "kind": "free",
+    "url": "https://swayam.gov.in/"
+   }
+  ],
+  "career_value": "IIT Kharagpur's networks course with a proctored certificate — the theory that makes CCNA-style certs much easier.",
+  "roles": [
+   "devops-engineer",
+   "cybersecurity-analyst"
+  ]
+ },
+ {
+  "id": "ckad",
+  "name": "Certified Kubernetes Application Developer (CKAD)",
+  "provider": "CNCF / Linux Foundation",
+  "domain": "DevOps",
+  "cost_inr": 32800,
+  "cost_note": "Approximate; exam priced at USD 395",
+  "validity_years": 2,
+  "difficulty": "Intermediate",
+  "prerequisites": "CKA-level Kubernetes knowledge recommended.",
+  "exam_format": "Performance-based tasks, 120 minutes, online proctored.",
+  "official_url": "https://training.linuxfoundation.org/certification/certified-kubernetes-application-developer-ckad/",
+  "prep_resources": [
+   {
+    "title": "Kubernetes documentation",
+    "kind": "free",
+    "url": "https://kubernetes.io/docs/home/"
+   },
+   {
+    "title": "Killer.sh exam simulator",
+    "kind": "free",
+    "url": "https://killer.sh/"
+   },
+   {
+    "title": "KodeKloud",
+    "kind": "free",
+    "url": "https://kodekloud.com/"
+   }
+  ],
+  "career_value": "The developer-side Kubernetes cert — build, deploy and debug apps on K8s under exam conditions, exactly like the job.",
+  "roles": [
+   "devops-engineer"
+  ]
+ },
+ {
+  "id": "udemy-docker-k8s",
+  "name": "Docker & Kubernetes: The Practical Guide (Udemy)",
+  "provider": "Udemy",
+  "domain": "DevOps",
+  "cost_inr": 549,
+  "cost_note": "Approximate; Udemy sale price in India (list price is higher)",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "Basic Docker and Linux command-line familiarity recommended.",
+  "exam_format": "No proctored exam — certificate of completion on finishing the course.",
+  "official_url": "https://www.udemy.com/course/docker-kubernetes-the-practical-guide/",
+  "prep_resources": [
+   {
+    "title": "Kubernetes documentation",
+    "kind": "free",
+    "url": "https://kubernetes.io/docs/home/"
+   },
+   {
+    "title": "Docker documentation",
+    "kind": "free",
+    "url": "https://docs.docker.com/"
+   },
+   {
+    "title": "KodeKloud",
+    "kind": "free",
+    "url": "https://kodekloud.com/"
+   }
+  ],
+  "career_value": "Udemy's best-selling Kubernetes course — hands-on Docker and K8s with real projects, the usual first step before CKA/CKAD.",
+  "roles": [
+   "devops-engineer",
+   "cloud-engineer"
+  ]
+ },
+ {
+  "id": "rhcsa",
+  "name": "Red Hat Certified System Administrator (RHCSA)",
+  "provider": "Red Hat",
+  "domain": "DevOps",
+  "cost_inr": 33200,
+  "cost_note": "Approximate; exam priced at USD 400",
+  "validity_years": 3,
+  "difficulty": "Intermediate",
+  "prerequisites": "Red Hat System Administration I & II or equivalent experience recommended.",
+  "exam_format": "Hands-on lab exam, 180 minutes, test center or online.",
+  "official_url": "https://www.redhat.com/en/services/certification/rhcsa",
+  "prep_resources": [
+   {
+    "title": "Red Hat documentation",
+    "kind": "free",
+    "url": "https://docs.redhat.com/"
+   },
+   {
+    "title": "Linux Journey",
+    "kind": "free",
+    "url": "https://linuxjourney.com/"
+   },
+   {
+    "title": "Red Hat Learning Community",
+    "kind": "free",
+    "url": "https://learn.redhat.com/"
+   }
+  ],
+  "career_value": "The hands-on Linux admin cert — a live lab exam, not MCQs, and the gold standard for Linux sysadmin roles.",
+  "roles": [
+   "devops-engineer",
+   "sre-engineer"
+  ]
+ },
+ {
+  "id": "nptel-os",
+  "name": "NPTEL: Operating System Fundamentals",
+  "provider": "NPTEL",
+  "domain": "DevOps",
+  "cost_inr": 1000,
+  "cost_note": "Approximate; proctored exam fee ₹1,000, course content free",
+  "validity_years": null,
+  "difficulty": "Intermediate",
+  "prerequisites": "C programming and computer organization basics recommended.",
+  "exam_format": "Proctored exam at a centre, 3 hours; weekly assignments count toward the final score.",
+  "official_url": "https://nptel.ac.in/courses",
+  "prep_resources": [
+   {
+    "title": "NPTEL course portal",
+    "kind": "free",
+    "url": "https://nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM NPTEL exam registration",
+    "kind": "free",
+    "url": "https://onlinecourses.nptel.ac.in/"
+   },
+   {
+    "title": "SWAYAM platform",
+    "kind": "free",
+    "url": "https://swayam.gov.in/"
+   }
+  ],
+  "career_value": "IIT-taught operating systems with a proctored certificate — the theory every DevOps and systems interview leans on.",
+  "roles": [
+   "devops-engineer",
+   "backend-dev"
+  ]
+ },
+ {
+  "id": "ms-dp-700",
+  "name": "Microsoft Certified: Fabric Data Engineer Associate (DP-700)",
+  "provider": "Microsoft",
+  "domain": "Data",
+  "cost_inr": 13700,
+  "cost_note": "Approximate; exam priced at USD 165",
+  "validity_years": 1,
+  "difficulty": "Intermediate",
+  "prerequisites": "Experience with Microsoft Fabric, data loading and transformation recommended.",
+  "exam_format": "40–60 questions, 100 minutes, online or test center.",
+  "official_url": "https://learn.microsoft.com/en-us/credentials/certifications/fabric-data-engineer-associate/",
+  "prep_resources": [
+   {
+    "title": "Microsoft Learn training catalog",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/training/"
+   },
+   {
+    "title": "Microsoft Fabric documentation",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/fabric/"
+   },
+   {
+    "title": "Azure Synapse Analytics documentation",
+    "kind": "free",
+    "url": "https://learn.microsoft.com/en-us/azure/synapse-analytics/"
+   }
+  ],
+  "career_value": "The successor to the retired DP-203 — Fabric data engineering (lakehouses, pipelines, warehouses) is where Microsoft's data platform is headed.",
+  "roles": [
+   "data-engineer"
+  ]
  }
 ]

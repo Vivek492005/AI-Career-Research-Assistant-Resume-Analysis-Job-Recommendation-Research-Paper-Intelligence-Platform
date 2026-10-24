@@ -21,7 +21,7 @@
     <div class="b-bento">
         <div class="b-card b-span-2 b-reveal">
             <div class="b-kv">
-                <div class="b-kv-row"><span class="b-kv-label">Exam cost</span><span class="b-kv-val">&#8377;{{ "{:,}".format(cert.cost_inr) }}</span></div>
+                <div class="b-kv-row"><span class="b-kv-label">Exam cost</span><span class="b-kv-val">{% if cert.cost_inr %}&#8377;{{ "{:,}".format(cert.cost_inr) }}{% else %}Free{% endif %}</span></div>
                 <div class="b-kv-row"><span class="b-kv-label"></span><span class="b-kv-label" style="font-size:.8rem;">{{ cert.cost_note }}</span></div>
                 <div class="b-kv-row"><span class="b-kv-label">Valid for</span><span class="b-kv-val">{% if cert.validity_years %}{{ cert.validity_years }} years{% else %}Lifetime{% endif %}</span></div>
                 <div class="b-kv-row"><span class="b-kv-label">Difficulty</span><span class="b-kv-val">{{ cert.difficulty }}</span></div>

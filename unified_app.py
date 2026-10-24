@@ -5994,10 +5994,14 @@ def register_routes(app):
     @app.route('/learn/certs')
     def certs_home():
         """Browse certifications + run the recommender."""
+        certs = all_certs()
         return render_template('certs.html',
                                domains=cert_domains(),
                                roles=roadmap_roles(),
                                freshness=cert_freshness(),
+                               num_certs=len(certs),
+                               num_providers=len({c.get("provider", "") for c in certs}),
+                               num_free=sum(1 for c in certs if not c.get("cost_inr")),
                                is_authed=current_user.is_authenticated)
 
     @app.route('/learn/certs/browse')
