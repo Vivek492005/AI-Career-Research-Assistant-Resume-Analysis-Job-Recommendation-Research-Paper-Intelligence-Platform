@@ -92,8 +92,24 @@ def _as_json_value(v: Any) -> Any:
     return v
 
 
+def _as_json_object(v: Any) -> dict:
+    """Like _as_json_value but the result MUST be a JSON object.
+
+    Fields whose handlers call .get() on the value (e.g. the JD-match
+    report) previously accepted any JsonValue: a non-JSON string passed
+    validation untouched and the handler died with AttributeError,
+    surfaced to users as an opaque 'Tool failed'. Raising here turns
+    that into a clear field-level validation error instead.
+    """
+    parsed = _as_json_value(v)
+    if not isinstance(parsed, dict):
+        raise ValueError("must be a JSON object (e.g. {\"score\": 72, ...})")
+    return parsed
+
+
 JsonList = Annotated[list, BeforeValidator(_as_json_list)]
 JsonValue = Annotated[Any, BeforeValidator(_as_json_value)]
+JsonObject = Annotated[dict, BeforeValidator(_as_json_object)]
 
 
 # ---------------------------------------------------------------------------
@@ -165,16 +181,16 @@ class _NonEmpty(BaseModel):
 
 class PrescreenIn(_NonEmpty):
     resume_text: str = Field(min_length=1, max_length=60000)
-    report: JsonValue
+    report: JsonObject
 
 
 class KeywordPlanIn(_NonEmpty):
     resume_text: str = Field(min_length=1, max_length=60000)
-    report: JsonValue
+    report: JsonObject
 
 
 class OfferOddsIn(_NonEmpty):
-    report: JsonValue
+    report: JsonObject
     applicants_estimate: Optional[int] = Field(default=None, ge=0)
 
 
