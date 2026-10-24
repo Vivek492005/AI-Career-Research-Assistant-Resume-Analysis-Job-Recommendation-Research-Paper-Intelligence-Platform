@@ -30,6 +30,45 @@
     if (filter) filter.addEventListener('change', applySkillFilters);
     if (skillSearch) skillSearch.addEventListener('input', applySkillFilters);
 
+    /* ---- hero Ripple Dissolve: same water-ripple filter as the Learn
+       hero, applied to the centred heading block on first view ---- */
+    (function () {
+        var text = document.getElementById('roadmap-hero-text');
+        var disp = document.getElementById('rm-ripple-disp');
+        if (!text || !disp) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        text.classList.add('sb-rippling');
+        text.style.opacity = '0';
+        text.style.filter = 'url(#rm-ripple-dissolve) blur(10px)';
+        var done = false;
+        function finish() {
+            if (done) return;
+            done = true;
+            disp.setAttribute('scale', '0');
+            text.classList.remove('sb-rippling');
+            text.style.opacity = '';
+            text.style.filter = '';
+        }
+        var io = new IntersectionObserver(function (entries) {
+            if (!entries[0].isIntersecting) return;
+            io.disconnect();
+            var DUR = 2800, t0 = null;
+            function frame(now) {
+                if (done) return;
+                if (t0 === null) t0 = now;
+                var p = Math.min(1, (now - t0) / DUR);
+                var e = 1 - Math.pow(1 - p, 3);
+                disp.setAttribute('scale', String(Math.round(140 * (1 - e))));
+                text.style.opacity = String(e.toFixed(3));
+                text.style.filter = 'url(#rm-ripple-dissolve) blur(' + (10 * (1 - e)).toFixed(1) + 'px)';
+                if (p < 1) { requestAnimationFrame(frame); } else { finish(); }
+            }
+            requestAnimationFrame(frame);
+            setTimeout(finish, DUR + 1200);
+        }, { threshold: 0.2 });
+        io.observe(text);
+    })();
+
     /* ---- gap form helpers: role preview, skill search, counters ---- */
     var roleSel = document.getElementById('gap-role');
     var roleDesc = document.getElementById('gap-role-desc');

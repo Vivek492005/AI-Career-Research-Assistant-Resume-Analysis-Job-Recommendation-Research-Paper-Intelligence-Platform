@@ -6,8 +6,23 @@
 {% block head %}<meta name="csrf-token" content="{{ csrf_token() }}">{% endblock %}
 
 {% block content %}
-<section style="padding-top:2.6rem;">
-    <div class="b-sec-head b-reveal">
+<section class="roadmap-hero" aria-label="Learning roadmaps">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <filter id="rm-ripple-dissolve" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="7" result="noise"/>
+                <feDisplacementMap id="rm-ripple-disp" in="SourceGraphic" in2="noise" scale="140" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+        </defs>
+    </svg>
+    <div class="roadmap-glow" aria-hidden="true"></div>
+    <figure class="roadmap-hero-side roadmap-hero-side--left" aria-hidden="true">
+        <img src="{{ url_for('static', filename='img/roadmap-hero-left.jpg') }}" alt="" loading="eager">
+    </figure>
+    <figure class="roadmap-hero-side roadmap-hero-side--right" aria-hidden="true">
+        <img src="{{ url_for('static', filename='img/roadmap-hero-right.jpg') }}" alt="" loading="eager">
+    </figure>
+    <div class="roadmap-hero-text b-reveal" id="roadmap-hero-text">
         <span class="b-pill"><span class="b-pulse"></span>Feature 18 &mdash; Roadmaps</span>
         <h1>Skill-gap <span class="b-grad">learning roadmaps</span></h1>
         <p class="b-lede">Pick a target role, tell us what you already know, and get a ranked gap report with a week-by-week plan — built entirely from free resources.</p>
@@ -67,20 +82,24 @@
 </section>
 
 <section class="b-section" aria-label="All skills">
-    <div class="b-sec-head">
+    <div class="b-sec-head b-sec-head--center">
         <h2>Browse <span class="b-grad">{{ skills|length }} skill roadmaps</span></h2>
         <p>Every skill has beginner, intermediate, and advanced stages — topics, free resources, hands-on tasks, and a milestone checkpoint per stage.</p>
     </div>
-    <div class="b-field" style="max-width:520px;">
-        <label class="b-label" for="skill-filter">Filter by domain</label>
-        <select class="b-select" id="skill-filter">
-            <option value="">All domains</option>
-            {% for domain, count in domains %}
-            <option value="{{ domain }}">{{ domain }} ({{ count }})</option>
-            {% endfor %}
-        </select>
-        <label class="b-label" for="skill-search" style="margin-top:1rem;">Or search skills</label>
-        <input type="search" id="skill-search" class="b-input" placeholder="Search roadmaps… (try NLP, MLOps, SQL)" autocomplete="off">
+    <div class="b-bento" style="grid-template-columns:repeat(2,1fr);max-width:860px;margin:0 auto 1.6rem;">
+        <div class="b-field">
+            <label class="b-label" for="skill-filter">Filter by domain</label>
+            <select class="b-select" id="skill-filter">
+                <option value="">All domains</option>
+                {% for domain, count in domains %}
+                <option value="{{ domain }}">{{ domain }} ({{ count }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="b-field">
+            <label class="b-label" for="skill-search">Or search skills</label>
+            <input type="search" id="skill-search" class="b-input" placeholder="Search roadmaps… (try NLP, MLOps, SQL)" autocomplete="off">
+        </div>
     </div>
     <div class="b-bento" id="skill-grid">
         {% for s in skills %}

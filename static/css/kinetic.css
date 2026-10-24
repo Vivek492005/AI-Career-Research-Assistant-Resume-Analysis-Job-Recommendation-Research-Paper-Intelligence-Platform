@@ -1435,6 +1435,46 @@ body.sb-app .b-card--stat:hover :is(b, strong) { color: var(--sb-blue) !importan
 .gap-result-card { animation: gapFadeUp .45s ease both; }
 @keyframes gapFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .quiz-q-in { animation: gapFadeUp .4s ease both; }
+
+/* Roadmaps hero (2026-10-24 redesign): heading centred, materialising
+   through the same Ripple Dissolve filter as the Learn hero, flanked
+   by skill artwork streaming in from both edges. Both artworks are
+   white line art on pure black, so mix-blend-mode: screen melts them
+   into the ink page with zero box edge; feather masks dissolve their
+   inner ends before they reach the heading. A soft white radial glow
+   sits behind the heading ("shady white effect"). Reduced-motion and
+   no-JS keep the still, blended composition. */
+.roadmap-hero { position: relative; overflow: hidden; padding: 3.4rem 1rem 2.2rem; display: flex; justify-content: center; }
+.roadmap-glow { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%); width: min(720px, 90vw); height: 340px; pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,.14) 0%, rgba(255,255,255,.05) 42%, transparent 70%); }
+.roadmap-hero-side { margin: 0; position: absolute; top: 50%; width: min(46%, 640px); z-index: 0; pointer-events: none; }
+.roadmap-hero-side--left { left: 0; transform: translateY(-50%); animation: roadmapSlideInLeft 1.4s cubic-bezier(.2,.7,.2,1) both; }
+.roadmap-hero-side--right { right: 0; transform: translateY(-50%); animation: roadmapSlideInRight 1.4s cubic-bezier(.2,.7,.2,1) both; }
+.roadmap-hero-side img { width: 100%; height: auto; display: block; mix-blend-mode: screen; }
+.roadmap-hero-side--left img { -webkit-mask-image: linear-gradient(to left, transparent 0, #000 30%); -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to left, transparent 0, #000 30%); mask-composite: intersect; }
+.roadmap-hero-side--right img { -webkit-mask-image: linear-gradient(to right, transparent 0, #000 30%); -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent 0, #000 30%); mask-composite: intersect; }
+@keyframes roadmapSlideInLeft { from { opacity: 0; transform: translate(-70px, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
+@keyframes roadmapSlideInRight { from { opacity: 0; transform: translate(70px, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
+.roadmap-hero-text { position: relative; z-index: 1; text-align: center; max-width: 720px; }
+.roadmap-hero-text .b-lede { margin-left: auto; margin-right: auto; }
+.roadmap-hero-text.sb-rippling { will-change: filter, opacity; }
+@media (max-width: 900px) {
+    .roadmap-hero-side { width: 92%; opacity: .35; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .roadmap-hero-side--left, .roadmap-hero-side--right { animation: none; }
+}
+/* Centred section heads (roadmaps browse) + calm gap-form rows: the
+   per-skill labels stop behaving like tiles — flat rows with a
+   hairline, no opposite-sweep flood — so the 30-checkbox form reads
+   as one organised list instead of a wall of boxes. */
+.b-sec-head--center { text-align: center; }
+.b-sec-head--center .b-lede, .b-sec-head--center p { margin-left: auto; margin-right: auto; }
+.gap-skill-card { background: transparent !important; border: none !important; border-bottom: 1px solid rgba(255,255,255,.09) !important; border-radius: 0 !important; box-shadow: none !important; }
+.gap-skill-card::before { display: none !important; }
+.gap-skill-card:hover { border-bottom-color: rgba(255,255,255,.22) !important; }
 .stage-rail { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.2rem; }
 .stage-rail a { padding: .4rem .9rem; border: 1px solid var(--b-line, rgba(255,255,255,.12)); border-radius: 999px; font-size: .88rem; text-decoration: none; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
