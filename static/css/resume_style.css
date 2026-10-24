@@ -2335,3 +2335,30 @@ h1 svg { width: 1em; height: 1em; vertical-align: -0.12em; margin-right: 0.2em; 
     .jd-bar-fill { transition: none; }
     .jd-submit:hover:not(:disabled) { transform: none; box-shadow: none; }
 }
+
+/* ---- Resume insights (bullet evidence, fix checklist, JD panel) ---- */
+.breakdown-toggle { background: none; border: none; width: 100%; padding: 0; text-align: left; cursor: pointer; color: inherit; font: inherit; }
+.breakdown-toggle:hover .breakdown-label { color: var(--accent-primary); }
+.breakdown-more { margin-top: .6rem; padding: .7rem .9rem; border: 1px solid var(--border-subtle); border-radius: 8px; background: var(--bg-glass); font-size: .88rem; color: var(--text-secondary); }
+.breakdown-more p { margin: .25rem 0; }
+.insights-section { margin-top: 1.4rem; }
+.insight-bar { height: 8px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; margin-top: .5rem; }
+.insight-bar i { display: block; height: 100%; background: var(--gradient-primary); border-radius: 999px; }
+.weak-bullet { margin-top: 1rem; padding: .8rem .9rem; border: 1px solid var(--border-subtle); border-radius: 8px; background: var(--bg-glass); }
+.weak-bullet p { margin: .25rem 0; }
+.weak-bullet ul { margin: .4rem 0 .6rem 1.1rem; color: var(--text-secondary); font-size: .88rem; }
+.btn-ghost-sm { background: transparent; border: 1px solid var(--border-accent); color: var(--text-primary); border-radius: 6px; padding: .35rem .7rem; font-size: .85rem; cursor: pointer; }
+.btn-ghost-sm:hover:not(:disabled) { background: var(--bg-glass-hover); }
+.btn-ghost-sm:disabled { opacity: .55; cursor: default; }
+.rewrite-variant { margin-top: .7rem; padding: .7rem .9rem; border-left: 3px solid var(--accent-primary); background: var(--bg-glass); }
+.rewrite-variant p { margin: .25rem 0; }
+.projected-score { margin: .8rem 0 1rem; padding: .8rem .9rem; border-radius: 8px; background: var(--bg-glass); border: 1px solid var(--border-subtle); font-size: 1rem; }
+.projected-score #projected-delta { display: block; font-size: .85rem; color: var(--text-secondary); margin-top: .25rem; }
+.fix-item { display: flex; gap: .6rem; align-items: flex-start; padding: .7rem 0; border-bottom: 1px solid var(--border-subtle); cursor: pointer; }
+.fix-item:last-of-type { border-bottom: none; }
+.fix-item input { margin-top: .2rem; accent-color: var(--accent-primary); }
+.fix-points { color: var(--accent-primary); font-weight: 600; }
+.fix-desc { color: var(--text-secondary); font-size: .88rem; }
+.jd-panel textarea { width: 100%; background: var(--bg-glass); border: 1px solid var(--border-subtle); border-radius: 8px; color: var(--text-primary); padding: .7rem .9rem; font: inherit; margin-bottom: .8rem; box-sizing: border-box; }
+.jd-panel textarea:focus { outline: 2px solid var(--border-accent); }
+.jd-result { margin-top: 1rem; font-size: 1.05rem; }

@@ -310,6 +310,8 @@ from preparation.coding_practice import (
 )
 from preparation.interview_questions import generate_interview_questions
 from studybuddy.mock_interview import hub_company_questions, interview_hub_data
+from studybuddy.resume_insights import (
+    analyze_bullets, build_fix_checklist, dimension_notes)
 from recommendation.career_guidance import suggest_career_paths
 from recommendation.job_recommender import get_recommendations
 from recommendation.learning_roadmap import estimate_total_time, generate_roadmap
@@ -3754,6 +3756,16 @@ def register_routes(app):
             top_role = recommendations[0]['title'] if recommendations else 'Software Engineer'
             interview_qs = generate_interview_questions(top_role, skill_names[:5])
 
+            # Resume-insights layer: bullet evidence + honest fix checklist
+            # (same math as the scorer; projected score is an estimate).
+            bullet_insights = analyze_bullets(cleaned_text, sections)
+            fix_checklist = build_fix_checklist(
+                ats_result, bullet_insights, sections, cleaned_text,
+                num_skills=len({(s.get('name') or '').strip().lower()
+                                for s in skills if isinstance(s, dict)}))
+            dimension_notes_d = dimension_notes(
+                ats_result, bullet_insights, sections, fix_checklist)
+
             result = {
                 'contact': {'email': email, 'phone': phone, 'links': links},
                 'sections_found': list(sections.keys()),
@@ -3771,6 +3783,9 @@ def register_routes(app):
                 'total_learning_time': total_learning_time,
                 'career_paths': career_paths,
                 'interview_questions': interview_qs,
+                'bullet_insights': bullet_insights,
+                'fix_checklist': fix_checklist,
+                'dimension_notes': dimension_notes_d,
                 'filename': filename
             }
 
@@ -6088,11 +6103,13 @@ def register_routes(app):
             row = db.session.get(ResumeAnalysis, row_id)
             if not row or row.user_id != current_user.id:
                 abort(404)
-            return render_template('dashboard.html', result=row.result_json)
+            return render_template('dashboard.html', result=row.result_json,
+                                   is_authed=True)
         anon = db.session.get(AnonymousAnalysis, analysis_id)
         if not anon or anon.expires_at < _utcnow_naive():
             return redirect(url_for('resume_home'))
-        return render_template('dashboard.html', result=anon.result_json)
+        return render_template('dashboard.html', result=anon.result_json,
+                               is_authed=False)
 
     @app.route('/dashboard')
     @login_required

@@ -175,7 +175,7 @@ def get_overall_summary(ats_result, skills, sections):
         summary += "It is highly optimized for modern ATS algorithms."
     elif percentage >= 70:
         summary = f"Great work! You have a solid professional profile with clear strengths in {', '.join(top_skills) if top_skills else 'your core domain'}. "
-        summary += f"While your {main_strength} is well-presented, adding more quantified achievements could push you into the top 10% of applicants."
+        summary += f"While your {main_strength} is well-presented, adding more quantified achievements would push your score higher still."
     elif percentage >= 55:
         summary = f"Your resume shows good potential, particularly in {top_skills[0] if top_skills else 'your field'}. "
         summary += f"However, to better compete for high-demand roles, we recommend strengthening your {main_strength} section and focusing on missing keywords."

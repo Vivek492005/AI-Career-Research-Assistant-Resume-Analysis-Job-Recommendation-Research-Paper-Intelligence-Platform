@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Your AI-powered resume analysis dashboard with resume readiness, job recommendations, skill gaps, and career guidance.">
     <title>Dashboard | AI Resume Analyzer</title>
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon-32.png') }}">
@@ -55,23 +56,99 @@
                     <p style="font-size:.78rem;color:var(--b-muted);margin-top:.6rem;">Heuristic resume-quality estimate — real applicant-tracking systems don't publish 0–100 scores.</p>
                 </div>
 
-                <!-- Score Breakdown -->
+                <!-- Score Breakdown (click a row for what it measures + its fixes) -->
                 <div class="ats-breakdown">
                     <h3><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4a2 2 0 0 1 6 0M9 11h6M9 15h4"/></svg></span> Score Breakdown</h3>
+                    <p style="font-size:.8rem;color:var(--text-secondary);margin-top:-.4rem;">Click a row to see what it measures and which fixes address it.</p>
                     {% for key, item in result.ats.breakdown.items() %}
                     <div class="breakdown-item">
-                        <div class="breakdown-header">
-                            <span class="breakdown-label">{{ item.label }}</span>
-                            <span class="breakdown-score">{{ item.score }}/{{ item.max }}</span>
-                        </div>
+                        <button type="button" class="breakdown-toggle" aria-expanded="false" data-dimension="{{ key }}">
+                            <span class="breakdown-header">
+                                <span class="breakdown-label">{{ item.label }}</span>
+                                <span class="breakdown-score">{{ item.score }}/{{ item.max }}</span>
+                            </span>
+                        </button>
                         <div class="breakdown-bar">
                             <div class="breakdown-fill" data-width="{{ (item.score / item.max * 100)|round(1) }}"></div>
                         </div>
                         <div class="breakdown-details">{{ item.details }}</div>
+                        {% if result.dimension_notes and result.dimension_notes.get(key) %}
+                        <div class="breakdown-more" hidden>
+                            <p>{{ result.dimension_notes[key].measures }}</p>
+                            <p><strong>Points left on the table: {{ result.dimension_notes[key].lost }}</strong>{% if result.dimension_notes[key].fix_ids %} — addressed by {{ result.dimension_notes[key].fix_ids|length }} fix(es) in your checklist below.{% else %} — this dimension has no checklist fix (experience points come from your history, not wording).{% endif %}</p>
+                        </div>
+                        {% endif %}
                     </div>
                     {% endfor %}
                 </div>
             </div>
+
+            {% if result.bullet_insights %}
+            <!-- Bullet evidence + fix checklist + JD comparison -->
+            <section class="insights-section" aria-label="Bullet evidence and fix checklist">
+                <div class="dashboard-grid">
+                    <div class="dash-card">
+                        <h3><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg></span> Bullet-level evidence</h3>
+                        <p>{{ result.bullet_insights.total }} bullets found &middot; {{ result.bullet_insights.quantified }} quantified ({{ result.bullet_insights.quantified_pct }}%)</p>
+                        <div class="insight-bar"><i style="width:{{ result.bullet_insights.quantified_pct }}%;"></i></div>
+                        {% if result.bullet_insights.strong_example %}
+                        <p style="margin-top:.8rem;"><strong>Strongest bullet:</strong> &ldquo;{{ result.bullet_insights.strong_example }}&rdquo;</p>
+                        {% endif %}
+                        {% if result.bullet_insights.weak %}
+                        <p style="margin-top:1rem;"><strong>Weakest bullets — exactly why they lose points:</strong></p>
+                        {% for w in result.bullet_insights.weak %}
+                        <div class="weak-bullet">
+                            <p>&ldquo;{{ w.text }}&rdquo;</p>
+                            <ul>
+                                {% for r in w.reasons %}<li>{{ r }}</li>{% endfor %}
+                            </ul>
+                            {% if is_authed %}
+                            <button type="button" class="btn-ghost-sm rewrite-btn" data-bullet="{{ w.text }}">Rewrite this bullet</button>
+                            <div class="rewrite-out"></div>
+                            {% else %}
+                            <p style="font-size:.85rem;"><a href="{{ url_for('auth.login') }}">Sign in</a> to rewrite this bullet.</p>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        {% elif result.bullet_insights.total > 0 %}
+                        <p style="margin-top:1rem;">Every bullet carries a metric and an action verb. Nothing weak found.</p>
+                        {% else %}
+                        <p style="margin-top:1rem;">No bullet lines detected in the experience/projects sections — if your resume uses bullets, they may be formatted in a way the parser missed.</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="dash-card">
+                        <h3><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></span> Your fix checklist</h3>
+                        <p>Tick a fix to see your projected score move. Projected scores are estimates from the same checklist math — not recruiter scores.</p>
+                        <div class="projected-score">
+                            Now <strong>{{ result.ats.percentage }}</strong> &rarr; Projected <strong id="projected-score" data-current="{{ result.ats.percentage }}">{{ result.fix_checklist.projected_pct }}</strong>
+                            <span id="projected-delta">+{{ result.fix_checklist.total_points }} pts if you apply everything</span>
+                        </div>
+                        {% for item in result.fix_checklist['items'] %}
+                        <label class="fix-item">
+                            <input type="checkbox" class="fix-check" data-points="{{ item.points }}">
+                            <span><strong>{{ item.title }}</strong> <span class="fix-points">+{{ item.points }} pts</span><br><span class="fix-desc">{{ item.fix }}</span></span>
+                        </label>
+                        {% endfor %}
+                        {% if not result.fix_checklist['items'] %}
+                        <p>Nothing left on the checklist — this resume already takes every point the checklist can award.</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="dash-card jd-panel" style="margin-top:1.4rem;">
+                    <h3><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></span> Compare against a job description</h3>
+                    {% if is_authed %}
+                    <p>Paste a job posting — it is scored against your latest saved resume with the existing JD matcher, and the full report is saved to your account.</p>
+                    <textarea id="jd-text" rows="5" placeholder="Paste the full job description here…"></textarea>
+                    <button type="button" class="btn-analyze show" id="jd-run" style="width:auto;">Match against this JD</button>
+                    <div id="jd-out"></div>
+                    {% else %}
+                    <p><a href="{{ url_for('auth.login') }}">Sign in</a> to compare this resume against a job description.</p>
+                    {% endif %}
+                </div>
+            </section>
+            {% endif %}
 
             <!-- Main Dashboard Grid -->
             <div class="dashboard-grid">
@@ -301,6 +378,7 @@
     </footer>
 
     <script src="{{ url_for('static', filename='js/resume_script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/resume_insights.js') }}"></script>
     <script src="{{ url_for('static', filename='js/kinetic.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bento.js') }}" defer></script>
     {% include "_csp_beacon.html" %}
