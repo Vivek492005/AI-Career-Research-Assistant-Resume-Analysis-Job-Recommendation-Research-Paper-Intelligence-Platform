@@ -103,7 +103,16 @@
         <p class="opp-login-cta"><a href="{{ url_for('auth.login', next='/opportunities') }}">Log in</a> to bookmark opportunities and build your shortlist.</p>
         {% endif %}
 
-        <p class="opp-count">{{ opps|length }} opportunit{{ 'y' if opps|length == 1 else 'ies' }} · sorted by deadline</p>
+        {% if closing_mine %}
+        <div class="opp-closing" role="status" style="border:1px solid rgba(251,191,36,.45);border-radius:12px;padding:.9rem 1.1rem;margin-bottom:1.2rem;">
+            <strong>⏰ Your saved opportunities closing soon:</strong>
+            {% for o in closing_mine %}<a href="{{ o.link }}" target="_blank" rel="noopener">{{ o.title }}</a> ({{ o.countdown_label }}){% if not loop.last %} · {% endif %}{% endfor %}
+        </div>
+        {% endif %}
+
+        <p class="opp-count">{{ opps|length }} opportunit{{ 'y' if opps|length == 1 else 'ies' }} · sorted by deadline
+            {% if show_closed %}· <a href="{{ url_for('opportunity_board', type=active_type or None) }}">hide recently closed</a>{% else %}· <a href="{{ url_for('opportunity_board', type=active_type or None, closed=1) }}">recently closed (30 days)</a>{% endif %}
+        </p>
 
         <div class="opp-grid" id="oppGrid">
             {% for o in opps %}
@@ -136,6 +145,28 @@
             <div class="opp-empty">No opportunities match these filters.</div>
             {% endfor %}
         </div>
+
+        {% if show_closed %}
+        <h2 style="margin:2rem 0 .4rem;">Recently closed</h2>
+        <p class="opp-count">Deadlines that passed in the last 30 days — most of these return next cycle.</p>
+        <div class="opp-grid">
+            {% for o in closed %}
+            <article class="opp-card b-card b-card--lite" style="opacity:.62;" data-opp-id="{{ o.id }}">
+                <div class="opp-top">
+                    <span class="opp-badge {{ o.type }}">{{ o.type }}</span>
+                    <span class="opp-deadline">Closed · {{ o.deadline_label }}</span>
+                </div>
+                <h3>{{ o.title }}</h3>
+                <p>{{ o.organization }}</p>
+                <div class="opp-actions">
+                    <a class="opp-link" href="{{ o.link }}" target="_blank" rel="noopener">Official site ↗</a>
+                </div>
+            </article>
+            {% else %}
+            <div class="opp-empty">Nothing closed in the last 30 days for this filter.</div>
+            {% endfor %}
+        </div>
+        {% endif %}
 
         <p class="opp-schema">Maintaining this board? Opportunities live in <code>data/opportunities.json</code> — the documented schema is in <code>opportunities.py</code> (<code>OPPORTUNITY JSON SCHEMA</code>).</p>
     </div>

@@ -33,6 +33,7 @@
 {# ---------- Mentors directory ---------- #}
 <section class="b-section" aria-label="Mentors">
     <div class="b-sec-head"><h2>Meet the <span class="b-grad">mentors</span></h2><p>{{ mentors|length }} mentor{{ 's' if mentors|length != 1 }}{% if path_filter %} in {{ path_label(path_filter) }}{% endif %}</p></div>
+    <p style="color:var(--b-muted);font-size:.88rem;margin:0 0 1rem;">Profiles marked <strong>Example profile</strong> demonstrate how mentoring works while the first real mentors are onboarded — bookings on them are practice requests. Real mentors join via application and carry the ✓ Verified badge.</p>
     {% if mentors %}
     <div class="b-bento">
         {% for m in mentors %}
@@ -42,7 +43,7 @@
                 <div style="min-width:0;">
                     <h3 style="margin:0;font-size:1.05rem;">
                         {{ m.name }}
-                        {% if m.verified %}<span class="b-pill" title="Verified by the STUDY-BUDDY team" style="margin-left:.4rem;">✓ Verified</span>{% endif %}
+                        {% if m.is_seed %}<span class="b-pill" title="Example profile that shows how mentoring works — real mentors join via application and are verified by the team" style="margin-left:.4rem;">Example profile</span>{% elif m.verified %}<span class="b-pill" title="Verified by the STUDY-BUDDY team" style="margin-left:.4rem;">✓ Verified</span>{% endif %}
                     </h3>
                     <p style="color:var(--b-muted);font-size:.86rem;margin:.2rem 0;">{{ m.headline }}</p>
                     <p style="font-size:.82rem;margin:.2rem 0;">{{ path_label(m.path) }}{% if m.company %} · {{ m.company }}{% endif %}{% if m.college %} · {{ m.college }}{% endif %}</p>
@@ -69,7 +70,7 @@
         <article class="b-card b-reveal">
             <span class="b-pill">{{ path_label(oh.path) }}</span>
             <h3 style="margin:.6rem 0 .2rem;">{{ oh.topic }}</h3>
-            <p style="color:var(--b-muted);font-size:.88rem;margin:.2rem 0;">with <strong>{{ oh.mentor.name }}</strong>{% if oh.mentor.verified %} ✓{% endif %} · {{ oh.mentor.headline }}</p>
+            <p style="color:var(--b-muted);font-size:.88rem;margin:.2rem 0;">with <strong>{{ oh.mentor.name }}</strong>{% if oh.mentor.is_seed %} (example profile){% elif oh.mentor.verified %} ✓{% endif %} · {{ oh.mentor.headline }}</p>
             <p style="font-size:.9rem;margin:.4rem 0;">{{ oh.scheduled_at.strftime('%a, %b %d · %I:%M %p') }} · {{ oh.duration_min }} min</p>
             <p style="font-size:.86rem;color:var(--b-muted);margin:.2rem 0 0;">Seats: {{ oh.bookings.filter_by(status='booked').count() + oh.bookings.filter_by(status='attended').count() }} / {{ oh.capacity }}{% if oh.status == 'full' %} — <strong>FULL</strong>{% endif %}</p>
             <div class="b-cta-row" style="margin-top:1rem;">

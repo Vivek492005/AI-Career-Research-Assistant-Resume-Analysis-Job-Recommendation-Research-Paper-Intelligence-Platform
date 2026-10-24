@@ -14,7 +14,8 @@
             <div style="display:flex;align-items:center;gap:1rem;margin-top:1rem;">
                 <div class="b-avatar" style="width:3.5rem;height:3.5rem;font-size:1.4rem;" aria-hidden="true">{{ mentor.name[0] }}</div>
                 <div>
-                    <h1 style="margin:0;">{{ mentor.name }} {% if mentor.verified %}<span class="b-pill" title="Verified by the STUDY-BUDDY team">✓ Verified</span>{% endif %}</h1>
+                    <h1 style="margin:0;">{{ mentor.name }} {% if mentor.is_seed %}<span class="b-pill" title="Example profile that shows how mentoring works — real mentors join via application and are verified by the team">Example profile</span>{% elif mentor.verified %}<span class="b-pill" title="Verified by the STUDY-BUDDY team">✓ Verified</span>{% endif %}</h1>
+                    {% if mentor.is_seed %}<p style="color:var(--b-warn,#fbbf24);margin:.6rem 0 0;font-size:.9rem;">This is an example profile demonstrating the mentoring flow. Bookings here are practice requests — they don't reach a real mentor yet. Real mentors join through applications and are verified by the team.</p>{% endif %}
                     <p class="b-lede" style="margin:.3rem 0 0;">{{ mentor.headline }}{% if mentor.company %} · {{ mentor.company }}{% endif %}{% if mentor.college %} · {{ mentor.college }}{% endif %}</p>
                 </div>
             </div>

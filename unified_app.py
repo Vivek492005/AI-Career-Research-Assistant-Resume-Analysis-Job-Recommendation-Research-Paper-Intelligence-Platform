@@ -4485,8 +4485,23 @@ def register_routes(app):
                     ts = ts.replace(tzinfo=UTC)
                 days.append(max(0.0, (now - ts).total_seconds() / 86400.0))
             dwell[sid] = round(sum(days) / len(days), 1) if days else 0.0
+        # Follow-up nudges: active-pipeline applications sitting in one
+        # stage for 14+ days (wishlist/offer/rejected are not nudged).
+        stale = []
+        for a in apps:
+            if a.stage not in ('applied', 'oa', 'interview') or not a.stage_updated_at:
+                continue
+            ts = a.stage_updated_at
+            if ts.tzinfo is None:
+                ts = ts.replace(tzinfo=UTC)
+            days = (now - ts).days
+            if days >= 14:
+                stale.append({'id': a.id, 'company': a.company,
+                              'role': a.role, 'stage': a.stage, 'days': days})
+        stale.sort(key=lambda s: -s['days'])
         return {'counts': counts, 'total': len(apps),
-                'response_rate': response_rate, 'avg_days_in_stage': dwell}
+                'response_rate': response_rate, 'avg_days_in_stage': dwell,
+                'stale': stale}
 
     @app.route('/tracker')
     @login_required
@@ -6202,18 +6217,38 @@ def register_routes(app):
                 "Opportunity data is temporarily unavailable. Please try again later.")), 503
         bookmarked = set()
         saved_only = False
+        closing_mine = []
         if current_user.is_authenticated:
             bookmarked = {b.opp_id for b in
                           OpportunityBookmark.query.filter_by(user_id=current_user.id).all()}
+            # Bookmarked + closing within the soon window -> alert strip.
+            closing_mine = [o for o in opps
+                            if o["id"] in bookmarked and o["closing_soon"]]
             saved_only = request.args.get('saved') == '1'
             if saved_only:
                 opps = [o for o in opps if o["id"] in bookmarked]
         for o in opps:
             o["deadline_label"], o["countdown_label"] = _opp_labels(o)
+        # Recently closed (opt-in): deadlines passed within 30 days, so
+        # students can see what they missed and plan for the next cycle.
+        show_closed = request.args.get('closed') == '1'
+        closed = []
+        if show_closed:
+            try:
+                closed = [o for o in list_opportunities(
+                    opp_type=opp_type or None, include_past=True)
+                    if o["is_past"] and o["days_left"] is not None
+                    and o["days_left"] >= -30]
+            except OpportunityDataError:
+                closed = []
+            for o in closed:
+                o["deadline_label"], o["countdown_label"] = _opp_labels(o)
         from studybuddy.opportunities import freshness_label as _freshness_label
         return render_template('opportunities.html', opps=opps, meta=meta,
                                types=OPP_TYPES, active_type=opp_type,
                                saved_only=saved_only, bookmarked=bookmarked,
+                               closing_mine=closing_mine,
+                               show_closed=show_closed, closed=closed,
                                is_authed=current_user.is_authenticated,
                                freshness=_freshness_label(meta))
 

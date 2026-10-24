@@ -100,6 +100,18 @@
             {% endfor %}
         </div>
 
+        {% if stats.stale %}
+        <div class="tk-stale" role="status" style="border:1px solid rgba(251,191,36,.45);border-radius:12px;padding:.9rem 1.1rem;margin-bottom:1.2rem;">
+            <strong>⏰ Follow up — {{ stats.stale|length }} application{{ 's' if stats.stale|length != 1 }} waiting 14+ days:</strong>
+            <ul style="margin:.5rem 0 0;padding-left:1.2rem;">
+                {% for s in stats.stale[:5] %}
+                <li>{{ s.company }} — {{ s.role }} · {{ s.days }} days in {{ s.stage|title }}</li>
+                {% endfor %}
+            </ul>
+            {% if stats.stale|length > 5 %}<p style="margin:.4rem 0 0;color:var(--b-muted);">…and {{ stats.stale|length - 5 }} more.</p>{% endif %}
+        </div>
+        {% endif %}
+
         <div class="tk-error" id="tkError" hidden></div>
 
         <div class="tk-board" id="tkBoard">
