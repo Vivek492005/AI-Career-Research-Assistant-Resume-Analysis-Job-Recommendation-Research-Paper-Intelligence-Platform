@@ -7198,5 +7198,2705 @@
     ],
     "answer": 1,
     "explanation": "Using the binomial formula: C(3,2) x (1/2)^2 x (1/2)^1 = 3 x 1/8 = 3/8."
+  },
+  {
+    "skill": "nlp",
+    "topic": "Tokenization",
+    "difficulty": "easy",
+    "question": "What does a tokenizer do before text enters a transformer model?",
+    "options": [
+      "It translates the text into English",
+      "It compresses the text file to save disk space",
+      "It splits text into tokens and maps them to IDs the model can embed",
+      "It permanently removes all punctuation from the text"
+    ],
+    "answer": 2,
+    "explanation": "Tokenizers split text into subword tokens and map each token to an ID, which the model then converts into embeddings.",
+    "id": "nl-001"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Tokenization",
+    "difficulty": "medium",
+    "question": "Why do most modern language models use subword tokenization (like BPE) instead of purely word-level tokenization?",
+    "options": [
+      "It handles rare and unseen words by composing them from known subwords, keeping the vocabulary small",
+      "It removes the need for embeddings entirely",
+      "It makes model outputs fully deterministic",
+      "It makes training faster on every dataset"
+    ],
+    "answer": 0,
+    "explanation": "BPE breaks unknown words into known subword pieces, so rare words still get a representation without exploding the vocabulary size.",
+    "id": "nl-002"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Tokenization",
+    "difficulty": "hard",
+    "question": "A BPE tokenizer trained mostly on English prose is applied to source code full of unusual symbols. What is a likely failure?",
+    "options": [
+      "Gradients explode during inference",
+      "Unseen symbol patterns split into many tiny tokens, inflating sequence length and pushing content out of context",
+      "The tokenizer automatically translates the code into English",
+      "The model refuses to process the input"
+    ],
+    "answer": 1,
+    "explanation": "When the tokenizer has no good merges for a symbol pattern, it falls back to tiny pieces, so sequences get much longer and cost more context.",
+    "id": "nl-003"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Embeddings",
+    "difficulty": "easy",
+    "question": "What is a word embedding?",
+    "options": [
+      "A dense vector that represents a word's meaning, learned from context",
+      "A dictionary definition stored alongside the word",
+      "A one-hot encoding of the word's spelling",
+      "An encrypted version of the word"
+    ],
+    "answer": 0,
+    "explanation": "Embeddings place words with similar meanings near each other in a dense vector space.",
+    "id": "nl-004"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Embeddings",
+    "difficulty": "medium",
+    "question": "In Word2Vec-style embeddings, why is the analogy king minus man plus woman approximately queen considered meaningful?",
+    "options": [
+      "Vector norms encode word frequency only",
+      "It proves the model understands grammar rules",
+      "The vectors are randomly initialized and any analogy works",
+      "Consistent vector directions encode relationships, such as gender and royalty"
+    ],
+    "answer": 3,
+    "explanation": "Stable offsets between related words show that embedding geometry captures semantic relationships, not just individual words.",
+    "id": "nl-005"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Embeddings",
+    "difficulty": "hard",
+    "question": "Why can static embeddings (one vector per word) misrepresent a word like bank?",
+    "options": [
+      "The vectors are too large to store",
+      "They ignore the spelling of the word",
+      "A single vector conflates all senses, such as a river bank and a financial bank",
+      "They cannot be trained on large corpora"
+    ],
+    "answer": 2,
+    "explanation": "Static embeddings average every sense of a word into one vector, unlike contextual embeddings that vary with surrounding text.",
+    "id": "nl-006"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Transformers",
+    "difficulty": "easy",
+    "question": "What is the core mechanism that lets a transformer weigh different words when encoding a word?",
+    "options": [
+      "Self-attention",
+      "Recurrence over time steps",
+      "Convolution over characters only",
+      "Decision trees over word features"
+    ],
+    "answer": 0,
+    "explanation": "Self-attention scores how much each other token should influence a given token's representation.",
+    "id": "nl-007"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Transformers",
+    "difficulty": "medium",
+    "question": "Why do transformers use positional encodings?",
+    "options": [
+      "To reduce the number of parameters",
+      "Because self-attention alone is order-insensitive and would otherwise lose word order",
+      "To sort the vocabulary alphabetically",
+      "To add dropout to the input"
+    ],
+    "answer": 1,
+    "explanation": "Attention treats tokens as a set, so position information must be injected or the model cannot tell word order.",
+    "id": "nl-008"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Transformers",
+    "difficulty": "hard",
+    "question": "In scaled dot-product attention, why divide the dot products by the square root of the key dimension?",
+    "options": [
+      "It normalizes all embeddings to unit length",
+      "It keeps dot products from growing so large that softmax saturates and gradients vanish",
+      "It prevents the model from overfitting",
+      "It speeds up matrix multiplication"
+    ],
+    "answer": 1,
+    "explanation": "Large dot products push softmax into flat regions where gradients vanish; scaling keeps training gradients healthy.",
+    "id": "nl-009"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Text Classification",
+    "difficulty": "easy",
+    "question": "For spam detection, which is a reasonable first model to try?",
+    "options": [
+      "Principal component analysis with no classifier",
+      "Logistic regression on TF-IDF features",
+      "K-means clustering used alone",
+      "Linear regression on raw text strings"
+    ],
+    "answer": 1,
+    "explanation": "TF-IDF plus a linear classifier is a strong, fast baseline for text classification tasks like spam detection.",
+    "id": "nl-010"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Text Classification",
+    "difficulty": "medium",
+    "question": "Your classifier shows 95 percent accuracy but misses most fraud cases in an imbalanced dataset. Which metric exposes this problem?",
+    "options": [
+      "Overall accuracy",
+      "Training loss",
+      "Recall for the fraud class",
+      "Vocabulary size"
+    ],
+    "answer": 2,
+    "explanation": "Accuracy hides minority-class failures; per-class recall shows what fraction of actual fraud cases are caught.",
+    "id": "nl-011"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Text Classification",
+    "difficulty": "hard",
+    "question": "Training accuracy is 99 percent but validation accuracy is 70 percent on a small dataset with a large model. What is the best first step?",
+    "options": [
+      "Train for more epochs",
+      "Remove the validation set",
+      "Add regularization, use a smaller model, or gather more data",
+      "Increase the model size further"
+    ],
+    "answer": 2,
+    "explanation": "The train-validation gap signals overfitting; capacity control or more data addresses it better than more training.",
+    "id": "nl-012"
+  },
+  {
+    "skill": "nlp",
+    "topic": "NER",
+    "difficulty": "easy",
+    "question": "What does Named Entity Recognition (NER) do?",
+    "options": [
+      "It summarizes long documents",
+      "It corrects grammar mistakes",
+      "It translates proper names into other languages",
+      "It finds spans of text and labels them as persons, organizations, locations, and similar types"
+    ],
+    "answer": 3,
+    "explanation": "NER tags token spans with entity types such as person, organization, or location.",
+    "id": "nl-013"
+  },
+  {
+    "skill": "nlp",
+    "topic": "NER",
+    "difficulty": "medium",
+    "question": "Why is the word Washington hard for an NER system?",
+    "options": [
+      "It can be a person, a place, or an organization depending on context",
+      "Tokenizers drop capitalized words",
+      "It is too long to tokenize",
+      "It is always a location, so models get confused"
+    ],
+    "answer": 0,
+    "explanation": "The same surface form maps to different entity types, so the surrounding context must disambiguate it.",
+    "id": "nl-014"
+  },
+  {
+    "skill": "nlp",
+    "topic": "NER",
+    "difficulty": "hard",
+    "question": "In BIO tagging for NER, what does the tag I-ORG mean?",
+    "options": [
+      "The token is outside any entity",
+      "The token is an abbreviation of an organization",
+      "The token continues an organization entity begun by a previous token",
+      "The token starts an organization entity"
+    ],
+    "answer": 2,
+    "explanation": "B- begins an entity, I- continues it, and O marks tokens outside any entity.",
+    "id": "nl-015"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Sentiment",
+    "difficulty": "easy",
+    "question": "What is the main challenge sarcasm poses for sentiment analysis?",
+    "options": [
+      "Sarcasm uses extremely rare words",
+      "Models cannot read punctuation marks",
+      "The literal words say the opposite of the intended sentiment",
+      "Sarcasm is always negative"
+    ],
+    "answer": 2,
+    "explanation": "A sentence like Great, another delay! is literally positive but meant negatively, which fools word-level cues.",
+    "id": "nl-016"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Sentiment",
+    "difficulty": "medium",
+    "question": "How does aspect-based sentiment analysis differ from document-level sentiment analysis?",
+    "options": [
+      "It averages word sentiment scores across the document",
+      "It uses larger models",
+      "It scores sentiment separately for each aspect or feature mentioned, such as battery versus screen",
+      "It translates the text before scoring"
+    ],
+    "answer": 2,
+    "explanation": "A review can praise the battery while criticizing the screen; aspect-based analysis captures both instead of one overall score.",
+    "id": "nl-017"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Sentiment",
+    "difficulty": "hard",
+    "question": "A sentiment model trained on movie reviews performs poorly on financial tweets. What is the most likely cause?",
+    "options": [
+      "Tweets are too short to classify at all",
+      "The model is too small for any text task",
+      "The training labels were balanced",
+      "Domain shift: vocabulary, slang, and expression conventions differ between movie reviews and finance tweets"
+    ],
+    "answer": 3,
+    "explanation": "Language conventions differ across domains, so performance drops without adaptation to the new domain.",
+    "id": "nl-018"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Seq2Seq",
+    "difficulty": "easy",
+    "question": "What is the basic structure of a sequence-to-sequence model?",
+    "options": [
+      "Two classifiers that vote on the output",
+      "A single shared embedding table",
+      "An encoder that reads the input and a decoder that generates the output sequence step by step",
+      "An encoder used alone"
+    ],
+    "answer": 2,
+    "explanation": "The encoder compresses the input into representations and the decoder generates the output one token at a time.",
+    "id": "nl-019"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Seq2Seq",
+    "difficulty": "medium",
+    "question": "What problem does teacher forcing address during seq2seq training?",
+    "options": [
+      "It removes the need for an encoder",
+      "It prevents overfitting",
+      "It feeds the true previous tokens as decoder input, stabilizing training",
+      "It makes inference faster"
+    ],
+    "answer": 2,
+    "explanation": "Training with ground-truth history avoids compounding early errors, though it creates exposure bias at inference time.",
+    "id": "nl-020"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Seq2Seq",
+    "difficulty": "hard",
+    "question": "What is exposure bias in seq2seq models?",
+    "options": [
+      "Beam search running too slowly at inference",
+      "Attention weights leaking label information",
+      "The model sees only gold history during training but must continue from its own possibly wrong outputs at inference",
+      "Training data being too clean to be realistic"
+    ],
+    "answer": 2,
+    "explanation": "Because the model never practiced recovering from its own mistakes, errors compound once it generates freely at inference.",
+    "id": "nl-021"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Attention",
+    "difficulty": "easy",
+    "question": "In the sentence the animal did not cross the street because it was too tired, how does attention help resolve the pronoun it?",
+    "options": [
+      "By counting the words before it",
+      "By applying grammar rules only",
+      "By memorizing the sentence from training",
+      "By learning weights that link it to the likely referent, animal"
+    ],
+    "answer": 3,
+    "explanation": "Attention weights connect a pronoun to candidate referents based on learned patterns in context.",
+    "id": "nl-022"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Attention",
+    "difficulty": "medium",
+    "question": "Why is multi-head attention useful in a transformer?",
+    "options": [
+      "It reduces the total parameter count",
+      "It makes attention causal by construction",
+      "It replaces the need for embeddings",
+      "Different heads can capture different relations, such as syntax, coreference, and position, in parallel"
+    ],
+    "answer": 3,
+    "explanation": "Each head learns its own attention pattern, letting the model track several relation types at once.",
+    "id": "nl-023"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Attention",
+    "difficulty": "hard",
+    "question": "What is the time and memory cost of full self-attention as sequence length n grows?",
+    "options": [
+      "Logarithmic in n",
+      "Constant regardless of n",
+      "Quadratic, O(n squared)",
+      "Linear in n"
+    ],
+    "answer": 2,
+    "explanation": "Every token attends to every other token, so cost grows with n squared, which motivates sparse and flash attention.",
+    "id": "nl-024"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Evaluation Metrics",
+    "difficulty": "easy",
+    "question": "For a binary classifier, what does precision measure?",
+    "options": [
+      "The error rate on the test set",
+      "Of predicted positives, the fraction that are truly positive",
+      "Of actual positives, the fraction found",
+      "Overall correctness across all classes"
+    ],
+    "answer": 1,
+    "explanation": "Precision equals true positives divided by true positives plus false positives.",
+    "id": "nl-025"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Evaluation Metrics",
+    "difficulty": "medium",
+    "question": "When should you prefer F1 score over accuracy?",
+    "options": [
+      "When classes are imbalanced and both false positives and false negatives matter",
+      "When classes are perfectly balanced",
+      "When training is slow",
+      "When you need probability outputs"
+    ],
+    "answer": 0,
+    "explanation": "F1 balances precision and recall, which accuracy hides when one class dominates.",
+    "id": "nl-026"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Evaluation Metrics",
+    "difficulty": "hard",
+    "question": "Why is BLEU alone a weak judge of translation quality?",
+    "options": [
+      "It cannot handle rare words at all",
+      "It measures n-gram overlap, so a fluent paraphrase with different wording scores low despite being correct",
+      "It only works with English references",
+      "It penalizes long sentences exclusively"
+    ],
+    "answer": 1,
+    "explanation": "Overlap with a reference misses meaning, fluency, and valid paraphrases, so BLEU must be paired with other evaluation.",
+    "id": "nl-027"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Multilingual",
+    "difficulty": "easy",
+    "question": "Why do multilingual models often share a single tokenizer across languages?",
+    "options": [
+      "To save disk space only",
+      "Because all languages share the same grammar",
+      "Because it improves English performance only",
+      "Because shared subwords enable cross-lingual transfer to other languages"
+    ],
+    "answer": 3,
+    "explanation": "Shared subword representations let knowledge transfer between languages, which especially helps low-resource ones.",
+    "id": "nl-028"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Multilingual",
+    "difficulty": "medium",
+    "question": "What is zero-shot cross-lingual transfer?",
+    "options": [
+      "Using English prompts for every language",
+      "Fine-tuning on one language and testing on another language without any training data for it",
+      "Translating all test data into English first",
+      "Training equally on every language at once"
+    ],
+    "answer": 1,
+    "explanation": "Multilingual representations let a model generalize to languages it was not fine-tuned on.",
+    "id": "nl-029"
+  },
+  {
+    "skill": "nlp",
+    "topic": "Multilingual",
+    "difficulty": "hard",
+    "question": "Why do low-resource languages often underperform in multilingual models?",
+    "options": [
+      "Models refuse to generate them",
+      "They get a tiny share of pretraining data and their text fragments into many tokens",
+      "Their grammar is inherently harder for models",
+      "They lack alphabets the model can encode"
+    ],
+    "answer": 1,
+    "explanation": "With little data, their tokens split into many pieces and representations stay weak, a trade-off known as the curse of multilinguality.",
+    "id": "nl-030"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Prompting",
+    "difficulty": "easy",
+    "question": "What is few-shot prompting?",
+    "options": [
+      "Using as few tokens as possible",
+      "Asking only very short questions",
+      "Giving example input-output pairs inside the prompt before asking the real question",
+      "Briefly training the model on a few examples"
+    ],
+    "answer": 2,
+    "explanation": "Examples in the prompt show the desired format and behavior without changing the model's weights.",
+    "id": "ga-001"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Prompting",
+    "difficulty": "medium",
+    "question": "Why does asking a model to think step by step often improve its math answers?",
+    "options": [
+      "It adds new training data at inference time",
+      "Chain-of-thought lets the model work through intermediate steps instead of jumping straight to an answer",
+      "It increases the model's parameter count",
+      "It changes the sampling temperature"
+    ],
+    "answer": 1,
+    "explanation": "Intermediate reasoning steps break a problem into manageable pieces, reducing errors versus answering directly.",
+    "id": "ga-002"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Prompting",
+    "difficulty": "hard",
+    "question": "What is a key risk of stuffing a system prompt with a very long list of rules?",
+    "options": [
+      "It triggers fine-tuning automatically",
+      "Rules can conflict or get diluted, so the model may ignore or mis-prioritize them",
+      "Longer prompts always improve accuracy",
+      "The context window becomes encrypted"
+    ],
+    "answer": 1,
+    "explanation": "More rules can contradict each other or get lost in the middle of the context; concise, prioritized instructions work better.",
+    "id": "ga-003"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "RAG",
+    "difficulty": "easy",
+    "question": "What does retrieval-augmented generation (RAG) add to a language model?",
+    "options": [
+      "More parameters in the base model",
+      "Longer training runs",
+      "A permanently larger context window",
+      "Relevant documents retrieved from an external store at query time"
+    ],
+    "answer": 3,
+    "explanation": "RAG grounds answers in retrieved passages instead of relying only on the model's parametric memory.",
+    "id": "ga-004"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "RAG",
+    "difficulty": "medium",
+    "question": "Why are documents chunked before being embedded for a RAG system?",
+    "options": [
+      "Chunking trains the embedding model",
+      "It only serves to remove duplicate documents",
+      "Retrieval needs focused passages that fit the context window and match queries precisely",
+      "Embeddings require files of a fixed byte size"
+    ],
+    "answer": 2,
+    "explanation": "Whole documents are too long and dilute relevance; chunks give precise, retrievable units for the retriever.",
+    "id": "ga-005"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "RAG",
+    "difficulty": "hard",
+    "question": "Your RAG system retrieves the correct document, yet the final answer still states a wrong fact. What is the most likely cause?",
+    "options": [
+      "The embedding model is too large",
+      "The chunk size is too small to matter",
+      "The vector database answers queries too fast",
+      "The model ignored or misread the retrieved context, or blended in its own parametric memory"
+    ],
+    "answer": 3,
+    "explanation": "Retrieval success does not guarantee faithful generation; the model can still hallucinate or mix in prior knowledge.",
+    "id": "ga-006"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Fine-tuning",
+    "difficulty": "easy",
+    "question": "What is fine-tuning a pretrained model?",
+    "options": [
+      "Further training it on task-specific data so its weights adapt to that task",
+      "Prompting it with examples at inference time",
+      "Compressing the model to run on smaller hardware",
+      "Changing its architecture during inference"
+    ],
+    "answer": 0,
+    "explanation": "Fine-tuning continues training on targeted data, adapting a general model to a specific task or style.",
+    "id": "ga-007"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Fine-tuning",
+    "difficulty": "medium",
+    "question": "What is LoRA in the context of fine-tuning?",
+    "options": [
+      "A data augmentation method",
+      "Training small low-rank adapter matrices while keeping the base model weights frozen",
+      "A new model architecture that replaces transformers",
+      "A prompting trick for longer outputs"
+    ],
+    "answer": 1,
+    "explanation": "LoRA updates far fewer parameters than full fine-tuning, making adaptation cheap and the adapters swappable.",
+    "id": "ga-008"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Fine-tuning",
+    "difficulty": "hard",
+    "question": "What is catastrophic forgetting during fine-tuning?",
+    "options": [
+      "Evaluation metrics drop to exactly zero",
+      "Aggressive training on narrow data overwrites general abilities learned during pretraining",
+      "The model forgets its training data after each epoch",
+      "The model forgets the user's prompt mid-response"
+    ],
+    "answer": 1,
+    "explanation": "Large updates on a narrow dataset can degrade broad capabilities; low learning rates, regularization, or replay data mitigate it.",
+    "id": "ga-009"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "LLMs",
+    "difficulty": "easy",
+    "question": "What does pretraining of a large language model mostly involve?",
+    "options": [
+      "Predicting the next token on huge text corpora",
+      "Hand-labeling data by annotators",
+      "Fine-tuning on chat conversations",
+      "Memorizing a dictionary"
+    ],
+    "answer": 0,
+    "explanation": "Next-token prediction on massive text teaches grammar, facts, and patterns that later stages build on.",
+    "id": "ga-010"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "LLMs",
+    "difficulty": "medium",
+    "question": "Why do language models expose a temperature parameter at generation time?",
+    "options": [
+      "It controls the context window length",
+      "It adjusts the learning rate",
+      "It controls the randomness of sampling from the next-token distribution",
+      "It sets the model's parameter count"
+    ],
+    "answer": 2,
+    "explanation": "Low temperature makes output deterministic, while high temperature produces more diverse but riskier text.",
+    "id": "ga-011"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "LLMs",
+    "difficulty": "hard",
+    "question": "What is the main trade-off of a very large context window?",
+    "options": [
+      "Accuracy always rises with window size",
+      "Training becomes unnecessary",
+      "Outputs become shorter",
+      "Attention cost grows and relevant information in the middle can get lost"
+    ],
+    "answer": 3,
+    "explanation": "Longer contexts cost more compute and models attend less reliably to middle content, the lost-in-the-middle effect.",
+    "id": "ga-012"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Diffusion",
+    "difficulty": "easy",
+    "question": "What do diffusion models learn to do when generating images?",
+    "options": [
+      "Compress images without any loss",
+      "Copy training images verbatim",
+      "Reverse a gradual noising process, turning random noise into an image step by step",
+      "Classify images into categories"
+    ],
+    "answer": 2,
+    "explanation": "Diffusion models learn to denoise, starting from random noise and progressively forming a coherent image.",
+    "id": "ga-013"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Diffusion",
+    "difficulty": "medium",
+    "question": "What does guidance strength control in diffusion image generation?",
+    "options": [
+      "How strongly the output follows the text prompt",
+      "Image resolution only",
+      "Training speed",
+      "The number of model parameters"
+    ],
+    "answer": 0,
+    "explanation": "Higher guidance sticks closer to the prompt, but pushing it too far can reduce diversity and image quality.",
+    "id": "ga-014"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Diffusion",
+    "difficulty": "hard",
+    "question": "Why can diffusion models still generate hands with the wrong number of fingers?",
+    "options": [
+      "Their output resolution is too high",
+      "They model pixel statistics rather than anatomical structure",
+      "They have too few training images",
+      "Guidance is set too low by default"
+    ],
+    "answer": 1,
+    "explanation": "Without an explicit body model, fine anatomy is approximated from visual patterns and is often miscounted.",
+    "id": "ga-015"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Evals",
+    "difficulty": "easy",
+    "question": "Why evaluate a generative AI system on a held-out test set rather than on training examples?",
+    "options": [
+      "Held-out data trains the model faster",
+      "It is required by law in most countries",
+      "Training data is usually private",
+      "To measure generalization instead of memorization"
+    ],
+    "answer": 3,
+    "explanation": "Performance on seen data overstates real-world quality; held-out data shows how the system handles new inputs.",
+    "id": "ga-016"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Evals",
+    "difficulty": "medium",
+    "question": "What is a good reason to use human evaluation alongside automatic metrics for chatbots?",
+    "options": [
+      "Automatic metrics miss nuances of helpfulness, tone, and factuality that humans can judge",
+      "Humans are cheaper than automatic metrics",
+      "Automatic metrics are illegal for chatbots",
+      "Human ratings train the model directly"
+    ],
+    "answer": 0,
+    "explanation": "Overlap-based metrics do not capture whether an answer is actually helpful or correct, so human judgment complements them.",
+    "id": "ga-017"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Evals",
+    "difficulty": "hard",
+    "question": "What is eval contamination?",
+    "options": [
+      "Test items leaking into training data, which inflates benchmark scores",
+      "Evaluators disagreeing with each other",
+      "Using too many metrics at once",
+      "Evaluation running too slowly to be useful"
+    ],
+    "answer": 0,
+    "explanation": "If the model saw test items during training, benchmark scores no longer measure generalization.",
+    "id": "ga-018"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Hallucination",
+    "difficulty": "easy",
+    "question": "What is an LLM hallucination?",
+    "options": [
+      "A refusal to answer",
+      "Fluent text that states false things as if they were facts",
+      "A model crash during generation",
+      "An unusually slow response"
+    ],
+    "answer": 1,
+    "explanation": "Models generate plausible-sounding text that may not be true, stated with full confidence.",
+    "id": "ga-019"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Hallucination",
+    "difficulty": "medium",
+    "question": "Which technique most directly reduces hallucinations for factual questions?",
+    "options": [
+      "Writing longer prompts",
+      "Using larger fonts in the UI",
+      "Grounding answers with retrieval from trusted sources (RAG)",
+      "Raising the sampling temperature"
+    ],
+    "answer": 2,
+    "explanation": "Retrieved evidence lets the model answer from sources instead of guessing from its parametric memory.",
+    "id": "ga-020"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Hallucination",
+    "difficulty": "hard",
+    "question": "Why can hallucinations not be fully eliminated simply by training a model more?",
+    "options": [
+      "Models are probabilistic text predictors, not databases, and training data has errors and gaps",
+      "A larger context window would remove them",
+      "More training always fixes hallucinations eventually",
+      "Hallucinations are only a sampling bug"
+    ],
+    "answer": 0,
+    "explanation": "The model predicts likely text rather than verified facts, so uncertainty remains even with more training.",
+    "id": "ga-021"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Tokenization/Cost",
+    "difficulty": "easy",
+    "question": "If an LLM API charges per token, what raises your bill most directly?",
+    "options": [
+      "The model's name",
+      "The time of day you call it",
+      "The number of registered users",
+      "Longer prompts and longer generated outputs"
+    ],
+    "answer": 3,
+    "explanation": "Billing counts input plus output tokens, so verbosity on either side costs money.",
+    "id": "ga-022"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Tokenization/Cost",
+    "difficulty": "medium",
+    "question": "Why might the same sentence cost a different number of tokens on different models?",
+    "options": [
+      "Punctuation is free on some providers",
+      "Each model has its own tokenizer and vocabulary",
+      "Only the token price differs, not the count",
+      "The language of the sentence changes the count"
+    ],
+    "answer": 1,
+    "explanation": "Token counts depend on the specific tokenizer, so the same text splits differently across models.",
+    "id": "ga-023"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Tokenization/Cost",
+    "difficulty": "hard",
+    "question": "A prompt repeats the same long boilerplate on every call, wasting budget. What is the best fix?",
+    "options": [
+      "Move stable instructions to a cached system prefix or trim the redundancy",
+      "Use a bigger model",
+      "Increase the temperature",
+      "Retry until the output is shorter"
+    ],
+    "answer": 0,
+    "explanation": "Prompt caching and concise prompts cut repeated token costs without changing the model's behavior.",
+    "id": "ga-024"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Agents basics",
+    "difficulty": "easy",
+    "question": "What distinguishes an AI agent from a single chatbot call?",
+    "options": [
+      "It can plan and use tools across multiple steps toward a goal",
+      "It has more parameters",
+      "It answers faster",
+      "It never hallucinates"
+    ],
+    "answer": 0,
+    "explanation": "Agents loop through reasoning, acting via tools, and observing results until the goal is reached.",
+    "id": "ga-025"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Agents basics",
+    "difficulty": "medium",
+    "question": "Why do agents need an observation step after each tool call?",
+    "options": [
+      "To slow the agent down deliberately",
+      "To translate the tool output",
+      "To check the tool's result before deciding the next action",
+      "To log token usage"
+    ],
+    "answer": 2,
+    "explanation": "Acting on stale assumptions causes errors; observations ground the next step in what actually happened.",
+    "id": "ga-026"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Agents basics",
+    "difficulty": "hard",
+    "question": "What happens if an agent's tool returns a huge unfiltered result?",
+    "options": [
+      "The tool fails silently",
+      "Answer accuracy improves",
+      "It floods the context, pushing out goals and raising cost",
+      "The agent stops permanently"
+    ],
+    "answer": 2,
+    "explanation": "Agents must summarize or filter tool outputs, or the working context degrades and costs balloon.",
+    "id": "ga-027"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Safety",
+    "difficulty": "easy",
+    "question": "What is a jailbreak prompt?",
+    "options": [
+      "A faster way to phrase a prompt",
+      "A prompt written in another language only",
+      "A system error message",
+      "An input crafted to bypass a model's safety rules"
+    ],
+    "answer": 3,
+    "explanation": "Jailbreaks try to get the model to violate its policies through clever framing or role-play.",
+    "id": "ga-028"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Safety",
+    "difficulty": "medium",
+    "question": "Why is input filtering alone insufficient for agent safety?",
+    "options": [
+      "Malicious instructions can arrive through tool outputs (prompt injection) and agent actions have real side effects",
+      "Filters are too slow to run in production",
+      "Agents ignore all filters by design",
+      "Safety requires no filtering at all"
+    ],
+    "answer": 0,
+    "explanation": "Untrusted tool outputs can inject instructions, and agent actions such as sending email have real consequences.",
+    "id": "ga-029"
+  },
+  {
+    "skill": "generative-ai",
+    "topic": "Safety",
+    "difficulty": "hard",
+    "question": "What is prompt injection?",
+    "options": [
+      "A bug in tokenization",
+      "A type of fine-tuning",
+      "User typos that change meaning",
+      "Malicious instructions hidden in untrusted content that the model treats as commands"
+    ],
+    "answer": 3,
+    "explanation": "Models may follow injected text found in webpages or files as if it were an instruction from the user.",
+    "id": "ga-030"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Tool Use",
+    "difficulty": "easy",
+    "question": "What is tool calling (function calling) in an AI agent?",
+    "options": [
+      "The model outputs structured calls to external functions or APIs, which the system executes",
+      "The model writes code comments for developers",
+      "The user calls customer support",
+      "The model restarts itself between turns"
+    ],
+    "answer": 0,
+    "explanation": "The model emits a function name plus arguments, the system runs it, and the result returns to the model as an observation.",
+    "id": "aa-001"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Tool Use",
+    "difficulty": "medium",
+    "question": "Why should tool schemas include clear descriptions and required parameters?",
+    "options": [
+      "Schemas are only documentation for humans",
+      "They speed up GPU computation",
+      "They replace the need for prompts",
+      "The model chooses tools and fills arguments based on those descriptions"
+    ],
+    "answer": 3,
+    "explanation": "Vague schemas cause wrong tool choices and malformed arguments, since the model relies on descriptions to act.",
+    "id": "aa-002"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Tool Use",
+    "difficulty": "hard",
+    "question": "A tool call fails with a vague error message. What should a robust agent do?",
+    "options": [
+      "Ask the user to fix the tool's code",
+      "Inspect the error, retry with corrected arguments or a fallback, and report if it cannot recover",
+      "Retry the identical call forever",
+      "Skip the task silently"
+    ],
+    "answer": 1,
+    "explanation": "Blind retries waste budget; error-aware recovery with a fallback and honest reporting is the reliable pattern.",
+    "id": "aa-003"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "ReAct",
+    "difficulty": "easy",
+    "question": "What does the ReAct agent pattern interleave?",
+    "options": [
+      "Reasoning traces and tool actions",
+      "Training and testing phases",
+      "Two different models",
+      "Prompts and fine-tuning"
+    ],
+    "answer": 0,
+    "explanation": "ReAct alternates thought steps with tool actions, using each observation to guide the next thought.",
+    "id": "aa-004"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "ReAct",
+    "difficulty": "medium",
+    "question": "Why does ReAct often outperform agents that act without explicit reasoning?",
+    "options": [
+      "Reasoning before acting reduces wrong tool calls and enables self-correction from observations",
+      "It runs faster than acting directly",
+      "It uses fewer tokens overall",
+      "It needs no tools at all"
+    ],
+    "answer": 0,
+    "explanation": "Explicit reasoning grounds tool choice in what has been observed so far, catching mistakes earlier.",
+    "id": "aa-005"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "ReAct",
+    "difficulty": "hard",
+    "question": "What is a common failure mode of very long ReAct loops?",
+    "options": [
+      "Loops always converge on the right answer",
+      "Observations become perfectly accurate",
+      "Tools get faster with each call",
+      "Reasoning drifts or repeats without progress, burning context and cost"
+    ],
+    "answer": 3,
+    "explanation": "Without step limits and progress checks, an agent can repeat itself indefinitely instead of finishing.",
+    "id": "aa-006"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Memory",
+    "difficulty": "easy",
+    "question": "Why do agents need memory beyond a single conversation turn?",
+    "options": [
+      "To use fewer tokens per call",
+      "To avoid using tools",
+      "To recall user preferences, past decisions, and ongoing task state",
+      "To train faster on user data"
+    ],
+    "answer": 2,
+    "explanation": "Multi-step work spans turns, so memory keeps goals, facts, and preferences available later.",
+    "id": "aa-007"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Memory",
+    "difficulty": "medium",
+    "question": "What is the difference between short-term (context) memory and long-term memory in agents?",
+    "options": [
+      "There is no practical difference",
+      "Long-term memory is faster to access",
+      "Context memory is permanent across sessions",
+      "Context holds the current session while long-term memory persists facts across sessions in a store"
+    ],
+    "answer": 3,
+    "explanation": "Context is transient and limited; long-term memory in a database or vector store survives across sessions.",
+    "id": "aa-008"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Memory",
+    "difficulty": "hard",
+    "question": "Why can a naive store-everything memory hurt an agent?",
+    "options": [
+      "Retrieval is always perfectly accurate",
+      "It only slows down training, not decisions",
+      "Stale or incorrect memories get retrieved and mislead later decisions",
+      "Storage is infinite, so it causes no harm"
+    ],
+    "answer": 2,
+    "explanation": "Memory needs updating, expiry, and relevance ranking, or old facts will corrupt new tasks.",
+    "id": "aa-009"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Multi-agent",
+    "difficulty": "easy",
+    "question": "What is a multi-agent system?",
+    "options": [
+      "One agent equipped with many tools",
+      "Multiple users chatting with one model",
+      "Parallel training of several models",
+      "Several specialized agents collaborating on a task, such as a planner, a researcher, and a critic"
+    ],
+    "answer": 3,
+    "explanation": "Different agents handle different parts of the work and coordinate toward a shared goal.",
+    "id": "aa-010"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Multi-agent",
+    "difficulty": "medium",
+    "question": "What is the main benefit of a critic agent in a multi-agent setup?",
+    "options": [
+      "It replaces the need for evaluations",
+      "Independent review catches errors the generating agent missed",
+      "It doubles the system's speed",
+      "It reduces total token cost"
+    ],
+    "answer": 1,
+    "explanation": "Separating generation from critique reduces blind spots, since the critic is not committed to the first draft.",
+    "id": "aa-011"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Multi-agent",
+    "difficulty": "hard",
+    "question": "What is a key coordination risk in multi-agent systems?",
+    "options": [
+      "More agents always improve results",
+      "Communication between agents is free",
+      "Roles and handoff rules are unnecessary",
+      "Agents can loop, contradict each other, or duplicate work without clear roles and protocols"
+    ],
+    "answer": 3,
+    "explanation": "Without roles, handoff rules, and a stopping condition, collaboration degrades into churn.",
+    "id": "aa-012"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Planning",
+    "difficulty": "easy",
+    "question": "What is task decomposition in agent planning?",
+    "options": [
+      "Using smaller models for each step",
+      "Splitting a long prompt into pieces",
+      "Breaking a goal into smaller ordered subtasks",
+      "Training the model on subtasks"
+    ],
+    "answer": 2,
+    "explanation": "Decomposition makes a large goal executable and checkable one step at a time.",
+    "id": "aa-013"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Planning",
+    "difficulty": "medium",
+    "question": "Why should an agent re-plan after observations instead of following its first plan rigidly?",
+    "options": [
+      "Users prefer to see replanning",
+      "Tool results change what is possible or needed next",
+      "Replanning is slower but always safer",
+      "First plans are always wrong"
+    ],
+    "answer": 1,
+    "explanation": "Adaptive planning responds to failures and new information instead of marching on with stale assumptions.",
+    "id": "aa-014"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Planning",
+    "difficulty": "hard",
+    "question": "What is the risk of purely hierarchical planning with no feedback between levels?",
+    "options": [
+      "Total cost drops sharply",
+      "Errors in early steps propagate through the entire plan",
+      "Plans become too short to execute",
+      "Tools go unused"
+    ],
+    "answer": 1,
+    "explanation": "Without verification at each level, one bad assumption poisons all downstream steps.",
+    "id": "aa-015"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Guardrails",
+    "difficulty": "easy",
+    "question": "What is a guardrail for an AI agent?",
+    "options": [
+      "A faster model used for routing",
+      "A type of long-term memory",
+      "A user-interface theme",
+      "A rule or check that blocks or redirects unsafe or out-of-scope actions before they happen"
+    ],
+    "answer": 3,
+    "explanation": "Guardrails constrain what agents may do, catching risky actions before side effects occur.",
+    "id": "aa-016"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Guardrails",
+    "difficulty": "medium",
+    "question": "Why validate tool arguments before execution, rather than trusting the model's intent?",
+    "options": [
+      "Validation is only useful for logging",
+      "Good intent is sufficient for safety",
+      "Tools always self-validate their inputs",
+      "The model can hallucinate arguments, such as wrong IDs, amounts, or recipients, with real consequences"
+    ],
+    "answer": 3,
+    "explanation": "A good intent paired with a wrong account number still causes harm, so arguments must be checked against allowed values.",
+    "id": "aa-017"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Guardrails",
+    "difficulty": "hard",
+    "question": "What does least privilege mean for agents?",
+    "options": [
+      "Give each agent only the tools and permissions its task actually needs",
+      "Give every agent all tools for maximum flexibility",
+      "Remove all tools from production agents",
+      "Run every agent under one admin account"
+    ],
+    "answer": 0,
+    "explanation": "Limiting scope bounds the damage from mistakes or injected instructions.",
+    "id": "aa-018"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Evals",
+    "difficulty": "easy",
+    "question": "Why are agent evaluations harder than single-answer question evaluations?",
+    "options": [
+      "Agents produce no final answers",
+      "Evaluations need no test data",
+      "Success depends on multi-step trajectories, tool use, and side effects",
+      "Question answering is inherently harder"
+    ],
+    "answer": 2,
+    "explanation": "You must judge the path taken and its consequences, not just one final string.",
+    "id": "aa-019"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Evals",
+    "difficulty": "medium",
+    "question": "What is trajectory evaluation for agents?",
+    "options": [
+      "Measuring only the speed of task completion",
+      "Counting the tokens used per task",
+      "Grading the quality of the prompts",
+      "Scoring the sequence of thoughts, tool calls, and observations, not just the final answer"
+    ],
+    "answer": 3,
+    "explanation": "An agent can reach the right answer wastefully or dangerously; trajectory evaluation catches that.",
+    "id": "aa-020"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Evals",
+    "difficulty": "hard",
+    "question": "Why run agent evaluations in sandboxed environments?",
+    "options": [
+      "Agents take real actions on files, email, and purchases that must not affect production systems",
+      "Sandboxes make evaluations faster",
+      "Agents refuse to run outside sandboxes",
+      "Evaluations require special GPUs"
+    ],
+    "answer": 0,
+    "explanation": "Isolation lets you safely test actions that would be destructive or mistaken in production.",
+    "id": "aa-021"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Orchestration",
+    "difficulty": "easy",
+    "question": "What does an orchestration framework with graph-style workflows add over a simple agent loop?",
+    "options": [
+      "More model parameters",
+      "Faster inference",
+      "Automatic fine-tuning",
+      "Explicit states, conditional edges, and loops expressed as a graph"
+    ],
+    "answer": 3,
+    "explanation": "Graphs make control flow such as retries, branches, and human approval explicit and inspectable.",
+    "id": "aa-022"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Orchestration",
+    "difficulty": "medium",
+    "question": "Why model an agent workflow as a graph with nodes and edges?",
+    "options": [
+      "It makes branching, retries, and termination conditions visible and testable",
+      "Graphs run faster than loops",
+      "Graphs remove the need for prompts",
+      "Graphs guarantee correct results"
+    ],
+    "answer": 0,
+    "explanation": "Implicit while-loops hide control logic; graphs expose it so teams can reason about and test it.",
+    "id": "aa-023"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Orchestration",
+    "difficulty": "hard",
+    "question": "When is a plain single-agent loop better than a complex graph workflow?",
+    "options": [
+      "For simple, linear tasks where graph overhead adds new failure modes",
+      "Graphs are always better regardless of task",
+      "Single loops cannot use tools",
+      "Simple tasks always need multiple agents"
+    ],
+    "answer": 0,
+    "explanation": "Match complexity to the task; over-engineering adds bugs, latency, and cost for no benefit.",
+    "id": "aa-024"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Human-in-loop",
+    "difficulty": "easy",
+    "question": "What is human-in-the-loop for agents?",
+    "options": [
+      "A user-interface feature with no safety role",
+      "A person reviews or approves key actions before they execute",
+      "A person writes every prompt by hand",
+      "Training a model with human feedback only"
+    ],
+    "answer": 1,
+    "explanation": "Human-in-the-loop adds human judgment where mistakes are costly or irreversible.",
+    "id": "aa-025"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Human-in-loop",
+    "difficulty": "medium",
+    "question": "Which agent actions most need human approval?",
+    "options": [
+      "Writing log entries",
+      "Irreversible or high-stakes actions such as payments, deletions, and external messages",
+      "Read-only searches",
+      "Internal reasoning steps"
+    ],
+    "answer": 1,
+    "explanation": "Approve where errors cannot be undone, and let routine, reversible steps run autonomously.",
+    "id": "aa-026"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Human-in-loop",
+    "difficulty": "hard",
+    "question": "What is approval fatigue, and why does it matter for agent safety?",
+    "options": [
+      "It slightly increases operating cost",
+      "Too many approval requests make humans rubber-stamp them, defeating the safeguard",
+      "It slows down model training",
+      "Humans approve requests too slowly"
+    ],
+    "answer": 1,
+    "explanation": "Noisy approvals train humans to click through, so low-risk actions should be batched and only real risks escalated.",
+    "id": "aa-027"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Cost/Latency",
+    "difficulty": "easy",
+    "question": "What drives an agent's operating cost most directly?",
+    "options": [
+      "The number of model calls multiplied by tokens per call",
+      "The number of tools installed",
+      "The size of the user interface",
+      "The number of registered users"
+    ],
+    "answer": 0,
+    "explanation": "Each reasoning step and tool round-trip consumes tokens, so call count and context size dominate cost.",
+    "id": "aa-028"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Cost/Latency",
+    "difficulty": "medium",
+    "question": "How can you cut agent cost without hurting quality much?",
+    "options": [
+      "Route routine steps to a small cheap model and reserve the strong model for hard reasoning",
+      "Always use the biggest available model",
+      "Remove all tools from the agent",
+      "Shorten every answer aggressively"
+    ],
+    "answer": 0,
+    "explanation": "Model routing preserves quality where it matters while saving cost on steps that do not need top capability.",
+    "id": "aa-029"
+  },
+  {
+    "skill": "agentic-ai",
+    "topic": "Cost/Latency",
+    "difficulty": "hard",
+    "question": "Why can parallel tool calls both help and hurt an agent?",
+    "options": [
+      "They always improve every metric",
+      "They reduce total cost",
+      "They prevent all errors",
+      "They cut latency but multiply token use and can create conflicting actions"
+    ],
+    "answer": 3,
+    "explanation": "Parallelize independent reads for speed, but sequence dependent or mutating calls carefully to avoid conflicts.",
+    "id": "aa-030"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "CNNs",
+    "difficulty": "easy",
+    "question": "What does a convolutional layer in a CNN primarily detect?",
+    "options": [
+      "Local patterns such as edges and textures by sliding small filters over the image",
+      "The optimal learning rate for training",
+      "The number of objects present in the image",
+      "The exact class label of the whole image"
+    ],
+    "answer": 0,
+    "explanation": "A convolutional layer applies small learned filters across the image, so each unit responds to local patterns like edges and textures in its receptive field.",
+    "id": "cv-001"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "CNNs",
+    "difficulty": "medium",
+    "question": "Why does weight sharing in a CNN help compared to a fully connected layer on images?",
+    "options": [
+      "It guarantees the model will never overfit",
+      "It drastically reduces parameters and gives translation equivariance, since the same filter is reused everywhere",
+      "It lets the network skip the pooling layers entirely",
+      "It removes the need for any training data"
+    ],
+    "answer": 1,
+    "explanation": "Sharing one filter across all positions means far fewer parameters than a fully connected layer, and a pattern is detected wherever it appears in the image.",
+    "id": "cv-002"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "CNNs",
+    "difficulty": "hard",
+    "question": "How does a dilated (atrous) convolution increase a layer's receptive field without downsampling?",
+    "options": [
+      "By running the convolution multiple times on the same input",
+      "By making the kernel larger and adding more parameters",
+      "By inserting gaps between kernel elements, so the filter spans a wider area with the same number of weights",
+      "By stacking more pooling layers after the convolution"
+    ],
+    "answer": 2,
+    "explanation": "Dilation spaces out the kernel taps, so the same 3x3 weights cover a larger input region while keeping resolution and parameter count unchanged.",
+    "id": "cv-003"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Object Detection",
+    "difficulty": "easy",
+    "question": "How does object detection differ from image classification?",
+    "options": [
+      "Detection never uses neural networks",
+      "Classification is always slower than detection",
+      "Detection only works on grayscale images",
+      "Detection also localizes each object with a bounding box, while classification only names what is in the image"
+    ],
+    "answer": 3,
+    "explanation": "A classifier outputs one label per image; a detector outputs labels plus bounding boxes for every object instance it finds.",
+    "id": "cv-004"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Object Detection",
+    "difficulty": "medium",
+    "question": "What does Intersection over Union (IoU) measure in object detection?",
+    "options": [
+      "The overlap between a predicted bounding box and the ground-truth box, as area of intersection divided by area of union",
+      "The confidence score of the classifier head",
+      "The number of objects the model can detect at once",
+      "The speed of the detector in frames per second"
+    ],
+    "answer": 0,
+    "explanation": "IoU quantifies localization quality: 1 means a perfect box match, 0 means no overlap, and a threshold like 0.5 decides true versus false positives.",
+    "id": "cv-005"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Object Detection",
+    "difficulty": "hard",
+    "question": "Why do two-stage detectors such as Faster R-CNN tend to be more accurate than one-stage detectors, at the cost of speed?",
+    "options": [
+      "They use larger input images than one-stage detectors",
+      "They first propose candidate regions and then refine and classify each one, spending extra compute per region",
+      "They train on twice as much data by definition",
+      "They avoid non-maximum suppression entirely"
+    ],
+    "answer": 1,
+    "explanation": "The region-proposal stage focuses the second stage on promising areas, and per-region refinement improves localization, but running a head per proposal costs time.",
+    "id": "cv-006"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Segmentation",
+    "difficulty": "easy",
+    "question": "What is the difference between semantic and instance segmentation?",
+    "options": [
+      "There is no difference; the terms are interchangeable",
+      "Semantic segmentation works only on video, instance only on photos",
+      "Semantic segmentation labels every pixel by class, while instance segmentation also separates individual objects of the same class",
+      "Instance segmentation labels every pixel by class, while semantic segmentation counts objects"
+    ],
+    "answer": 2,
+    "explanation": "Semantic segmentation answers 'what class is each pixel', instance segmentation additionally answers 'which object does this pixel belong to'.",
+    "id": "cv-007"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Segmentation",
+    "difficulty": "medium",
+    "question": "Why does U-Net use skip connections between its encoder and decoder?",
+    "options": [
+      "To reduce the number of output classes",
+      "To allow the network to process video instead of images",
+      "To make training faster by skipping the decoder entirely",
+      "To recover fine spatial detail lost during downsampling by feeding high-resolution encoder features to the decoder"
+    ],
+    "answer": 3,
+    "explanation": "Downsampling discards spatial precision; skip connections give the decoder the original high-resolution features it needs for sharp boundaries.",
+    "id": "cv-008"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Segmentation",
+    "difficulty": "hard",
+    "question": "In medical image segmentation, why is Dice loss often preferred over plain cross-entropy?",
+    "options": [
+      "It directly optimizes overlap, which handles severe class imbalance when the foreground is tiny",
+      "It only works on 3D volumes",
+      "It removes the need for labelled data",
+      "It trains faster because it ignores the background class"
+    ],
+    "answer": 0,
+    "explanation": "When the target region is a small fraction of pixels, cross-entropy is dominated by the background, while Dice loss measures the overlap of the predicted and true regions.",
+    "id": "cv-009"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Image Classification",
+    "difficulty": "easy",
+    "question": "Why is a softmax layer typically used at the end of an image classifier?",
+    "options": [
+      "To increase the number of output classes",
+      "To convert raw logits into probabilities that sum to one across classes",
+      "To sharpen the input image before classification",
+      "To prevent the model from overfitting"
+    ],
+    "answer": 1,
+    "explanation": "Softmax normalizes the logits into a probability distribution, so the highest value can be read as the model's predicted class and confidence.",
+    "id": "cv-010"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Image Classification",
+    "difficulty": "medium",
+    "question": "What does top-5 accuracy mean for an image classifier?",
+    "options": [
+      "The model makes five predictions per image and averages them",
+      "The model is correct on 5 percent of images",
+      "The correct class appears among the model's five highest-probability predictions",
+      "The model was trained on only five classes"
+    ],
+    "answer": 2,
+    "explanation": "Top-5 accuracy is lenient: a prediction counts as correct if the true label is anywhere in the top five ranked outputs, which suits datasets with many similar classes.",
+    "id": "cv-011"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Image Classification",
+    "difficulty": "hard",
+    "question": "A classifier reaches 99 percent training accuracy but only 70 percent test accuracy. What is the most likely problem?",
+    "options": [
+      "The learning rate was too low during training",
+      "The model has too few parameters",
+      "The test set is too small to measure anything",
+      "The model has overfit: it memorized training examples instead of learning generalizable patterns"
+    ],
+    "answer": 3,
+    "explanation": "A large train-test gap is the classic sign of overfitting, where the model fits noise and specifics of the training set that do not transfer.",
+    "id": "cv-012"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Data Augmentation",
+    "difficulty": "easy",
+    "question": "What is the main purpose of data augmentation in training vision models?",
+    "options": [
+      "To artificially expand the training set with label-preserving transformations so the model generalizes better",
+      "To replace the need for a validation set",
+      "To make training run on a single GPU",
+      "To reduce the size of the model"
+    ],
+    "answer": 0,
+    "explanation": "Augmentations like crops, flips, and color jitter create varied versions of each example, teaching the model invariance instead of memorization.",
+    "id": "cv-013"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Data Augmentation",
+    "difficulty": "medium",
+    "question": "Why can horizontal flipping be unsafe augmentation for traffic-sign recognition?",
+    "options": [
+      "Flipping always destroys image quality",
+      "Some signs are directional: a flipped left-arrow sign becomes a right-arrow sign, so the label is no longer correct",
+      "Flipped images cannot be processed by CNNs",
+      "Flipping doubles training time without any benefit"
+    ],
+    "answer": 1,
+    "explanation": "Augmentation must preserve the label. Directional signs change meaning when mirrored, so blind flipping would inject wrongly labelled examples.",
+    "id": "cv-014"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Data Augmentation",
+    "difficulty": "hard",
+    "question": "What do Mixup and CutMix do during training?",
+    "options": [
+      "They average the weights of two trained models",
+      "They remove all background pixels from training images",
+      "They blend pairs of images and their labels, regularizing the model toward smoother, less overconfident predictions",
+      "They duplicate the hardest examples in the dataset"
+    ],
+    "answer": 2,
+    "explanation": "Mixup blends pixel values and labels proportionally, CutMix pastes a patch from one image into another with an adjusted label; both discourage memorization and overconfidence.",
+    "id": "cv-015"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Transfer Learning",
+    "difficulty": "easy",
+    "question": "What is transfer learning in computer vision?",
+    "options": [
+      "Moving a trained model from one GPU to another",
+      "Converting a model to a different file format",
+      "Training a model from scratch on a very large dataset",
+      "Reusing weights from a model pretrained on a large dataset and adapting them to a new, usually smaller task"
+    ],
+    "answer": 3,
+    "explanation": "Pretrained features (edges, textures, object parts) transfer well, so a new task can reach good accuracy with far less data and training time.",
+    "id": "cv-016"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Transfer Learning",
+    "difficulty": "medium",
+    "question": "When fine-tuning a pretrained model on a small dataset, why is it common to freeze the early layers?",
+    "options": [
+      "Early layers learn generic low-level features that already transfer, while freezing limits overfitting on little data",
+      "Frozen layers use less disk space",
+      "Freezing is required by the optimizer",
+      "Early layers are too slow to train"
+    ],
+    "answer": 0,
+    "explanation": "Low-level features are broadly useful and stable; training only the later, task-specific layers reduces the parameters fitted to a small dataset.",
+    "id": "cv-017"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Transfer Learning",
+    "difficulty": "hard",
+    "question": "Why is fine-tuning usually done with a lower learning rate than training from scratch?",
+    "options": [
+      "Lower learning rates always converge faster",
+      "A large learning rate would destroy the useful pretrained features, a form of catastrophic forgetting",
+      "Pretrained models cannot use the Adam optimizer",
+      "Lower rates reduce the model's memory usage"
+    ],
+    "answer": 1,
+    "explanation": "Pretrained weights are already a good solution; gentle updates adapt them to the new task without wiping out what the model learned before.",
+    "id": "cv-018"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Tracking",
+    "difficulty": "easy",
+    "question": "How does object tracking differ from object detection?",
+    "options": [
+      "Detection is always more accurate than tracking",
+      "Tracking works only on still images",
+      "Detection finds objects in single frames, while tracking maintains each object's identity across frames over time",
+      "Tracking does not use bounding boxes"
+    ],
+    "answer": 2,
+    "explanation": "A tracker links per-frame detections into trajectories, so the same person or car keeps the same ID as it moves through the video.",
+    "id": "cv-019"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Tracking",
+    "difficulty": "medium",
+    "question": "What commonly causes ID switches in multi-object tracking?",
+    "options": [
+      "Using too many cameras at once",
+      "The tracker running faster than real time",
+      "The video resolution being too high",
+      "Occlusions, similar-looking objects, or missed detections that make the tracker attach a trajectory to the wrong object"
+    ],
+    "answer": 3,
+    "explanation": "When an object is hidden or two similar objects cross, the association step can match a detection to the wrong track, swapping identities.",
+    "id": "cv-020"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Tracking",
+    "difficulty": "hard",
+    "question": "In the SORT tracker, what role does the Kalman filter play?",
+    "options": [
+      "It predicts each track's next bounding box from its motion, so detections can be matched to tracks even when motion is noisy",
+      "It removes duplicate detections from the detector",
+      "It compresses the video before tracking",
+      "It classifies the object in each frame"
+    ],
+    "answer": 0,
+    "explanation": "The Kalman filter estimates position and velocity, predicting where each object should appear next; the Hungarian algorithm then associates predictions with new detections.",
+    "id": "cv-021"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Edge Deployment",
+    "difficulty": "easy",
+    "question": "Why is quantization used when deploying a vision model to an edge device?",
+    "options": [
+      "To increase the model's accuracy",
+      "To shrink the model and speed up inference on hardware with limited memory and compute",
+      "To add more layers to the model",
+      "To make the model trainable on the device"
+    ],
+    "answer": 1,
+    "explanation": "Converting weights and activations from 32-bit floats to 8-bit integers cuts size roughly fourfold and lets cheap hardware run the model faster.",
+    "id": "cv-022"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Edge Deployment",
+    "difficulty": "medium",
+    "question": "What is the main trade-off of INT8 quantization for a deployed model?",
+    "options": [
+      "It requires retraining from scratch every time",
+      "Larger model size in exchange for higher accuracy",
+      "Much faster inference and smaller size, usually at the cost of a small accuracy drop from reduced precision",
+      "It only works for language models, not vision models"
+    ],
+    "answer": 2,
+    "explanation": "Lower precision means rounding error, so a quantized model is typically slightly less accurate but far cheaper to run.",
+    "id": "cv-023"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Edge Deployment",
+    "difficulty": "hard",
+    "question": "Why might a model with fewer FLOPs still run slower on an edge device than a higher-FLOP model?",
+    "options": [
+      "Edge devices always prefer larger models",
+      "Fewer FLOPs means the model must run more times",
+      "FLOPs are unrelated to speed in every case",
+      "Memory bandwidth, unsupported operations falling back to slow paths, and poor hardware utilization can dominate real latency"
+    ],
+    "answer": 3,
+    "explanation": "Real latency depends on memory access patterns and whether the hardware accelerates each op; a theoretically cheap model with awkward ops can be slower in practice.",
+    "id": "cv-024"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Evaluation Metrics",
+    "difficulty": "easy",
+    "question": "What does mAP (mean Average Precision) summarize in object detection?",
+    "options": [
+      "Detection quality averaged over classes, combining precision and recall across confidence thresholds",
+      "The average size of predicted bounding boxes",
+      "The number of classes the model was trained on",
+      "The average speed of the detector"
+    ],
+    "answer": 0,
+    "explanation": "For each class, average precision summarizes the precision-recall curve; mAP averages that score over all classes into one number.",
+    "id": "cv-025"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Evaluation Metrics",
+    "difficulty": "medium",
+    "question": "In detection evaluation, how do precision and recall differ?",
+    "options": [
+      "Precision applies to classification only, recall to detection only",
+      "Precision is the share of predictions that are correct; recall is the share of real objects that were found",
+      "Precision counts missed objects; recall counts false alarms",
+      "They are the same quantity computed differently"
+    ],
+    "answer": 1,
+    "explanation": "Precision punishes false positives (wrong boxes), recall punishes false negatives (missed objects); a good detector must balance both.",
+    "id": "cv-026"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Evaluation Metrics",
+    "difficulty": "hard",
+    "question": "Why is plain accuracy misleading when evaluating a rare-object detector?",
+    "options": [
+      "Accuracy is only defined for balanced datasets",
+      "Accuracy cannot be computed for detectors",
+      "With rare objects, predicting 'absent' everywhere yields very high accuracy while finding nothing, because of class imbalance",
+      "Accuracy ignores the confidence threshold"
+    ],
+    "answer": 2,
+    "explanation": "If objects appear in 1 percent of frames, a do-nothing model scores 99 percent accuracy; precision, recall, and mAP expose that failure.",
+    "id": "cv-027"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Vision Transformers",
+    "difficulty": "easy",
+    "question": "How does a Vision Transformer (ViT) process an input image?",
+    "options": [
+      "It converts the image to text before classifying it",
+      "It downsamples the image until only one pixel remains",
+      "It scans the image with sliding convolutional filters",
+      "It splits the image into fixed-size patches, embeds them as tokens, and processes the token sequence with a transformer"
+    ],
+    "answer": 3,
+    "explanation": "ViT treats image patches like words in a sentence, letting self-attention relate patches to each other without any convolution.",
+    "id": "cv-028"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Vision Transformers",
+    "difficulty": "medium",
+    "question": "Why do Vision Transformers typically need more training data than CNNs to reach similar accuracy?",
+    "options": [
+      "They lack the built-in inductive biases of CNNs, such as locality and translation equivariance, so they must learn those patterns from data",
+      "They cannot use data augmentation",
+      "They only train on grayscale images",
+      "They have fewer parameters than CNNs"
+    ],
+    "answer": 0,
+    "explanation": "CNNs bake in assumptions about images (nearby pixels relate, patterns repeat anywhere); ViTs start with almost none, so they need more examples to learn the same structure.",
+    "id": "cv-029"
+  },
+  {
+    "skill": "computer-vision",
+    "topic": "Vision Transformers",
+    "difficulty": "hard",
+    "question": "What does self-attention let a Vision Transformer capture that a small-kernel CNN captures only with great depth?",
+    "options": [
+      "Exact pixel colors at full resolution",
+      "Long-range, global dependencies between distant image regions in a single layer",
+      "The number of objects in the image",
+      "Faster training on small datasets"
+    ],
+    "answer": 1,
+    "explanation": "Self-attention compares every patch pair directly, so global context is available immediately, while a CNN must stack many layers to grow its receptive field.",
+    "id": "cv-030"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Experiment Tracking",
+    "difficulty": "easy",
+    "question": "What does experiment tracking record for each machine learning run?",
+    "options": [
+      "Hyperparameters, metrics, code version, and artifacts, so the run can be compared and reproduced",
+      "The salary of the engineer who ran it",
+      "The number of GPUs owned by the team",
+      "Only the final model file"
+    ],
+    "answer": 0,
+    "explanation": "Tracking ties parameters, results, code, and outputs to one run, making it possible to tell which change actually improved the model.",
+    "id": "mo-001"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Experiment Tracking",
+    "difficulty": "medium",
+    "question": "Why should the data version be tracked alongside hyperparameters for a training run?",
+    "options": [
+      "Data versions make training run faster",
+      "The same code and hyperparameters on different data can produce a different model, so data must be part of reproducibility",
+      "Hyperparameters are stored inside the dataset",
+      "Tracking data is required by law in every country"
+    ],
+    "answer": 1,
+    "explanation": "A run is only reproducible if code, parameters, environment, and the exact data snapshot are all known; changing any one of them changes the outcome.",
+    "id": "mo-002"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Experiment Tracking",
+    "difficulty": "hard",
+    "question": "Why is experiment tracking alone not sufficient for full reproducibility?",
+    "options": [
+      "Tracked metrics are always inaccurate",
+      "Tracked runs cannot be compared with each other",
+      "Random seeds, library versions, and hardware nondeterminism also affect results and must be controlled separately",
+      "Tracking only works for small models"
+    ],
+    "answer": 2,
+    "explanation": "Even with identical tracked parameters, unpinned dependencies, unset seeds, or GPU nondeterminism can silently change results between runs.",
+    "id": "mo-003"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Model Registry",
+    "difficulty": "easy",
+    "question": "What is the role of a model registry in MLOps?",
+    "options": [
+      "It deletes old models to save disk space",
+      "It writes documentation for the data science team",
+      "It trains models automatically without data",
+      "It is a central store for versioned models with lifecycle stages such as staging and production"
+    ],
+    "answer": 3,
+    "explanation": "A registry versions every model artifact and records which version is staging, production, or archived, so deployments are explicit and auditable.",
+    "id": "mo-004"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Model Registry",
+    "difficulty": "medium",
+    "question": "Why promote a model through registry stages instead of overwriting the production model directly?",
+    "options": [
+      "Staged promotion enables testing, approval, and instant rollback to the previous version if the new one misbehaves",
+      "Overwriting is forbidden by all cloud providers",
+      "Stages reduce the size of the model file",
+      "Staging makes the model more accurate"
+    ],
+    "answer": 0,
+    "explanation": "A staged rollout keeps the last good version available, so a bad deploy can be reverted by pointing production back at it instead of retraining.",
+    "id": "mo-005"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Model Registry",
+    "difficulty": "hard",
+    "question": "What does model lineage capture in a registry?",
+    "options": [
+      "The names of everyone who viewed the model",
+      "The data snapshot, code version, parameters, and parent runs that produced a specific model version",
+      "The cost of training in dollars",
+      "The order in which models were deleted"
+    ],
+    "answer": 1,
+    "explanation": "Lineage links a model version back to its exact inputs and training run, which is what makes audits, debugging, and rollbacks possible.",
+    "id": "mo-006"
+  },
+  {
+    "skill": "mlops",
+    "topic": "CI/CD for ML",
+    "difficulty": "easy",
+    "question": "What does continuous integration for ML add beyond standard software CI?",
+    "options": [
+      "It deploys every commit straight to production",
+      "It removes the need for unit tests",
+      "Data validation and model evaluation tests, so bad data or a regressed model fails the build",
+      "It trains the model on the CI server forever"
+    ],
+    "answer": 2,
+    "explanation": "ML CI must check the data schema and distribution plus model quality, because code that passes unit tests can still ship a broken model.",
+    "id": "mo-007"
+  },
+  {
+    "skill": "mlops",
+    "topic": "CI/CD for ML",
+    "difficulty": "medium",
+    "question": "Why test a candidate model on held-out data slices (for example, per region or device) before deployment?",
+    "options": [
+      "Slices are required to compute accuracy",
+      "Held-out slices reduce the size of the model",
+      "Slice tests make the model train faster",
+      "Overall metrics can hide regressions on important segments that only slice-level evaluation reveals"
+    ],
+    "answer": 3,
+    "explanation": "A model can improve on average while getting much worse for one user group; slice tests catch that before users do.",
+    "id": "mo-008"
+  },
+  {
+    "skill": "mlops",
+    "topic": "CI/CD for ML",
+    "difficulty": "hard",
+    "question": "Why can a model pass offline evaluation yet fail after deployment?",
+    "options": [
+      "Training-serving skew, distribution shift, or different preprocessing in production can make live inputs differ from training data",
+      "Deployed models never use the same code as offline models",
+      "Offline evaluation does not use real labels",
+      "Offline metrics are always computed incorrectly"
+    ],
+    "answer": 0,
+    "explanation": "If serving preprocesses features differently or the live data distribution has shifted, the model faces inputs unlike the ones it was validated on.",
+    "id": "mo-009"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Serving",
+    "difficulty": "easy",
+    "question": "What is the difference between batch and online model serving?",
+    "options": [
+      "Batch serving needs a GPU, online serving never does",
+      "Batch serving scores large volumes on a schedule, while online serving returns predictions in real time per request",
+      "Online serving is only for small models",
+      "Batch serving cannot use the same model as online serving"
+    ],
+    "answer": 1,
+    "explanation": "Batch jobs score accumulated data periodically (for example, nightly recommendations), while online endpoints answer each user request immediately.",
+    "id": "mo-010"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Serving",
+    "difficulty": "medium",
+    "question": "Why use a dedicated model server (such as Triton or TensorFlow Serving) instead of a plain web framework for inference?",
+    "options": [
+      "Model servers train the model while serving",
+      "Model servers eliminate the need for GPUs",
+      "They provide request batching, model versioning, and efficient GPU utilization out of the box",
+      "Web frameworks cannot load model files"
+    ],
+    "answer": 2,
+    "explanation": "A model server is built for inference workloads: it batches concurrent requests, manages versions, and keeps accelerators busy, which a generic web app does not.",
+    "id": "mo-011"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Serving",
+    "difficulty": "hard",
+    "question": "What is dynamic batching in model serving?",
+    "options": [
+      "Splitting one request across many models",
+      "Caching predictions for repeated requests",
+      "Retraining the model on each batch of requests",
+      "Grouping independent concurrent requests into a single inference call to improve throughput, at the cost of small added latency"
+    ],
+    "answer": 3,
+    "explanation": "Waiting briefly to accumulate requests lets the accelerator process them together, raising throughput; the trade-off is the batching delay added to each request.",
+    "id": "mo-012"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Monitoring/Drift",
+    "difficulty": "easy",
+    "question": "What is data drift in a deployed ML system?",
+    "options": [
+      "A change over time in the distribution of incoming input data compared to the training data",
+      "The gradual loss of training data from disk",
+      "A drop in server CPU usage",
+      "The model file slowly growing in size"
+    ],
+    "answer": 0,
+    "explanation": "When live inputs stop resembling training data (new user behavior, seasonality, a changed upstream feed), the model's predictions become less reliable.",
+    "id": "mo-013"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Monitoring/Drift",
+    "difficulty": "medium",
+    "question": "How does concept drift differ from data drift?",
+    "options": [
+      "Concept drift is a change in the input distribution; data drift is a change in the model",
+      "Data drift changes the input distribution, while concept drift changes the relationship between inputs and the correct output",
+      "They are identical and the terms are interchangeable",
+      "Concept drift only affects language models"
+    ],
+    "answer": 1,
+    "explanation": "In data drift the inputs shift but the rule stays; in concept drift the rule itself changes, so even familiar-looking inputs now need different predictions.",
+    "id": "mo-014"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Monitoring/Drift",
+    "difficulty": "hard",
+    "question": "Why monitor the distribution of predictions and input features when true labels arrive weeks late?",
+    "options": [
+      "Monitoring predictions improves model accuracy directly",
+      "Feature monitoring replaces the need for labels entirely",
+      "Prediction and feature drift are early warnings of degradation that are visible long before delayed labels confirm it",
+      "Labels are never actually needed for monitoring"
+    ],
+    "answer": 2,
+    "explanation": "When ground truth lags (for example, loan defaults), you cannot wait for accuracy metrics; shifts in inputs or outputs are the earliest signal that something changed.",
+    "id": "mo-015"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Feature Stores",
+    "difficulty": "easy",
+    "question": "What problem does a feature store primarily solve?",
+    "options": [
+      "It replaces the need for a database",
+      "It automatically engineers new features from raw data",
+      "It stores raw data backups",
+      "It gives training and serving the same, reusable feature definitions, preventing train-serve skew"
+    ],
+    "answer": 3,
+    "explanation": "When training and serving compute features differently, the model sees inconsistent inputs; a shared store guarantees one definition used in both places.",
+    "id": "mo-016"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Feature Stores",
+    "difficulty": "medium",
+    "question": "What is the difference between the online and offline stores in a feature store?",
+    "options": [
+      "The online store serves low-latency latest feature values for real-time inference, while the offline store provides historical values for training",
+      "The online store is free, the offline store is paid",
+      "There is no functional difference",
+      "The online store holds historical features for training, the offline store holds live features for serving"
+    ],
+    "answer": 0,
+    "explanation": "Serving needs the freshest values in milliseconds; training needs as-of-that-time history. The two stores are optimized for those different access patterns.",
+    "id": "mo-017"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Feature Stores",
+    "difficulty": "hard",
+    "question": "Why does point-in-time correctness matter when building training data from a feature store?",
+    "options": [
+      "It makes queries run faster",
+      "Training features must be the values as of each event's time, not today's values, or the model learns from information that was not available then",
+      "It reduces storage costs",
+      "It is required to use the online store"
+    ],
+    "answer": 1,
+    "explanation": "Using current feature values for past events leaks future information into training, inflating offline metrics and hurting live performance.",
+    "id": "mo-018"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Data Versioning",
+    "difficulty": "easy",
+    "question": "Why should datasets be versioned in an ML project?",
+    "options": [
+      "Versioning automatically cleans the data",
+      "To make datasets smaller",
+      "So any training run can be reproduced and audited against the exact data it used",
+      "To prevent anyone from changing the data"
+    ],
+    "answer": 2,
+    "explanation": "Data changes constantly; without a version, you cannot tell which snapshot produced a model or reproduce a result months later.",
+    "id": "mo-019"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Data Versioning",
+    "difficulty": "medium",
+    "question": "How do tools like DVC version large datasets without copying the whole dataset into Git?",
+    "options": [
+      "They upload the dataset to GitHub Releases",
+      "They only version the dataset schema, not the data",
+      "They compress the dataset into a single small file",
+      "They store lightweight pointer files and hashes in Git while the actual data lives in separate storage"
+    ],
+    "answer": 3,
+    "explanation": "Git tracks a small metafile containing the data's hash and location; the bulky bytes stay in object storage, keeping the repository usable.",
+    "id": "mo-020"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Data Versioning",
+    "difficulty": "hard",
+    "question": "Why is data versioning fundamentally harder than code versioning?",
+    "options": [
+      "Datasets are large, often privacy-sensitive, and change continuously, so full history is expensive and sometimes impossible to retain",
+      "Code versioning tools refuse to handle CSV files",
+      "Data has no meaningful diffs",
+      "Data cannot be hashed like code can"
+    ],
+    "answer": 0,
+    "explanation": "Code is small text with clean diffs; data can be terabytes of binary or regulated records, so storing every version and diffing changes is far costlier.",
+    "id": "mo-021"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Containers",
+    "difficulty": "easy",
+    "question": "Why are ML models commonly deployed in containers?",
+    "options": [
+      "Containers make models more accurate",
+      "A container packages the model with its runtime and dependencies, so it behaves the same in development and production",
+      "Containers remove the need for a model server",
+      "Containers train models faster"
+    ],
+    "answer": 1,
+    "explanation": "Environment differences are a top cause of 'works on my machine' failures; a container freezes the whole runtime so behavior is consistent.",
+    "id": "mo-022"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Containers",
+    "difficulty": "medium",
+    "question": "What should a model-serving container image typically contain?",
+    "options": [
+      "A copy of the experiment tracker database",
+      "Only the model weights",
+      "The model artifact, the inference runtime and server code, and the exact dependencies it needs",
+      "The full training dataset and training code"
+    ],
+    "answer": 2,
+    "explanation": "The image must be self-contained for serving: artifact plus code plus pinned libraries, but not training data or experiment history.",
+    "id": "mo-023"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Containers",
+    "difficulty": "hard",
+    "question": "Why pin exact dependency versions in a model container image?",
+    "options": [
+      "Pinning is required to use GPUs",
+      "Pinned versions speed up inference",
+      "Pinned versions make images smaller",
+      "Unpinned dependencies can silently change behavior on rebuild when a library releases a new version"
+    ],
+    "answer": 3,
+    "explanation": "Rebuilding with floating versions can pull a different library release that changes numerics or breaks an API, producing a different model in production.",
+    "id": "mo-024"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Pipelines",
+    "difficulty": "easy",
+    "question": "What is an ML pipeline?",
+    "options": [
+      "An automated sequence of steps such as ingest, validate, train, evaluate, and deploy, run reproducibly",
+      "A dashboard for monitoring GPUs",
+      "A type of neural network architecture",
+      "A single script that trains a model once"
+    ],
+    "answer": 0,
+    "explanation": "Pipelines turn the manual training workflow into repeatable, scheduled, auditable steps instead of one-off notebook runs.",
+    "id": "mo-025"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Pipelines",
+    "difficulty": "medium",
+    "question": "Why should pipeline steps be idempotent?",
+    "options": [
+      "Idempotent steps run faster",
+      "If a step is retried after a failure, it must produce the same result instead of duplicating or corrupting outputs",
+      "Idempotency reduces the number of steps",
+      "It lets steps run in parallel automatically"
+    ],
+    "answer": 1,
+    "explanation": "Failures mid-pipeline are normal; safe retries require that re-running a step overwrites rather than appends or double-counts its output.",
+    "id": "mo-026"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Pipelines",
+    "difficulty": "hard",
+    "question": "In a mature ML system, what should typically trigger model retraining?",
+    "options": [
+      "Retraining should never be automated",
+      "Every single new data row that arrives",
+      "Detected drift, a schedule, accumulated new data, or a measured performance drop — not routine noise",
+      "A developer opening the training notebook"
+    ],
+    "answer": 2,
+    "explanation": "Retraining on every row is wasteful and unstable; principled triggers balance freshness against cost and the risk of shipping a worse model.",
+    "id": "mo-027"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Cost/Scaling",
+    "difficulty": "easy",
+    "question": "Why can GPU inference be wasteful for a tiny model with low traffic?",
+    "options": [
+      "Small models always run slower on GPUs",
+      "GPUs require batch serving, which low traffic cannot provide",
+      "GPUs cannot run small models",
+      "GPU instances cost more per hour, and a small model may barely use the GPU, so most of the cost is idle capacity"
+    ],
+    "answer": 3,
+    "explanation": "Cost follows provisioned hardware, not work done; an underutilized GPU still bills at full hourly rate while a CPU would suffice.",
+    "id": "mo-028"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Cost/Scaling",
+    "difficulty": "medium",
+    "question": "What does autoscaling do for a model-serving deployment?",
+    "options": [
+      "It adjusts the number of serving replicas based on traffic or queue length, balancing latency against cost",
+      "It automatically picks the cheapest cloud region",
+      "It compresses the model when traffic is low",
+      "It retrains the model when traffic spikes"
+    ],
+    "answer": 0,
+    "explanation": "Autoscaling adds replicas under load to protect latency and removes them when quiet to avoid paying for idle capacity.",
+    "id": "mo-029"
+  },
+  {
+    "skill": "mlops",
+    "topic": "Cost/Scaling",
+    "difficulty": "hard",
+    "question": "Why might adding more serving replicas fail to fix high prediction latency?",
+    "options": [
+      "More replicas require retraining the model",
+      "Replicas only help if the bottleneck is throughput capacity; if latency comes from model compute or a slow downstream call, more copies do not shorten one request",
+      "Replicas always increase latency because of load-balancer overhead",
+      "Latency is unaffected by the number of replicas in every system"
+    ],
+    "answer": 1,
+    "explanation": "Scaling out raises concurrent throughput, but a single request still pays the full model compute and dependency latency; those need optimization, not copies.",
+    "id": "mo-030"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "MDPs",
+    "difficulty": "easy",
+    "question": "What does the Markov property state about a state in a Markov Decision Process?",
+    "options": [
+      "The future depends only on the current state, not on the history that led to it",
+      "The state never changes over time",
+      "The state always contains the reward value",
+      "The state must be fully observable by a human"
+    ],
+    "answer": 0,
+    "explanation": "A Markov state summarizes all history relevant to the future, so decisions can be based on the current state alone.",
+    "id": "rl-001"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "MDPs",
+    "difficulty": "medium",
+    "question": "Which components define a Markov Decision Process?",
+    "options": [
+      "Agents, prompts, and a language model",
+      "States, actions, rewards, transition probabilities, and a discount factor",
+      "Layers, neurons, weights, and a loss function",
+      "Features, labels, and a train-test split"
+    ],
+    "answer": 1,
+    "explanation": "An MDP formalizes sequential decisions: states and actions, the reward for each transition, the probability of each next state, and how future rewards are discounted.",
+    "id": "rl-002"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "MDPs",
+    "difficulty": "hard",
+    "question": "Why is the discount factor gamma usually set below 1 in infinite-horizon problems?",
+    "options": [
+      "To make the transition probabilities sum to one",
+      "To make the agent prefer longer episodes",
+      "To keep the total return finite and to value sooner rewards over later ones",
+      "To increase exploration automatically"
+    ],
+    "answer": 2,
+    "explanation": "With gamma below 1, the geometric sum of rewards converges even for endless episodes, and near-term rewards weigh more than distant ones.",
+    "id": "rl-003"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Q-learning",
+    "difficulty": "easy",
+    "question": "What does Q(s, a) estimate in Q-learning?",
+    "options": [
+      "The number of times action a was taken",
+      "The immediate reward of action a only",
+      "The probability of reaching state s",
+      "The expected cumulative discounted reward of taking action a in state s and acting optimally afterwards"
+    ],
+    "answer": 3,
+    "explanation": "Q-values combine the immediate reward with the discounted value of future states, which is what lets the agent choose the best action.",
+    "id": "rl-004"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Q-learning",
+    "difficulty": "medium",
+    "question": "Why is Q-learning called an off-policy algorithm?",
+    "options": [
+      "It learns the optimal action-value function while the agent follows a different, exploratory behavior policy",
+      "It only works offline on logged data",
+      "It updates the policy before collecting any experience",
+      "It does not use any policy at all"
+    ],
+    "answer": 0,
+    "explanation": "Q-learning's update targets the greedy best action regardless of which action was actually taken, so behavior and the learned policy can differ.",
+    "id": "rl-005"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Q-learning",
+    "difficulty": "hard",
+    "question": "Why does standard Q-learning tend to overestimate action values?",
+    "options": [
+      "It uses too high a learning rate",
+      "The max operator picks the largest of several noisy estimates, which biases values upward",
+      "It ignores the discount factor",
+      "It trains on too much data"
+    ],
+    "answer": 1,
+    "explanation": "Taking the maximum over estimated values systematically favors positive estimation errors, a bias that Double Q-learning addresses by decoupling selection and evaluation.",
+    "id": "rl-006"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Policy Gradients",
+    "difficulty": "easy",
+    "question": "What do policy gradient methods directly optimize?",
+    "options": [
+      "The exploration rate epsilon",
+      "The accuracy of a value function",
+      "The parameters of the policy itself, to maximize expected return",
+      "The size of the replay buffer"
+    ],
+    "answer": 2,
+    "explanation": "Instead of deriving a policy from values, policy gradients adjust the policy's parameters in the direction that increases expected cumulative reward.",
+    "id": "rl-007"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Policy Gradients",
+    "difficulty": "medium",
+    "question": "In policy gradient methods, why subtract a baseline (such as the state value) from the return?",
+    "options": [
+      "To increase exploration",
+      "To normalize rewards to the range 0 to 1",
+      "To make the gradient biased toward good actions",
+      "To reduce the variance of gradient estimates without changing their expected value"
+    ],
+    "answer": 3,
+    "explanation": "A baseline centers the learning signal: actions better than average get reinforced and worse ones discouraged, with much less noisy updates.",
+    "id": "rl-008"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Policy Gradients",
+    "difficulty": "hard",
+    "question": "Why do vanilla policy gradient methods suffer from high variance?",
+    "options": [
+      "Returns depend on entire stochastic trajectories, so a single lucky or unlucky episode swings the gradient estimate",
+      "They cannot handle continuous actions",
+      "They ignore the reward signal",
+      "They use too few parameters"
+    ],
+    "answer": 0,
+    "explanation": "Each gradient estimate comes from whole-episode returns, which vary widely with random actions and environment dynamics, making learning noisy.",
+    "id": "rl-009"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Exploration",
+    "difficulty": "easy",
+    "question": "How does an epsilon-greedy policy balance exploration and exploitation?",
+    "options": [
+      "It always picks a random action",
+      "It picks the best-known action most of the time and a random action with small probability epsilon",
+      "It explores only at the start of training",
+      "It picks the action with the lowest estimated value"
+    ],
+    "answer": 1,
+    "explanation": "Epsilon-greedy exploits current knowledge with probability 1 minus epsilon while reserving a small chance to discover better actions.",
+    "id": "rl-010"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Exploration",
+    "difficulty": "medium",
+    "question": "What is the exploration-exploitation trade-off in reinforcement learning?",
+    "options": [
+      "Balancing CPU and GPU usage during training",
+      "Choosing between training longer and deploying sooner",
+      "The tension between trying unfamiliar actions to learn more and using the best-known action to earn reward now",
+      "Deciding how many agents to train at once"
+    ],
+    "answer": 2,
+    "explanation": "Pure exploitation can miss better actions forever, while pure exploration never cashes in what is learned; good agents manage both.",
+    "id": "rl-011"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Exploration",
+    "difficulty": "hard",
+    "question": "Why does epsilon-greedy exploration struggle in environments with sparse rewards?",
+    "options": [
+      "Sparse rewards make epsilon decay too fast",
+      "It requires dense rewards to compute Q-values at all",
+      "It explores too aggressively and never exploits",
+      "Random actions rarely stumble onto the rare rewarding states, so the agent gets almost no learning signal"
+    ],
+    "answer": 3,
+    "explanation": "When reward only appears after a long, specific action sequence, uniform random exploration almost never reaches it, so curiosity or shaped guidance is needed.",
+    "id": "rl-012"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Reward Design",
+    "difficulty": "easy",
+    "question": "What is reward shaping in reinforcement learning?",
+    "options": [
+      "Adding intermediate rewards that guide the agent toward the goal, in addition to the main task reward",
+      "Clipping rewards to a fixed range",
+      "Removing rewards that are too large",
+      "Changing the environment's physics to make tasks easier"
+    ],
+    "answer": 0,
+    "explanation": "Shaping gives the agent useful feedback along the way (for example, for approaching a target) instead of only at final success.",
+    "id": "rl-013"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Reward Design",
+    "difficulty": "medium",
+    "question": "What is reward hacking, and why is it a risk of poorly designed rewards?",
+    "options": [
+      "An attacker stealing the reward function",
+      "The agent finds a loophole that maximizes the reward signal without actually achieving the intended goal",
+      "The reward signal being too sparse to learn from",
+      "The agent hacking into the environment simulator"
+    ],
+    "answer": 1,
+    "explanation": "Agents optimize exactly what is rewarded; if the reward has a loophole (for example, pausing a game to avoid losing), the agent will exploit it.",
+    "id": "rl-014"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Reward Design",
+    "difficulty": "hard",
+    "question": "Why must reward shaping be potential-based to guarantee the optimal policy is unchanged?",
+    "options": [
+      "Arbitrary shaping always makes learning slower",
+      "Potential-based shaping is the only shaping that runs fast enough",
+      "Shaping rewards defined as the difference of a potential function over states provably preserve the optimal policy, while arbitrary bonuses can change it",
+      "Potential functions are required by the MDP definition"
+    ],
+    "answer": 2,
+    "explanation": "Ng and colleagues showed that potential-based shaping adds a telescoping term that does not alter which policy is optimal, unlike ad-hoc bonus rewards.",
+    "id": "rl-015"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Deep RL",
+    "difficulty": "easy",
+    "question": "Why use neural networks in deep reinforcement learning?",
+    "options": [
+      "To remove the need for rewards",
+      "To guarantee the optimal policy is found",
+      "To make training fully deterministic",
+      "To approximate value functions or policies for state spaces too large for tables"
+    ],
+    "answer": 3,
+    "explanation": "Tabular methods need one entry per state; a network generalizes across similar states, which is essential for images or continuous control.",
+    "id": "rl-016"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Deep RL",
+    "difficulty": "medium",
+    "question": "What problem does experience replay solve in DQN?",
+    "options": [
+      "Consecutive transitions are highly correlated, which destabilizes training; sampling past transitions randomly breaks that correlation",
+      "It reduces the size of the neural network",
+      "It removes the need for a target network",
+      "It lets the agent reuse old policies"
+    ],
+    "answer": 0,
+    "explanation": "Training on a stream of consecutive, similar transitions violates the independent-sample assumption; replay mixes old and new experience for stable updates.",
+    "id": "rl-017"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Deep RL",
+    "difficulty": "hard",
+    "question": "Why does DQN use a separate target network?",
+    "options": [
+      "To double the model's capacity",
+      "Because the Q-update target depends on the same network being trained, the target moves every step and learning becomes unstable; a slowly updated copy stabilizes it",
+      "To run training on two GPUs",
+      "To store a backup in case training crashes"
+    ],
+    "answer": 1,
+    "explanation": "With one network, each update shifts both prediction and target, like chasing a moving goalpost; freezing the target network for intervals breaks that feedback loop.",
+    "id": "rl-018"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Actor-Critic",
+    "difficulty": "easy",
+    "question": "In actor-critic methods, what do the actor and the critic each do?",
+    "options": [
+      "The actor computes rewards, the critic computes transitions",
+      "The actor stores experience, the critic replays it",
+      "The actor selects actions according to the policy, while the critic estimates values to judge those actions",
+      "The actor explores, the critic exploits"
+    ],
+    "answer": 2,
+    "explanation": "The actor is the policy being improved; the critic is a value function that evaluates states or actions and guides the actor's updates.",
+    "id": "rl-019"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Actor-Critic",
+    "difficulty": "medium",
+    "question": "What is the advantage function used in methods like A2C?",
+    "options": [
+      "The total reward of the best episode so far",
+      "The learning rate divided by the batch size",
+      "The probability of the best action",
+      "The difference between the action's value and the state's average value, showing how much better the action is than usual"
+    ],
+    "answer": 3,
+    "explanation": "Advantage equals Q(s,a) minus V(s): positive means the action beat expectations, which gives the actor a cleaner learning signal than raw returns.",
+    "id": "rl-020"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Actor-Critic",
+    "difficulty": "hard",
+    "question": "Why does an actor-critic method typically learn more efficiently than a pure Monte Carlo policy gradient?",
+    "options": [
+      "The critic bootstraps value estimates at every step, giving lower-variance updates than waiting for full-episode returns",
+      "It does not need any rewards",
+      "It explores more aggressively",
+      "It uses a larger neural network"
+    ],
+    "answer": 0,
+    "explanation": "Bootstrapping with the critic's value estimates replaces noisy full-trajectory returns with step-by-step feedback, cutting variance substantially.",
+    "id": "rl-021"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Multi-agent",
+    "difficulty": "easy",
+    "question": "Why is multi-agent reinforcement learning harder than single-agent RL?",
+    "options": [
+      "It requires more GPUs by definition",
+      "From each agent's perspective the environment keeps changing as the other agents learn, breaking stationarity",
+      "Multi-agent problems have no rewards",
+      "Agents cannot observe anything in multi-agent settings"
+    ],
+    "answer": 1,
+    "explanation": "Single-agent methods assume fixed dynamics, but other learning agents make the world non-stationary, so yesterday's good policy may fail today.",
+    "id": "rl-022"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Multi-agent",
+    "difficulty": "medium",
+    "question": "What does centralized training with decentralized execution (CTDE) mean?",
+    "options": [
+      "Agents take turns acting instead of acting simultaneously",
+      "One agent is trained and then copied to all others",
+      "Training may use global information, but at execution each agent acts only on its own local observations",
+      "Training and execution both happen on a central server"
+    ],
+    "answer": 2,
+    "explanation": "CTDE exploits extra information available in simulation during training, while keeping deployed agents independent and able to act without communication.",
+    "id": "rl-023"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Multi-agent",
+    "difficulty": "hard",
+    "question": "What is the credit assignment problem in cooperative multi-agent RL?",
+    "options": [
+      "Assigning different learning rates to different agents",
+      "Splitting the replay buffer between agents",
+      "Deciding which agent deserves the compute budget",
+      "When all agents share one team reward, it is hard to tell which agent's actions actually caused the success or failure"
+    ],
+    "answer": 3,
+    "explanation": "A shared team reward hides individual contributions, so an agent may be reinforced for teammates' good actions or blamed for their mistakes.",
+    "id": "rl-024"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "RLHF",
+    "difficulty": "easy",
+    "question": "What is the purpose of RLHF (reinforcement learning from human feedback) for language models?",
+    "options": [
+      "To align model outputs with human preferences for helpfulness, honesty, and safety",
+      "To remove the need for pretraining",
+      "To let users train models on their own devices",
+      "To make models train faster on raw text"
+    ],
+    "answer": 0,
+    "explanation": "Pretraining only predicts text; RLHF fine-tunes the model toward responses humans actually rate as good, which is a different objective.",
+    "id": "rl-025"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "RLHF",
+    "difficulty": "medium",
+    "question": "What are the standard stages of RLHF for a language model?",
+    "options": [
+      "Pretrain, then deploy directly",
+      "Supervised fine-tuning, then train a reward model on human-ranked outputs, then optimize the policy against that reward model",
+      "Train a reward model first, then pretrain on it",
+      "Fine-tune on human feedback, then delete the reward model"
+    ],
+    "answer": 1,
+    "explanation": "SFT teaches the response format, the reward model learns human preferences from comparisons, and PPO-style optimization pushes the policy toward higher-reward outputs.",
+    "id": "rl-026"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "RLHF",
+    "difficulty": "hard",
+    "question": "Why is a KL-divergence penalty against the reference model used during RLHF optimization?",
+    "options": [
+      "To reduce the size of the policy network",
+      "To make training run on fewer GPUs",
+      "To stop the policy from drifting so far from the original model that it exploits quirks of the reward model and produces degenerate text",
+      "To increase the reward model's accuracy"
+    ],
+    "answer": 2,
+    "explanation": "Without the KL anchor, the policy over-optimizes the imperfect reward model and can collapse into repetitive or nonsensical high-reward outputs.",
+    "id": "rl-027"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Evaluation",
+    "difficulty": "easy",
+    "question": "Why should RL agents be evaluated over many episodes and random seeds?",
+    "options": [
+      "Seeds are required for the environment to reset",
+      "More episodes always raise the average return",
+      "To use more compute for the report",
+      "RL results vary widely across seeds and episodes, so a single run can mislead badly about true performance"
+    ],
+    "answer": 3,
+    "explanation": "Stochastic environments and training make RL notoriously high-variance; reliable claims need means and spreads over repeated runs.",
+    "id": "rl-028"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Evaluation",
+    "difficulty": "medium",
+    "question": "Why can average return alone be a misleading evaluation of an RL agent?",
+    "options": [
+      "It hides the distribution: an agent can score well on average while failing catastrophically on rare but critical episodes",
+      "Average return cannot be computed for stochastic policies",
+      "It ignores the number of training steps",
+      "Average return is not a real metric"
+    ],
+    "answer": 0,
+    "explanation": "Safety-critical evaluation needs worst-case behavior, variance, and failure rates too, not just the mean, which can mask dangerous rare failures.",
+    "id": "rl-029"
+  },
+  {
+    "skill": "reinforcement-learning",
+    "topic": "Evaluation",
+    "difficulty": "hard",
+    "question": "Why can't an RL agent be evaluated like a supervised model on a held-out test set?",
+    "options": [
+      "RL agents have no test data at all",
+      "Performance comes from sequential interaction: the agent's actions change what it sees next, so static test accuracy misses compounding errors and distribution shift",
+      "Test sets are too small for RL",
+      "RL evaluation does not use any metrics"
+    ],
+    "answer": 1,
+    "explanation": "Supervised evaluation scores fixed predictions, but an RL agent drives its own future inputs; evaluation must use rollouts in the environment or simulator.",
+    "id": "rl-030"
   }
 ]

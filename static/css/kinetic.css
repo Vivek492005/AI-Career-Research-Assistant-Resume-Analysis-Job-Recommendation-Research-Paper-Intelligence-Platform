@@ -1434,6 +1434,7 @@ body.sb-app .b-card--stat:hover :is(b, strong) { color: var(--sb-blue) !importan
 .gap-prio-bar span { display: block; height: 100%; background: var(--sb-lime); border-radius: 999px; }
 .gap-result-card { animation: gapFadeUp .45s ease both; }
 @keyframes gapFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.quiz-q-in { animation: gapFadeUp .4s ease both; }
 .stage-rail { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.2rem; }
 .stage-rail a { padding: .4rem .9rem; border: 1px solid var(--b-line, rgba(255,255,255,.12)); border-radius: 999px; font-size: .88rem; text-decoration: none; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }

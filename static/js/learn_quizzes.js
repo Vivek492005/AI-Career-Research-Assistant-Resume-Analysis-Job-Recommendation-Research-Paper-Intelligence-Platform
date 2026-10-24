@@ -119,13 +119,39 @@
         renderQuestion();
     }
 
+    /* ---- skill search: filters the skill select + the skill grid ---- */
+    var skillSearch = el('quiz-skill-search');
+    var skillSel = el('quiz-skill');
+    var skillOptions = null;
+    if (skillSearch && skillSel) {
+        skillOptions = Array.from(skillSel.options).map(function (o) {
+            return { value: o.value, text: o.text };
+        });
+        skillSearch.addEventListener('input', function () {
+            var q = skillSearch.value.trim().toLowerCase();
+            var keep = skillOptions.filter(function (o) {
+                return !q || o.text.toLowerCase().indexOf(q) !== -1;
+            });
+            skillSel.innerHTML = '';
+            keep.forEach(function (o) {
+                var opt = document.createElement('option');
+                opt.value = o.value; opt.textContent = o.text;
+                skillSel.appendChild(opt);
+            });
+            document.querySelectorAll('.quiz-skill-card').forEach(function (card) {
+                var name = (card.dataset.skillName || '').toLowerCase();
+                card.style.display = (!q || name.indexOf(q) !== -1) ? '' : 'none';
+            });
+        });
+    }
+
     function renderQuestion() {
         var q = state.questions[state.idx];
         var total = state.questions.length;
         el('quiz-progress-label').textContent =
             'Question ' + (state.idx + 1) + ' of ' + total;
         el('quiz-progress-bar').style.width = (state.idx / total * 100) + '%';
-        var html = '<div style="display:flex;gap:.5rem;margin-bottom:.8rem;">'
+        var html = '<div class="quiz-q-in"><div style="display:flex;gap:.5rem;margin-bottom:.8rem;">'
             + '<span class="b-tag">' + esc(q.topic) + '</span>'
             + '<span class="b-tag">' + esc(q.difficulty) + '</span></div>'
             + '<p style="font-size:1.05rem;white-space:pre-wrap;">' + esc(q.question) + '</p>'
@@ -137,7 +163,7 @@
                 + '<span><strong>' + String.fromCharCode(65 + i) + '.</strong> <span style="white-space:pre-wrap;">' + esc(opt) + '</span></span>'
                 + '</label>';
         });
-        html += '</div>';
+        html += '</div></div>';
         el('quiz-question').innerHTML = html;
         el('quiz-feedback').innerHTML = '';
         el('quiz-check').disabled = false;

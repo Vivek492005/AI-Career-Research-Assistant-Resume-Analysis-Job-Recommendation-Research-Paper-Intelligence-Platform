@@ -17,15 +17,31 @@
     {% endif %}
 </section>
 
+{% set skill_names = {
+    'nlp': 'NLP', 'generative-ai': 'Generative AI', 'agentic-ai': 'Agentic AI',
+    'computer-vision': 'Computer Vision', 'mlops': 'MLOps',
+    'reinforcement-learning': 'Reinforcement Learning',
+    'html-css': 'HTML & CSS', 'git-github': 'Git & GitHub', 'dsa': 'DSA',
+    'sql': 'SQL', 'machine-learning': 'Machine Learning', 'system-design': 'System Design',
+    'data-analysis': 'Data Analysis', 'javascript': 'JavaScript', 'typescript': 'TypeScript'
+} %}
+{% set new_skills = ['nlp', 'generative-ai', 'agentic-ai', 'computer-vision', 'mlops', 'reinforcement-learning'] %}
 <section class="b-section" id="quiz-setup" style="padding-top:0;" aria-label="Quiz setup">
     <div class="b-card b-reveal">
         <h2 style="margin-top:0;">Set up your quiz</h2>
+        <ol class="gap-steps" aria-label="How this works">
+            <li class="gap-step is-active"><span class="gap-step-n">1</span> Pick a skill</li>
+            <li class="gap-step"><span class="gap-step-n">2</span> Set your mix</li>
+            <li class="gap-step"><span class="gap-step-n">3</span> Answer &amp; diagnose weak topics</li>
+        </ol>
         <div class="b-bento" style="grid-template-columns:repeat(2,1fr);">
             <div class="b-field">
-                <label class="b-label" for="quiz-skill">Skill</label>
+                <label class="b-label" for="quiz-skill-search">Search skills</label>
+                <input type="search" id="quiz-skill-search" class="b-input" placeholder="Search skills… (try NLP, MLOps, SQL)" autocomplete="off">
+                <label class="b-label" for="quiz-skill" style="margin-top:1rem;">Skill</label>
                 <select class="b-select" id="quiz-skill">
                     {% for s in skills %}
-                    <option value="{{ s.id }}">{{ s.id|replace('-',' ')|title }} ({{ s.count }} questions)</option>
+                    <option value="{{ s.id }}">{{ skill_names.get(s.id, s.id|replace('-',' ')|title) }} ({{ s.count }} questions)</option>
                     {% endfor %}
                 </select>
             </div>
@@ -103,11 +119,11 @@
     <div class="b-sec-head">
         <h2>Skills &amp; <span class="b-grad">your best scores</span></h2>
     </div>
-    <div class="b-bento">
+    <div class="b-bento" id="quiz-skill-grid">
         {% for s in skills %}
-        <div class="b-card b-card--lite b-reveal">
+        <div class="b-card b-card--lite b-reveal quiz-skill-card" data-skill-name="{{ skill_names.get(s.id, s.id|replace('-',' ')|title) }}">
             <div style="display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;">
-                <h3 style="margin:0;">{{ s.id|replace('-',' ')|title }}</h3>
+                <h3 style="margin:0;">{{ skill_names.get(s.id, s.id|replace('-',' ')|title) }}{% if s.id in new_skills %} <span class="b-tag" style="color:var(--sb-lime);border-color:rgba(200,255,46,.4);">NEW</span>{% endif %}</h3>
                 {% if best.get(s.id) %}
                 <span class="b-tag" style="color:var(--b-ok);border-color:rgba(52,211,153,.4);">Best {{ best[s.id].pct }}%</span>
                 {% else %}
