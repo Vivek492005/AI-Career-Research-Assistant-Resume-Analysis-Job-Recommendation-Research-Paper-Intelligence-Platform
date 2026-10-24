@@ -6,30 +6,34 @@
 
 {% block content %}
 <section class="sb-learn" style="padding-top:2.5rem;" aria-label="Learning hub">
-    <p class="sb-kicker">Learn — roadmaps · quizzes · certifications</p>
-    <h1 class="sb-display" style="font-size:clamp(3rem,7.5vw,6rem);margin:0 0 1.2rem;" aria-label="Learn with a plan. Not by accident.">
-        <span class="sb-mask"><span>Learn with a</span></span>
-        <span class="sb-mask"><span style="--sb-delay:90ms"><span class="sb-accent">plan.</span></span></span>
-        <span class="sb-mask"><span style="--sb-delay:180ms">Not by accident.</span></span>
-    </h1>
-    <p class="sb-lede">Structured roadmaps for every skill, quizzes that diagnose your weak spots, and certification guidance with honest ROI — all mapped to the roles you're targeting.</p>
+    <div class="sb-learn-hero">
+        <div class="sb-learn-hero-text">
+            <p class="sb-kicker">Learn — roadmaps · quizzes · certifications</p>
+            <h1 class="sb-display" style="font-size:clamp(3rem,7.5vw,6rem);margin:0 0 1.2rem;" aria-label="Learn with a plan. Not by accident.">
+                <span class="sb-mask"><span>Learn with a</span></span>
+                <span class="sb-mask"><span style="--sb-delay:90ms"><span class="sb-accent">plan.</span></span></span>
+                <span class="sb-mask"><span style="--sb-delay:180ms">Not by accident.</span></span>
+            </h1>
+            <p class="sb-lede">Structured roadmaps for every skill, quizzes that diagnose your weak spots, and certification guidance with honest ROI — all mapped to the roles you're targeting.</p>
+        </div>
+        <figure class="sb-learn-desk" aria-hidden="true">
+            <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+                <defs>
+                    <filter id="sb-ripple-dissolve" x="-5%" y="-5%" width="110%" height="110%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="7" result="noise"/>
+                        <feDisplacementMap id="sb-ripple-disp" in="SourceGraphic" in2="noise" scale="140" xChannelSelector="R" yChannelSelector="G"/>
+                    </filter>
+                </defs>
+            </svg>
+            <img id="learn-desk-img" src="{{ url_for('static', filename='img/learn-hero-desk.jpg') }}" alt="" loading="eager">
+        </figure>
+    </div>
     <div class="sb-learn-stats" aria-label="Library counts">
         <div class="sb-learn-stat"><b data-count="{{ num_skills }}">{{ num_skills }}</b><span>Skills with full roadmaps</span></div>
         <div class="sb-learn-stat"><b data-count="{{ num_quiz_questions }}">{{ num_quiz_questions }}</b><span>Quiz questions</span></div>
         <div class="sb-learn-stat"><b data-count="{{ num_certs }}">{{ num_certs }}</b><span>Certifications tracked</span></div>
         <div class="sb-learn-stat"><b data-count="{{ num_roles }}">{{ num_roles }}</b><span>Target roles mapped</span></div>
     </div>
-    <figure class="sb-learn-desk" aria-hidden="true">
-        <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-            <defs>
-                <filter id="sb-ripple-dissolve" x="-5%" y="-5%" width="110%" height="110%">
-                    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="7" result="noise"/>
-                    <feDisplacementMap id="sb-ripple-disp" in="SourceGraphic" in2="noise" scale="140" xChannelSelector="R" yChannelSelector="G"/>
-                </filter>
-            </defs>
-        </svg>
-        <img id="learn-desk-img" src="{{ url_for('static', filename='img/learn-hero-desk.jpg') }}" alt="" loading="eager">
-    </figure>
 </section>
 
 {% if cont %}
