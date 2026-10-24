@@ -39,6 +39,8 @@
         <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem;">
             {% for t in summary.weak_topics %}<span class="b-tag" style="color:var(--b-warn);border-color:rgba(251,191,36,.4);">{{ t }} — {{ summary.by_topic[t].pct }}%</span>{% endfor %}
         </div>
+        <a class="b-btn b-btn--primary b-btn--sm" href="{{ url_for('quizzes_home') }}?drill={{ attempt.skill }}">Drill these weak topics</a>
+        <a class="b-btn b-btn--ghost b-btn--sm" href="{{ url_for('quizzes_mistakes') }}">Review all mistakes</a>
         <a class="b-btn b-btn--ghost b-btn--sm" href="{{ summary.roadmap_url }}">Open the {{ attempt.skill|replace('-',' ')|title }} roadmap</a>
     </div>
 </section>

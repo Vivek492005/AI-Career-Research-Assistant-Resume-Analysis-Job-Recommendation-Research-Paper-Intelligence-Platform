@@ -922,8 +922,7 @@ def test_csrf_rejected_on_peer_posts(csrf_app):
 # ---------------------------------------------------------------------------
 
 def test_peer_questions_technical_includes_bank_technical():
-    from unified_app import PEER_CATEGORY_MAP, _peer_bank
-    bank = {q["id"]: q for q in _peer_bank()}
+    from unified_app import PEER_CATEGORY_MAP
     seen = set()
     for _ in range(10):
         qs = _peer_questions("general", "technical", n=12)

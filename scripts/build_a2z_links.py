@@ -95,7 +95,7 @@ def main():
                     f"title drift in {module['label']!r}: dataset "
                     f"{ours[i1]['title']!r} vs sheet {rows[j1]['label']!r} "
                     "(aligned positionally)")
-        for entry, node in zip(ours, rows):
+        for entry, node in zip(ours, rows, strict=False):
             href = (node.get("href") or "").split("?")[0]
             assert href.startswith("/practice/") or href.startswith("/learning/"), \
                 f"unexpected href for {entry['title']!r}: {href!r}"

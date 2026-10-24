@@ -36,8 +36,9 @@ def test_bank_id_uniqueness():
 
 
 def test_per_skill_counts():
+    # Bank expanded 20 -> 30 per skill on 2026-10-24 (160 validated rows).
     for skill, n in quiz_skills():
-        assert 15 <= n <= 25, f"{skill}: {n} questions"
+        assert 25 <= n <= 35, f"{skill}: {n} questions"
 
 
 def test_build_quiz_stratified():
@@ -187,3 +188,96 @@ def test_quiz_history(authed_client):
     r = authed_client.get("/learn/quizzes/history")
     assert r.status_code == 200
     assert _bento_ok(r.get_data(as_text=True))
+
+
+# ------- 2026-10-24: weakness-drill fix + Mistake Book -------
+
+def test_weakness_drill_targets_weak_topics():
+    """Regression: the drill used to filter on a nonexistent "topics"
+    list field, so weak-topic targeting silently never matched."""
+    from studybuddy.skill_quizzes import _load, weakness_drill
+    skill = "python"
+    topics = {}
+    for q in _load():
+        if q["skill"] == skill:
+            topics.setdefault(q["topic"], []).append(q)
+    topic, qs = max(topics.items(), key=lambda kv: len(kv[1]))
+    past = [{"question_id": q["id"], "topic": topic, "correct": False}
+            for q in qs]
+    drill = weakness_drill(skill, past, n=10, seed=7)
+    assert topic in drill["target_topics"]
+    drilled_topics = [q["topic"] for q in drill["questions"]]
+    # Every available question from the weak topic is pulled into the
+    # drill before any general fill (pool is smaller than the drill size).
+    assert drilled_topics.count(topic) == len(qs)
+
+
+def test_quiz_mistakes_latest_state_wins():
+    from studybuddy.skill_quizzes import quiz_mistakes
+    base = {"question": "Q?", "options": ["a", "b", "c", "d"],
+            "topic": "T", "difficulty": "easy", "explanation": "why"}
+    a1 = {"skill": "python", "submitted_at": "2026-10-01T10:00:00",
+          "attempt_id": 1, "results": [
+              dict(base, question_id="py-001", chosen_index=0,
+                   correct_index=1, correct=False),
+              dict(base, question_id="py-002", chosen_index=2,
+                   correct_index=1, correct=False)]}
+    a2 = {"skill": "python", "submitted_at": "2026-10-02T10:00:00",
+          "attempt_id": 2, "results": [
+              dict(base, question_id="py-001", chosen_index=1,
+                   correct_index=1, correct=True)]}
+    book = quiz_mistakes([a2, a1])  # input order must not matter
+    assert book["total"] == 1
+    assert book["skills"][0]["skill"] == "python"
+    assert book["skills"][0]["mistakes"][0]["question_id"] == "py-002"
+    assert book["skills"][0]["mistakes"][0]["attempt_id"] == 1
+
+
+def test_learn_hub_anonymous_has_search_no_strip(client):
+    r = client.get("/learn")
+    assert r.status_code == 200
+    html = r.get_data(as_text=True)
+    assert "Continue where you left off" not in html  # anon: no strip
+    assert "learn-search" in html                      # search for everyone
+
+
+def test_learn_hub_personalization(authed_client):
+    r = authed_client.get("/learn")
+    assert r.status_code == 200
+    html = r.get_data(as_text=True)
+    assert "Continue where you left off" in html
+    assert "stages done" in html
+
+
+def test_drill_route_requires_login(client):
+    r = client.post("/learn/quizzes/drill", json={"skill": "python"})
+    assert r.status_code == 401
+
+
+def test_drill_route_and_mistakes_page(authed_client):
+    # Submit a quiz with every answer deliberately wrong.
+    r = authed_client.post("/learn/quizzes/start", json={
+        "skill": "python", "num_questions": 5})
+    assert r.status_code == 200
+    start = r.get_json()
+    answers = {}
+    for q in start["questions"]:
+        full = get_question(q["id"])
+        answers[q["id"]] = (full["answer"] + 1) % 4
+    r = authed_client.post(
+        f"/learn/quizzes/{start['attempt_id']}/submit",
+        json={"answers": answers})
+    assert r.status_code == 200
+    # Mistake Book lists the wrong questions.
+    r = authed_client.get("/learn/quizzes/mistakes")
+    assert r.status_code == 200
+    assert "Mistake Book" in r.get_data(as_text=True)
+    # Drill starts a fresh attempt.
+    r = authed_client.post("/learn/quizzes/drill", json={"skill": "python"})
+    assert r.status_code == 200
+    data = r.get_json()
+    assert data["success"] and data["attempt_id"] != start["attempt_id"]
+    assert len(data["questions"]) >= 3
+    # Unknown skill is rejected.
+    r = authed_client.post("/learn/quizzes/drill", json={"skill": "nope"})
+    assert r.status_code == 400

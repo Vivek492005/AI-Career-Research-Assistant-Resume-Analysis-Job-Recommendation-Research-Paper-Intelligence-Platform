@@ -19,7 +19,44 @@
         <div class="sb-learn-stat"><b data-count="{{ num_certs }}">{{ num_certs }}</b><span>Certifications tracked</span></div>
         <div class="sb-learn-stat"><b data-count="{{ num_roles }}">{{ num_roles }}</b><span>Target roles mapped</span></div>
     </div>
+    <figure class="sb-learn-desk" aria-hidden="true">
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+            <defs>
+                <filter id="sb-ripple-dissolve" x="-5%" y="-5%" width="110%" height="110%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="7" result="noise"/>
+                    <feDisplacementMap id="sb-ripple-disp" in="SourceGraphic" in2="noise" scale="140" xChannelSelector="R" yChannelSelector="G"/>
+                </filter>
+            </defs>
+        </svg>
+        <img id="learn-desk-img" src="{{ url_for('static', filename='img/learn-hero-desk.jpg') }}" alt="" loading="eager">
+    </figure>
 </section>
+
+{% if cont %}
+<section class="sb-learn" style="padding-top:2.8rem;" aria-label="Continue learning">
+    <h2 class="sb-learn-h2">Continue where you left off</h2>
+    <div class="sb-tool-grid">
+        <a class="sb-tool sb-reveal" href="{{ url_for('roadmaps_dashboard') }}">
+            <span class="sb-tool-num">Roadmaps</span>
+            <span class="sb-tool-title">{{ cont.stages_done }}/{{ cont.stages_total }} stages done</span>
+            <p>{% if cont.next_skill %}Next up: {{ cont.next_skill.skill_name }} — {{ cont.next_skill.completed }}/{{ cont.next_skill.total }} stages complete.{% elif cont.skills_started %}Every started roadmap is complete. Pick a new skill below.{% else %}You haven't started a roadmap yet — the gap analyzer takes two minutes.{% endif %}</p>
+            <span class="sb-tool-link">Open my dashboard →</span>
+        </a>
+        <a class="sb-tool sb-reveal" href="{{ url_for('quizzes_history') }}">
+            <span class="sb-tool-num">Quizzes</span>
+            <span class="sb-tool-title">{% if cont.best_skill %}Best: {{ cont.best_pct }}%{% else %}No quizzes yet{% endif %}</span>
+            <p>{{ cont.quizzes_taken }} quiz{{ 'zes' if cont.quizzes_taken != 1 }} submitted{% if cont.best_skill %}, strongest in {{ cont.best_skill|replace('-',' ')|title }}{% endif %}.{% if cont.open_mistakes %} {{ cont.open_mistakes }} open mistake{{ 's' if cont.open_mistakes != 1 }} waiting in your Mistake Book.{% endif %}</p>
+            <span class="sb-tool-link">{% if cont.open_mistakes %}Review mistakes →{% else %}Quiz history →{% endif %}</span>
+        </a>
+        <a class="sb-tool sb-reveal" href="{{ url_for('certs_plans') }}">
+            <span class="sb-tool-num">Certifications</span>
+            <span class="sb-tool-title">{{ cont.cert_plans }} study plan{{ 's' if cont.cert_plans != 1 }} saved</span>
+            <p>{% if cont.cert_plans %}Pick up your week-by-week plan where you left it.{% else %}No plan yet — get a ranked cert recommendation for your role and budget.{% endif %}</p>
+            <span class="sb-tool-link">My cert plans →</span>
+        </a>
+    </div>
+</section>
+{% endif %}
 
 <section class="sb-learn" style="padding-top:3.5rem;" aria-label="Learning tracks">
     <h2 class="sb-learn-h2">Three ways to level up</h2>
@@ -61,6 +98,14 @@
     </div>
 </section>
 
+<section class="sb-learn" style="padding-top:3.5rem;" aria-label="Find a skill fast">
+    <h2 class="sb-learn-h2">Find a skill fast</h2>
+    <p class="sb-learn-sub">Search across {{ num_skills }} roadmaps, {{ num_quiz_skills }} quiz skills and {{ num_certs }} certifications.</p>
+    <input type="search" id="learn-search" placeholder="Try 'python', 'aws' or 'react'…" autocomplete="off"
+           style="width:100%;max-width:560px;padding:.85rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);color:inherit;font-size:1rem;">
+    <div id="learn-search-results" style="display:grid;gap:.5rem;margin-top:1rem;max-width:720px;"></div>
+</section>
+
 <section class="sb-learn" style="padding-top:3.5rem;" aria-label="How the tracks connect">
     <h2 class="sb-learn-h2">How it fits together</h2>
     <div class="sb-learn-steps">
@@ -70,4 +115,76 @@
         <div class="sb-learn-step"><p><b><i>04</i>Certify</b> — when you're ready, pick the certification with the best ROI</p><a href="{{ url_for('certs_home') }}">Certs →</a></div>
     </div>
 </section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+    var INDEX = {{ search_index|tojson }};
+    var input = document.getElementById('learn-search');
+    var box = document.getElementById('learn-search-results');
+    if (!input || !box) return;
+    function render(q) {
+        q = (q || '').trim().toLowerCase();
+        box.innerHTML = '';
+        if (q.length < 2) return;
+        var hits = INDEX.filter(function (e) { return e.label.toLowerCase().indexOf(q) !== -1; }).slice(0, 8);
+        if (!hits.length) {
+            box.innerHTML = '<p style="color:var(--b-muted,#999);margin:0;">No match — try a shorter word.</p>';
+            return;
+        }
+        hits.forEach(function (e) {
+            var a = document.createElement('a');
+            a.href = e.url;
+            a.style.cssText = 'display:flex;justify-content:space-between;gap:1rem;padding:.7rem 1rem;border:1px solid rgba(255,255,255,.12);border-radius:10px;text-decoration:none;color:inherit;';
+            var left = document.createElement('span'); left.textContent = e.label;
+            var kind = document.createElement('span'); kind.textContent = e.kind; kind.style.opacity = '.6';
+            a.appendChild(left); a.appendChild(kind);
+            box.appendChild(a);
+        });
+    }
+    input.addEventListener('input', function () { render(input.value); });
+})();
+
+/* Ripple Dissolve: the desk photo materialises through a water-ripple
+   displacement (SVG feTurbulence + feDisplacementMap) the first time it
+   scrolls into view. Scale eases 140 -> 0 while opacity/blur settle.
+   Reduced-motion and no-filter environments keep the still photo. */
+(function () {
+    var img = document.getElementById('learn-desk-img');
+    var disp = document.getElementById('sb-ripple-disp');
+    if (!img || !disp) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    img.classList.add('sb-rippling');
+    img.style.opacity = '0';
+    img.style.filter = 'url(#sb-ripple-dissolve) blur(10px)';
+    var done = false;
+    function finish() {
+        if (done) return;
+        done = true;
+        disp.setAttribute('scale', '0');
+        img.classList.remove('sb-rippling');
+        img.style.opacity = '';
+        img.style.filter = '';
+    }
+    var io = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        var DUR = 1600, t0 = null;
+        function frame(now) {
+            if (done) return;
+            if (t0 === null) t0 = now;
+            var p = Math.min(1, (now - t0) / DUR);
+            var e = 1 - Math.pow(1 - p, 3);
+            disp.setAttribute('scale', String(Math.round(140 * (1 - e))));
+            img.style.opacity = String(e.toFixed(3));
+            img.style.filter = 'url(#sb-ripple-dissolve) blur(' + (10 * (1 - e)).toFixed(1) + 'px)';
+            if (p < 1) { requestAnimationFrame(frame); } else { finish(); }
+        }
+        requestAnimationFrame(frame);
+        setTimeout(finish, DUR + 1200); /* safety: never stay dissolved */
+    }, { threshold: 0.2 });
+    io.observe(img);
+})();
+</script>
 {% endblock %}

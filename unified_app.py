@@ -458,9 +458,11 @@ from studybuddy.skill_quizzes import (
     check_answer,
     grade_quiz,
     public_question,
+    quiz_mistakes,
     quiz_skills,
     skill_topics,
     validate_start_payload,
+    weakness_drill,
 )
 from studybuddy.skill_quizzes import get_question as get_quiz_question
 from studybuddy.star_builder import (
@@ -5535,13 +5537,60 @@ def register_routes(app):
     # ---------- LEARNING HUB (Wave 3) ----------
     @app.route('/learn')
     def learn_hub():
-        """Learning hub: roadmaps, skill quizzes, certification guidance."""
+        """Learning hub: roadmaps, skill quizzes, certification guidance.
+
+        For signed-in users the hub also carries a personal "continue
+        learning" strip (roadmap stages, quiz bests, open mistakes,
+        saved cert plans) and a combined skill/cert search index.
+        """
+        search_index = (
+            [{"label": s["name"], "kind": "Roadmap",
+              "url": url_for('roadmap_detail', skill_id=s["id"])}
+             for s in roadmap_skills()]
+            + [{"label": sid.replace('-', ' ').title(), "kind": "Quiz",
+                "url": url_for('quizzes_home')}
+               for sid, _ in quiz_skills()]
+            + [{"label": c["name"], "kind": "Certification",
+                "url": url_for('cert_detail', cert_id=c["id"])}
+               for c in all_certs()])
+        cont = None
+        if current_user.is_authenticated:
+            rows = RoadmapProgress.query.filter_by(
+                user_id=current_user.id).all()
+            summary = roadmap_progress_summary(rows)
+            attempts = (QuizAttempt.query
+                        .filter(QuizAttempt.user_id == current_user.id,
+                                QuizAttempt.submitted_at.isnot(None))
+                        .order_by(QuizAttempt.submitted_at.asc()).all())
+            best = quiz_best_scores(attempts)
+            best_skill, best_pct = None, -1
+            for s, b in best.items():
+                if b.get("pct", 0) > best_pct:
+                    best_skill, best_pct = s, b["pct"]
+            book = quiz_mistakes([{
+                "skill": a.skill, "results": a.results_json or [],
+                "submitted_at": a.submitted_at.isoformat() if a.submitted_at else "",
+                "attempt_id": a.id} for a in attempts])
+            cont = {
+                "skills_started": len(summary),
+                "stages_done": sum(s["completed"] for s in summary),
+                "stages_total": sum(s["total"] for s in summary),
+                "next_skill": next(
+                    (s for s in summary if s["completed"] < s["total"]), None),
+                "quizzes_taken": len(attempts),
+                "best_skill": best_skill, "best_pct": best_pct,
+                "open_mistakes": book["total"],
+                "cert_plans": CertPlan.query.filter_by(
+                    user_id=current_user.id).count(),
+            }
         return render_template('learn.html',
                                num_skills=len(roadmap_skills()),
                                num_quiz_questions=sum(n for _, n in quiz_skills()),
                                num_quiz_skills=len(quiz_skills()),
                                num_certs=len(all_certs()),
                                num_roles=len(roadmap_roles()),
+                               search_index=search_index,
+                               cont=cont,
                                is_authed=current_user.is_authenticated)
 
     def _learn_ai_tip(prompt, fallback):
@@ -5842,6 +5891,70 @@ def register_routes(app):
                     .order_by(QuizAttempt.submitted_at.desc()).all())
         return render_template('quiz_history.html', attempts=attempts,
                                best=quiz_best_scores(attempts))
+
+    @app.route('/learn/quizzes/mistakes')
+    @login_required
+    def quizzes_mistakes():
+        """Mistake Book for skill quizzes: latest-state wrong questions
+        across all submitted attempts, grouped by skill, with a
+        weakness-drill shortcut per skill."""
+        attempts = (QuizAttempt.query
+                    .filter(QuizAttempt.user_id == current_user.id,
+                            QuizAttempt.submitted_at.isnot(None))
+                    .order_by(QuizAttempt.submitted_at.asc()).all())
+        book = quiz_mistakes([{
+            "skill": a.skill, "results": a.results_json or [],
+            "submitted_at": a.submitted_at.isoformat() if a.submitted_at else "",
+            "attempt_id": a.id} for a in attempts])
+        return render_template('quiz_mistakes.html', book=book,
+                               is_authed=True)
+
+    @app.route('/learn/quizzes/drill', methods=['POST'])
+    @limiter.limit("20 per hour")
+    def quizzes_drill():
+        """Start a weakness-targeted drill attempt for one skill.
+
+        Builds the question set from the user's own graded history via
+        weakness_drill() (weak topics first; general fill when the user
+        has no history yet) and returns the standard quiz-start payload.
+        """
+        if not current_user.is_authenticated:
+            return jsonify({'error': 'Please log in to start a drill.'}), 401
+        payload = request.get_json(silent=True) or {}
+        skill = str(payload.get("skill") or "").strip()
+        if skill not in dict(quiz_skills()):
+            return jsonify({'error': 'Unknown skill.'}), 400
+        attempts = (QuizAttempt.query
+                    .filter(QuizAttempt.user_id == current_user.id,
+                            QuizAttempt.skill == skill,
+                            QuizAttempt.submitted_at.isnot(None))
+                    .order_by(QuizAttempt.submitted_at.desc()).limit(10).all())
+        past = []
+        for a in attempts:
+            past.extend(a.results_json or [])
+        try:
+            drill = weakness_drill(skill, past, n=10)
+        except ValueError as e:
+            return jsonify({'error': str(e)}), 400
+        questions = drill["questions"]
+        try:
+            row = QuizAttempt(
+                user_id=current_user.id, skill=skill,
+                num_questions=len(questions),
+                difficulty_mix=[], timed=False, time_limit_sec=None,
+                question_ids=[q["id"] for q in questions],
+                checks_json=[], started_at=datetime.now(UTC))
+            db.session.add(row)
+            db.session.commit()
+        except Exception:
+            log.exception("Quiz drill creation failed")
+            db.session.rollback()
+            return jsonify({'error': 'Could not start the drill. Please try again.'}), 500
+        return jsonify({'success': True, 'attempt_id': row.id,
+                        'skill': skill, 'timed': False, 'time_limit_sec': None,
+                        'questions': questions,
+                        'target_topics': drill["target_topics"],
+                        'guidance': drill["guidance"]})
 
     # ----- Feature #20: certification guidance -----
     @app.route('/learn/certs')

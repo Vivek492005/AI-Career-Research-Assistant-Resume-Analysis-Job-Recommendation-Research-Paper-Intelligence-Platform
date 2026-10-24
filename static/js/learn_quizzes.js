@@ -55,6 +55,42 @@
         });
     }
 
+    function startDrill(skill) {
+        el('quiz-status').textContent = 'Building your weakness drill…';
+        fetch('/learn/quizzes/drill', {
+            method: 'POST', headers: headers(), body: JSON.stringify({ skill: skill })
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+            if (!data.success) {
+                el('quiz-status').textContent = data.error || 'Could not start the drill.';
+                return;
+            }
+            el('quiz-status').textContent = data.guidance || '';
+            beginQuiz(data);
+        })
+        .catch(function () { el('quiz-status').textContent = 'Network error. Please try again.'; });
+    }
+
+    var drillBtn = el('quiz-drill');
+    if (drillBtn) {
+        drillBtn.addEventListener('click', function () {
+            startDrill(el('quiz-skill').value);
+        });
+    }
+
+    // Mistake Book deep link: /learn/quizzes?drill=<skill> auto-starts a drill.
+    var drillParam = new URLSearchParams(window.location.search).get('drill');
+    if (drillParam) {
+        var sel = el('quiz-skill');
+        if (sel && !sel.disabled) {
+            for (var i = 0; i < sel.options.length; i++) {
+                if (sel.options[i].value === drillParam) { sel.selectedIndex = i; break; }
+            }
+            if (drillBtn && !drillBtn.disabled) { startDrill(drillParam); }
+        }
+    }
+
     function beginQuiz(data) {
         state = {
             attemptId: data.attempt_id, questions: data.questions,

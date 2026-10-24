@@ -868,6 +868,13 @@ body.sb-workspace .hero h2.hero-h {
 }
 .sb-learn-sub { color: #a3a3a0; margin: 0 0 1.6rem; }
 .sb-learn-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #26262e; margin-top: 0.5rem; }
+/* Learn hero desk band: wide B&W study-desk photo on pure black,
+   screen-blended into the ink ground (no box edge). On load it
+   materialises through the ripple-dissolve SVG filter (JS-driven);
+   without JS it simply shows, blended. */
+.sb-learn-desk { margin: 2.4rem 0 0; }
+.sb-learn-desk img { width: 100%; height: auto; display: block; mix-blend-mode: screen; filter: grayscale(1) contrast(1.04); }
+.sb-learn-desk img.sb-rippling { will-change: filter, opacity; }
 .sb-learn-stat { padding: 20px 18px 4px 0; }
 .sb-learn-stat b { font-family: var(--sb-display); font-weight: 700; font-size: 2.6rem; line-height: 1; color: #fff; display: block; }
 .sb-learn-stat span { color: #a3a3a0; font-size: 0.9rem; }

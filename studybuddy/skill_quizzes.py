@@ -237,6 +237,45 @@ def best_scores(attempt_rows):
     return best
 
 
+def quiz_mistakes(attempts):
+    """Latest-state mistake book across a user's submitted quiz attempts.
+
+    attempts: list of dicts {skill, results, submitted_at, attempt_id}
+    where results is a grade_quiz() results list. A question counts as a
+    mistake only when its LATEST graded state is wrong (a later correct
+    attempt clears it — same semantics as the aptitude Mistake Book).
+    Returns {"total": int, "skills": [{skill, mistakes: [...]}]} with
+    skills ordered by mistake count.
+    """
+    latest = {}
+    for att in sorted(attempts, key=lambda a: str(a.get("submitted_at") or "")):
+        for r in att.get("results") or []:
+            if not isinstance(r, dict) or not r.get("question_id"):
+                continue
+            latest[r["question_id"]] = (att, r)
+    by_skill = {}
+    for qid, (att, r) in latest.items():
+        if r.get("correct"):
+            continue
+        entry = {
+            "question_id": qid,
+            "topic": r.get("topic", "General"),
+            "difficulty": r.get("difficulty"),
+            "question": r.get("question"),
+            "options": list(r.get("options") or []),
+            "chosen_index": r.get("chosen_index"),
+            "correct_index": r.get("correct_index"),
+            "explanation": r.get("explanation"),
+            "skill": att.get("skill") or r.get("skill"),
+            "attempt_id": att.get("attempt_id"),
+        }
+        by_skill.setdefault(entry["skill"], []).append(entry)
+    skills = [{"skill": s, "mistakes": sorted(m, key=lambda e: e["topic"])}
+              for s, m in by_skill.items()]
+    skills.sort(key=lambda g: -len(g["mistakes"]))
+    return {"total": sum(len(g["mistakes"]) for g in skills), "skills": skills}
+
+
 # ================= Feature 16 Ultimate Enhancements =================
 # 16.1 Certification-exam mode | 16.2 Weakness-targeted drills | 16.3 Leaderboard
 
@@ -361,8 +400,11 @@ def weakness_drill(skill, past_results, n=10, seed=None):
     # Prefer weak topics; fill the rest with general skill questions.
     if target:
         for t in target:
+            # Bank rows carry a singular "topic" string — matching on a
+            # "topics" list here silently emptied every drill (fixed
+            # 2026-10-24: the drill always fell back to a general fill).
             qs = [q for q in _load()
-                  if q.get("skill") == skill and t in q.get("topics", [])]
+                  if q.get("skill") == skill and q.get("topic") == t]
             rng.shuffle(qs)
             questions.extend(qs[: max(2, n // max(len(target), 1))])
     if len(questions) < n:
