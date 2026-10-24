@@ -3069,8 +3069,18 @@ def register_routes(app):
     # ---------- MAIN HUB ----------
     @app.route('/')
     def index():
-        """Study-Buddy Landing Page (The Hub)."""
-        return render_template('index.html')
+        """Study-Buddy Landing Page (The Hub).
+
+        Stats are computed from the live banks (all loaders are
+        module-cached, so this costs nothing per request) — never
+        hardcoded. Stale landing numbers were a 2026-10-24 eval finding.
+        """
+        return render_template(
+            'index.html',
+            num_interview=interview_hub_data()["total_questions"],
+            num_aptitude=len(aptitude_all()),
+            num_quiz=sum(c for _, c in quiz_skills()),
+            num_dsa=len(a2z_problems()))
 
     @app.route('/try')
     @limiter.limit("20 per hour")
@@ -6518,11 +6528,17 @@ def register_routes(app):
         """Per-user PDF study library page."""
         docs = StudyDoc.query.filter_by(user_id=current_user.id).order_by(
             StudyDoc.created_at.desc()).all()
-        return render_template('study_library.html', docs=[{
+        documents = [{
             'id': d.id, 'title': d.title, 'pages': d.num_pages,
             'chunks': d.num_chunks, 'source': d.source,
             'created': d.created_at.strftime('%Y-%m-%d'),
-        } for d in docs])
+        } for d in docs]
+        # Template reads `documents` + `is_authed` (this route is
+        # login-gated, so is_authed is always True here); `docs` kept
+        # for backward compatibility. Passing only `docs` used to render
+        # an always-empty list — the 2026-10-24 eval's PDF Library bug.
+        return render_template('study_library.html', documents=documents,
+                               docs=documents, is_authed=True)
 
     @app.route('/study/api/upload', methods=['POST'])
     @limiter.limit("20 per hour")

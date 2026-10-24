@@ -12,11 +12,11 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="STUDY-BUDDY">
     <meta property="og:title" content="STUDY-BUDDY — AI Career Copilot for Students">
-    <meta property="og:description" content="Free, open-source AI career copilot for students: ATS resume scoring, JD matching, mock interviews, aptitude &amp; DSA practice, and research-paper Q&amp;A.">
+    <meta property="og:description" content="Free, open-source AI career copilot for students: resume feedback, JD matching, mock interviews, aptitude &amp; DSA practice, and research-paper Q&amp;A.">
     <meta property="og:image" content="{{ url_for('static', filename='img/social-preview.png', _external=True) }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="STUDY-BUDDY — AI Career Copilot for Students">
-    <meta name="twitter:description" content="Free, open-source AI career copilot for students: ATS resume scoring, JD matching, mock interviews, aptitude &amp; DSA practice, and research-paper Q&amp;A.">
+    <meta name="twitter:description" content="Free, open-source AI career copilot for students: resume feedback, JD matching, mock interviews, aptitude &amp; DSA practice, and research-paper Q&amp;A.">
     <meta name="twitter:image" content="{{ url_for('static', filename='img/social-preview.png', _external=True) }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bento.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/kinetic.css') }}">
@@ -58,17 +58,15 @@
                 </div>
             </div>
             <div class="sb-trust">
-                <div class="sb-avatars" aria-hidden="true"><span class="sb-av-1">A</span><span class="sb-av-2">R</span><span class="sb-av-3">S</span><span class="sb-av-4">K</span></div>
                 <div>
-                    <p class="sb-trust-k">Trusted by students</p>
-                    <p class="sb-trust-t"><strong>339</strong> interview questions · <strong>320</strong> quiz questions · <strong>132</strong> DSA problems — free &amp; open source</p>
+                    <p class="sb-trust-t"><strong>{{ num_interview }}</strong> interview questions · <strong>{{ num_quiz }}</strong> quiz questions · <strong>{{ num_dsa }}</strong> DSA problems — free &amp; open source</p>
                 </div>
             </div>
             <div class="sb-stats" aria-label="Question and problem library">
-                <div class="sb-stat"><b>339</b><span>interview questions</span></div>
-                <div class="sb-stat"><b>338</b><span>aptitude questions</span></div>
-                <div class="sb-stat"><b>320</b><span>skill quiz questions</span></div>
-                <div class="sb-stat"><b>132</b><span>DSA problems</span></div>
+                <div class="sb-stat"><b>{{ num_interview }}</b><span>interview questions</span></div>
+                <div class="sb-stat"><b>{{ num_aptitude }}</b><span>aptitude questions</span></div>
+                <div class="sb-stat"><b>{{ num_quiz }}</b><span>skill quiz questions</span></div>
+                <div class="sb-stat"><b>{{ num_dsa }}</b><span>DSA problems</span></div>
             </div>
         </section>
 
