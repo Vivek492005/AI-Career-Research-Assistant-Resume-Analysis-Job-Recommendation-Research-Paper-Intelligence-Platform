@@ -174,7 +174,7 @@
     var io = new IntersectionObserver(function (entries) {
         if (!entries[0].isIntersecting) return;
         io.disconnect();
-        var DUR = 1600, t0 = null;
+        var DUR = 2800, t0 = null;
         function frame(now) {
             if (done) return;
             if (t0 === null) t0 = now;

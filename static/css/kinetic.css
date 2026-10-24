@@ -868,15 +868,27 @@ body.sb-workspace .hero h2.hero-h {
 }
 .sb-learn-sub { color: #a3a3a0; margin: 0 0 1.6rem; }
 .sb-learn-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #26262e; margin-top: 0.5rem; }
-/* Learn hero: headline left, wide B&W study-desk photo filling the
-   blank right side. The photo sits on pure black and is
-   screen-blended into the ink ground, so no border or box edge ever
-   shows. On load it materialises through the ripple-dissolve SVG
-   filter (JS-driven); without JS it simply shows, blended. */
-.sb-learn-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 2.5rem; align-items: center; }
-.sb-learn-desk { margin: 0; }
+/* Learn hero: headline left, wide B&W study-desk photo stretched
+   BEHIND the headline — it reaches left until the end of
+   "Not by accident." and melts into the ink ground via screen
+   blending, so no border or box edge ever shows (Vivek, 2026-10-24:
+   "image ko accident ke NT tak stretch kardo and peeche blend
+   kardo"). The photo's own left third is near-black wall, so the
+   white headline stays readable over it. On load it materialises
+   through the ripple-dissolve SVG filter (JS-driven); without JS
+   it simply shows, blended. */
+.sb-learn-hero { position: relative; min-height: 430px; display: flex; align-items: center; }
+.sb-learn-hero-text { position: relative; z-index: 1; max-width: 660px; }
+.sb-learn-desk { margin: 0; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: min(70%, 1120px); z-index: 0; pointer-events: none;
+    /* Feather every edge so the photo's near-black ground melts into
+       the page with zero visible rectangle seam. */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 13%), linear-gradient(to bottom, transparent 0, #000 9%, #000 91%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent 0, #000 13%), linear-gradient(to bottom, transparent 0, #000 9%, #000 91%, transparent 100%);
+    mask-composite: intersect; }
 @media (max-width: 900px) {
-    .sb-learn-hero { grid-template-columns: 1fr; gap: 1.4rem; }
+    .sb-learn-hero { min-height: 0; display: block; }
+    .sb-learn-desk { position: static; transform: none; width: 100%; margin-top: 1.4rem; }
 }
 .sb-learn-desk img { width: 100%; height: auto; display: block; mix-blend-mode: screen; filter: grayscale(1) contrast(1.04); }
 .sb-learn-desk img.sb-rippling { will-change: filter, opacity; }
