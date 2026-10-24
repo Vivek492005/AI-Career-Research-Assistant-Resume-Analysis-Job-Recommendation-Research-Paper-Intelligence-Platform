@@ -44,9 +44,11 @@ def _board_picks():
 def test_dataset_loads():
     data = load_dataset()
     curated = [o for o in data["opportunities"] if o.get("curated", True)]
-    assert len(curated) == 20
+    # 27 after the 2026-10-24 refresh (20 - 2 removed + 9 added,
+    # including the first curated hackathons).
+    assert len(curated) == 27
     assert set(o["type"] for o in curated) == {
-        "internship", "scholarship", "exam"}
+        "internship", "scholarship", "exam", "hackathon"}
     # auto-refresh may have added hackathon/competition/internship entries;
     # every type in the file must still be a known type.
     from studybuddy.opportunities import TYPES
@@ -61,7 +63,9 @@ def test_closing_soon_logic_fixed_today():
     by_id = {o["id"]: o for o in opps}
     assert by_id["gate-2027"]["closing_soon"] is True       # 6 days
     assert by_id["gate-2027"]["days_left"] == 6
-    assert by_id["ms-engage-2026"]["closing_soon"] is True   # 11 days
+    # (ms-engage-2026 was removed in the 2026-10-24 refresh as
+    # unverifiable; Build With AI: Basics is the 12-day case now.)
+    assert by_id["devpost-30447-build-with-ai-basics"]["closing_soon"] is True  # 12 days
     assert by_id["reliance-foundation-ug-2026"]["closing_soon"] is True  # 14 days, inclusive
     assert by_id["aicte-pragati-2026"]["closing_soon"] is False          # 17 days
     assert by_id["upsc-cse-2027"]["closing_soon"] is False
@@ -83,9 +87,14 @@ def test_type_filter_and_invalid():
     counts = {}
     for o in curated:
         counts[o["type"]] = counts.get(o["type"], 0) + 1
-    assert counts.get("exam") == 7
-    assert counts.get("scholarship") == 6
-    assert counts.get("internship") == 7
+    # Curated counts after the 2026-10-24 refresh: 6 new exams
+    # (XAT/SNAP/UCEED/NID DAT/NIFT/MAT), 1 new scholarship (HDFC
+    # ECSS), 2 new hackathons (HackQuest/Homingo); 2 stale curated
+    # internships removed (Engage 2026, GRiD 6.0 — both unverifiable).
+    assert counts.get("exam") == 13
+    assert counts.get("scholarship") == 7
+    assert counts.get("internship") == 5
+    assert counts.get("hackathon") == 2
     # filtered listing returns only that type (auto entries included)
     for o in list_opportunities(opp_type="hackathon"):
         assert o["type"] == "hackathon"
